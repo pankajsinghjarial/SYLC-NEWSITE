@@ -21,15 +21,8 @@
 				foreach( $manufacturer as $key => $value ) {
 					$manufacturerNameArray[trim($value)] = trim($value);
 					?> 
-					<script> 
-						ajaxcallNew('<?php echo trim($value)?>','manufacturer','model','','append');
-						
-						jQuery("#model_select").find("option").each(function(){
-							alert();
-							if(jQuery(this).val() == "<?php echo $model; ?>"){
-								jQuery(this).attr("selected","selected");
-							}
-						});
+					<script type="text/javascript"> 
+						ajaxcallNew('<?php echo trim($value)?>','manufacturer','model','','append','<?php echo $model; ?>');
 					</script>
 					<?php
 				} 

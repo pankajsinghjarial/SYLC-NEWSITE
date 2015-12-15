@@ -38,7 +38,7 @@ if (isset($_SESSION['User']['id']) && $_SESSION['User']['id'] > 0) {
 }
 
 
-$where 		 = "";
+$where 		 = "&outputSelector(0)=PictureURLLarge";
 $searched    = '';
 $addtopaging = "?";
 
@@ -65,7 +65,7 @@ if (isset($manufacturer)) {
 	
 	$searched = '<br>You Searched for ';
 	if (isset($manufacturer)) {
-		$where = "&outputSelector=AspectHistogram";                
+		$where .= "&outputSelector(1)=AspectHistogram";                
 		$where .= "&aspectFilter(".$aspect_count.").aspectName=Make";
                 $manfCount = 0;                
                 if (is_array($manufacturer)) {
@@ -313,7 +313,7 @@ if ($_SESSION['products']['fill']) {
 		$time = convertTimeLeft($item->sellingStatus->timeLeft);
 		$endson = $item->listingInfo->endTime;
 		$endtimestamp = strtotime($endson);
-		$galleryURL = (isset($item->galleryPlusPictureURL)) ? $item->galleryPlusPictureURL : $item->galleryURL;
+		$galleryURL = (isset($item->galleryPlusPictureURL)) ? $item->galleryPlusPictureURL : $item->pictureURLLarge;
 				
 		
 		$forward_str = "&title=".urlencode($item->title)."&buyItNowPrice=".$buyItNowPrice."&postalCode=".$postalCode."&location=".urlencode($location)."&listingType=".$listingType."&endson=".$endson."&endtimestamp=".$endtimestamp."&buyItNowAvailable=".$buyItNowAvailable;

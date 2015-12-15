@@ -88,7 +88,7 @@ function changeSel(val) {
 	})(jQuery); 
 }
 
-function ajaxcallNew(val, attribute, name, manufac, type) { 
+function ajaxcallNew(val, attribute, name, manufac, type, defaultVal) { 
 	$('#loader').show();
 	$('#model_select').hide();
 	$.ajax({
@@ -100,14 +100,17 @@ function ajaxcallNew(val, attribute, name, manufac, type) {
 
 				   if (type == "append"){
 						$.each(data, function(i){
-								var selected = '';
-								if (data[i]['value'] == "<?php echo $model; ?>")	{
-									selected = 'selected = "selected"';
-								}
-								
-								if (data[i]['value'] === null)	{
+                                if (data[i]['value'] === null)	{
 									return;
 								}
+								var selected = '';
+                                if(defaultVal !== undefined){
+                                    if (data[i]['value'][0].toLowerCase() == defaultVal.toLowerCase())	{
+                                        selected = 'selected = "selected"';
+                                    }
+                                }
+								
+								
 								var catdata=data[i]['value'][0];								
 								$('#model_select').append('<option value="' + catdata + '" ' + selected + '>' + catdata + '</option>');                                
 						});
