@@ -55,5 +55,5 @@
     include(LIST_ROOT."/includes/code/whitelist_ips.php");
     $common = new common();
     $emailQuery = $common->CustomQuery("select * from admins where id = 1");
-    $toemail = mysqli_fetch_object($emailQuery);
+    $toemail = mysql_fetch_object($emailQuery);
     define('SITE_ADMIN_EMAIL', $toemail->email);

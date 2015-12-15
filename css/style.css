@@ -10,6 +10,98 @@
     font-family: oswald-light;
     src: url("fonts/Oswald-Light.ttf"); /* Path of font file */
 }
+@font-face {
+    font-family: 'robotoblack';
+    src: url('font-kit/roboto-black-webfont.eot');
+    src: url('font-kit/roboto-black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font-kit/roboto-black-webfont.woff') format('woff'),
+         url('font-kit/roboto-black-webfont.ttf') format('truetype'),
+         url('font-kit/roboto-black-webfont.svg#robotoblack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'robotoregular';
+    src: url('font-kit/roboto-regular-webfont.eot');
+    src: url('font-kit/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font-kit/roboto-regular-webfont.woff') format('woff'),
+         url('font-kit/roboto-regular-webfont.ttf') format('truetype'),
+         url('font-kit/roboto-regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'kelson_sansregular';
+    src: url('font-kit/kelson_sans_regular-webfont.eot');
+    src: url('font-kit/kelson_sans_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font-kit/kelson_sans_regular-webfont.woff') format('woff'),
+         url('font-kit/kelson_sans_regular-webfont.ttf') format('truetype'),
+         url('font-kit/kelson_sans_regular-webfont.svg#kelson_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'MyriadPro-Regular';
+    src: url('myriadpro-regular.eot');
+    src: url('myriadpro-regular.eot?#iefix') format('embedded-opentype'),
+         url('myriadpro-regular.woff') format('woff'),
+         url('myriadpro-regular.ttf') format('truetype'),
+         url('myriadpro-regular.svg#myriadpro-regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MontserratRegular';
+    src: url('font-kit/montserrat-regular-webfont.eot');
+    src: url('font-kit/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font-kit/montserrat-regular-webfont.woff') format('woff'),
+         url('font-kit/montserrat-regular-webfont.ttf') format('truetype'),
+         url('font-kit/montserrat-regular-webfont.svg#MontserratRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Oswald';
+    src: url('font/oswald-regular-webfont.eot');
+    src: url('font/oswald-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/oswald-regular-webfont.woff2') format('woff2'),
+         url('font/oswald-regular-webfont.woff') format('woff'),
+         url('font/oswald-regular-webfont.ttf') format('truetype'),
+         url('font/oswald-regular-webfont.svg#oswaldbook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('font/source-sans-pro.regular-webfont.eot');
+    src: url('font/source-sans-pro.regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/source-sans-pro.regular-webfont.woff2') format('woff2'),
+         url('font/source-sans-pro.regular-webfont.woff') format('woff'),
+         url('font/source-sans-pro.regular-webfont.ttf') format('truetype'),
+         url('font/source-sans-pro.regular-webfont.svg#source_sans_proregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('font/MyriadPro-Regular.eot');
+    src: url('font/MyriadPro-Regular.eot?#iefix') format('embedded-opentype'),
+         url('font/MyriadPro-Regular.woff') format('woff'),
+         url('font/MyriadPro-Regular.ttf') format('truetype'),
+         url('font/MyriadPro-Regular.svg#source_sans_proregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .carousel-control {
     position: absolute;
     top: 0px;
@@ -379,7 +471,7 @@ a:focus{
 }
 
 
-.ciiii .selt-box select {
+.ciiii .selt-box select,.ciiii .selt-box input ,.list-ciiii .selt-box input {
     display: block;
     height: 34px;
     padding: 6px 2px;
@@ -556,7 +648,7 @@ a:focus{
   position: relative;
   background: #272727;
   z-index: 1;
-  padding: 7px 10px 1px;
+  padding: 7px 10px 12px;
 }
 
 .export .export-left h1{
@@ -792,7 +884,6 @@ background: #f00;
 --------------------------*/
 
 .parallex{
-  background: url('../images/bg-car.png')no-repeat fixed center center / cover;
   margin-top: 70px;
   padding-top: 50px;
   padding-bottom: 30px;
@@ -2829,9 +2920,21 @@ background: #f00;
 }
 
 
+.loader{
+ width: 72px;
+ height: 15px;
+}
+#loader{
+ display: none;
+ margin-top:7px;
+}
 
+/*
+ * New section
+ */
 
-
+.ui-multiselect { padding: 6px 10px 5px 12px !important; font-family: inherit !important;  width:185px !important; margin-right: 7px; font-size:14px !important; color:#555 !important; font-weight: 300 !important; background:#fff !important;}
+#Carousel{ width:100%; float:left;}
 
 /*-------------------
     media section
@@ -3315,4 +3418,322 @@ background: #f00;
       padding-left: 15px;
     }
 
+}
+/* Added by Dev Team 10 Dec 2015 */
+.main_middle {
+  width: 100%;
+  background: url(../images/header-bg-new.gif) no-repeat center top;
+  margin: 0 0 0 0;
+}
+.middle {
+  width: 990px;
+  padding: 10px 5px 7px 5px;
+  margin: 0 auto 28px auto;
+}
+.middle_two {
+  width: 990px;
+  margin: 0 0 0 0;
+}
+.top_page_banner {
+  width: 100%;
+  margin: -6px 0 5px;
+}
+.inner_page_one {
+  float: left;
+  background: #ebf1f2;
+  width: 680px;
+  padding: 5px;
+  margin: 0 0 24px 0;
+}
+.middle_two_right_announces {
+  float: right;
+  width: 302px;
+}
+.popup_cnt {
+	width:100%;
+	overflow:hidden;
+	margin:0 auto;
+    font: 12px arial, helvetica, sans-serif;
+}	
+.popup_cnt01 {
+	overflow:hidden;
+}
+.input_text {
+	font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:right;  color:#333333;  padding:10px 23px 0 0;
+	}
+.input_text01 {
+	font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:right;  color:#333333;  padding:4px 23px 0 0;
+	}
+
+.input_outer {
+	width:284px;
+	height:37px;
+	background:url(../images/input_outer.jpg) no-repeat;
+	border:none;
+	margin:0 0 20px 0;
+}
+.input_outer input {
+	width:265px;
+	border:0px;
+	color:#515151;
+	font-size:13px;
+	background:none;
+	margin:9px 0 0 6px;
+}
+.input_outer select {
+	width:265px;
+	border:0px;
+	color:#515151;
+	font-size:13px;
+	background:none;
+	margin:9px 0 0 6px;
+}
+
+.submit_btn {
+	background:url(../images/submit.png) no-repeat;
+	border:none;
+	width:120px;
+	margin:5px 0 16px 0;
+	height:50px;
+	cursor:pointer;
+	float:left;
+}
+
+#calc_error_sdasfsdf{
+	display:block;
+	position:absolute;
+	right:0;
+	top:6px;
+}
+#calc_error_sdasfsdf .err{
+	border:#F00 solid 1px;
+	font-size:14px;
+	padding:3px;
+	background-color:#F2F2F2;
+	font-weight:bold;
+}
+#calc_error_sdasfsdfs .errs {
+  background-color: #F2F2F2;
+  border: 1px solid #FF0000;
+  float: right;
+  font-size: 14px;
+  font-weight: bold;
+  margin: -20px 29px 0 0;
+  padding: 3px;
+  width: 145px;
+}
+.clear{
+    clear:both;
+}
+.inner_page_content_area {
+  float: left;
+  width: 670px;
+  background: url(../images/inner_page_content_area_mid.jpg) repeat-y top left;
+}
+.inner_page_content_area_top {
+  background: url(../images/inner_page_content_area_top.jpg) no-repeat top center;
+  height: 34px;
+  width: 669px;
+  float: left;
+}
+.inner_page_content_area .head_1 {
+  font-size: 30px;
+  color: #b60101;
+  text-transform: uppercase;
+  margin: 0px 0 4px 14px;
+  display: block;
+  line-height: 32px;
+  font-family: 'MontserratRegular';
+}
+.inner_page_content_area .qui_txt_area {
+  color: #b60101;
+  float: left;
+  width: 645px;
+  margin: 5px 0 0 14px;
+  display: block;
+}
+.inner_page_content_area_bottom {
+  background: url(../images/inner_page_content_area_bottom.jpg) no-repeat top center;
+  height: 34px;
+  width: 669px;
+  float: left;
+}
+.qui_txt_area p {
+  font: normal 12px/18px Arial, Helvetica, sans-serif;
+  color: #333;
+  margin: 0 0 20px 0;
+}
+.input_text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-align: right;
+  color: #333333;
+  padding: 10px 23px 0 0;
+}
+.input_outer {
+  width: 284px;
+  height: 37px;
+  background: url(../images/input_outer.jpg) no-repeat;
+  border: none;
+  margin: 0 0 20px 0;
+}
+.input_outer input {
+  width: 265px;
+  border: 0px;
+  color: #515151;
+  font-size: 13px;
+  background: none;
+  margin: 9px 0 0 6px;
+  font: 12px arial, helvetica, sans-serif;
+}
+.submit_btn {
+  background: url(../images/submit.png) no-repeat;
+  border: none;
+  width: 120px;
+  margin: 5px 0 16px 0;
+  height: 50px;
+  cursor: pointer;
+  float: left;
+}
+.forgot_password_link {
+  color: blue;
+  float: left;
+  margin-top: 20px;
+  text-decoration: underline;
+}
+a.link:link, a.link:visited {
+  text-decoration: none;
+  color:#00f;
+}
+.middle_two_right_announces {
+  float: right;
+  width: 302px;
+}
+table, table td {
+  padding: 0;
+  border: none;
+  vertical-align: top;
+}
+.input_outer02 select[name*="birthday"] {
+  border: 1px solid #ccc;
+  color:#515151;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  width: 87px;
+}
+.qui_txt_area h2 {
+  color: #133770;
+  display: block;
+  font-family: "MyriadPro-Regular";
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: normal !important;
+  line-height: 20px !important;
+  margin: 0 0 5px;
+}
+.input_outer02 {
+  height: 47px;
+  width: 284px;
+}
+#cssmenu li.active a{
+    color: #f00;
+    outline: medium none;
+}
+.middle_two_right_announces {
+  float: right;
+  width: 302px;
+}
+.nos_partenaires_announces {
+  background: url(../images/nos_partenaires_announces_bg.png) no-repeat bottom left;
+  width: 302px;
+  margin: 0 0 16px 0;
+  padding: 0 0 13px 0;
+}
+.nos_partenaires_announces .head_1 {
+  background: url(../images/nos_partenaires_head_1_bg.png) repeat-x top left;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'MontserratRegular';
+  text-transform: uppercase;
+  color: #FFFFFF;
+  padding: 8px 0 9px 0px;
+  text-align: center;
+}
+.myaccount-section {
+  margin: 15px 25px;
+}
+.myaccount-section ul li {
+  padding: 5px 0px;
+}
+.myaccount-section ul li a {
+  color: #235F9B;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.input_val {
+  color: #333333;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 14px;
+  padding: 10px 23px 0 0;
+  text-align: left;
+}
+.middle_two_mid_announces {
+  float: left;
+  margin: 0 0 0 0;
+  padding: 0px 5px 5px 5px;
+  width: 668px;
+}
+.car {
+  font-size: 11px;
+  color: #666666;
+  line-height: 11px;
+  padding: 0 0 0 0px;
+}
+.voitures02 {
+  margin-top: 7px;
+  padding: 0px;
+}
+.voitures {
+  background: #f3f3f3;
+  margin: 12px 0 0 0;
+  color: #235f9b;
+  font-size: 11px;
+  border-bottom: 1px solid #cedbdd;
+}
+.car span.head_3 {
+  background: #666666;
+  border-radius: 5px 5px 0 0;
+  color: #FFFFFF;
+  font-weight: normal;
+  margin: 0 3px 0 0;
+  padding: 10px;
+  font: 16px arial, helvetica, sans-serif;
+}
+.car .head_3 {
+  color: #ff6600;
+  font-size: 16px;
+  font-weight: bold;
+}
+.car span {
+  float: left;
+}
+#cboxOverlay {
+  background: url(../images/overlay.png) repeat 0 0;
+}
+#cboxOverlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+#colorbox, #cboxOverlay, #cboxWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden;
 }
