@@ -86,7 +86,7 @@ $apicall .= "&aspectFilter(0).aspectValueName(19)=Toyota";
 $apicall .= "&sellingStatus.sellingState=Active";
 $apicall .= "&descriptionSearch=true";
 $apicall .= "$mosturlfilter";
-$apicall .= '&sortOrder=EndTimeSoonest';
+$apicall .= '&sortOrder=EndTimeSoonest&outputSelector=PictureURLLarge';
 
 // Load the call and capture the document returned by eBay API
 $resp = simplexml_load_file($apicall);
@@ -98,7 +98,7 @@ if ($resp->ack == "Success") {
 		$j++;
 		$jtemId = $jtem->itemId;
 		$title = $jtem->title;
-		$galleryURL = $jtem->galleryURL;
+		$galleryURL = $jtem->pictureURLLarge;
 		$convertedCurrentPrice = $jtem->sellingStatus;
 		if ($galleryURL == ''){
 			$galleryURL = LIST_ROOT."/images/default.jpg";
