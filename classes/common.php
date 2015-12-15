@@ -25,7 +25,7 @@ class common extends utility {
         global $db;
         $result = $this->am_createInsertQuery($tblName, $dataArray);
         $db->query($result);
-        return mysqli_insert_id();
+        return mysql_insert_id();
     }
 
     function delete($tblName,$whereCondition){
@@ -43,7 +43,7 @@ class common extends utility {
     function numberOfRows($tblName,$whereCondition=''){
         global $db;
         $result = $this->am_createSelectAllQuery($tblName, $whereCondition);
-        return mysqli_num_rows($db->query($result));
+        return mysql_num_rows($db->query($result));
     }    
     function customQuery($sqlQuery){
         global $db;
@@ -172,7 +172,7 @@ class common extends utility {
  function countCars(){
         /*global $db;
         $result = $this->customQuery("Select count(car_id) as cou from car");
-		$result = mysqli_fetch_object($result);
+		$result = mysql_fetch_object($result);
         echo number_format($result->cou + 22766) ;*/
 		$my_file = 'file.txt';
 		$handle = fopen($my_file, 'r+') or die('Cannot open file:  '.$my_file);
@@ -187,15 +187,15 @@ class common extends utility {
  public $attributs = array();
  public function setAttributsToArray(){
 		$for_option= array("select", "multiselect", "radio", "checkbox");
-		$result = $this->customQuery("Select attribute_id, attribute_code, backend_type, frontend_type, frontend_label From attribute", $this->db)or die(mysqli_error());
-		if(mysqli_num_rows($result) > 0){
-			while($row = mysqli_fetch_object($result)){
+		$result = $this->customQuery("Select attribute_id, attribute_code, backend_type, frontend_type, frontend_label From attribute", $this->db)or die(mysql_error());
+		if(mysql_num_rows($result) > 0){
+			while($row = mysql_fetch_object($result)){
 				if(in_array($row->frontend_type, $for_option)){
 					$query = "Select value_id, value From attribute_option_value Where attribute_id = ".$row->attribute_id;
-					$option_result = $this->customQuery($query, $this->db) or die(mysqli_error());
+					$option_result = $this->customQuery($query, $this->db) or die(mysql_error());
 					$options= array();
-					if(mysqli_num_rows($option_result) > 0){
-						while($option_row = mysqli_fetch_object($option_result)){
+					if(mysql_num_rows($option_result) > 0){
+						while($option_row = mysql_fetch_object($option_result)){
 							$options[$option_row->value_id] = $option_row->value;
 						}
 					} 
@@ -222,12 +222,12 @@ class common extends utility {
 		$temp = array();
 		foreach($carIds as $carId){
 			$car_list = $this->customQuery("Select * From car WHERE car_id = ".$carId);
-			while($value = mysqli_fetch_object($car_list)){
+			while($value = mysql_fetch_object($car_list)){
 				$temp[$value->car_id]["id"] = $value->car_id;
 				$temp[$value->car_id]["stock_id"] = $value->stock_id;
 				foreach($attr_list as $attr){
 					$option_result = $this->customQuery("SELECT value From ".$table_prefix.$this->attributs[$attr]["back"]." Where car_id = ".$value->car_id." and attribute_id = ".$this->attributs[$attr]["id"]);
-					$option_result  = mysqli_fetch_object($option_result);
+					$option_result  = mysql_fetch_object($option_result);
 					$temp[$value->car_id][$attr] = $option_result->value;
 				}	
 			}
@@ -240,7 +240,7 @@ class common extends utility {
 	
 	public function total_getCarListWithAttr($condition = ''){
 		$car_list = $this->customQuery("Select * From car ".$where);
-		return mysqli_num_rows($car_list);
+		return mysql_num_rows($car_list);
 	}
 	
 	public function getCarListWithAttr($limit, $attr_list, $conditions = null ){
@@ -255,12 +255,12 @@ class common extends utility {
 		$temp = array();
 		$where = '';
 		$car_list = $this->customQuery("Select * From car ".$conditions.' '.$limit);
-		while($value = mysqli_fetch_object($car_list)){
+		while($value = mysql_fetch_object($car_list)){
 			$temp[$value->car_id]["id"] = $value->car_id;
 			$temp[$value->car_id]["stock_id"] = $value->stock_id;
 			foreach($attr_list as $attr){
 				$option_result = $this->customQuery("SELECT value From ".$table_prefix.$this->attributs[$attr]["back"]." Where car_id = ".$value->car_id." and attribute_id = ".$this->attributs[$attr]["id"]);
-				$option_result  = mysqli_fetch_object($option_result);
+				$option_result  = mysql_fetch_object($option_result);
 				$temp[$value->car_id][$attr] = $option_result->value;
 			}	
 		}
@@ -293,9 +293,9 @@ class common extends utility {
 		
 		$i =1;
 		$count=1;
-		$this->total_getSearchCarListWithAttr = mysqli_num_rows($option_result);
+		$this->total_getSearchCarListWithAttr = mysql_num_rows($option_result);
 		
-		while($row = mysqli_fetch_object($option_result)){ 
+		while($row = mysql_fetch_object($option_result)){ 
 			if($start < $i){
 				if($count > $limit){
 					break;
@@ -308,13 +308,13 @@ class common extends utility {
 			}
 			
 			$attr_result = $this->customQuery("select stock_id from car where car_id = ".$row->car_id);
-			$fetch_value = mysqli_fetch_object($attr_result);
+			$fetch_value = mysql_fetch_object($attr_result);
 			$temp[$row->car_id]["id"] = $row->car_id;
 			$temp[$row->car_id]["stock_id"] = $fetch_value->stock_id;
 			
 			foreach($attr_list as $attr){ 
 					$option_resulte = $this->customQuery("SELECT value From car_".$this->attributs[$attr]["back"]." Where car_id = ".$row->car_id." and attribute_id = ".$this->attributs[$attr]["id"]);
-					$option_resulte  = mysqli_fetch_object($option_resulte);
+					$option_resulte  = mysql_fetch_object($option_resulte);
 					$temp[$row->car_id][$attr] = $option_resulte->value;
 			}	
 			
@@ -369,13 +369,13 @@ class common extends utility {
 		$table_prefix="car_";
 		$temp = array();
 	$attr_result = $this->customQuery("select * from car where car_id = $car_id");
-			$fetch_value = mysqli_fetch_object($attr_result);
+			$fetch_value = mysql_fetch_object($attr_result);
 			$temp[$car_id]["stock_id"] = $fetch_value->stock_id;
 			$temp[$car_id]["vin"] = $fetch_value->vin;
 
 			foreach($attr_list as $attr){
 				$option_result = $this->customQuery("SELECT value From ".$table_prefix.$this->attributs[$attr]["back"]." Where car_id = ".$car_id." and attribute_id = ".$this->attributs[$attr]["id"]);
-				$option_result  = mysqli_fetch_object($option_result);
+				$option_result  = mysql_fetch_object($option_result);
 				
 				$for_option= array("select", "multiselect", "radio", "checkbox");
 				if(in_array($this->attributs[$attr]["front"],$for_option)){
@@ -407,7 +407,7 @@ class common extends utility {
 	$tempo = array();
 	$imgArr = array();
 		$images_result = $this->customQuery("select * from car_media_gallery where car_id = $carid  and attribute_id = 10");
-		while($images = mysqli_fetch_object($images_result))
+		while($images = mysql_fetch_object($images_result))
 		{
 			$imageArr[] = $this->getImageUrl($images->value);
 			}
@@ -419,7 +419,7 @@ return	$tempo[$carid]["allImage"] = $imageArr;
 		function mostView($carid)
 		{
 			$sql = $this->customQuery("Select car_id from car_view where car_id = $carid");
-			if(mysqli_num_rows($sql) > 0)
+			if(mysql_num_rows($sql) > 0)
 			{
 				$query = $this->customQuery("Update car_view set view_count = view_count + 1 where car_id = $carid");
 			}
@@ -435,7 +435,7 @@ VALUES ($carid,1) ");
 	function getPageSlug($id)
 	{ 
 		$sql = $this->customQuery("Select slug from pages where id = $id");
-		$slug = mysqli_fetch_object($sql);
+		$slug = mysql_fetch_object($sql);
 		return $slug->slug;
 		
 		}
@@ -445,23 +445,24 @@ VALUES ($carid,1) ");
 		}
 		
 		//$rateid = $this->customQuery("select * from currency where id = 1");
-		//$rate = mysqli_fetch_object($rateid);	
+		//$rate = mysql_fetch_object($rateid);	
 		//$finalprice = (($price + $rate->boat) * $rate->custom * $rate->tva) + $rate->transp + $rate->com;
 		//$finalprice = ($price + $rate->boat + $rate->transp + $rate->com)*$this->exch_rate;
 		//jitendra
+		
 		$finalprice = ($price)*$this->exch_rate;
 		return number_format($finalprice,2);	
 	}
 	
 	function getOptionNameById($id){
 		$sql = $this->customQuery("Select value from attribute_option_value where value_id = $id");
-		$slug = mysqli_fetch_object($sql);
+		$slug = mysql_fetch_object($sql);
 		return $slug->value;
 	}
 	
 	function getIdByOptionName($attr_id,$val){
 		$sql = $this->customQuery("Select value_id from attribute_option_value where attribute_id = $attr_id and value = '$val'");
-		$slug = mysqli_fetch_object($sql);
+		$slug = mysql_fetch_object($sql);
 		return $slug->value_id;
 	}
 	
@@ -471,7 +472,7 @@ VALUES ($carid,1) ");
 //		$nodes = $resp->xpath(sprintf('/*/*/*/*[@currency = "%s"]', $name));
 //		$this->exch_rate = (float) $nodes[0][rate];
 
-		$url = "http://www.google.com/finance/converter?a=1&from=USD&to=EUR";
+		$url = "https://www.google.com/finance/converter?a=1&from=USD&to=EUR";
 		$ch = curl_init();
 		$timeout = 0;
 		curl_setopt ($ch, CURLOPT_URL, $url);
@@ -492,7 +493,7 @@ VALUES ($carid,1) ");
 	    
 	    $sql = $this->customQuery('SELECT `email` FROM `notification_emails`');
 	    $admin_emails = array();
-	    while( $emails = mysqli_fetch_assoc($sql)) {
+	    while( $emails = mysql_fetch_assoc($sql)) {
 		$admin_emails[] = $emails['email'];
 	    }
 	    return $admin_emails;

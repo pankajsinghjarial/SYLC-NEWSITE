@@ -1,3 +1,31 @@
+<!--Search scripts-->
+<script type="text/javascript" src="<?php echo DEFAULT_URL ?>/js/jquery.multiselect.js"></script>
+<script type="text/javascript" src="<?php echo DEFAULT_URL ?>/js/home_functions.js"></script>
+<!--css-->
+<link rel="stylesheet" type="text/css" href="<?php echo DEFAULT_URL ?>/css/jquery.multiselect.css" />
+<!--slider-->
+<script src="<?php echo DEFAULT_URL ?>/js/bootstrap.min.js"></script>
+
+<!--header-bg Section start  -->
+<section class="header-bg"></section>
+
+<!--Social widget start  -->
+<div class="rightTabs wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
+  <ul>
+    <li>
+		<a onclick="window.open('https://www.facebook.com/sharer.php?s=100&amp;p[title]=Florida%2Cmarion+&amp;p[summary]=Zunis+Top+10+page+is+the+best+place+to+view+offers+and+discounts+for+Marion+County+in+the+state+of+Florida.Visit+Zunis+Top+10+Page+for+the+latest+coupons+and+local+savings+offers+for+Marion+County+in+the+state+of+Florida+.&amp;p[url]=https://zuni.com/state/florida/marion&amp;&amp;p[images][0]=https://zuni.com/img/front/zuni_logo.png', 'sharer', 'toolbar=0,status=0,width=500,height=400,top=160,left=390');" href="javascript: void(0)" title="Click to share on facebook"><img src="images/facebook.png"></a>
+    </li>
+    <li>
+		<a href=""><img src="images/youtube-new-logo.png"></a>
+    </li>
+  </ul>
+</div>
+
+<?php
+		/*search box*/
+	include(LIST_ROOT."/includes/views/inc/search.php");
+?>   
+
 <section class="car-details">
   <div class="container">
     <h1 class="wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">Les voitures americaines ça se passe chez Sylc Export</h1>
@@ -16,23 +44,23 @@
                       <div class="tab-content">
                           <div class="tab-pane fade in active" id="tab1default">
                             <div class="col-md-12 no-padding car-imgs1">
-                              <div class="col-md-3 col-sm-6 no-padding">
-                                <img src="<?php echo DEFAULT_URL; ?>/images/pony-car.png" class="img-responsive">
+                              <div class="col-md-3 no-padding">
+                                <img src="images/pony-car.png" class="img-responsive">
                                   <h3>PONY</h3>
                                 
                               </div>
-                              <div class="col-md-3 col-sm-6 no-padding">
-                                <img src="<?php echo DEFAULT_URL; ?>/images/muscl-car.png" class="img-responsive">
+                              <div class="col-md-3 no-padding">
+                                <img src="images/muscl-car.png" class="img-responsive">
                                   <h3>Muscle Car</h3>
                                 
                               </div>
-                              <div class="col-md-3 col-sm-6 no-padding">
-                                <img src="<?php echo DEFAULT_URL; ?>/images/pick-car.png" class="img-responsive">
+                              <div class="col-md-3 no-padding">
+                                <img src="images/pick-car.png" class="img-responsive">
                                   <h3>Pick ups</h3>
                                 
                               </div>
-                              <div class="col-md-3 col-sm-6 no-padding">
-                                <img src="<?php echo DEFAULT_URL; ?>/images/cab-car.png" class="img-responsive">
+                              <div class="col-md-3 no-padding">
+                                <img src="images/cab-car.png" class="img-responsive">
                                   <h3>Cabriolet</h3>
                                 
                               </div>
@@ -40,23 +68,23 @@
                             
 
                             <div class="col-md-12 no-padding car-imgs2">
-                              <div class="col-md-3 col-sm-6 no-padding">
-                                <img src="<?php echo DEFAULT_URL; ?>/images/sedan-car.png" class="img-responsive">
+                              <div class="col-md-3 no-padding">
+                                <img src="images/sedan-car.png" class="img-responsive">
                                   <h3>SEDAN</h3>
                                 
                               </div>
-                              <div class="col-md-3 col-sm-6 no-padding">
-                                <img src="<?php echo DEFAULT_URL; ?>/images/hot-car.png" class="img-responsive">
+                              <div class="col-md-3 no-padding">
+                                <img src="images/hot-car.png" class="img-responsive">
                                   <h3>HOT ROD</h3>
                                
                               </div>
-                              <div class="col-md-3 col-sm-6 no-padding">
-                               <img src="<?php echo DEFAULT_URL; ?>/images/porsche-car.png" class="img-responsive">
+                              <div class="col-md-3 no-padding">
+                               <img src="images/porsche-car.png" class="img-responsive">
                                   <h3>Porsche US</h3>
                                
                               </div>
                               <div class="col-md-3 no-padding">
-                                <img src="<?php echo DEFAULT_URL; ?>/images/merceds-car.png" class="img-responsive">
+                                <img src="images/merceds-car.png" class="img-responsive">
                                   <h3>Mercedes US</h3>
                                 
                               </div>
@@ -151,131 +179,61 @@
   <section class="export">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 export-left wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s">
-          <h1>Bienvenue Chez Sylc - Export</h1>
-          <p>La voiture americaine est ce qui anime depuis plus de 10 ans les spécialistes qui 
-            constituent le cœur de l’équipe de Sylc Export. Dédié a sa passion, les voitures 
-            américaines en tous genres, Sylc Export assure un service incomparable pour vous 
-            aider a trouver la voiture de vos rêves en respectant impérativement la législation en 
-            vigueur du pays d'importation.
-
-            <br><br>
-
-            <a href="">SYLC EXPORT </a>est implantée a Miami en Floride, lieu stratégique d’où sont pilotées 
-            toutes les exportations de voitures américaines vers l’Europe et particulièrement la 
-            France.<br><br>
-
-            <a href="">SYLC EXPORT </a> opère dans les règles de l’art avec une Licence revendeur , agréée et 
-            assurée par l’état de Floride. Ces éléments donnent toute satisfacti on à nos clients 
-            en termes de confort et de sécurité, sachant que notre compagnie adhère à toutes 
-            les règles et lois définies par les Etats Unis en matière d’exportation. Les voitures
-            américaines anciennes et autres sont toutes entreposées dans nos locaux. Dès lors 
-            un contrôle rigoureux s'effectue avant le grand départ. Un devis technique des points 
-            majeurs mécaniques est offert a tous nos clients afin d’être le plus transparent 
-            possible dans toutes nos démarches tout au long de votre importation.
-          </p>
-        </div>
-
-        <div class="col-md-6 pre-bottom wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
-          <div class="col-md-6 col-sm-6">
-            <div class="per">
-              <h1>PRÉSENTATION</h1>
-                <p>SYLC CORPORATION, établi depuis plus de
-                10 ans dans le secteur de l’automobile, est 
-                spécialisé dansl’exportation de véhicules en
-                tous genres en provenance des Etats Unis…
-                <div><a href="">En Savoir Plus >></a></div></p> 
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-6">
-            <img src="<?php echo DEFAULT_URL; ?>/images/img-1.png" class="img-responsive imjh image-one">
-          </div>
-        </div>
-
-        <div class="col-md-6 pre-bottom wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
-          <div class="col-md-6  col-sm-6">
-            <div class="per">
-              <h1>POURQUOI NOUS CHOISIR?</h1>
-                <p>L’amour et la passion des voitures américaines
-                  animent de manière permanente l’équipe de
-                  SYLC CORPORATION. Notre expertise…
-                  <div class="middle-hover"><a href="">En Savoir Plus >></a></div></p>
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-6">
-            <img src="<?php echo DEFAULT_URL; ?>/images/img-2.png" class="img-responsive imjh image-two">
-          </div>
-        </div>
-
-        <div class="col-md-6 pre-bottom wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
-          <div class="col-md-6  col-sm-6">
-            <div class="per">
-              <h1>NOS SERVICES</h1>
-                <p>SYLC CORPORATION, contrairement aux
-                  concurrents, vous offre GRATUITEMENT un
-                  service de choix. Notre prestation : vous faire
-                  bénéficier des tarifs ultra compétitifs…
-                  <div><a href="">En Savoir Plus >></a></div></p>
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-6">
-            <img src="<?php echo DEFAULT_URL; ?>/images/img-3.png" class="img-responsive imjh image-three">
-          </div>
-        </div>
-
+        <?php echo $content;?>
       </div>
     </div>
   </section>
-
-
 
 <!--************ slider ***********-->
 
   <div id="mySlider" class="carousel slide hidden-xs wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators hidden-xs">
-            <li data-target="#mySlider" data-slide-to="0" class="active"></li>
-            <li data-target="#mySlider" data-slide-to="1"></li>
-            <li data-target="#mySlider" data-slide-to="2"></li>
-            <li data-target="#mySlider" data-slide-to="3"></li>
+			<?php
+				/*fetch banners*/
+				if ($totalBanners > 0) {
+					$i = 0;				
+					while($i < $totalBanners) {
+					
+						$class = "";
+						if ($i == 1) {
+							$class = "active";
+						}					
+			?>
+				<li data-target="#mySlider" data-slide-to="<?php echo $i;?>" class="<?php echo $class;?>"></li>
+           <?php
+						$i++;
+					}
+				}
+           ?>         
         </ol>
         <!-- Wrapper for slides -->
+        <?php
+			if ($totalBanners > 0) {
+		?>
          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <img src="<?php echo DEFAULT_URL; ?>/images/slide-img-wthout-text.png" alt="Slider Image 1" style="width: 100%">
-              <div class="carousel-caption">
-                <p class="lead">Le suivi de votre americaine sur une page 
-                personnalisee ou vous pouvez retrouver tous
-                vos documents, photos...</p>   
-              </div>
-            </div>
-            <div class="item">
-               <img src="<?php echo DEFAULT_URL; ?>/images/slide-img-wthout-text.png" alt="Slider Image 2" style="width: 100%"> 
-               <div class="carousel-caption">
-                  <p class="lead">Le suivi de votre americaine sur une page 
-                  personnalisee ou vous pouvez retrouver tous
-                  vos documents, photos...</p>   
-                </div> 
-            </div>
-
-            <div class="item">
-              <img src="<?php echo DEFAULT_URL; ?>/images/slide-img-wthout-text.png" alt="Slider Image 3" style="width: 100%"> 
-              <div class="carousel-caption">
-                  <p class="lead">Le suivi de votre americaine sur une page 
-                  personnalisee ou vous pouvez retrouver tous
-                  vos documents, photos...</p>   
-                </div>
-            </div>
-
-            <div class="item">
-              <img src="<?php echo DEFAULT_URL; ?>/images/slide-img-wthout-text.png" alt="Slider Image 4" style="width: 100%"> 
-              <div class="carousel-caption">
-                  <p class="lead">Le suivi de votre americaine sur une page 
-                  personnalisee ou vous pouvez retrouver tous
-                  vos documents, photos...</p>   
-                </div> 
-            </div>
-          </div>
+			<?php 				
+					$ii = 1;
+				
+					while($getPageData = mysql_fetch_object($allBanner)) {
+					
+						$class = "";
+						if ($ii == 1) {
+							$class = "active";
+						}
+			?>
+						<div class="item <?php echo $class;?>">
+						  <img src="<?php echo DEFAULT_URL. '/images/home/banner/' . $getPageData->banner_image;?>" alt="Slider Image 1">
+						  <div class="carousel-caption">
+							<p class="lead"><?php echo $getPageData->content;?></p>   
+						  </div>
+						</div>
+            <?php
+						$ii++;
+					}
+			
+			?>           
+        </div>
         <!-- Controls -->
         <a class="left carousel-control keru-l-one" href="#mySlider" role="button" data-slide="prev">
             <span class="fa fa-angle-double-left" aria-hidden="true"></span>
@@ -285,10 +243,10 @@
             <span class="fa fa-angle-double-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
+        <?php
+		}
+		?>
     </div>
-
-
-
 
 
     <!---********************** carosul 2 **********************-->
@@ -301,128 +259,11 @@
           </div>
           <div id="Carousel" class="carousel slide">
           <!-- Carousel items -->
-          <div class="carousel-inner">
-              
-          <div class="item active">
-            <div class="row">
-              <div class="col-md-2  col-sm-3 col-md-offset-1 no-padding1">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-1.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  1967 Mustange Fastback</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-3 no-padding1">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-2.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  Chrysler: Town & Country</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-3 no-padding1">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-3.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  Chevrolet: Camaro Ls</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-3 no-padding1">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-4.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  Ford: Other 2 Door Sedan</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-2 no-padding1 hidden-xs hidden-sm">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-5.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford: F-350 Lariat 1999</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-            </div><!--.row-->
-          </div><!--.item-->
-           
-          <div class="item">
-            <div class="row">
-              <div class="col-md-2  col-sm-3 col-md-offset-1 no-padding1">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-1.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  1967 Mustange Fastback</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-3 no-padding1">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-2.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  1967 Mustange Fastback</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-3 no-padding1">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-3.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  1967 Mustange Fastback</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-3 no-padding1">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-4.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  1967 Mustange Fastback</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-2 no-padding1 hidden-xs hidden-sm">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-5.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  1967 Mustange Fastback</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-            </div><!--.row-->
-          </div><!--.item-->
-           
-          <div class="item">
-           <div class="row">
-              <div class="col-md-2  col-sm-3 col-md-offset-1 no-padding1">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-1.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  1967 Mustange Fastback</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-3 no-padding1">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-2.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  1967 Mustange Fastback</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-3 no-padding1">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-3.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  1967 Mustange Fastback</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-3 no-padding1">
-               <a href="product.html"> <img src="<?php echo DEFAULT_URL; ?>/images/car-slide-4.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  1967 Mustange Fastback</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-2 no-padding1 hidden-xs hidden-sm">
-                <a href="product.html"><img src="<?php echo DEFAULT_URL; ?>/images/car-slide-5.png" class="img-responsive"></a>
-                <div class="car-details-bottom">
-                  <h6>Ford :  1967 Mustange Fastback</h6>
-                  <h6>Prix :  $19,845</h6>
-                </div>
-              </div>
-            </div><!--.row-->
-          </div><!--.item-->
-           
+          <div class="carousel-inner">          
+         	<?php
+					/*fetch latest 10 cars*/
+				include(LIST_ROOT."/includes/views/mostview.php");
+			?>    
           </div><!--.carousel-inner-->
           <a class="left carousel-control hidden-xs hidden-sm hidden-md" href="#Carousel" role="button" data-slide="prev">
               <span class="fa fa-arrow-left" aria-hidden="true"></span>
@@ -439,85 +280,39 @@
 </section>
 
 
-
 <!-- ******************* parallex  Section start******************-->
 
-<section class="parallex">
+<section class="parallex" style="background: url('<?php echo '/images/home/'.$realFactBackgroundImage;?>')no-repeat fixed center center / cover;">
   <div class="container">
     <div class="row">
-      <div class="parralex-heading wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
-        <h1>Faits réels sur notre société</h1>
-        <P>Nos clients sont ravis de nos services</P>
-      </div>
-      <div class="col-md-12">
-        <div class="col-md-4 col-sm-4 trapizium-img wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
-          <img src="<?php echo DEFAULT_URL; ?>/images/transperent-bg-1.png" class="img-responsive parallex-transparent-img">
-          <div class="faits-img-text">
-            <div class="col-md-4 col-xs-4 col-xs-4 red-icon-img-display">
-              <img src="<?php echo DEFAULT_URL; ?>/images/red-car.png" class="img-responsive red-icon-img">
-            </div>
-            <div class="col-md-8 col-xs-8 no-padding">
-              <h1>900+</h1>
-              <p>Voitures Classiques vendues</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4 trapizium-img wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
-          <img src="<?php echo DEFAULT_URL; ?>/images/transperent-bg-2.png" class="img-responsive parallex-transparent-img">
-          <div class="faits-img-text">
-            <div class="col-md-3 col-xs-4 col-xs-4 col-md-offset-1">
-              <img src="<?php echo DEFAULT_URL; ?>/images/multi-user.png" class="img-responsive red-icon-img">
-            </div>
-            <div class="col-md-8 col-xs-8 no-padding">
-              <h1 class="midl-text">98.4%</h1>
-              <p>De clients satisfaits</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-3 trapizium-img wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
-          <img src="<?php echo DEFAULT_URL; ?>/images/transperent-bg-3.png" class="img-responsive parallex-transparent-img">
-          <div class="faits-img-text">
-            <div class="col-md-3 col-xs-4 col-sm-4 col-md-offset-1">
-              <img src="<?php echo DEFAULT_URL; ?>/images/bus.png" class="img-responsive red-icon-img">
-            </div>
-            <div class="col-md-8 col-xs-8 col-sm-8 no-padding">
-              <h1>300,000+</h1>
-              <p class="last">Annonces de voiutres americaines</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-12 recherche wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
-        <h2>La recherche personnalisee de votre automoblie americaine de collection ca commence ici:</h2>
-      </div>
-      <form class="form-inline wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
+		<?php echo $realFactsContent;?>
+     <form class="form-inline wow fadeInDown" id="addvalidation" method="post" data-wow-duration="2s" data-wow-delay=".5s">
 
         <div class="col-md-4 col-sm-12 col-xs-12 form-group no-padding">
-          <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Nom">
+          <input type="text" class="form-control" id="exampleInputEmail3" name="fname" placeholder="Nom">
         </div>
 
         <div class="col-md-4 col-sm-12 col-xs-12 form-group email">
-          <input type="text" class="form-control" id="exampleInputPassword3" placeholder="Email">
+          <input type="text" class="form-control" id="exampleInputPassword3" name="email" placeholder="Email">
         </div>
 
         <div class="col-md-4 col-sm-12 col-xs-12 form-group no-padding">
-          <input type="text" class="form-control" id="exampleInputPassword3" placeholder="Phone">
+          <input type="text" class="form-control" id="exampleInputPassword3" name="phone" placeholder="Phone">
         </div>
         
 
         <div class="col-md-12 form-group no-padding">
           <div class="col-md-10 col-sm-12 col-xs-12 no-padding">
-            <input type="text" class="form-control" id="inputPassword3" placeholder="Comments">
+            <input type="text" class="form-control" id="inputPassword3" name="comment" placeholder="Comments">
           </div>
           <div class="col-md-2 col-sm-12 col-xs-12">
-            <button type="button" class="btn btn-default">Envoyez <i class="fa fa-angle-right"></i></button>
+            <button type="submit" class="btn btn-default">Envoyez <i class="fa fa-angle-right"></i></button>
           </div>
         </div>
 
         <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
+          <label id="checkcover">
+            <input type="checkbox" value="1" name="accept">
             J'ai lu et j'accepte expréssement la <a href=""> politique de confidentialité</a>
           </label>
         </div>
@@ -529,10 +324,7 @@
 
 <!-- ******************* parallex  Section End ******************-->
 
-
-
 <!-- ******************* video Section End ******************-->
-
 
 <section class="notre">
   <div class="container">
@@ -547,7 +339,7 @@
         <div class="col-md-12 box-scroller-section-left">
 
           <div class="col-md-3">
-            <img src="<?php echo DEFAULT_URL; ?>/images/small-car-img-1.png">
+            <img src="images/small-car-img-1.png">
           </div>
           <div class="col-md-9">
             <h2>Lorem Ipsum is Simply Dummy</h2>
@@ -557,7 +349,7 @@
 
         <div class="col-md-12 box-scroller-section-middle">
           <div class="col-md-3">
-            <img src="<?php echo DEFAULT_URL; ?>/images/small-car-img-2.png">
+            <img src="images/small-car-img-2.png">
           </div>
           <div class="col-md-9">
             <h2>Lorem Ipsum is Simply Dummy</h2>
@@ -567,7 +359,7 @@
 
         <div class="col-md-12 box-scroller-section-middle">
           <div class="col-md-3">
-            <img src="<?php echo DEFAULT_URL; ?>/images/small-car-img-3.png">
+            <img src="images/small-car-img-3.png">
           </div>
           <div class="col-md-9">
             <h2>Lorem Ipsum is Simply Dummy</h2>
@@ -578,7 +370,7 @@
         <div class="col-md-12 box-scroller-section-left">
 
           <div class="col-md-3">
-            <img src="<?php echo DEFAULT_URL; ?>/images/small-car-img-1.png">
+            <img src="images/small-car-img-1.png">
           </div>
           <div class="col-md-9">
             <h2>Lorem Ipsum is Simply Dummy</h2>
@@ -588,7 +380,7 @@
 
         <div class="col-md-12 box-scroller-section-middle">
           <div class="col-md-3">
-            <img src="<?php echo DEFAULT_URL; ?>/images/small-car-img-2.png">
+            <img src="images/small-car-img-2.png">
           </div>
           <div class="col-md-9">
             <h2>Lorem Ipsum is Simply Dummy</h2>
@@ -598,7 +390,7 @@
 
         <div class="col-md-12 box-scroller-section-middle">
           <div class="col-md-3">
-            <img src="<?php echo DEFAULT_URL; ?>/images/small-car-img-3.png">
+            <img src="images/small-car-img-3.png">
           </div>
           <div class="col-md-9">
             <h2>Lorem Ipsum is Simply Dummy</h2>
@@ -607,14 +399,14 @@
         </div>
       </div>
       <div class="col-md-7 wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
-        <img src="<?php echo DEFAULT_URL; ?>/images/hd-car-img.png" class="img-responsive hd-car">
+        <img src="images/hd-car-img.png" class="img-responsive hd-car">
       </div>
     
   </div>
 </section>
 
 
-  <section class="big-car-details">
+<section class="big-car-details">
     <div class="container">
       <div class="text-center big-car-details-heading wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
         <h1>Sylc Export Avis et Revues des voitures americaines</h1>
@@ -622,7 +414,7 @@
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 big-car">
         <div class="big-car-hover wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s">
-          <img src="<?php echo DEFAULT_URL; ?>/images/big-car-img-1.png" class="img-responsive">
+          <img src="images/big-car-img-1.png" class="img-responsive">
         </div>
         <div class="dummy-text wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
           <h2>Lorem Ipsum is Simply Dummy</h2>
@@ -633,7 +425,7 @@
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 big-car">
         <div class="big-car-hover wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
-          <img src="<?php echo DEFAULT_URL; ?>/images/big-car-img-2.png" class="img-responsive">
+          <img src="images/big-car-img-2.png" class="img-responsive">
         </div>
         <div class="dummy-text wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
           <h2>Lorem Ipsum is Simply Dummy</h2>
@@ -648,86 +440,35 @@
     </div>
   </section>
 
-
-
-
+<!-- About us -->
 <section class="miex">
   <div class="container">
     <div class="row">
-     <h1>Mieux Nous Connaitre</h1>
-     <div class="col-md-4 wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s">
-      <div class="left-text">
-        <h2>La Recherche</h2>
-        <p>Les voitures américaines anciennes,
-          d'occasion et neuves sont localisées et
-          dénichées tous les jours par les spécialistes
-          passionnés de l’équipe de Sylc Export sur
-          tout le territoire americain.</p>
-      </div>
-      <div class="left-text second-text1">
-        <h2>Diagnostic</h2>
-        <p>Une fois dans les locaux de Sylc Export a
-          Miami, nous inspectons le véhicule et
-          établissons un devis gratuit sur tous les 
-          points majeurs mécaniques et électriques
-          de votre automobile de collection.</p>
-      </div>
-      
+		<h1>Mieux Nous Connaitre</h1>
+		<?php echo $aboutUsContent;?>
      </div>
-     <div class="col-md-4 wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
-      <img src="<?php echo DEFAULT_URL; ?>/images/angle-car.png" class="img-responsive angle-car center">
-     </div>
-     <div class="col-md-4  wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
-      <div class="right-text">
-        <h2>L'imbattable</h2>
-        <p>La bonne importation d'une voiture ancienne 
-          americaine commence par la maîtrise des 
-          postes clés et la qualité de l'automobile. 
-          Sylc Export vous fait profiter de ses tarifs 
-          professionnels imbattables pour trouver et 
-          importer votre belle americaine.</p>
-      </div>
-      <div class="right-text second-text2">
-        <h2>Livraison</h2>
-        <p>Sylc Export s'occupe de tout de A a Z. De la
-        recherche de votre americaine en passant
-        par sa négociation, son transport maritime
-        et pouvant aller jusqu’à l'obtention de votre 
-        certificat F.F.V.E pour votre carte grise de 
-        voiture de collection.</p>
-      </div>
-     </div>
-
-      <div class="col-md-6 col-md-offset-3 big-car wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
-        <img src="<?php echo DEFAULT_URL; ?>/images/big-car.png" class="img-responsive center">
-      </div>
-       <div class="col-md-12 bottom-common-btn text-center wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
-        <button type="button" class="btn btn-default"> Contactez-Nous <i class="fa fa-angle-right"></i></button>
-      </div>
-    </div>
   </div>
 </section>
+<!--middle end-->
 
+        <section class="footer-top">
+            <div class="container">
+                <div class="row">
+                  <h1>Pourquoi choisir Sylc-Export</h1>
+                  <div class="col-md-3 no-padding icon-img">
+                    <p class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/power-off.png"> Jusqu'à 40% d'économies</p>
+                    <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/user.png"> 97.4% de clients satisfaits</p>
+                  </div>
 
-<section class="footer-top">
-  <div class="container">
-    <div class="row">
-      <h1>Pourquoi choisir Sylc-Export</h1>
-      <div class="col-md-3 no-padding icon-img">
-        <p class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="<?php echo DEFAULT_URL; ?>/images/power-off.png"> Jusqu'à 40% d'économies</p>
-        <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s"><img src="<?php echo DEFAULT_URL; ?>/images/user.png"> 97.4% de clients satisfaits</p>
-      </div>
+                  <div class="col-md-4 no-padding icon-img">
+                    <p class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/thumbs.png">Tarifs logistique imbattables</p>
+                    <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/earth.png">L'exportateur la plus réactive du marché</p>
+                  </div>
 
-      <div class="col-md-4 no-padding icon-img">
-        <p class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="<?php echo DEFAULT_URL; ?>/images/thumbs.png">Tarifs logistique imbattables</p>
-        <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s"><img src="<?php echo DEFAULT_URL; ?>/images/earth.png">L'exportateur la plus réactive du marché</p>
-      </div>
-
-      <div class="col-md-5 no-padding icon-img">
-        <p class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="<?php echo DEFAULT_URL; ?>/images/fil.png">Un interlocuteur français aux US et en France.</p>
-        <p class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="<?php echo DEFAULT_URL; ?>/images/lock.png">Fonds sécurisés et garantis par Bank of America</p>
-      </div>
-
-    </div>
-  </div>
-</section>
+                  <div class="col-md-5 no-padding icon-img">
+                    <p class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/fil.png">Un interlocuteur français aux US et en France.</p>
+                    <p class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/lock.png">Fonds sécurisés et garantis par Bank of America</p>
+                  </div>
+                </div>
+            </div>
+        </section>

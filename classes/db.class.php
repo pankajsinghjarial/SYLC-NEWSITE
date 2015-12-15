@@ -22,7 +22,7 @@
       */
     var $lastResult;
 	
-    var $link;
+
     /** Connect to a MySQL database to be able to use the methods below.
       */
     function DB($base, $server, $user, $pass)
@@ -30,8 +30,8 @@
       $this->mtStart    = $this->getMicroTime();
       $this->nbQueries  = 0;
       $this->lastResult = NULL;
-      $this->link = mysqli_connect($server, $user, $pass) or die('ERROR :: Server connection not possible.');
-      mysqli_select_db($this->link,$base)               or die('ERROR :: Database connection not possible.');
+      @mysql_connect($server, $user, $pass) or die('ERROR :: Server connection not possible.');
+      mysql_select_db($base)               or die('ERROR :: Database connection not possible.');
     }
 
     /** Query the database.
@@ -42,7 +42,7 @@
     function query($query, $debug = -1)
     {
       $this->nbQueries++;
-      $this->lastResult = mysqli_query($this->link,$query) or $this->debugAndDie($query);
+      $this->lastResult = mysql_query($query) or $this->debugAndDie($query);
 
       $this->debug($debug, $query, $this->lastResult);
 
@@ -56,11 +56,11 @@
     function execute($query, $debug = -1)
     {
       $this->nbQueries++;
-      mysqli_query($this->link,$query) or $this->debugAndDie($query);
+      mysql_query($query) or $this->debugAndDie($query);
 
       $this->debug($debug, $query);
     }
-    /** Convenient method for mysqli_fetch_object().
+    /** Convenient method for mysql_fetch_object().
       * @param $result The ressource returned by query(). If NULL, the last result returned by query() will be used.
       * @return An object representing a data row.
       */
@@ -69,10 +69,10 @@
       if ($result == NULL)
         $result = $this->lastResult;
 
-      if ($result == NULL || mysqli_num_rows($result) < 1)
+      if ($result == NULL || mysql_num_rows($result) < 1)
         return NULL;
       else
-        return mysqli_fetch_object($result);
+        return mysql_fetch_object($result);
     }
     /** Get the number of rows of a query.
       * @param $result The resource returned by query(). If NULL, the last result returned by query() will be used.
@@ -81,9 +81,9 @@
     function numRows($result = NULL)
     {
       if ($result == NULL)
-        return mysqli_num_rows($this->lastResult);
+        return mysql_num_rows($this->lastResult);
       else
-        return mysqli_num_rows($result);
+        return mysql_num_rows($result);
     }
     /** Get the result of the query as an object. The query should return a unique row.\n
       * Note: no need to add "LIMIT 1" at the end of your query because
@@ -97,11 +97,11 @@
       $query = "$query LIMIT 1";
 
       $this->nbQueries++;
-      $result = mysqli_query($this->link,$query) or $this->debugAndDie($query);
+      $result = mysql_query($query) or $this->debugAndDie($query);
 
       $this->debug($debug, $query, $result);
 
-      return mysqli_fetch_object($result);
+      return mysql_fetch_object($result);
     }
     /** Get the result of the query as value. The query should return a unique cell.\n
       * Note: no need to add "LIMIT 1" at the end of your query because
@@ -115,7 +115,7 @@
       $query = "$query LIMIT 1";
 
       $this->nbQueries++;
-      $result = mysqli_query($this->link,$query) or $this->debugAndDie($query);
+      $result = mysql_query($query) or $this->debugAndDie($query);
       $line = mysql_fetch_row($result);
 
       $this->debug($debug, $query, $result);
@@ -263,7 +263,7 @@
       */
     function resetFetch($result)
     {
-      if (mysqli_num_rows($result) > 0)
+      if (mysql_num_rows($result) > 0)
         mysql_data_seek($result, 0);
     }
     /** Get the id of the very last inserted row.
@@ -332,7 +332,7 @@
 			extract($_POST);
 			extract($_GET);
 			//echo "==>".$countquery;
-			$total=mysqli_num_rows($countquery);
+			$total=mysql_num_rows($countquery);
 			 if(!isset($limit))
 		  {
 		   $limit=8;
