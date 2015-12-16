@@ -1,7 +1,7 @@
 <?php
 
 //
-include("conf/config.inc.php");
+include("../conf/config.inc.php");
 $value = $_POST['value'];
 $attribute = $_POST['attr'];
 $manufac = $_POST['manufact'];

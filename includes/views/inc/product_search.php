@@ -1,3 +1,12 @@
+<?php
+//Get Brands List
+//~ $modelList = array();
+//~ $manf= $common ->CustomQuery("SELECT * FROM `attribute_option_value` WHERE `attribute_id` = '2' ORDER BY `value`,`sort_order` ASC");
+//~ while($row = mysql_fetch_assoc($manf)) {
+    //~ $modelList[] = $row;
+//~ }
+?>
+
 <!--Search scripts-->
 <script type="text/javascript" src="<?php echo DEFAULT_URL ?>/js/jquery.multiselect.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo DEFAULT_URL ?>/css/jquery.multiselect.css" />
@@ -14,7 +23,7 @@
           <div class="form-group form-inline">
             <div class="col-md-3 col-xs-12 col-sm-6">
               <h2>Recherche</h2>
-              <a href="">Recherche Avancée</a>
+              <a href="<?php echo DEFAULT_URL ?>/advancesearch">Recherche Avancée</a>
             </div>
 			<?php if(!empty($manufacturer)){
 				$manufacturerNameArray = array();
@@ -64,7 +73,7 @@
 								<?php
 									for ($i = 1986; $i >= 1920; $i--) {
 										echo '<option value="'.$i.'">'.$i.'</option>';
-										if ($madeYear[0] == $i) {
+										if (@$madeYear[0] == $i) {
 											echo '<option value="'.$i.'" selected="selected">'.$i.'</option>';
 											}
 										}

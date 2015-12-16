@@ -326,6 +326,38 @@
 
 <!-- ******************* video Section End ******************-->
 
+<?php
+
+$channelName = 'TEDtalksDirector';
+$Apikey = 'AIzaSyAp_iOTFoV4bo_Y9eVNim-lX_AqTE56O40';
+$ChannelUrl  = 'https://www.googleapis.com/youtube/v3/channels?key='.$Apikey.'&forUsername='.$channelName.'&part=contentDetails';
+$Channeljson = file_get_contents($ChannelUrl);
+$Channelobj = json_decode($Channeljson);
+$channelID = $Channelobj->items[0]->id;
+$channeluploadID = $Channelobj->items[0]->contentDetails->relatedPlaylists->uploads;
+
+$url  = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId='.$channeluploadID.'&key='.$Apikey;
+$json = file_get_contents($url);
+$obj = json_decode($json);
+
+$videos = array();
+
+$objVideos = $obj->items;
+foreach($objVideos as $objVideo){
+	
+	$videosUnit['videoThumb'] = $objVideo->snippet->thumbnails->default->url;
+	$videosUnit['videoTitle'] = $objVideo->snippet->title;
+	$videosUnit['videoDescription'] = $objVideo->snippet->description;
+	$videosUnit['videoID'] = $objVideo->snippet->resourceId->videoId;
+	$videos[] = $videosUnit;
+}
+
+//echo "<pre>";
+//print_r($videos);
+//die;
+
+?>
+
 <section class="notre">
   <div class="container">
     <div class="text-center wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
@@ -335,71 +367,36 @@
       d'autres exclusivites, a tout de suite dans le monde de l'american car.</p>
     </div>
     <div class="col-md-5 box-scroller-section wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s">
+		
+		<?php
+		
+		  $counting = 0;
+		 foreach($videos as $video) { 
+			
+			if($counting++){
+				$classSelected = 'box-scroller-section-middle';
+				
+			}else{
+				$classSelected = 'box-scroller-section-left';
+				$firstVideoID = $video['videoID'];
+			}
+			?>
+			<div class="videoOfList col-md-12 <?php echo $classSelected; ?>" id="<?php echo $video['videoID'];?>">
 
-        <div class="col-md-12 box-scroller-section-left">
-
-          <div class="col-md-3">
-            <img src="images/small-car-img-1.png">
-          </div>
-          <div class="col-md-9">
-            <h2>Lorem Ipsum is Simply Dummy</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typeset</p>
-          </div>
-        </div>
-
-        <div class="col-md-12 box-scroller-section-middle">
-          <div class="col-md-3">
-            <img src="images/small-car-img-2.png">
-          </div>
-          <div class="col-md-9">
-            <h2>Lorem Ipsum is Simply Dummy</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typeset</p>
-          </div>
-        </div>
-
-        <div class="col-md-12 box-scroller-section-middle">
-          <div class="col-md-3">
-            <img src="images/small-car-img-3.png">
-          </div>
-          <div class="col-md-9">
-            <h2>Lorem Ipsum is Simply Dummy</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typeset</p>
-          </div>
-        </div>
-
-        <div class="col-md-12 box-scroller-section-left">
-
-          <div class="col-md-3">
-            <img src="images/small-car-img-1.png">
-          </div>
-          <div class="col-md-9">
-            <h2>Lorem Ipsum is Simply Dummy</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typeset</p>
-          </div>
-        </div>
-
-        <div class="col-md-12 box-scroller-section-middle">
-          <div class="col-md-3">
-            <img src="images/small-car-img-2.png">
-          </div>
-          <div class="col-md-9">
-            <h2>Lorem Ipsum is Simply Dummy</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typeset</p>
-          </div>
-        </div>
-
-        <div class="col-md-12 box-scroller-section-middle">
-          <div class="col-md-3">
-            <img src="images/small-car-img-3.png">
-          </div>
-          <div class="col-md-9">
-            <h2>Lorem Ipsum is Simply Dummy</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typeset</p>
-          </div>
-        </div>
+			  <div class="col-md-3">
+				<img height="76" width="76" src="<?php echo $video['videoThumb']; ?>">
+			  </div>
+			  <div class="col-md-9">
+				<h2><?php echo $video['videoTitle']; ?></h2>
+				<p><?php echo  $string = substr($video['videoDescription'],0,30).'...'; ?></p>
+			  </div>
+			</div>
+		<?php } ?>
+        
+        
       </div>
       <div class="col-md-7 wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
-        <img src="images/hd-car-img.png" class="img-responsive hd-car">
+        <iframe id="MainVideo" width="560" height="306" src="https://www.youtube.com/embed/<?php echo $firstVideoID;?>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
       </div>
     
   </div>
