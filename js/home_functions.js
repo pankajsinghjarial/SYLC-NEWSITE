@@ -9,6 +9,12 @@ $(document).ready(function() {
 	$("#hide").css('display','none');
 	$(".car-imgs2").hide('blind');
 	$("#show").show();
+	 
+	 
+	
+/*
+	
+	*/
 
 });
 
@@ -18,6 +24,8 @@ $('#search_submit').click(function(e) {
     $('#searchcars').submit();
 });
 });
+
+
 
 $(document).ready(function() {
 		

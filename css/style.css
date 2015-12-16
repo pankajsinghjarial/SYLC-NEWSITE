@@ -102,6 +102,10 @@
 
 }
 
+.videoOfList{
+	cursor:pointer;
+}
+
 .carousel-control {
     position: absolute;
     top: 0px;
@@ -3736,4 +3740,13 @@ table, table td {
   left: 0;
   z-index: 9999;
   overflow: hidden;
+}
+.pagination li a{
+    color: #B9B9B9;
+}
+.pagination li:hover a,.pagination li:focus a,.pagination li.active a{
+    color: #f00;
+}
+.pagination .next:hover a, .pagination .next:focus a,.pagination .next a{
+  color: #fff;
 }

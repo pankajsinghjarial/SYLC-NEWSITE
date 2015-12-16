@@ -41,7 +41,7 @@
 			 <div class="form-group form-inline">
 				<div class="col-md-3 col-xs-12 col-sm-6">
 				  <h2>Recherche</h2>
-				  <a href="">Recherche Avancée</a>
+				  <a href="<?php echo DEFAULT_URL ?>/advancesearch">Recherche Avancée</a>
 			</div>
 
 				<div class="all-slect-form">

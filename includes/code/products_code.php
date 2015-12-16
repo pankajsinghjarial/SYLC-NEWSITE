@@ -12,21 +12,21 @@ while($row = mysql_fetch_assoc($manf)) {
 
 /*Fetch car listings from ebay API*/
 
-$inventoryClass = $auctionClass = '';
+$auctionClass = true;
 if (isset($_GET['products']) && $_GET['products'] == 'products') {
 	unset($_SESSION['mysearch']);
 	$_SESSION['mysearch'][] = $_GET;
 }
 if (isset($_GET['products']) && $_GET['products'] == 'inventory') {
-	$inventoryClass = 'active';
-} else {
-	$auctionClass = 'active';
+	$auctionClass = false;
 }
 if (isset($_REQUEST['manufacturer'])) {
 	unset($_SESSION['mysearch']);
 	$_SESSION['mysearch'][] = $_REQUEST;
 }
-extract($_SESSION['mysearch'][0]);
+if(isset($_SESSION['mysearch'][0])){
+    extract($_SESSION['mysearch'][0]);
+}
 
 
 if (isset($_SESSION['User']['id']) && $_SESSION['User']['id'] > 0) {
@@ -189,7 +189,6 @@ if (!isset($_SESSION['products'])) {
 	
 }
 
-
 if (!isset($_GET['page'])) {
 	$_SESSION['products'] = array();
 	$_SESSION['products']['fill'] = true;
@@ -198,13 +197,12 @@ if (!isset($_GET['page'])) {
 	$_SESSION['products']['fillfor'] = 1;
 	$common->customQuery("DELETE FROM ".$userTblName);
 } else {
-	$DbPage = ceil($page/$_SESSION['products']['page']);
-	if ($_SESSION['products']['fillfor'] != $DbPage) {
+	if ($_SESSION['products']['fillfor'] != $_GET['page']) {
 		$_SESSION['products']['fill'] = true;
-		$_SESSION['products']['fillfor'] = $DbPage;
+		$_SESSION['products']['fillfor'] = $_GET['page'];
 	}
 }
-
+$orderfield='';
 if ($_SESSION['products']['fill']) {
 	
 	$fillfor = $_SESSION['products']['fillfor'];
@@ -258,7 +256,7 @@ if ($_SESSION['products']['fill']) {
 	$apicall .= "&GLOBAL-ID=$globalid";
 	$apicall .= ($where == '') ? "&keywords=$safequery": '' ;
 	$apicall .= "&categoryId=6001";
-	$apicall .= "&paginationInput.entriesPerPage=90";
+	$apicall .= "&paginationInput.entriesPerPage=20";
 	if (isset($page)) {
 		$apicall .= "&paginationInput.pageNumber=".$fillfor;
 	}
@@ -291,6 +289,7 @@ if ($_SESSION['products']['fill']) {
 	
 	$ins_str = '';
 	$ebay_arr = array();
+    $dbCarCount = 0;
 	foreach($resp->searchResult->item as $item) {
 		$dbCarCount++;
 		
@@ -329,7 +328,7 @@ if ($_SESSION['products']['fill']) {
 				
 		$ebay_arr[$itemId] = $arr;	
 		
-		$ins_str .= "(2, $itemId, \"".mysql_real_escape_string($arr[title])."\", $arr[buyItNowPrice],'".base64_encode(serialize($arr))."'),";	
+		$ins_str .= "(2, $itemId, \"".mysql_real_escape_string($arr['title'])."\", $arr[buyItNowPrice],'".base64_encode(serialize($arr))."'),";	
 	}
 	
 	if ($ins_str != '') {
@@ -341,12 +340,12 @@ if ($_SESSION['products']['fill']) {
 	
 	$_SESSION['products']['page'] = ceil($dbCarCount/20);
 	
-	$_SESSION['products']['total'] = $ebay_total + $total_rows;
+	$_SESSION['products']['total'] = $ebay_total;
 	$_SESSION['products']['fill']  = false;
 }
 
 
-if ($sort == "") {
+if (!isset($sort)) {
 	$now_sort  = "price";
 	$now_order = "ASC";
 } else {
@@ -360,7 +359,7 @@ if (!isset($_GET['page'])) {
 }
 $pages = new Paginator;
 $pages->default_ipp = 20;
-$pages->items_total = $_SESSION['products']['total'] ;
+$pages->items_total = $_SESSION['products']['total'];
 $pages->paginate();
 
 if ($num != 0) {
@@ -389,23 +388,21 @@ if ($num != 0) {
 }
 
 
-if (count($_GET) == 0 && count($_POST) == 0 && !is_array($_SESSION['mysearch'][0])) {
-	$my_file = 'file.txt';
-	$handle = fopen($my_file, 'w+') or die('Cannot open file:  '.$my_file);
-	fwrite($handle, $pages->items_total);
-	fclose($handle);
-}
+//~ if (count($_GET) == 0 && count($_POST) == 0 && !isset($_SESSION['mysearch'][0])) {
+	//~ $my_file = 'file.txt';
+	//~ $handle = @fopen($my_file, 'w+') or die('Cannot open file:  '.$my_file);
+	//~ fwrite($handle, $pages->items_total);
+	//~ fclose($handle);
+//~ }
 
-
-
-
-$carPages = new AdminPaginator;
+$carPages = new Paginator;
 
 // If there is a selection or value of limit then the list box should show that value , so we have to lock that options //
 // Based on the value of limit we will assign selected value to the respective option//
 
 $carPages->default_ipp = 20;
 $limit = 20;
+$page = (isset($_GET['page']))?$_GET['page']:1;
 $eu = $limit * ($page-1) ;
 
 $total_rows = $common->numberOfRows('car');

@@ -1,7 +1,4 @@
 <!--Search scripts-->
-<script type="text/javascript" src="<?php echo DEFAULT_URL ?>/js/jquery.multiselect.js"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo DEFAULT_URL ?>/css/jquery.multiselect.css" />
-<script type="text/javascript" src="<?php echo DEFAULT_URL ?>/js/home_functions.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo DEFAULT_URL ?>/css/popup.css" />
 <script type="text/javascript">
 	window.onload = function(){
@@ -10,8 +7,6 @@
 
 </script>
 <?php
-		/*search box*/
-	include(LIST_ROOT."/includes/views/inc/product_search.php");
 	$newurl =  DEFAULT_URL."/products.php".$addtopaging;
 ?>
 <section class="list-car-details">
@@ -19,17 +14,17 @@
     <div class="col-md-12 no-padding">
           <div class="panel with-nav-tabs wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab1default" data-toggle="tab" id="hover-tab-1">
+                <li class="<?php echo ($auctionClass)?'active':'marque';?>"><a href="#tab1default" data-toggle="tab" id="hover-tab-1">
 					<img src="images/listing/1st-icon.png" class="fst-icon"> <img src="images/listing/hover-icon.png" class="hover-icon"> Achat Immédiat</a>
 				</li>
-                <li class="marque" id="hover-tab-2">
+                <li class="<?php echo (!$auctionClass)?'active':'marque';?>" id="hover-tab-2">
 					<a href="#tab2default" data-toggle="tab"><i class="fa fa-car"></i>Notre Inventaire</a>
                 </li>
             </ul>
                  
             <div class="panel-body no-padding">
 			   <div class="tab-content">
-				  <div class="tab-pane fade in active <?php echo $activeClass;?>" id="tab1default">
+				  <div class="tab-pane fade <?php echo ($auctionClass)?'in active':'';?>" id="tab1default">
 					<div class="col-md-12 no-padding list-tabs-top">
 					  <div class="col-md-6 annonces no-padding">
 						<h4><?php echo $pages->items_total;?> Annonces Correspondent</h4>
@@ -43,10 +38,10 @@
 							  <i class="fa fa-angle-down"></i>
 							</button>
 							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								  <li <?php if($sort =='price~asc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."sort=price~asc" ?>">Price: Low to High</a></li>
-								  <li <?php if($sort =='price~desc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."sort=price~desc" ?>">Price: High to Low</a></li>
-								  <li <?php if($sort =='title~asc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."sort=title~asc" ?>">Name: Ascending</a></li>
-								  <li <?php if($sort =='title~desc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."sort=title~desc" ?>">Name: Descinding</a></li>
+								  <li <?php if(@$sort =='price~asc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."sort=price~asc" ?>">Price: Low to High</a></li>
+								  <li <?php if(@$sort =='price~desc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."sort=price~desc" ?>">Price: High to Low</a></li>
+								  <li <?php if(@$sort =='title~asc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."sort=title~asc" ?>">Name: Ascending</a></li>
+								  <li <?php if(@$sort =='title~desc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."sort=title~desc" ?>">Name: Descinding</a></li>
 								</ul> 							
 							
 						  </li>
@@ -209,7 +204,7 @@
 				  
 				  </div> <!-- tab1default -->
 
-				  <div class="tab-pane fade <?php echo $activeClass;?>" id="tab2default">
+				  <div class="tab-pane fade <?php echo (!$auctionClass)?'in active':'';?>" id="tab2default">
 						<?php 
 				
 						//for($i = 0;$i < count($all_car);$i++){
@@ -258,7 +253,7 @@
 						}
 
 						?>
-					<div class="pagination">
+					<div class="col-md-12 pagination text-center">
 						<?php echo $carPages->display_pages(); ?>
 					</div>
 

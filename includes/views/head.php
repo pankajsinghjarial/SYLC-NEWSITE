@@ -36,6 +36,7 @@
 	<script src="<?php echo DEFAULT_URL; ?>/js/respond.min.js"></script>          
 	<!--<script src="< ?php echo DEFAULT_URL; ?>/js/Modernizr.js"></script>-->
     <!--[endif]-->
+	<script src="<?php echo DEFAULT_URL; ?>/js/youtube_function.js"></script>
 	<script src="<?php echo DEFAULT_URL; ?>/js/functions.js"></script>
 	<script src="<?php echo DEFAULT_URL; ?>/js/jquery.colorbox.js"></script>
 

@@ -99,7 +99,7 @@ if ($resp->ack == "Success") {
 		$jtemId = $jtem->itemId;
 		$title = $jtem->title;
 		$galleryURL = $jtem->pictureURLLarge;
-		$convertedCurrentPrice = $jtem->sellingStatus;
+		$convertedCurrentPrice = $jtem->sellingStatus->convertedCurrentPrice;
 		if ($galleryURL == ''){
 			$galleryURL = LIST_ROOT."/images/default.jpg";
 		}
@@ -126,7 +126,7 @@ if ($resp->ack == "Success") {
 				<img alt="<?php echo $title;?>"
 			src="<?php echo DEFAULT_URL; ?>/image_resizer.php?img=<?php echo urlencode($galleryURL); ?>&newWidth=130&newHeight=100" class="img-responsive"></a>
 			<div class="car-details-bottom">
-			  <h6><?php echo substr($title, 0, strpos($title, " ", 30));?></h6>
+			  <h6><?php echo substr($title, 0, 30);?></h6>
 			  <h6>Prix :  $ <?php echo $convertedCurrentPrice;?></h6>
 			</div>
 		  </div>             

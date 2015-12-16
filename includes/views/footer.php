@@ -263,7 +263,7 @@
         <div style="display:none">
             <div class="account_box no_bdr" id="inline_content_detail">
             <div class="sylc_logo"><img src="<?php echo DEFAULT_URL; ?>/images/popup/logo.png" width="217" height="58" alt=""></div>
-            <p class="pop_text">Bienvenue <?php echo $_SESSION['loginuser']['username'];?>,</p>
+            <p class="pop_text">Bienvenue <?php echo @$_SESSION['loginuser']['username'];?>,</p>
             <p class="pop_text">
 
             S'il vous plait sélectionner la page de profil de voiture que vous souhaitez consulter</p>

@@ -186,13 +186,14 @@ class common extends utility {
  /* */
  public $attributs = array();
  public function setAttributsToArray(){
+        global $db;
 		$for_option= array("select", "multiselect", "radio", "checkbox");
-		$result = $this->customQuery("Select attribute_id, attribute_code, backend_type, frontend_type, frontend_label From attribute", $this->db)or die(mysql_error());
+		$result = $this->customQuery("Select attribute_id, attribute_code, backend_type, frontend_type, frontend_label From attribute", $db)or die(mysql_error());
 		if(mysql_num_rows($result) > 0){
 			while($row = mysql_fetch_object($result)){
 				if(in_array($row->frontend_type, $for_option)){
 					$query = "Select value_id, value From attribute_option_value Where attribute_id = ".$row->attribute_id;
-					$option_result = $this->customQuery($query, $this->db) or die(mysql_error());
+					$option_result = $this->customQuery($query, $db) or die(mysql_error());
 					$options= array();
 					if(mysql_num_rows($option_result) > 0){
 						while($option_row = mysql_fetch_object($option_result)){
@@ -239,6 +240,10 @@ class common extends utility {
 	
 	
 	public function total_getCarListWithAttr($condition = ''){
+        $where = '';
+        if($condition != ''){
+            $where = " where ".$condition;
+        }
 		$car_list = $this->customQuery("Select * From car ".$where);
 		return mysql_num_rows($car_list);
 	}
