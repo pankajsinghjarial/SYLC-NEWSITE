@@ -52,9 +52,9 @@
                 americaine de vos rêves,n’hésitez plus appelez nous.</p>
               </div>
               <div class="col-md-3 col-sm-2 col-xs-6 social-media wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s">
-                <a href="https://www.youtube.com/channel/UCEiq60VEWjogm67Qt2Ujl9g"><img src="images/footer-youtube-icon.png" class="youtube-icon"></a>
-                <a href="https://www.facebook.com/pages/Sylc-Corp/260380207403173"><img src="images/footer-facebook-icon.png" class="facebook-icon"></a>
-                <a href="https://plus.google.com/+Sylc-export/posts"><img src="images/footer-google-icon.png" class="google-icon-footer"></a>
+                <a href="https://www.youtube.com/channel/UCEiq60VEWjogm67Qt2Ujl9g"><img src="<?php echo DEFAULT_URL; ?>/images/footer-youtube-icon.png" class="youtube-icon"></a>
+                <a href="https://www.facebook.com/pages/Sylc-Corp/260380207403173"><img src="<?php echo DEFAULT_URL; ?>/images/footer-facebook-icon.png" class="facebook-icon"></a>
+                <a href="https://plus.google.com/+Sylc-export/posts"><img src="<?php echo DEFAULT_URL; ?>/images/footer-google-icon.png" class="google-icon-footer"></a>
                 <h6>Suivez-nous sur nos reseaux sociaux!</h6>
               </div>
             </div>
@@ -68,7 +68,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="col-md-3 col-sm-3 col-xs-6 no-padding">
                     <h1 class="footer-heading-text-bottom">Chevrolet</h1>
-                    <img src="images/footer-image-1.png" class="img-responsive footer-img">
+                    <img src="<?php echo DEFAULT_URL; ?>/images/footer-image-1.png" class="img-responsive footer-img">
                   </div>
                     <div class="col-md-9 col-sm-6 col-xs-6 no-padding li-bottom-right">
                       <div class="col-md-6 no-padding">
@@ -91,7 +91,7 @@
                   <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="col-md-3 col-sm-3 col-xs-6 no-padding">
                       <h1 class="footer-heading-text-bottom">Ford</h1>
-                      <img src="images/footer-image-2.png" class="img-responsive footer-img">
+                      <img src="<?php echo DEFAULT_URL; ?>/images/footer-image-2.png" class="img-responsive footer-img">
                     </div>
                     <div class="col-md-9 col-sm-6 col-xs-6 no-padding li-bottom-right">
                       <div class="col-md-6 no-padding">
@@ -114,7 +114,7 @@
                   <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="col-md-3 col-xs-6 col-sm-3 no-padding">
                       <h1 class="footer-heading-text-bottom">Dodge</h1>
-                      <img src="images/footer-image-3.png" class="img-responsive footer-img">
+                      <img src="<?php echo DEFAULT_URL; ?>/images/footer-image-3.png" class="img-responsive footer-img">
                     </div>
                     <div class="col-md-9 col-sm-6 col-xs-6 no-padding li-bottom-right">
                       <div class="col-md-6 no-padding">
@@ -294,9 +294,6 @@
              </tr>
               <?php } } ?>
              
-              
-
-              
             </table>
 
               </div>

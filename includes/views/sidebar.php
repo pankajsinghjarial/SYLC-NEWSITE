@@ -225,7 +225,6 @@
          <?php /*?> <div class="add_area"><img src="<?php echo DEFAULT_URL ?>/images/add_area_01.png" width="300" height="216" alt="ADD" /></div><?php */?>
         </div>
         <div class="clear"></div>
-        <script src="<?php echo DEFAULT_URL; ?>/js/jquery.min.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="<?php echo DEFAULT_URL; ?>/css/flexslider.css" type="text/css" media="screen" />
 	<script src="<?php echo DEFAULT_URL; ?>/js/jquery.flexslider-min.js"></script>
 

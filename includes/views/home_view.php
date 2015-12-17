@@ -99,70 +99,69 @@
                               <div class="voir-border"></div>
                             </div>
                           </div>
-
+                        
                           <div class="tab-pane fade" id="tab2default">
-
-
+                            <?php $searchUrl = DEFAULT_URL."/products.php?products=products&";?>
                             <div class="col-md-12 tabs-2">
                               <div class="col-md-3">
                                 <ul class="list-unstyled">
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Alfa Romeo</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Bentley</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Chevrolet</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Desoto</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Ferriari</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Jaguar</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Maserati</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Nissan</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Porsche</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Shelby</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Volkswagen</li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Alfa+Romeo' ?>"><i class="fa fa-chevron-circle-right"></i> Alfa Romeo</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Bentley' ?>"><i class="fa fa-chevron-circle-right"></i> Bentley</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Chevrolet' ?>"><i class="fa fa-chevron-circle-right"></i> Chevrolet</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=DeSoto' ?>"><i class="fa fa-chevron-circle-right"></i> DeSoto</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Ferrari' ?>"><i class="fa fa-chevron-circle-right"></i> Ferrari</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Jaguar' ?>"><i class="fa fa-chevron-circle-right"></i> Jaguar</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Maserati' ?>"><i class="fa fa-chevron-circle-right"></i> Maserati</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Nissan' ?>"><i class="fa fa-chevron-circle-right"></i> Nissan</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Porsche' ?>"><i class="fa fa-chevron-circle-right"></i> Porsche</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Shelby' ?>"><i class="fa fa-chevron-circle-right"></i> Shelby</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Volkswagen' ?>"><i class="fa fa-chevron-circle-right"></i> Volkswagen</li>
                                   
                                 </ul>
                               </div>
                               <div class="col-md-3">
                                 <ul class="list-unstyled">
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> AMC</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> BMW</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Chrysler</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Detomaso</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> FILT</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Jeep</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> McLaren</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Oldsmobile</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> RAM</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Studebaker</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Willys</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=AMC' ?>"><i class="fa fa-chevron-circle-right"></i> AMC</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=BMW' ?>"><i class="fa fa-chevron-circle-right"></i> BMW</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Chrysler' ?>"><i class="fa fa-chevron-circle-right"></i> Chrysler</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=De+Tomaso' ?>"><i class="fa fa-chevron-circle-right"></i> De Tomaso</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Fiat' ?>"><i class="fa fa-chevron-circle-right"></i> FIAT</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Jeep' ?>"><i class="fa fa-chevron-circle-right"></i> Jeep</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=McLaren' ?>"><i class="fa fa-chevron-circle-right"></i> McLaren</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Oldsmobile' ?>"><i class="fa fa-chevron-circle-right"></i> Oldsmobile</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Ram' ?>"><i class="fa fa-chevron-circle-right"></i> RAM</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Studebaker' ?>"><i class="fa fa-chevron-circle-right"></i> Studebaker</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Willys' ?>"><i class="fa fa-chevron-circle-right"></i> Willys</a></li>
                                 </ul>
                               </div>
                               <div class="col-md-3">
                                 <ul class="list-unstyled">
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Aston Martin</li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Buick</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Datsun</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Dodge</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Ford</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Lamborghini</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Mercedes-Benz</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Plymouth</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Replica</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Triumph</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Zimmer</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Aston+Martin' ?>"><i class="fa fa-chevron-circle-right"></i> Aston Martin</li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Buick' ?>"><i class="fa fa-chevron-circle-right"></i> Buick</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Datsun' ?>"><i class="fa fa-chevron-circle-right"></i> Datsun</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Dodge' ?>"><i class="fa fa-chevron-circle-right"></i> Dodge</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Ford' ?>"><i class="fa fa-chevron-circle-right"></i> Ford</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Lamborghini' ?>"><i class="fa fa-chevron-circle-right"></i> Lamborghini</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Mercedes-Benz' ?>"><i class="fa fa-chevron-circle-right"></i> Mercedes-Benz</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Plymouth' ?>"><i class="fa fa-chevron-circle-right"></i> Plymouth</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Replica' ?>"><i class="fa fa-chevron-circle-right"></i> Replica</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Triumph' ?>"><i class="fa fa-chevron-circle-right"></i> Triumph</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Zimmer' ?>"><i class="fa fa-chevron-circle-right"></i> Zimmer</a></li>
                                 </ul>
                               </div>
 
                               <div class="col-md-3">
                                 <ul class="list-unstyled">
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Audi</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Cadilac</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Delorean</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Excalibur</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> GMC</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Lincoln</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Mercury</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Pontiac</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> Rolls-Royce</a></li>
-                                  <li><a href=""><i class="fa fa-chevron-circle-right"></i> TVR</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Audi' ?>"><i class="fa fa-chevron-circle-right"></i> Audi</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Cadillac' ?>"><i class="fa fa-chevron-circle-right"></i> Cadillac</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=DeLorean' ?>"><i class="fa fa-chevron-circle-right"></i> DeLorean</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Excalibur' ?>"><i class="fa fa-chevron-circle-right"></i> Excalibur</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=GMC' ?>"><i class="fa fa-chevron-circle-right"></i> GMC</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Lincoln' ?>"><i class="fa fa-chevron-circle-right"></i> Lincoln</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Mercury' ?>"><i class="fa fa-chevron-circle-right"></i> Mercury</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Pontiac' ?>"><i class="fa fa-chevron-circle-right"></i> Pontiac</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Rolls-Royce' ?>"><i class="fa fa-chevron-circle-right"></i> Rolls-Royce</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=TVR' ?>"><i class="fa fa-chevron-circle-right"></i> TVR</a></li>
                                 </ul>
                               </div>
                             </div>
@@ -248,38 +247,7 @@
 		?>
     </div>
 
-
-    <!---********************** carosul 2 **********************-->
-<section class="carousel-2 wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
-  <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="col-md-11 col-md-offset-1">
-            <h1>Les annonces de voitures americaines les plus vues:</h1>
-          </div>
-          <div id="Carousel" class="carousel slide">
-          <!-- Carousel items -->
-          <div class="carousel-inner">          
-         	<?php
-					/*fetch latest 10 cars*/
-				include(LIST_ROOT."/includes/views/mostview.php");
-			?>    
-          </div><!--.carousel-inner-->
-          <a class="left carousel-control hidden-xs hidden-sm hidden-md" href="#Carousel" role="button" data-slide="prev">
-              <span class="fa fa-arrow-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control hidden-xs hidden-sm hidden-md" href="#Carousel" role="button" data-slide="next">
-              <span class="fa fa-arrow-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div><!--.Carousel-->    
-       </div>
-    </div>
-  </div><!--.container-->
-</section>
-
-
+<?php include(LIST_ROOT."/includes/views/mostview.php"); ?>
 <!-- ******************* parallex  Section start******************-->
 
 <section class="parallex" style="background: url('<?php echo '/images/home/'.$realFactBackgroundImage;?>')no-repeat fixed center center / cover;">
@@ -328,7 +296,7 @@
 
 <?php
 
-$channelName = 'TEDtalksDirector';
+$channelName = 'yoathome';
 $Apikey = 'AIzaSyAp_iOTFoV4bo_Y9eVNim-lX_AqTE56O40';
 $ChannelUrl  = 'https://www.googleapis.com/youtube/v3/channels?key='.$Apikey.'&forUsername='.$channelName.'&part=contentDetails';
 $Channeljson = file_get_contents($ChannelUrl);
@@ -336,25 +304,37 @@ $Channelobj = json_decode($Channeljson);
 $channelID = $Channelobj->items[0]->id;
 $channeluploadID = $Channelobj->items[0]->contentDetails->relatedPlaylists->uploads;
 
-$url  = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId='.$channeluploadID.'&key='.$Apikey;
+//$url  = 'https://www.googleapis.com/youtube/v3/search?part=snippet&order=date&channelId='.$channeluploadID.'&key='.$Apikey;
+$url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId='.$channelID.'&maxResults=10&order=date&key='.$Apikey;
+//$url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCEiq60VEWjogm67Qt2Ujl9g&order=date&'
 $json = file_get_contents($url);
 $obj = json_decode($json);
-
 $videos = array();
 
 $objVideos = $obj->items;
+
+$sorti = array();
 foreach($objVideos as $objVideo){
 	
 	$videosUnit['videoThumb'] = $objVideo->snippet->thumbnails->default->url;
 	$videosUnit['videoTitle'] = $objVideo->snippet->title;
 	$videosUnit['videoDescription'] = $objVideo->snippet->description;
-	$videosUnit['videoID'] = $objVideo->snippet->resourceId->videoId;
+	$videosUnit['videoID'] = $objVideo->id->videoId;
 	$videos[] = $videosUnit;
+	//$sorti[] =  $objVideo->snippet->publishedAt;
 }
 
-//echo "<pre>";
-//print_r($videos);
-//die;
+//$sortif = arsort($sorti);
+//$final =array();
+//$check = 0;
+//while($check <10){
+//foreach($sorti as $key =>$val){
+		
+	//$final[] = $videos[$key]; 
+//}
+//$check++;
+//}
+//$videos = $final;
 
 ?>
 

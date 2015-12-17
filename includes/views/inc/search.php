@@ -3,10 +3,10 @@
 	$pageName = basename($_SERVER['PHP_SELF']);
 	if ($pageName == 'index.php') {
 		$class = "ciiii";
-		$text = '<h1>Ca Commence ICI</h1><img src="images/home-page-background-design.png" class="img-responsive commence">';
+		$text = '<h1>Ca Commence ICI</h1><img src="<?php echo DEFAULT_URL; ?>/images/home-page-background-design.png" class="img-responsive commence">';
 	} else {
 		$class = "list-ciiii";
-		$text = '<img src="images/ash-bg.png" class="img-responsive commence">';
+		$text = '<img src="<?php echo DEFAULT_URL; ?>/images/ash-bg.png" class="img-responsive commence">';
 	}
 ?>
 <?php if(!empty($manufacturer)){
@@ -32,7 +32,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-xs-12">
-        <img src="images/home-page-background-design.png" class="img-responsive commence">
+        <img src="<?php echo DEFAULT_URL; ?>/images/home-page-background-design.png" class="img-responsive commence">
         <div class="commence-text">               
         <form action="products.php" id="searchcars" method="get" >	
 			<input type="hidden" name="products" value="products" />
@@ -126,7 +126,7 @@
 					</div>
 				  </div>
 				  <input id="Slider1" type="hidden" name="price" class="combo_box min_box1" />
-				  <div class="research-img"><a id="search_submit" href="javascript:void(0);"><img src="images/rechange-search-form.png"></a></div>
+				  <div class="research-img"><a id="search_submit" href="javascript:void(0);"><img src="<?php echo DEFAULT_URL; ?>/images/rechange-search-form.png"></a></div>
 				</div>
 			   
 				</div>

@@ -265,38 +265,3 @@
   </div><!-- col-md-12 -->
 </div><!-- tab2default -->
 </section>
-
-
-
-
-    <!---********************** carosul 2 **********************-->
-<section class="carousel-2 wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
-
-  <div class="container" id="container-for-slid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="col-md-11 col-md-offset-1">
-            <h1>Les annonces de voitures americaines les plus vues:</h1>
-          </div>
-          <div id="Carousel" class="carousel slide">
-          <!-- Carousel items -->
-          <div class="carousel-inner">
-              
-			<?php
-					/*fetch latest 10 cars*/
-				include(LIST_ROOT."/includes/views/mostview.php");
-			?> 
-          </div><!--.carousel-inner-->
-            <a class="left carousel-control hidden-xs hidden-sm hidden-md" href="#Carousel" role="button" data-slide="prev">
-            <span class="fa fa-arrow-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control hidden-xs hidden-sm hidden-md" href="#Carousel" role="button" data-slide="next">
-            <span class="fa fa-arrow-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-          </div><!--.Carousel-->    
-       </div>
-    </div>
-  </div><!--.container-->
-</section>

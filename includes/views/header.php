@@ -65,10 +65,10 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Voitures Americaines a vendre </a>
               <ul class="dropdown-menu">
-                <li><a href="/products"><i class="fa fa-angle-right"></i> Annonces USA actuelles</a></li>
-                <li><a href="/products?products=inventory"><i class="fa fa-angle-right"></i> Notre Inventaire </a></li>
-                <li><a href="recherche-personalise.html"><i class="fa fa-angle-right"></i> Recherche Personnalisée</a></li>
-                <li><a href="/accessories"><i class="fa fa-angle-right"></i> Accessoires Vintages</a></li>
+                <li><a href="<?php echo DEFAULT_URL;?>/products"><i class="fa fa-angle-right"></i> Annonces USA actuelles</a></li>
+                <li><a href="<?php echo DEFAULT_URL;?>/products?products=inventory"><i class="fa fa-angle-right"></i> Notre Inventaire </a></li>
+                <li><a href="<?php echo DEFAULT_URL;?>/recherche-personalise.html"><i class="fa fa-angle-right"></i> Recherche Personnalisée</a></li>
+                <li><a href="<?php echo DEFAULT_URL;?>/accessories"><i class="fa fa-angle-right"></i> Accessoires Vintages</a></li>
               </ul>
             </li>
             <li class='last'><a href="media.html"> Média</a></li>
@@ -78,13 +78,13 @@
   </ul>
       
 
-      <a class="navbar-brand" href="index.html"><img src="<?php echo DEFAULT_URL; ?>/images/logo.png" class="img-responsive"></a>
+      <a class="navbar-brand" href="<?php echo DEFAULT_URL;?>"><img src="<?php echo DEFAULT_URL; ?>/images/logo.png" class="img-responsive"></a>
 
 
       <ul class="nav navbar-nav">
         <div id='cssmenu'>
           <ul class="list-unstyled list-inline">
-            <li><a href="car-review.html">Revues Automobiles  </a></li>
+            <li><a href="<?php echo DEFAULT_URL;?>/car-review.html">Revues Automobiles  </a></li>
             <li><a href="">Logistique </a></li>
             <li><a href="">News </a></li>
             <li class='last'><a href=""> Contact </a></li>
