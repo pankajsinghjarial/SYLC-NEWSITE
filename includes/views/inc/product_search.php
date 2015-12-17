@@ -16,7 +16,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-xs-12 wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s">
-        <img src="images/ash-bg.png" class="img-responsive commence">
+        <img src="<?php echo DEFAULT_URL; ?>/images/ash-bg.png" class="img-responsive commence">
         <div class="commence-text">
 			 <form action="products.php" id="searchcars" method="get" >
 				 <input type="hidden" name="products" value="products" />
@@ -119,7 +119,7 @@
                 </div>
               </div>
               <input id="Slider1" type="hidden" name="price" class="combo_box min_box1" />
-              <div class="list-research-img"><a id="search_submit" href="javascript:void(0);"><img src="images/recharche-btn.png"></a></div>
+              <div class="list-research-img"><a id="search_submit" href="javascript:void(0);"><img src="<?php echo DEFAULT_URL; ?>/images/recharche-btn.png"></a></div>
             </div>
            
             </div>

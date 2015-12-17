@@ -274,12 +274,29 @@ $(document).ready(function() {
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'home')!== false && basename($_SERVER['REQUEST_URI'])=='actionbanner.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/home/actionbanner.php">View Rotating Banners</a></li>
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'home')!== false && basename($_SERVER['REQUEST_URI'])=='aboutus.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/home/aboutus.php">About Us</a></li>
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'real_facts')!== false && basename($_SERVER['REQUEST_URI'])=='real_facts.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/home/real_facts.php">Real facts</a></li>
-                              
+                
               </ul>
             </div>
             <!--[if lte IE 6]></td></tr></table></a><![endif]-->
           </li>
         </ul>
+        
+        	<div class="nav-divider">&nbsp;</div>
+			
+        	<ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false){?> current<?php } ?>">
+          <li><a href="#nogo" ><b>Reviews</b></a>
+			<!--[if IE 7]><!--></a><!--<![endif]-->
+            <!--[if lte IE 6]><table><tr><td><![endif]-->
+            <div class="select_sub show">
+              <ul class="sub">
+               <li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false  && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/reviews/add_new.php">Add Review</a></li>
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false && basename($_SERVER['REQUEST_URI'])=='add_new.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/reviews/index.php">View Reviews</a></li>                              
+              </ul>
+            </div>
+            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+          </li>
+        </ul>
+        
         	<div class="nav-divider">&nbsp;</div>
 			
         	<ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'accessories')!== false){?> current<?php } ?>">

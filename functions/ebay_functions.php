@@ -55,7 +55,7 @@ $accesToken="AgAAAA**AQAAAA**aAAAAA**fqSbVQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6AGkIS
 	$res =  simplexml_load_string($output);
 	
 	$item = $res->Item;	
-	
+	//echo "<pre>";print_r($item);die;
 	$gallery = array();
 	foreach($item->PictureDetails->PictureURL as  $val){
 		$gallery[] = (string)$val;
