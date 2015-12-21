@@ -12,11 +12,12 @@ Class validation {
 		$this->id = 0;
 	}
 
-	function add_fields($postVar, $authType, $error) {
+	function add_fields($postVar, $authType, $error, $optionalparam = array()) {
 		$index = $this->id++;
 		$this->check_vars[$index]['data'] = $postVar;
 		$this->check_vars[$index]['authtype'] = $authType;
 		$this->check_vars[$index]['error'] = $error;
+		$this->check_vars[$index]['optionalparam'] = $optionalparam;
 	}
 
 	function validate() {
@@ -26,6 +27,7 @@ Class validation {
 			$postVar  = $this->check_vars[$i]['data'];
 			$authType = $this->check_vars[$i]['authtype'];
 			$error    = $this->check_vars[$i]['error'];
+			$optionalparam    = $this->check_vars[$i]['optionalparam'];
 
 			$pos = strpos($authType, '=');
 			if($pos !== false) {
@@ -44,12 +46,19 @@ Class validation {
 							if(!$length)
                   					$errorMsg .= $error." :File ".($j+1)."<br>";
 						}
-					}
-                    			elseif(isset($postVar['name']) && empty($postVar['name'])) {
-   							$length = strlen(trim($postVar['name']));
+					} elseif(is_array($postVar)) {
+						 $count = count($postVar);
+
+						for($j=0; $j<$count; $j++) {
+							$length = strlen(trim($postVar[$j]));
 							if(!$length)
-                            				$errorMsg .= $error."<br>";
-                    			}
+                  					$errorMsg .= $error." :Car Id ".($j+1)."<br>";
+						}
+					} elseif(isset($postVar['name']) && empty($postVar['name'])) {
+						$length = strlen(trim($postVar['name']));
+						if(!$length)
+							$errorMsg .= $error."<br>";
+					}
 					else{
 						$length = strlen(trim($postVar));
 						if(!$length)
@@ -79,13 +88,56 @@ Class validation {
 				}
 
 				case "num": {
-				
-				if (!is_numeric ($postVar)) {
-					$length = strlen(trim($postVar));
-					 if($length)
-						$errorMsg .= $error."<br>";
+					if(is_array($postVar)) {
+						 $count = count($postVar);
+
+						for($j=0; $j<$count; $j++) {
+							if (!is_numeric($postVar[$j])) {
+								$length = strlen(trim($postVar[$j]));
+								if($length)
+                  					$errorMsg .= $error." :Car Id ".($j+1)."<br>";
+							}
+						}
+					} elseif (!is_numeric ($postVar)) {
+						$length = strlen(trim($postVar));
+						 if($length)
+							$errorMsg .= $error."<br>";
+						}
+						break;
 					}
-					break;
+					
+				case "uniquearray": {
+					if(is_array($postVar)) {
+						$array_temp = array();
+						$j = 0;
+						foreach($postVar as $val) {
+							if($val != '') {
+								if (!in_array($val, $array_temp)) {
+									$array_temp[] = $val;
+								} else {
+									$errorMsg .= $error." :Car Id ".($j+1)."<br>";
+								}
+							}
+							$j++;
+						}
+					} 
+						break;
+				}
+				
+				case "dupl": {
+					if(is_array($postVar)) {
+						$array_temp = array();
+						$j = 0;
+						foreach($postVar as $val) {
+							if($val != '') {
+								if (in_array($val, $optionalparam)) {									
+									$errorMsg .= $error." :Car Id ".($j+1)."<br>";
+								}
+							}
+							$j++;
+						}
+					} 
+						break;
 				}
 				
 				case "year":{

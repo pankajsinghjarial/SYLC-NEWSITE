@@ -1,0 +1,51 @@
+ 
+        <div class="nav-divider">&nbsp;</div>
+			
+        	<ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false){?> current<?php } ?>">
+          <li><a href="#nogo" ><b>Reviews</b></a>
+			    <!--[if IE 7]><!--></a><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+            <div class="select_sub show">
+              <ul class="sub">
+               <li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false  && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/reviews/add_new.php">Add Review</a></li>
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false && basename($_SERVER['REQUEST_URI'])=='add_new.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/reviews/index.php">View Reviews</a></li>                              
+              </ul>
+            </div>
+            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+          </li>
+        </ul>
+        
+        	<div class="nav-divider">&nbsp;</div>
+			
+        	<ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'accessories')!== false){?> current<?php } ?>">
+          <li><a href="#nogo" ><b>Accessories</b></a>
+            <!--[if IE 7]><!--></a><!--<![endif]-->
+            <!--[if lte IE 6]><table><tr><td><![endif]-->
+            <div class="select_sub show">
+              <ul class="sub">
+               <li <?php  if (strpos($_SERVER['REQUEST_URI'],'accessories')!== false  && basename($_SERVER['REQUEST_URI'])=='actionproduct.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/accessories/actionproduct.php">Add Product</a></li>
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'accessories')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/accessories/index.php">View All Products</a></li>                              
+              </ul>
+            </div>
+            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+          </li>
+        </ul>
+ <div class="nav-divider">&nbsp;</div>
+			
+        <ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'presentation')!== false){?> current<?php } ?>">
+          <li><a href="#nogo" ><b>Presentation</b></a>
+            <!--[if IE 7]><!--></a><!--<![endif]-->
+            <!--[if lte IE 6]><table><tr><td><![endif]-->
+            <div class="select_sub show">
+              <ul class="sub">
+               <li <?php  if (strpos($_SERVER['REQUEST_URI'],'presentation')!== false  && basename($_SERVER['REQUEST_URI'])=='actionbanners.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/presentation/actionbanners.php">Banners</a>
+				</li>
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'tabs')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/presentation/index.php">View Tabs</a>
+				</li>                              
+              </ul>
+            </div>
+            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+          </li>
+        </ul>

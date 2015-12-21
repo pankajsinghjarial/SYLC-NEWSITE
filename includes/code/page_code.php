@@ -11,4 +11,3 @@ else{
 }
 
 $terms = mysql_fetch_object($terms);
-?>

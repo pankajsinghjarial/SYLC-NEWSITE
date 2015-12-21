@@ -2085,7 +2085,6 @@ background: #f00;
 ***************************************/
 
 .media-header-section{
-  background: url("../images/media/header-background.png") no-repeat; 
   height: 360px;
   margin-top: -45px;
   background-size: 100%
@@ -2364,7 +2363,7 @@ background: #f00;
   width: 100%;
 }
 .presentation-tabs .tab-content {
-  border: 1px solid rgb(234, 234, 234);
+  border: 1px solid #BABABA;
 }
 .presentation-tabs h1{
   padding-top: 30px;
@@ -2378,11 +2377,13 @@ background: #f00;
     color: #da2b10
 }
 .presentation-tabs p{
-  font-size: 16px;
+  font-size: 17px;
   padding-top: 15px;
   padding-right: 5px;
   text-shadow: 0px 0px 0px;
+  line-height: 1.8em;
 }
+
 .presentation-tabs .italic-font{
   font-style: italic;
   color: #DE3E15;
@@ -4410,4 +4411,12 @@ table, table td {
 }
 .pagination .next:hover a, .pagination .next:focus a,.pagination .next a{
   color: #fff;
+}
+.col-md-3.paroduct-carosel img {
+  max-height: 105px;
+  width: 100%;
+}
+img.primary-image {
+  max-height: 411px;
+  width: 100%;
 }

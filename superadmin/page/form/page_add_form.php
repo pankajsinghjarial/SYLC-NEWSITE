@@ -96,7 +96,7 @@
     <div id="page-heading">
       <h1>Add New Page</h1>
     </div>
-    <form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post" name="account_form" id="account_form">
+    <form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post" name="account_form" id="account_form"  enctype="multipart/form-data">
       <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
         <tr>
           <th rowspan="3" class="sized"><img src="<?php echo ADMIN_IMAGE_URL; ?>/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
@@ -188,6 +188,30 @@
                         <td><div class="error-left"></div>
                           <div class="error-inner">This field is required.</div></td>
                       </tr>
+                      <tr>
+							<th valign="top">Banner 1:</th>
+							<td>
+								<input type="file" name="banner" />
+								<input type="hidden" name="banner" value="<?php echo $banner;?>"/>
+								<label><?php echo $banner;?></label>							
+							</td>
+							</td>
+							<td><div class="error-left"></div>
+							  <div class="error-inner">This field is required.</div></td>
+						</tr>
+						
+						<tr>
+							<th valign="top">Banner 2:</th>
+							<td>
+								<input type="file" name="secbanner" />
+								<input type="hidden" name="secbanner" value="<?php echo $secbanner;?>"/>
+								<label><?php echo $secbanner;?></label>							
+							</td>
+							</td>
+							<td><div class="error-left"></div>
+							  <div class="error-inner">This field is required.</div></td>
+						</tr>
+
                       <tr>
                         <th valign="top">Meta Title:</th>
                         <td><input type="text" class="inp-form" name="metatitle" id="metatitle" value="<?php echo $metatitle ;?>" /></td>

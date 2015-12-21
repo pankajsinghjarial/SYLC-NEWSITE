@@ -70,7 +70,7 @@
               <ul class="dropdown-menu">
                 <li><a href="/products"><i class="fa fa-angle-right"></i> Annonces USA actuelles</a></li>
                 <li><a href="/products?products=inventory"><i class="fa fa-angle-right"></i> Notre Inventaire </a></li>
-                <li><a href="recherche-personalise.html"><i class="fa fa-angle-right"></i> Recherche Personnalisée</a></li>
+                <li><a href="/recherche_personalise"><i class="fa fa-angle-right"></i> Recherche Personnalisée</a></li>
                 <li><a href="/accessories"><i class="fa fa-angle-right"></i> Accessoires Vintages</a></li>
               </ul>
             </li>
@@ -88,7 +88,7 @@
         <div id='cssmenu'>
           <ul class="list-unstyled list-inline">
             <li><a href="car-review.html">Revues Automobiles  </a></li>
-            <li><a href="">Logistique </a></li>
+            <li><a href="/logistic">Logistique </a></li>
             <li><a href="">News </a></li>
             <li class='last'><a href=""> Contact </a></li>
           </ul>

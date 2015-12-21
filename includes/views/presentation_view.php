@@ -1,7 +1,6 @@
 <!-- header section -->
 
-<section class="media-header-section">
-</section>
+<section class="media-header-section" style="background:url('<?php echo DEFAULT_URL. '/images/presentation/' .$topBanner;?>') no-repeat scroll 0% 0% / 100% auto transparent"></section>
 <!-- End header section -->
 
 <section class="presentation-tabs">
@@ -19,101 +18,28 @@
           </ul>
 
            <div class="tab-pane active wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s" id="1"> 
-              <h1 class="heading">SYLC CORPORATION,</h1>
-              <p>établi depuis 7 ans dans le secteur de l’automobile, est spécialisé dans l’exportation de véhicules en tous genres en provenance des Etats Unis.</p>
-
-               <p><span class="heading">SYLC CORPORATION,</span> offre une liste de services incomparables pour vous aider à trouver la voiture de vos rêves et l’expédier vers la destination de votre choix en respectant impérativement la législation en vigueur 
-               du pays d’importation</p>
-
-              <div class="col-md-12 no-padding presentation-img wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
-                <div class="col-md-11 no-padding">
-                  <img src="<?php echo DEFAULT_URL;?>/images/presentation-img-1.png" class="img-responsive">
-                </div>
-              </div>
-
-               <p class="italic-font"><span class="heading">SYLC CORPORATION,</span> est implantée a Miami en Floride, lieu stratégique d’où sont pilotées toutes les exportations de voitures américaines vers l’Europe et particulièrement la France.</p>
-               <p>Sylc Corporation opère dans les règles de l’art avec une Licence revendeur, agréée et assurée par l’état de Floride. Ces éléments donnent toute satisfaction à nos clients en termes de confort et de sécurité, sachant que notre compagnie adhère à toutes les règles et lois définies par les Etats Unis en matière d’exportation.</p>
-           </div>
-           <div class="tab-pane wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s" id="2"> 
-              <h1 class="heading">SYLC CORPORATION,</h1>
-              <p>établi depuis 7 ans dans le secteur de l’automobile, est spécialisé dans l’exportation de véhicules en tous genres en provenance des Etats Unis.</p>
-
-               <p><span class="heading">SYLC CORPORATION,</span> offre une liste de services incomparables pour vous aider à trouver la voiture de vos rêves et l’expédier vers la destination de votre choix en respectant impérativement la législation en vigueur 
-               du pays d’importation</p>
-
-              <div class="col-md-12 no-padding presentation-img wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
-                <div class="col-md-11 no-padding">
-                  <img src="<?php echo DEFAULT_URL;?>/images/presentation-img-1.png" class="img-responsive">
-                </div>
-              </div>
-
-               <p class="italic-font"><span class="heading">SYLC CORPORATION,</span> est implantée a Miami en Floride, lieu stratégique d’où sont pilotées toutes les exportations de voitures américaines vers l’Europe et particulièrement la France.</p>
-               <p>Sylc Corporation opère dans les règles de l’art avec une Licence revendeur, agréée et assurée par l’état de Floride. Ces éléments donnent toute satisfaction à nos clients en termes de confort et de sécurité, sachant que notre compagnie adhère à toutes les règles et lois définies par les Etats Unis en matière d’exportation.</p>
-           </div>
-
-           <div class="tab-pane active wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s" id="3"> 
-              <h1 class="heading">SYLC CORPORATION,</h1>
-              <p>établi depuis 7 ans dans le secteur de l’automobile, est spécialisé dans l’exportation de véhicules en tous genres en provenance des Etats Unis.</p>
-
-               <p><span class="heading">SYLC CORPORATION,</span> offre une liste de services incomparables pour vous aider à trouver la voiture de vos rêves et l’expédier vers la destination de votre choix en respectant impérativement la législation en vigueur 
-               du pays d’importation</p>
-
-              <div class="col-md-12 no-padding presentation-img wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
-                <div class="col-md-11 no-padding">
-                  <img src="<?php echo DEFAULT_URL;?>/images/presentation-img-1.png" class="img-responsive">
-                </div>
-              </div>
-
-               <p class="italic-font"><span class="heading">SYLC CORPORATION,</span> est implantée a Miami en Floride, lieu stratégique d’où sont pilotées toutes les exportations de voitures américaines vers l’Europe et particulièrement la France.</p>
-               <p>Sylc Corporation opère dans les règles de l’art avec une Licence revendeur, agréée et assurée par l’état de Floride. Ces éléments donnent toute satisfaction à nos clients en termes de confort et de sécurité, sachant que notre compagnie adhère à toutes les règles et lois définies par les Etats Unis en matière d’exportation.</p>
-           </div>
-
-           <div class="tab-pane active wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s" id="4"> 
-              <h1 class="heading">SYLC CORPORATION,</h1>
-              <p>établi depuis 7 ans dans le secteur de l’automobile, est spécialisé dans l’exportation de véhicules en tous genres en provenance des Etats Unis.</p>
-
-               <p><span class="heading">SYLC CORPORATION,</span> offre une liste de services incomparables pour vous aider à trouver la voiture de vos rêves et l’expédier vers la destination de votre choix en respectant impérativement la législation en vigueur 
-               du pays d’importation</p>
-
-              <div class="col-md-12 no-padding presentation-img wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
-                <div class="col-md-11 no-padding">
-                  <img src="<?php echo DEFAULT_URL;?>/images/presentation-img-1.png" class="img-responsive">
-                </div>
-              </div>
-
-               <p class="italic-font"><span class="heading">SYLC CORPORATION,</span> est implantée a Miami en Floride, lieu stratégique d’où sont pilotées toutes les exportations de voitures américaines vers l’Europe et particulièrement la France.</p>
-               <p>Sylc Corporation opère dans les règles de l’art avec une Licence revendeur, agréée et assurée par l’état de Floride. Ces éléments donnent toute satisfaction à nos clients en termes de confort et de sécurité, sachant que notre compagnie adhère à toutes les règles et lois définies par les Etats Unis en matière d’exportation.</p>
-           </div>
-
-           <div class="tab-pane active wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s" id="5"> 
-              <h1 class="heading">SYLC CORPORATION,</h1>
-              <p>établi depuis 7 ans dans le secteur de l’automobile, est spécialisé dans l’exportation de véhicules en tous genres en provenance des Etats Unis.</p>
-
-               <p><span class="heading">SYLC CORPORATION,</span> offre une liste de services incomparables pour vous aider à trouver la voiture de vos rêves et l’expédier vers la destination de votre choix en respectant impérativement la législation en vigueur 
-               du pays d’importation</p>
-
-              <div class="col-md-12 no-padding presentation-img wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
-                <div class="col-md-11 no-padding">
-                  <img src="<?php echo DEFAULT_URL;?>/images/presentation-img-1.png" class="img-responsive">
-                </div>
-              </div>
-
-               <p class="italic-font"><span class="heading">SYLC CORPORATION,</span> est implantée a Miami en Floride, lieu stratégique d’où sont pilotées toutes les exportations de voitures américaines vers l’Europe et particulièrement la France.</p>
-               <p>Sylc Corporation opère dans les règles de l’art avec une Licence revendeur, agréée et assurée par l’état de Floride. Ces éléments donnent toute satisfaction à nos clients en termes de confort et de sécurité, sachant que notre compagnie adhère à toutes les règles et lois définies par les Etats Unis en matière d’exportation.</p>
-           </div>
-           
-        </div>
+				<?php echo $content;?>
+			</div>
+			</div>
         <div class="col-md-4 wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
           <ul class="nav nav-tabs hidden-xs hidden-sm">
-            <li class="active"><a href="#1" data-toggle="tab">Présentation</a></li>
-            <li><a href="#2" data-toggle="tab">Pourquoi nous choisir?</a></li>
-            <li><a href="#3" data-toggle="tab">Nos services</a></li>
-            <li>
-              <a href="#4" data-toggle="tab">Comment ça marche?</a>
+            <li <?php if($tab_title == 'presentation') { echo 'class="active"';}?>>
+				<a href="/presentation/">Présentation</a>
+			</li>
+            <li <?php if($tab_title == 'pourquoi_nous_choisir') { echo 'class="active"';}?>>
+				<a href="/presentation/pourquoi_nous_choisir" >Pourquoi nous choisir?</a>
+			</li>
+            <li <?php if($tab_title == 'nos_services') { echo 'class="active"';}?>>
+				<a href="/presentation/nos_services">Nos services</a>
+			</li>
+            <li <?php if($tab_title == 'comment_ça_marche') { echo 'class="active"';}?>>
+              <a href="/presentation/comment_ça_marche">Comment ça marche?</a>
             </li>
-            <li><a href="#5" data-toggle="tab">Fournisseurs</a></li>
+            <li <?php if($tab_title == 'fournisseurs') { echo 'class="active"';}?>>
+				<a href="/presentation/fournisseurs">Fournisseurs</a>
+			</li>
           </ul>
-          <img src="<?php echo DEFAULT_URL;?>/images/presentation-img-2.png" class="img-responsive center">
+          <img src="<?php echo DEFAULT_URL. '/images/presentation/' .$sideBanner;?>" class="img-responsive center">
         </div>
       </div>
       <!-- /tabs -->

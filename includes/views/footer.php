@@ -274,8 +274,8 @@
               <?php
               if(isset($_SESSION['loginuser']['id'])) {
               $loginid = $_SESSION['loginuser']['id'];
-              $concar=mysql_connect("192.168.0.238","httpsylc","NetsoL_123");
-              mysql_select_db("sylcexpo_sylcorp");
+              $concar=mysql_connect(DB_HOST,DB_USER,DB_PASS);
+              mysql_select_db(DB_SYL_NAME);
               // Check connection
               $result = mysql_query("select l.*,ld.* from lead_details as ld left join leads as l on l.id=ld.lead_id where l.user_id = '$loginid'");
             if(mysql_num_rows($result) > 0 )	{

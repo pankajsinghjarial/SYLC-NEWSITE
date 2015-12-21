@@ -16,7 +16,7 @@ while($row = mysql_fetch_assoc($manf)) {
 include("functions/ebay_functions.php");
 
 
-$ebayid = $common->CustomQuery("Select * from ebay_car where itemId = 22".$carid);
+$ebayid = $common->CustomQuery("Select * from ebay_car where itemId = ".$carid);
 $item = '';
 if(mysql_num_rows($ebayid) > 0){
 	$item = mysql_fetch_object($ebayid);
@@ -197,14 +197,16 @@ elseif(isset($_POST) && isset($_POST["send_invite"]))
 
 
 $Make= $common->CustomQuery("SELECT * FROM `attribute_option_value` WHERE `attribute_id` = '2' ORDER BY `value`,`sort_order` ASC");
-
 $car_meta_values['title'] = $item->title;
-
+$car_meta_values['description'] = '';
 $_SESSION['ebay_desc'] = base64_decode($item->description);
-$dsadasda = explode("~",$item->stdequip);
-foreach($dsadasda as $asdadsasd)
+$specs = array();
+$spec = explode("~",$item->stdequip);
+foreach($spec as $spex)
 {
-	$asdadsa = explode("^",$asdadsasd)	;
-	$car_meta_values['description'] .= $asdadsa[0].": ". $asdadsa[1].", ";
+	$spexs = explode("^",$spex)	;
+	$car_meta_values['description'] .= $spexs[0].": ". $spexs[1].", ";
+    $specs[$spexs[0]] = $spexs[1];
 }
 
+$gallery = explode("**",$item->galleryURL);
