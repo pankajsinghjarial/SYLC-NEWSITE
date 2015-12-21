@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
 		$error='';
 		/*validate required fields*/
-		$obj->add_fields($productName, 'req', 'Please Enter Content');
+		$obj->add_fields($productName, 'req', 'Please Enter Product Name');
 		$obj->add_fields($description, 'req', 'Please Enter Content');
-		$obj->add_fields($amount, 'req', 'Please Enter Content');
-		
+		$obj->add_fields($amount, 'req', 'Please Enter Amount');
+		 $obj->add_fields($amount, 'num', 'Please Enter Valid Price');
 		 
 		if (!isset($_GET['id'])) {
 			$obj->add_fields($_FILES['file']['name'], 'req', 'Please Upload Image');

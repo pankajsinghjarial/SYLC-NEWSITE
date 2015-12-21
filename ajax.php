@@ -7,13 +7,13 @@ if($page == 'logout') {
 	//session_destroy();	
 }else {
 
-$con = mysqli_connect("192.168.0.238","syl","NetsoL_123");
+$con = mysqli_connect(DB_HOST,DB_USER,DB_PASS);
 // Check connection
 if (!$con)
 {
 	echo "Failed to connect to mysqli: ";
 }
-mysqli_select_db($con, "sylcexpo_sylcorp");
+mysqli_select_db($con, DB_SYL_NAME);
 $pass = md5($id);
 $result = mysqli_query($con,"SELECT * FROM users where username = '$page' and password = '$pass'");
 if(mysqli_num_rows($result) > 0 )

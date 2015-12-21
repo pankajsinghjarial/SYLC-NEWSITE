@@ -42,6 +42,7 @@
             <script src="<?php echo DEFAULT_URL; ?>/js/bootstrap.min.js"></script>
             <script src="<?php echo DEFAULT_URL; ?>/js/style.js"></script>
             <script src="<?php echo DEFAULT_URL; ?>/js/wow.min.js"></script>
+	    <script src="<?php echo DEFAULT_URL; ?>/js/jquery.validate.min.js"></script>
             <script>
                 new WOW().init();
             </script>

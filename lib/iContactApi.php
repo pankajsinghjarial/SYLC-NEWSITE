@@ -215,6 +215,43 @@ class iContactApi {
 	}
 	
 	
+/***********************Custom function to add custom attributes along with contact Form***********************/
+
+	public function CustomaddContactForm($sEmail, $sStatus = 'normal', $sPrefix = null, $sContact = null, $sTelephone =  null, $sNotes = null) {
+		// Valid statuses
+		$aValidStatuses = array('normal', 'bounced', 'donotcontact', 'pending', 'invitable', 'deleted');
+		// Contact placeholder
+		$aContact       = array(
+			'email' => $sEmail
+		);
+		// Check for a Contact name
+		if (!empty($sContact)) {
+			// Add the new comments
+			$aContact['fax'] = (string) $sContact;
+		}
+		// Check for a Telephone name
+		if (!empty($sTelephone)) {
+			// Add the new product
+			$aContact['phone'] = (string) $sTelephone;
+		}
+		
+		// Check for a Notes name
+		if (!empty($sNotes)) {
+			// Add the new product
+			$aContact['notes'] = (string) $sNotes;
+		}
+		
+		
+		// Make the call
+		$aContacts = $this->makeCall("/a/{$this->setAccountId()}/c/{$this->setClientFolderId()}/contacts", 'POST', array($aContact), 'contacts');
+		// Return the contact
+		return $aContacts[0];
+	}
+
+/******************************************************************************************/	
+	
+	
+	
 /***********************Custom function to add custom attributes along with contact***********************/
 
 	public function CustomaddContact($sEmail, $sStatus = 'normal', $sPrefix = null, $sFirstName = null, $sLastName = null, $sSuffix = null, $sStreet = null, $sStreet2 = null, $sCity = null, $sState = null, $sPostalCode = null, $sPhone = null, $sFax = null, $sBusiness = null, $sComments = null, $sProductName = null) {

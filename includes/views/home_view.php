@@ -144,7 +144,7 @@
                                   <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Lamborghini' ?>"><i class="fa fa-chevron-circle-right"></i> Lamborghini</a></li>
                                   <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Mercedes-Benz' ?>"><i class="fa fa-chevron-circle-right"></i> Mercedes-Benz</a></li>
                                   <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Plymouth' ?>"><i class="fa fa-chevron-circle-right"></i> Plymouth</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Replica' ?>"><i class="fa fa-chevron-circle-right"></i> Replica</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Replica%20%26%20Kit%20Makes' ?>"><i class="fa fa-chevron-circle-right"></i> Replica</a></li>
                                   <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Triumph' ?>"><i class="fa fa-chevron-circle-right"></i> Triumph</a></li>
                                   <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Zimmer' ?>"><i class="fa fa-chevron-circle-right"></i> Zimmer</a></li>
                                 </ul>

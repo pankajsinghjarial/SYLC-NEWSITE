@@ -1,34 +1,39 @@
 <?php 
+//Make QueryString Parameters as Variables
 extract($_POST);
 extract($_GET);
+//Init neccessary classes
 $search = new search();
 $common = new common();
-
+//Fetch Brands for Search Drop Down
 $modelList = array();
 $manf= $common ->CustomQuery("SELECT * FROM `attribute_option_value` WHERE `attribute_id` = '2' ORDER BY `value`,`sort_order` ASC");
 while($row = mysql_fetch_assoc($manf)) {
     $modelList[] = $row;
 }
 
-/*Fetch car listings from ebay API*/
-
+//Choosing which tab is selected
 $auctionClass = true;
-if (isset($_GET['products']) && $_GET['products'] == 'products') {
+if (isset($_GET['products']) && $_GET['products'] == 'products') { //Buy Now API Default
 	unset($_SESSION['mysearch']);
 	$_SESSION['mysearch'][] = $_GET;
 }
-if (isset($_GET['products']) && $_GET['products'] == 'inventory') {
+if (isset($_GET['products']) && $_GET['products'] == 'inventory') { // Our Inventory Admin
 	$auctionClass = false;
 }
+
+//Checking if Brand Selected
 if (isset($_REQUEST['manufacturer'])) {
 	unset($_SESSION['mysearch']);
 	$_SESSION['mysearch'][] = $_REQUEST;
 }
+
+//Check if search is done previously and stored in session
 if(isset($_SESSION['mysearch'][0])){
     extract($_SESSION['mysearch'][0]);
 }
 
-
+//Get Wishlist Cars
 if (isset($_SESSION['User']['id']) && $_SESSION['User']['id'] > 0) {
     $getSelectedCarListSQL = "SELECT car_id from wishlist where user_id = ".$_SESSION['User']['id'];
     $result = mysql_query($getSelectedCarListSQL);
@@ -37,16 +42,13 @@ if (isset($_SESSION['User']['id']) && $_SESSION['User']['id'] > 0) {
     }
 }
 
-
+/*Fetch car listings from ebay API*/
+//Start creating request URL from the query string
 $where 		 = "&outputSelector(0)=PictureURLLarge";
 $searched    = '';
 $addtopaging = "?";
-
-
 include("functions/ebay_functions.php");
-
 $addtopaging1 = '';
-
 if ($_GET) {
 	$args = explode("&", $_SERVER['QUERY_STRING']);
 	foreach($args as $arg) {
@@ -60,92 +62,96 @@ if ($_GET) {
 
 
 $aspect_count = 0;
+$searched = '<br>You Searched for ';
+$where .= "&outputSelector(1)=AspectHistogram";
 
+//Check if brand selected while search
 if (isset($manufacturer)) {
-	
-	$searched = '<br>You Searched for ';
-	if (isset($manufacturer)) {
-		$where .= "&outputSelector(1)=AspectHistogram";                
-		$where .= "&aspectFilter(".$aspect_count.").aspectName=Make";
-                $manfCount = 0;                
-                if (is_array($manufacturer)) {
-                    $searched .= ' Manufacturer: <span class="searched">';
-                    $manufacturer = array_filter($manufacturer);
-                    foreach($manufacturer as $mnf) {
-                        $where .= "&aspectFilter(".$aspect_count.").aspectValueName($manfCount)=".urlencode(urldecode($mnf));
-                        $manfCount++;
-                        if ($manfCount<count($manufacturer)) {
-                            $searched .=$mnf.",";
-                        }else{
-                             $searched .=$mnf;
-                        }
+    $where .= "&aspectFilter(".$aspect_count.").aspectName=Make";
+            $manfCount = 0;                
+            if (is_array($manufacturer)) {
+                $searched .= ' Manufacturer: <span class="searched">';
+                $manufacturer = array_filter($manufacturer);
+                foreach($manufacturer as $mnf) {
+                    $where .= "&aspectFilter(".$aspect_count.").aspectValueName($manfCount)=".urlencode(urldecode($mnf));
+                    $manfCount++;
+                    if ($manfCount<count($manufacturer)) {
+                        $searched .=$mnf.",";
+                    }else{
+                         $searched .=$mnf;
                     }
-                    $searched .= '</span>';
-                }else{
-                    $where .= "&aspectFilter(".$aspect_count.").aspectValueName=".urlencode(urldecode($manufacturer));
-                    $searched .= ' Manufacturer: <span class="searched">'.urldecode($manufacturer).'</span>';
-                }		
-		
-		$dataArray['manufacturer'] = $common->getIdByOptionName(2,urldecode($manufacturer));
-		$aspect_count++;
-	}
-	if (isset($madeYear)) {
-		$madeYearArr = array_filter($madeYear);
-		if (count($madeYearArr) == 2) {
-			if ($madeYearArr[0] < $madeYearArr[1]) {
-				$madeYearStr = 	$madeYearArr[0]."-".substr($madeYearArr[1],2);
-				$where .= "&aspectFilter(".$aspect_count.").aspectName=Model%20Year";
-				for($i= $madeYearArr[0],$k = 0;$i <= $madeYearArr[1] ; $i++,$k++) {
-					$where .= "&aspectFilter(".$aspect_count.").aspectValueName(".$k.")=".$i;
-				}
-				$searched .= ', Year: <span class="searched">'.$madeYearStr.'</span>';
-				$dataArray['madeYear'] = $madeYearArr;
-				$aspect_count++;
-			}
-		}
-		else if (count($madeYearArr) == 1) {
-			$madeYearStr = 	$madeYearArr[0];
-			$where .= "&aspectFilter(".$aspect_count.").aspectName=Model+Year";
-			$where .= "&aspectFilter(".$aspect_count.").aspectValueName=".$madeYearStr;
-			$searched .= ', Year: <span class="searched">'.$madeYearStr.'</span>';
-			$dataArray['madeYear'] = $madeYearArr;
-			$aspect_count++;
-		}
-	}
-	if (isset($model) && $model != '' && $model != 'Not+Specified') {
-		$where .= "&aspectFilter(".$aspect_count.").aspectName=Model";
-		$where .= "&aspectFilter(".$aspect_count.").aspectValueName=".urlencode(urldecode($model));
-		$searched .= ', Model: <span class="searched">'.urldecode($model).'</span>';
-		$dataArray['carName'] = urldecode($model); 
-		$aspect_count++;
-	}
-	
-} else {
-	$where .= "&aspectFilter(0).aspectName=Make";
-	$where .= "&aspectFilter(0).aspectValueName(0)=Mercedes-Benz";
-	$where .= "&aspectFilter(0).aspectValueName(1)=Oldsmobile";
-	$where .= "&aspectFilter(0).aspectValueName(2)=Buick";
-	$where .= "&aspectFilter(0).aspectValueName(3)=Cadillac";
-	$where .= "&aspectFilter(0).aspectValueName(4)=Chevrolet";
-	$where .= "&aspectFilter(0).aspectValueName(5)=Chrysler";
-	$where .= "&aspectFilter(0).aspectValueName(6)=Dodge";
-	$where .= "&aspectFilter(0).aspectValueName(7)=Excalibur";
-	$where .= "&aspectFilter(0).aspectValueName(8)=Ferrari";
-	$where .= "&aspectFilter(0).aspectValueName(9)=Ford";
-	$where .= "&aspectFilter(0).aspectValueName(10)=General+Motor+Corp.";
-	$where .= "&aspectFilter(0).aspectValueName(11)=GMC";
-	$where .= "&aspectFilter(0).aspectValueName(12)=Hummer";
-	$where .= "&aspectFilter(0).aspectValueName(13)=Chrysler";
-	$where .= "&aspectFilter(0).aspectValueName(14)=Morgan";
-	$where .= "&aspectFilter(0).aspectValueName(15)=Plymouth";
-	$where .= "&aspectFilter(0).aspectValueName(16)=Pontiac ";
-	$where .= "&aspectFilter(0).aspectValueName(17)=Porsche";
-	$where .= "&aspectFilter(0).aspectValueName(18)=Studebaker";
-	$where .= "&aspectFilter(0).aspectValueName(19)=Toyota";
+                }
+                $searched .= '</span>';
+            }else{
+                $where .= "&aspectFilter(".$aspect_count.").aspectValueName=".urlencode(urldecode($manufacturer));
+                $searched .= ' Manufacturer: <span class="searched">'.urldecode($manufacturer).'</span>';
+            }		
+    
+    $dataArray['manufacturer'] = $common->getIdByOptionName(2,urldecode($manufacturer));
+    $aspect_count++;
 }
 
-$filterarray = array();
+//Check if Year range selected while search
+if (isset($madeYear)) {
+    $madeYearArr = array_filter($madeYear);
+    if (count($madeYearArr) == 2) {
+        if ($madeYearArr[0] < $madeYearArr[1]) {
+            $madeYearStr = 	$madeYearArr[0]."-".substr($madeYearArr[1],2);
+            $where .= "&aspectFilter(".$aspect_count.").aspectName=Model%20Year";
+            for($i= $madeYearArr[0],$k = 0;$i <= $madeYearArr[1] ; $i++,$k++) {
+                $where .= "&aspectFilter(".$aspect_count.").aspectValueName(".$k.")=".$i;
+            }
+            $searched .= ', Year: <span class="searched">'.$madeYearStr.'</span>';
+            $dataArray['madeYear'] = $madeYearArr;
+            $aspect_count++;
+        }
+    }
+    else if (count($madeYearArr) == 1) {
+        $madeYearStr = 	$madeYearArr[0];
+        $where .= "&aspectFilter(".$aspect_count.").aspectName=Model+Year";
+        $where .= "&aspectFilter(".$aspect_count.").aspectValueName=".$madeYearStr;
+        $searched .= ', Year: <span class="searched">'.$madeYearStr.'</span>';
+        $dataArray['madeYear'] = $madeYearArr;
+        $aspect_count++;
+    }
+}
 
+//Check if model selected while search
+if (isset($model) && $model != '' && $model != 'Not+Specified') {
+    $where .= "&aspectFilter(".$aspect_count.").aspectName=Model";
+    $manfCount = 0;                
+    if (is_array($model)) {
+        $searched .= ' Model: <span class="searched">';
+        $manufacturer = array_filter($model);
+        foreach($model as $mnf) {
+            $where .= "&aspectFilter(".$aspect_count.").aspectValueName($manfCount)=".urlencode(urldecode($mnf));
+            $manfCount++;
+            if ($manfCount<count($model)) {
+                $searched .=$mnf.",";
+            }else{
+                 $searched .=$mnf;
+            }
+        }
+        $searched .= '</span>';
+    }else{
+        $where .= "&aspectFilter(".$aspect_count.").aspectValueName=".urlencode(urldecode($model));
+        $searched .= ', Model: <span class="searched">'.urldecode($model).'</span>';
+    }
+    $dataArray['carName'] = urldecode($model); 
+    $aspect_count++;
+}
+
+//Check if style selected while search
+if (isset($style) && $style != '' && $style != 'Not+Specified') {
+    $where .= "&aspectFilter(".$aspect_count.").aspectName=Style";
+    $where .= "&aspectFilter(".$aspect_count.").aspectValueName=".urlencode(urldecode($style));
+    $searched .= ', Style: <span class="searched">'.urldecode($style).'</span>';
+    $dataArray['style'] = urldecode($style); 
+    $aspect_count++;
+}
+
+//Check if price selected while search
+$filterarray = array();
 if (isset($price) && $price != '') {
 	$price = explode('~', $price);	
 	$filterarray[] = array(
@@ -160,12 +166,12 @@ if (isset($price) && $price != '') {
 						'paramValue' => 'USD');
 	
 	$searched .= " with price range <span class=\"searched\"> $".$price[0] * 1000 ." USD  to $".$price[1] * 1000 ." USD </span>";	
-	
 	$dataArray['price'] = array('0'=>(int)$price[0]*1000,'1'=>(int)$price[1]*1000);
-	
 }
+
+//Only Buy It Now Section
 $val = array('FixedPrice','StoreInventory','AuctionWithBIN');
-	
+
 $filterarray[] =  array(
 					'name' => 'ListingType',
 					'value' => $val,
@@ -173,6 +179,7 @@ $filterarray[] =  array(
 					'paramValue' => ''
 					);
 
+//Create Table for cache
 $userTblName = 'temp_'.$_SESSION['unique_id'][0];
 
 if (!isset($_SESSION['products'])) {
@@ -189,6 +196,7 @@ if (!isset($_SESSION['products'])) {
 	
 }
 
+//Get Pagination Parameters
 if (!isset($_GET['page'])) {
 	$_SESSION['products'] = array();
 	$_SESSION['products']['fill'] = true;
@@ -246,7 +254,6 @@ if ($_SESSION['products']['fill']) {
 	// Build the indexed item filter URL snippet
 	buildURLArray($filterarray);
 
-	
 	// Construct the findItemsByKeywords HTTP GET call 
 	$apicall = "$endpoint?";
 	$apicall .= "OPERATION-NAME=findItemsAdvanced";
@@ -387,14 +394,6 @@ if ($num != 0) {
 	}
 }
 
-
-//~ if (count($_GET) == 0 && count($_POST) == 0 && !isset($_SESSION['mysearch'][0])) {
-	//~ $my_file = 'file.txt';
-	//~ $handle = @fopen($my_file, 'w+') or die('Cannot open file:  '.$my_file);
-	//~ fwrite($handle, $pages->items_total);
-	//~ fclose($handle);
-//~ }
-
 $carPages = new Paginator;
 
 // If there is a selection or value of limit then the list box should show that value , so we have to lock that options //
@@ -427,6 +426,6 @@ $addCarToQuery = '';
 $carPages->items_total  = $common->total_getCarListWithAttr();
 $carPages->paginate();
 $all_car = $common->getCarListWithAttr($carPages->limit, array("fullName", "mileage", "price", "features", "description"));	
-//print_r($all_car );
+
 
 

@@ -1,32 +1,28 @@
-  <div class="main_middle">
-    <div class="middle">
-     <div class="middle_two">
-     <img class="top_page_banner" src="<?php echo DEFAULT_URL."/images/banner/banner_02_988x166.jpg"?>" alt="<?php  echo $terms->name; ?>"/>
-     
-     <div class="bread-crumbs">
-		 <ul class="brb-ul">
-		 	<li><a href="<?php echo DEFAULT_URL; ?>"><img src="/images/car-icon.png" alt=""></a></li>
-		    <li><a href="<?php echo DEFAULT_URL; ?>/page/<?php echo $terms->slug; ?>" class="bread-cus-active"><?php  echo $terms->name; ?></a></li>
-		 </ul>
- 	</div>
-     
-     <div class="inner_page_one">
-        <div class="inner_page_content_area">
-        <div class="inner_page_content_area_top">&nbsp;</div>
-        <div class="head_1"><?php  echo $terms->name; ?></div>
-        <div class="qui_txt_area"><?php  echo $terms->desc; ?>
-          <?php
-          	if($terms->id == 50){
-				 include(LIST_ROOT."/includes/views/calculator.php");
-			}
-		  ?></div>
-          <div class="inner_page_content_area_bottom">&nbsp;</div>
+<section class="presentation-tabs">
+  <div class="container">
+      <div class="col-md-12 no-padding tabbable tabs-right wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s">
+        <div class="col-md-8 tab-content">
+          <ul class="nav nav-tabs hidden-md hidden-lg">
+            <li class="active">
+              <a href="#1" data-toggle="tab"><?php  echo $terms->name; ?></a>
+            </li>
+          </ul>
+
+           <div class="tab-pane active" id="1"> 
+             <?php  echo $terms->desc; ?> g
+           </div>
         </div>
-        
-        
-        <div class="clear"></div>
-      </div>   
- <?php  include(LIST_ROOT."/includes/views/staticsidebar.php"); ?>
-</div>
- <?php  include(LIST_ROOT."/includes/views/bottom_strip.php"); ?>
-</div></div>
+        <div class="col-md-4 no-right-padding wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
+          <ul class="nav nav-tabs hidden-xs hidden-sm">
+            <li class="active">
+              <a href="#1" data-toggle="tab">Comment ça marche?</a>
+            </li>
+          </ul>
+          <img src="images/condition-img-1.png" class="img-responsive center condition-img-1">
+          <img src="images/presentation-img-2.png" class="img-responsive center">
+        </div>
+      </div>
+      <!-- /tabs -->
+  </div>
+</section>
+
