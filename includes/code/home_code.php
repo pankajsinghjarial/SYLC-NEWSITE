@@ -54,3 +54,5 @@ function buildURLArray ($filterarray) {
 
 	return "$urlfilter";
 } // End of buildURLArray function
+
+

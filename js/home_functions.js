@@ -61,22 +61,26 @@ $(document).ready(function() {
 	
 	
 $(function(){
-		$("#manufacturer_select").multiselect({
+    $("#manufacturer_select").multiselect({
 		noneSelectedText: "Sélectionner",
 		selectedList: 0,
 		click: function(event, ui){
 			changeBrandSelect(ui.value, ui.checked);                
 		}
 	});
+    $("#model_select").multiselect({
+		noneSelectedText: "Modèles",
+		selectedList: 0
+	});
 });
 
 function changeBrandSelect(valueId, isChecked) {
 	if (isChecked) {
 	   $('#brand'+valueId).addClass('active-li');
-	   ajaxcallNew(valueId, 'manufacturer', 'model', '', 'append');
+	   getModelByMake(valueId,'append');
 	} else {
 		$('#brand'+valueId).removeClass('active-li');
-		ajaxcallNew(valueId, 'manufacturer', 'model', '', 'remove');
+		getModelByMake(valueId,'remove');
 	}
 }
 
@@ -94,6 +98,40 @@ function changeSel(val) {
 			$('.year_a').attr('disabled', 'disabled');
 		}
 	})(jQuery); 
+}
+function getModelByMake(brand,type){
+	$('#loader').show();
+	$('#model_select').next().hide();
+    var selectedModels = $('#manufacturer_select').val();
+    if(selectedModels === null){
+        selectedModels = [];
+    }
+    if(type == "remove"){
+        index = selectedModels.indexOf(brand);
+        selectedModels.splice(index, 1);
+    }else{
+        selectedModels.push(brand);
+    }console.log(selectedModels);
+	$.ajax({
+        type: "POST",
+        url: "/ajax/ajax_get_model.php",
+        data: {manufact : selectedModels},
+        dataType: "json",
+        success: function(data) {
+            var options = '';
+            if(data != '0'){
+                $.each(data, function(key,model){
+                    var selected = '';
+                    options += '<option value="' + model + '" ' + selected + '>' + model + '</option>';
+                }); 
+            }
+            $('#model_select').html(options);
+            $('#loader').hide();
+            $('#model_select').multiselect('refresh');
+            $('#model_select').next().show();
+        }
+   });
+
 }
 
 function ajaxcallNew(val, attribute, name, manufac, type, defaultVal) { 

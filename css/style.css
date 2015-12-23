@@ -4171,6 +4171,11 @@ background: #f00;
 	right:0;
 	top:6px;
 }
+/* Error Class for Validation */
+.error {
+color: red;
+}
+
 #calc_error_sdasfsdf .err{
 	border:#F00 solid 1px;
 	font-size:14px;
@@ -4419,4 +4424,26 @@ table, table td {
 img.primary-image {
   max-height: 411px;
   width: 100%;
+}
+/* Add for Contact page banner */
+.media-header-section{
+  background: url("../images/media/header-background.png") no-repeat; 
+  height: 360px;
+  margin-top: -45px;
+  background-size: 100%
+}
+#owl-demo.mostview .item img {
+  max-height: 131px;
+  min-height: 131px;
+  width: 100%;
+}
+ul.ui-multiselect-checkboxes.ui-helper-reset {
+  color: #555 !important;
+  font-weight: 100 !important;
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  background: #F2F2F2;
+}
+.activesort{
+  background:#DA2B10;
 }

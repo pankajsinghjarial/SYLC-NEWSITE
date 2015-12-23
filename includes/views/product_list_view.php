@@ -37,13 +37,10 @@
 							  Prix Bas au plus élevé
 							  <i class="fa fa-angle-down"></i>
 							</button>
-							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								  <li <?php if(@$sort =='price~asc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."sort=price~asc" ?>">Price: Low to High</a></li>
-								  <li <?php if(@$sort =='price~desc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."sort=price~desc" ?>">Price: High to Low</a></li>
-								  <li <?php if(@$sort =='title~asc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."sort=title~asc" ?>">Name: Ascending</a></li>
-								  <li <?php if(@$sort =='title~desc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."sort=title~desc" ?>">Name: Descinding</a></li>
-								</ul> 							
-							
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li <?php if(@$sort =='price~asc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."&sort=price~asc" ?>">Prix: Bas au plus chers</a></li>
+                                <li <?php if(@$sort =='price~desc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."&sort=price~desc" ?>">Prix: Chers au plus bas</a></li>
+                            </ul>
 						  </li>
 						</ul>
 					  </div> <!-- col-md-6 -->

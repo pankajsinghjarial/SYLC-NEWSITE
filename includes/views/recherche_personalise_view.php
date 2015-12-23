@@ -20,8 +20,8 @@
                   <label for="exampleInputEmail1">Marque:</label>
                   <select class="form-control">                    
                     <?php
-						foreach($modelList as $model) { ?>
-							<option value="<?php echo trim($model['value']) ?>" ><?php echo $model['value']; ?></option>
+						foreach(unserialize(MAKE_LIST) as $brand) { ?>
+							<option value="<?php echo trim($brand) ?>" ><?php echo $brand; ?></option>
 					<?php } ?>
                   </select>
                 </div>

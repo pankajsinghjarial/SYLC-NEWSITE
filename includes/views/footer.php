@@ -26,8 +26,8 @@
               <div class="col-md-2 col-sm-3 col-xs-6 no-padding text-footer contact-footer-left wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s">
                 <h1>A Propos de Nous</h1>
                 <ul class="list-unstyled">
-                  <li><a href="/page/logistique"><i class="fa fa-angle-right"></i> Logistique</a></li>
-                  <li><a href=""><i class="fa fa-angle-right"></i> News</li>
+                  <li><a href="/logistique"><i class="fa fa-angle-right"></i> Logistique</a></li>
+                  <li><a href=""><i class="fa fa-angle-right"></i> News</a></li>
                   <li><a href=""><i class="fa fa-angle-right"></i> Conditions de vente</a></li>
                   <li><a href="/contacts"><i class="fa fa-angle-right"></i> Contactz - Nous</a></li>
                 </ul>

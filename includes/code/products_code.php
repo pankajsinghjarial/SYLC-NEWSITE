@@ -5,12 +5,6 @@ extract($_GET);
 //Init neccessary classes
 $search = new search();
 $common = new common();
-//Fetch Brands for Search Drop Down
-$modelList = array();
-$manf= $common ->CustomQuery("SELECT * FROM `attribute_option_value` WHERE `attribute_id` = '2' ORDER BY `value`,`sort_order` ASC");
-while($row = mysql_fetch_assoc($manf)) {
-    $modelList[] = $row;
-}
 
 //Choosing which tab is selected
 $auctionClass = true;
@@ -23,71 +17,76 @@ if (isset($_GET['products']) && $_GET['products'] == 'inventory') { // Our Inven
 }
 
 //Checking if Brand Selected
-if (isset($_REQUEST['manufacturer'])) {
-	unset($_SESSION['mysearch']);
-	$_SESSION['mysearch'][] = $_REQUEST;
-}
+//~ if (isset($_REQUEST['manufacturer'])) {
+	//~ unset($_SESSION['mysearch']);
+	//~ $_SESSION['mysearch'][] = $_REQUEST;
+//~ }
 
 //Check if search is done previously and stored in session
-if(isset($_SESSION['mysearch'][0])){
-    extract($_SESSION['mysearch'][0]);
-}
+//~ if(isset($_SESSION['mysearch'][0])){
+    //~ extract($_SESSION['mysearch'][0]);
+//~ }
 
 //Get Wishlist Cars
-if (isset($_SESSION['User']['id']) && $_SESSION['User']['id'] > 0) {
-    $getSelectedCarListSQL = "SELECT car_id from wishlist where user_id = ".$_SESSION['User']['id'];
-    $result = mysql_query($getSelectedCarListSQL);
-    while($row = mysql_fetch_assoc($result)) {
-        $favList[] = $row['car_id'];
-    }
-}
+//~ if (isset($_SESSION['User']['id']) && $_SESSION['User']['id'] > 0) {
+    //~ $getSelectedCarListSQL = "SELECT car_id from wishlist where user_id = ".$_SESSION['User']['id'];
+    //~ $result = mysql_query($getSelectedCarListSQL);
+    //~ while($row = mysql_fetch_assoc($result)) {
+        //~ $favList[] = $row['car_id'];
+    //~ }
+//~ }
 
 /*Fetch car listings from ebay API*/
 //Start creating request URL from the query string
 $where 		 = "&outputSelector(0)=PictureURLLarge";
 $searched    = '';
+
+//Make URL for sorting and paging
 $addtopaging = "?";
 include("functions/ebay_functions.php");
 $addtopaging1 = '';
-if ($_GET) {
-	$args = explode("&", $_SERVER['QUERY_STRING']);
-	foreach($args as $arg) {
-		if($arg == '') continue;
-		$keyval = explode("=", $arg);
-		if($keyval[0] == "page" ) $addtopaging1 .=  $arg . "&";
-		if($keyval[0] == "ipp" )  $addtopaging1  .=  $arg. "&";
-		if($keyval[0] != "page" && $keyval[0] != "ipp" && $keyval[0] != "sort") $addtopaging1 .= "&" . $arg;
-	}	
+if($_GET){
+    $args = explode("&",$_SERVER['QUERY_STRING']);
+    foreach($args as $arg){
+        if($arg == '') continue;
+        $keyval = explode("=",$arg);
+        if($keyval[0] != "page" && $keyval[0] != "ipp" && $keyval[0] != "sort") $addtopaging1 .= "&" . $arg;
+    }
 }
-
 
 $aspect_count = 0;
 $searched = '<br>You Searched for ';
 $where .= "&outputSelector(1)=AspectHistogram";
 
 //Check if brand selected while search
+$where .= "&aspectFilter(".$aspect_count.").aspectName=Make";
 if (isset($manufacturer)) {
-    $where .= "&aspectFilter(".$aspect_count.").aspectName=Make";
-            $manfCount = 0;                
-            if (is_array($manufacturer)) {
-                $searched .= ' Manufacturer: <span class="searched">';
-                $manufacturer = array_filter($manufacturer);
-                foreach($manufacturer as $mnf) {
-                    $where .= "&aspectFilter(".$aspect_count.").aspectValueName($manfCount)=".urlencode(urldecode($mnf));
-                    $manfCount++;
-                    if ($manfCount<count($manufacturer)) {
-                        $searched .=$mnf.",";
-                    }else{
-                         $searched .=$mnf;
-                    }
-                }
-                $searched .= '</span>';
+    $manfCount = 0;                
+    if (is_array($manufacturer)) {
+        $searched .= ' Manufacturer: <span class="searched">';
+        $manufacturer = array_filter($manufacturer);
+        foreach($manufacturer as $mnf) {
+            $where .= "&aspectFilter(".$aspect_count.").aspectValueName($manfCount)=".urlencode(urldecode($mnf));
+            $manfCount++;
+            if ($manfCount<count($manufacturer)) {
+                $searched .=$mnf.",";
             }else{
-                $where .= "&aspectFilter(".$aspect_count.").aspectValueName=".urlencode(urldecode($manufacturer));
-                $searched .= ' Manufacturer: <span class="searched">'.urldecode($manufacturer).'</span>';
-            }		
-    
+                 $searched .=$mnf;
+            }
+        }
+        $searched .= '</span>';
+    }else{
+        $where .= "&aspectFilter(".$aspect_count.").aspectValueName=".urlencode(urldecode($manufacturer));
+        $searched .= ' Manufacturer: <span class="searched">'.urldecode($manufacturer).'</span>';
+    }
     $dataArray['manufacturer'] = $common->getIdByOptionName(2,urldecode($manufacturer));
+    $aspect_count++;
+}else{
+    $manfCount = 0;
+    foreach(unserialize(MAKE_LIST) as $mnf) {
+        $where .= "&aspectFilter(".$aspect_count.").aspectValueName($manfCount)=".urlencode(urldecode($mnf));
+        $manfCount++;
+    }
     $aspect_count++;
 }
 
@@ -183,17 +182,15 @@ $filterarray[] =  array(
 $userTblName = 'temp_'.$_SESSION['unique_id'][0];
 
 if (!isset($_SESSION['products'])) {
-	
-	$common->customQuery('DROP TABLE IF EXISTS `'.$userTblName.'`');
-	$common->customQuery('CREATE TABLE `'.$userTblName.'` (
-							  `type` int(10) NOT NULL,
-							  `itemId` bigint(20) NOT NULL,
-							  `title` varchar(255) NOT NULL,
-							  `Price` float NOT NULL,
-							  `content` longtext
-							) ENGINE=MyISAM DEFAULT CHARSET=latin1');
-	$common->customQuery('INSERT INTO master_temp (user_id, tbl_name, lastAct) VALUES ("'.$_SESSION['unique_id'][0].'","'.$userTblName.'",'.getCurrentTimestamp().')');
-	
+    $common->customQuery('DROP TABLE IF EXISTS `'.$userTblName.'`');
+    $common->customQuery('CREATE TABLE `'.$userTblName.'` (
+                            `type` int(10) NOT NULL,
+                            `itemId` bigint(20) NOT NULL,
+                            `title` varchar(255) NOT NULL,
+                            `Price` float NOT NULL,
+                            `content` longtext
+                        ) ENGINE=MyISAM DEFAULT CHARSET=latin1');
+    $common->customQuery('INSERT INTO master_temp (user_id, tbl_name, lastAct) VALUES ("'.$_SESSION['unique_id'][0].'","'.$userTblName.'",'.getCurrentTimestamp().')');
 }
 
 //Get Pagination Parameters
@@ -271,7 +268,6 @@ if ($_SESSION['products']['fill']) {
 	$apicall .= "&descriptionSearch=true";
 	$apicall .= "$urlfilter";
 	if (isset($sort) && $sort != '') {
-		
 		$orderBy = explode('~',$sort);
 		$order = '';
 		if ($orderBy[0] == 'buyItNowPrice') {

@@ -40,7 +40,7 @@ $userToken = "AgAAAA**AQAAAA**aAAAAA**GsfITw**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6AFkY
 		'paramValue' => 'USD'),
 		array(
 		'name' => 'ListingType',
-		'value' => array('FixedPrice','StoreInventory','AuctionWithBIN','Auction'),
+		'value' => array('FixedPrice','StoreInventory','AuctionWithBIN'),
 		'paramName' => '',
 		'paramValue' => ''),
 	  );

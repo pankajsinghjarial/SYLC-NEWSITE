@@ -3,7 +3,7 @@
 extract($_POST);
 extract($_GET);
 
-include("functions/ebay_functions.php");
+include_once("functions/ebay_functions.php");
 $search = new search();
 $common = new common();
 
@@ -22,7 +22,7 @@ $no_exists_carids  = $ebayidExists = array();
       <div class="col-md-12">
         <h1>Les annonces de voitures americaines les plus vues:</h1>
       </div>
-      <div id="owl-demo" class="owl-carousel">
+      <div id="owl-demo" class="mostview owl-carousel">
 		  <?php
 			$ebayids = $common->CustomQuery("Select itemId from ebay_car where itemId in (" . implode(",", $carids) . ")");
 			while ($row = mysql_fetch_object($ebayids)) {

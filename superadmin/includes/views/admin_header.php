@@ -126,8 +126,30 @@ $(document).ready(function() {
             <!--[if lte IE 6]><table><tr><td><![endif]-->
             <div class="select_sub show">
               <ul class="sub">
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/page/index.php" >View all Pages</a></li>
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='add.php'){?>class="sub_show"<?php } ?> ><a href="<?=DEFAULT_ADMIN_URL?>/page/add.php">Add New Page</a></li>
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/page/index.php" >View all Pages</a>
+                </li>
+                
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='add.php'){?>class="sub_show"<?php } ?> >
+					<a href="<?=DEFAULT_ADMIN_URL?>/page/add.php">Add New Page</a>
+                </li>                
+               
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='news.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/page/news_category.php">View All News Category</a>
+				</li>
+
+                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='actionnews.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/page/actionnews_category.php">Add New News Category</a>
+				</li>
+
+				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='articles.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/page/articles.php">View All Articles</a>
+				</li>
+				
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='actionarticles.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/page/actionarticles.php">Add New Article</a>
+				</li>              
+                
               </ul>
             </div>
             <!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -247,7 +269,7 @@ $(document).ready(function() {
         </ul>
         
       <div class="nav-divider">&nbsp;</div>
-          <ul class="select<?php  if (strpos(array_shift(explode('?', $_SERVER['REQUEST_URI'])),'page')!== false){?> current<?php } ?>" >
+          <ul class="select<?php  if (strpos(array_shift(explode('?', $_SERVER['REQUEST_URI'])),'scrolling_manager')!== false){?> current<?php } ?>" >
           <li><a href="#nogo"><b>Scrolling Manager</b></a>
             <!--[if IE 7]><!--></a><!--<![endif]-->
 		
@@ -269,12 +291,31 @@ $(document).ready(function() {
             <!--[if lte IE 6]><table><tr><td><![endif]-->
             <div class="select_sub show">
               <ul class="sub">
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'home')!== false  && basename($_SERVER['REQUEST_URI'])=='welcome.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/home/welcome.php">Welcome</a></li>
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'home')!== false && basename($_SERVER['REQUEST_URI'])=='banner.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/home/banner.php">Add Rotating Banner</a></li>
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'home')!== false && basename($_SERVER['REQUEST_URI'])=='actionbanner.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/home/actionbanner.php">View Rotating Banner</a></li>
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'home')!== false && basename($_SERVER['REQUEST_URI'])=='aboutus.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/home/aboutus.php">About Us</a></li>
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'real_facts')!== false && basename($_SERVER['REQUEST_URI'])=='real_facts.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/home/real_facts.php">Real facts</a></li>
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'product_banner')!== false && basename($_SERVER['REQUEST_URI'])=='product_banner.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/home/product_banner.php">Product Banner</a></li>
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'home')!== false  && basename($_SERVER['REQUEST_URI'])=='welcome.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/home/welcome.php">Welcome</a>
+				</li>
+				
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'home')!== false && basename($_SERVER['REQUEST_URI'])=='banner.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/home/banner.php">Add Rotating Banner</a>
+                </li>
+                
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'home')!== false && basename($_SERVER['REQUEST_URI'])=='actionbanner.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/home/actionbanner.php">View Rotating Banner</a>
+				</li>
+				
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'home')!== false && basename($_SERVER['REQUEST_URI'])=='aboutus.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/home/aboutus.php">About Us</a>
+				</li>
+				
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'home')!== false && basename($_SERVER['REQUEST_URI'])=='real_facts.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/home/real_facts.php">Real facts</a>
+				</li>
+				
+                <li <?php if (strpos($_SERVER['REQUEST_URI'],'home')!== false && basename($_SERVER['REQUEST_URI'])=='product_banner.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/home/product_banner.php">Product Banner</a>
+                </li>
+                
+            
                 
               </ul>
             </div>

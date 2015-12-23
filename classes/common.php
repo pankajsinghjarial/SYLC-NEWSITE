@@ -503,4 +503,73 @@ VALUES ($carid,1) ");
 	    }
 	    return $admin_emails;
 	}
+    
+    /* *
+     * Function to get list of Models using Brands
+     * @brands : string or array
+     * @return array/bool
+     */
+    function getModelsByBrands($brands = NULL){
+        $version = 849;
+        $devid = "E69WP8Z16P996R8H2K1EWU7LC2F4P4";
+        $appid = "francois-1656-442d-bf2d-37b84676c2fb";
+        $certid = "2f56d2cd-9d4b-45a5-8945-67c432f53d29";
+        $siteid = 0;
+        $callname = "GetCategories";
+        $accesToken="AgAAAA**AQAAAA**aAAAAA**fqSbVQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6AGkISjAJWBpg6dj6x9nY+seQ**An0BAA**AAMAAA**F5lNYkkTF5+eh9ORJHXXaAi0kOFTeYMNzeVxybYeVyTcvJWc8bn4auZqxUK25zO8gqfChFLU1b3UbRcgJmhoQcVqb0L7rmNpFctACptDN7zUw+iv9ZLeePmxUFivtc5KUtPa7XLYKF4khJc7l5MWBwtzGC7+QKPWNRBoccYnpz5X6n7KHymsf1sH00toTpSczFBzQGFQcP65pyioz45/QQ//8f90jOyFXs60nR0RGHItNnwjjfQy/J2U6AhXSorLl3jOhqJhMErkNrmzkv9hjTYlpVoWhlJWGz93O5YKzneDW3h/pgikw7taeC63EUNCMHqM5eP16e+o2iOUFJ+AhvN0t4joK8/7JLuhUggOJLDQFvp9T5wzRMSmhhPobmI/ABfN0EgxFbiNb/9hDelf9HotFt2MvCsoupqVzat3Kz+hGWlovE+qieoKrQOzSi8Rzm/DTNBEequJtPd7MOSX/boW0Y/Hl0hnyzPoszj6wCepHtSilZrLHL0RO3+9ocSmmTJKgi038+oIJS4wC81YP0bTBReu3HHM9/cb5b457JJZ0TSo/mX9Mv+tPfrsWmzo4huyXspp3KdjeaTOvn+IzfiOekrE3JDRi7aPUFgY00A/gpQTkT1bgabdIm9V86zJVXvRDJXfa7vp2nCaA2BuQzJF2RLIoW6CYDnOV7oLJsYRo7QKRaCY6S8rDmiJTgrd99zZSusNYldBCJuFAj4g0abmEmiJr2aCKEtL5wFb9UDNWM7v0J2IELjzAf+p0dF1";
+        $xml = '<?xml version="1.0" encoding="utf-8"?>
+                <GetCategoriesRequest xmlns="urn:ebay:apis:eBLBaseComponents">
+                <RequesterCredentials>
+                <eBayAuthToken>'.$accesToken.'</eBayAuthToken>
+                </RequesterCredentials>';
+        $manufacturers = unserialize(MAKE_LIST);
+        if(is_array($brands)){
+            foreach($brands as $brand){
+                $key = array_search(strtolower($brand),array_map('strtolower',$manufacturers));
+                if($key){
+                    $xml .= '<CategoryParent>'.$key.'</CategoryParent>';
+                }
+            }
+        }else{
+            $key = array_search(strtolower($brands),array_map('strtolower',$manufacturers));
+            if($key){
+                $xml .= '<CategoryParent>'.$key.'</CategoryParent>';
+            }
+        }
+        $xml .='<DetailLevel>ReturnAll</DetailLevel>
+                <LevelLimit>4</LevelLimit>
+                </GetCategoriesRequest>';
+
+        $ch = curl_init("https://api.ebay.com/ws/api.dll?siteid=$siteid");
+
+        $headers =	array('X-EBAY-API-COMPATIBILITY-LEVEL: '.$version,
+                          'X-EBAY-API-DEV-NAME: '.$devid,
+                          'X-EBAY-API-APP-NAME: '.$appid,
+                          'X-EBAY-API-CERT-NAME: '.$certid,
+                          'X-EBAY-API-CALL-NAME: '.$callname,
+                          'X-EBAY-API-SITEID: '.$siteid);
+
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+
+        $output = curl_exec($ch);
+        curl_close($ch);
+        $res =  simplexml_load_string($output);
+        $models = array();
+        foreach($res->CategoryArray->Category as $category){
+            if($category->CategoryLevel == 4){
+                $models[] = (string)$category->CategoryName;
+            }
+        }
+        if(!empty($models)){
+            $models = array_unique($models);
+            asort($models);
+            return $models;
+        }else{
+            return false;
+        }
+    }
 }

@@ -22,7 +22,7 @@
 </div>
 
 <?php
-		/*search box*/
+    /*search box*/
 	include(LIST_ROOT."/includes/views/inc/search.php");
 ?>   
 
@@ -45,47 +45,40 @@
                           <div class="tab-pane fade in active" id="tab1default">
                             <div class="col-md-12 no-padding car-imgs1">
                               <div class="col-md-3 no-padding">
-                                <img src="images/pony-car.png" class="img-responsive">
-                                  <h3>PONY</h3>
+                                <a title="PONY" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Chevrolet&manufacturer[]=Ford&manufacturer[]=Pontiac&manufacturer[]=Mercury&model[]=Mustang&model[]=Camaro&model[]=cougar&model[]=Firebird&madeYear[]=1965&madeYear[]=1968"><img src="images/pony-car.png" class="img-responsive"></a>
+                                <a title="PONY" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Chevrolet&manufacturer[]=Ford&manufacturer[]=Pontiac&manufacturer[]=Mercury&model[]=Mustang&model[]=Camaro&model[]=cougar&model[]=Firebird&madeYear[]=1965&madeYear[]=1968"><h3>PONY</h3></a>
+                              </div>
+                              <div class="col-md-3 no-padding">
+                                <a title="Muscle Car" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&manufacturer[]=Dodge&manufacturer[]=Chevy&model[]=Mustang&model[]=Charger&model[]=cougar&model[]=Challenger&model[]=Chevelle&madeYear[]=1965&madeYear[]=1973"><img src="images/muscl-car.png" class="img-responsive"></a>
+                                <a title="Muscle Car" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&manufacturer[]=Dodge&manufacturer[]=Chevy&model[]=Mustang&model[]=Charger&model[]=cougar&model[]=Challenger&model[]=Chevelle&madeYear[]=1965&madeYear[]=1973"><h3>Muscle Car</h3></a>
+                              </div>
+                              <div class="col-md-3 no-padding">
+                                <a title="Pick ups" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&manufacturer[]=Chevy&manufacturer[]=Chevrolet&manufacturer[]=GMC&model[]=Pickup&model[]=Other Pickups&madeYear[]=1940&madeYear[]=1979"><img src="images/pick-car.png" class="img-responsive"></a>
+                                <a title="Pick ups" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&manufacturer[]=Chevy&manufacturer[]=Chevrolet&manufacturer[]=GMC&model[]=Pickup&model[]=Other Pickups&madeYear[]=1940&madeYear[]=1979"><h3>Pick ups</h3></a>
                                 
                               </div>
                               <div class="col-md-3 no-padding">
-                                <img src="images/muscl-car.png" class="img-responsive">
-                                  <h3>Muscle Car</h3>
-                                
-                              </div>
-                              <div class="col-md-3 no-padding">
-                                <img src="images/pick-car.png" class="img-responsive">
-                                  <h3>Pick ups</h3>
-                                
-                              </div>
-                              <div class="col-md-3 no-padding">
-                                <img src="images/cab-car.png" class="img-responsive">
-                                  <h3>Cabriolet</h3>
-                                
+                                <a title="Cabriolet" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&manufacturer[]=Chevy&manufacturer[]=Corvette&manufacturer[]=Cadillac&manufacturer[]=Buick&model[]=Thunderbird&model[]=Mustang&model[]=Camaro&model[]=C1&model[]=C2&model[]=C3&model[]=Eldorado&model[]=Riviera&model[]=Model A&madeYear[]=1920&madeYear[]=1980"><img src="images/cab-car.png" class="img-responsive"></a>
+                                <a title="Cabriolet" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&manufacturer[]=Chevy&manufacturer[]=Corvette&manufacturer[]=Cadillac&manufacturer[]=Buick&model[]=Thunderbird&model[]=Mustang&model[]=Camaro&model[]=C1&model[]=C2&model[]=C3&model[]=Eldorado&model[]=Riviera&model[]=Model A&madeYear[]=1920&madeYear[]=1980"><h3>Cabriolet</h3></a>
                               </div>
                             </div>
-                            
-
                             <div class="col-md-12 no-padding car-imgs2">
                               <div class="col-md-3 no-padding">
-                                <img src="images/sedan-car.png" class="img-responsive">
-                                  <h3>SEDAN</h3>
-                                
+                                <a title="SEDAN" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Chevrolet&manufacturer[]=Cadillac&manufacturer[]=Buick&style[]=Sedan&madeYear[]=1920&madeYear[]=1960"><img src="images/sedan-car.png" class="img-responsive"></a>
+                                <a title="SEDAN" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Chevrolet&manufacturer[]=Cadillac&manufacturer[]=Buick&style[]=Sedan&madeYear[]=1920&madeYear[]=1960"><h3>SEDAN</h3></a>
                               </div>
                               <div class="col-md-3 no-padding">
-                                <img src="images/hot-car.png" class="img-responsive">
-                                  <h3>HOT ROD</h3>
+                                <a title="HOT ROD" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&model[]=Model A&model[]=Model T&madeYear[]=1920&madeYear[]=1960"><img src="images/hot-car.png" class="img-responsive"></a>
+                                <a title="HOT ROD" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&model[]=Model A&model[]=Model T&madeYear[]=1920&madeYear[]=1960"><h3>HOT ROD</h3></a>
+                              </div>
+                              <div class="col-md-3 no-padding">
+                               <a title="Porsche US" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Porsche&model[]=911&model[]=356&madeYear[]=1956&madeYear[]=1986"><img src="images/porsche-car.png" class="img-responsive"></a>
+                                <a title="Porsche US" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Porsche&model[]=911&model[]=356&madeYear[]=1956&madeYear[]=1986"><h3>Porsche US</h3></a>
                                
                               </div>
                               <div class="col-md-3 no-padding">
-                               <img src="images/porsche-car.png" class="img-responsive">
-                                  <h3>Porsche US</h3>
-                               
-                              </div>
-                              <div class="col-md-3 no-padding">
-                                <img src="images/merceds-car.png" class="img-responsive">
-                                  <h3>Mercedes US</h3>
+                                <a title="Mercedes US" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Mercedes-Benz&madeYear[]=1950&madeYear[]=1986"><img src="images/merceds-car.png" class="img-responsive"></a>
+                                <a title="Mercedes US" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Mercedes-Benz&madeYear[]=1950&madeYear[]=1986"><h3>Mercedes US</h3></a>
                                 
                               </div>
                             </div>
@@ -105,63 +98,63 @@
                             <div class="col-md-12 tabs-2">
                               <div class="col-md-3">
                                 <ul class="list-unstyled">
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Alfa+Romeo' ?>"><i class="fa fa-chevron-circle-right"></i> Alfa Romeo</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Bentley' ?>"><i class="fa fa-chevron-circle-right"></i> Bentley</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Chevrolet' ?>"><i class="fa fa-chevron-circle-right"></i> Chevrolet</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=DeSoto' ?>"><i class="fa fa-chevron-circle-right"></i> DeSoto</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Ferrari' ?>"><i class="fa fa-chevron-circle-right"></i> Ferrari</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Jaguar' ?>"><i class="fa fa-chevron-circle-right"></i> Jaguar</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Maserati' ?>"><i class="fa fa-chevron-circle-right"></i> Maserati</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Nissan' ?>"><i class="fa fa-chevron-circle-right"></i> Nissan</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Porsche' ?>"><i class="fa fa-chevron-circle-right"></i> Porsche</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Shelby' ?>"><i class="fa fa-chevron-circle-right"></i> Shelby</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Volkswagen' ?>"><i class="fa fa-chevron-circle-right"></i> Volkswagen</li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Alfa+Romeo&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Alfa Romeo</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Bentley&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Bentley</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Chevrolet&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Chevrolet</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=DeSoto&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> DeSoto</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Ferrari&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Ferrari</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Jaguar&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Jaguar</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Maserati&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Maserati</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Nissan&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Nissan</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Porsche&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Porsche</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Shelby&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Shelby</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Volkswagen&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Volkswagen</li>
                                   
                                 </ul>
                               </div>
                               <div class="col-md-3">
                                 <ul class="list-unstyled">
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=AMC' ?>"><i class="fa fa-chevron-circle-right"></i> AMC</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=BMW' ?>"><i class="fa fa-chevron-circle-right"></i> BMW</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Chrysler' ?>"><i class="fa fa-chevron-circle-right"></i> Chrysler</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=De+Tomaso' ?>"><i class="fa fa-chevron-circle-right"></i> De Tomaso</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Fiat' ?>"><i class="fa fa-chevron-circle-right"></i> FIAT</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Jeep' ?>"><i class="fa fa-chevron-circle-right"></i> Jeep</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=McLaren' ?>"><i class="fa fa-chevron-circle-right"></i> McLaren</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Oldsmobile' ?>"><i class="fa fa-chevron-circle-right"></i> Oldsmobile</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Ram' ?>"><i class="fa fa-chevron-circle-right"></i> RAM</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Studebaker' ?>"><i class="fa fa-chevron-circle-right"></i> Studebaker</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Willys' ?>"><i class="fa fa-chevron-circle-right"></i> Willys</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=AMC&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> AMC</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=BMW&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> BMW</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Chrysler&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Chrysler</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=De+Tomaso&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> De Tomaso</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Fiat&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> FIAT</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Jeep&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Jeep</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=McLaren&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> McLaren</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Oldsmobile&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Oldsmobile</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Ram&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> RAM</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Studebaker&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Studebaker</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Willys&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Willys</a></li>
                                 </ul>
                               </div>
                               <div class="col-md-3">
                                 <ul class="list-unstyled">
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Aston+Martin' ?>"><i class="fa fa-chevron-circle-right"></i> Aston Martin</li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Buick' ?>"><i class="fa fa-chevron-circle-right"></i> Buick</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Datsun' ?>"><i class="fa fa-chevron-circle-right"></i> Datsun</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Dodge' ?>"><i class="fa fa-chevron-circle-right"></i> Dodge</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Ford' ?>"><i class="fa fa-chevron-circle-right"></i> Ford</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Lamborghini' ?>"><i class="fa fa-chevron-circle-right"></i> Lamborghini</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Mercedes-Benz' ?>"><i class="fa fa-chevron-circle-right"></i> Mercedes-Benz</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Plymouth' ?>"><i class="fa fa-chevron-circle-right"></i> Plymouth</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Replica%20%26%20Kit%20Makes' ?>"><i class="fa fa-chevron-circle-right"></i> Replica</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Triumph' ?>"><i class="fa fa-chevron-circle-right"></i> Triumph</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Zimmer' ?>"><i class="fa fa-chevron-circle-right"></i> Zimmer</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Aston+Martin&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Aston Martin</li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Buick&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Buick</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Datsun&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Datsun</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Dodge&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Dodge</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Ford&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Ford</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Lamborghini&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Lamborghini</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Mercedes-Benz&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Mercedes-Benz</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Plymouth&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Plymouth</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Replica%20%26%20Kit%20Makes&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Replica</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Triumph&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Triumph</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Zimmer&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Zimmer</a></li>
                                 </ul>
                               </div>
 
                               <div class="col-md-3">
                                 <ul class="list-unstyled">
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Audi' ?>"><i class="fa fa-chevron-circle-right"></i> Audi</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Cadillac' ?>"><i class="fa fa-chevron-circle-right"></i> Cadillac</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=DeLorean' ?>"><i class="fa fa-chevron-circle-right"></i> DeLorean</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Excalibur' ?>"><i class="fa fa-chevron-circle-right"></i> Excalibur</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=GMC' ?>"><i class="fa fa-chevron-circle-right"></i> GMC</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Lincoln' ?>"><i class="fa fa-chevron-circle-right"></i> Lincoln</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Mercury' ?>"><i class="fa fa-chevron-circle-right"></i> Mercury</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Pontiac' ?>"><i class="fa fa-chevron-circle-right"></i> Pontiac</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=Rolls-Royce' ?>"><i class="fa fa-chevron-circle-right"></i> Rolls-Royce</a></li>
-                                  <li><a href="<?php echo $searchUrl.'manufacturer%5B%5D=TVR' ?>"><i class="fa fa-chevron-circle-right"></i> TVR</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Audi&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Audi</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Cadillac&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Cadillac</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=DeLorean&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> DeLorean</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Excalibur&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Excalibur</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=GMC&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> GMC</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Lincoln&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Lincoln</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Mercury&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Mercury</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Pontiac&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Pontiac</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=Rolls-Royce&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> Rolls-Royce</a></li>
+                                  <li><a href="<?php echo $searchUrl.'manufacturer[]=TVR&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-chevron-circle-right"></i> TVR</a></li>
                                 </ul>
                               </div>
                             </div>
@@ -254,7 +247,7 @@
   <div class="container">
     <div class="row">
 		<?php echo $realFactsContent;?>
-     <form class="form-inline wow fadeInDown" id="addvalidation" method="post" data-wow-duration="2s" data-wow-delay=".5s">
+     <form class="form-inline wow fadeInDown" name="realfact" id="addvalidation" method="post" data-wow-duration="2s" data-wow-delay=".5s">
 
         <div class="col-md-4 col-sm-12 col-xs-12 form-group no-padding">
           <input type="text" class="form-control" id="exampleInputEmail3" name="fname" placeholder="Nom">

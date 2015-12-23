@@ -8,26 +8,18 @@
 		$class = "list-ciiii";
 		$text = '<img src="<?php echo DEFAULT_URL; ?>/images/ash-bg.png" class="img-responsive commence">';
 	}
-?>
-<?php if(!empty($manufacturer)){
-	$manufacturerNameArray = array();
-	foreach( $manufacturer as $key => $value ) {
-		$manufacturerNameArray[trim($value)] = trim($value);
-		?> 
-		<script> 
-			ajaxcallNew('<?php echo trim($value)?>','manufacturer','model','','append');
-			
-			jQuery("#model_select").find("option").each(function(){
-				alert();
-				if(jQuery(this).val() == "<?php echo $model; ?>"){
-					jQuery(this).attr("selected","selected");
-				}
-			});
-		</script>
-		<?php
-	} 
 
-}?>
+    //Get Selected Brands
+    $selectedBrands = array();
+    if(isset($_GET['manufacturer'])){
+        $selectedBrands = $_GET['manufacturer'];
+    }
+    $brands = unserialize(MAKE_LIST);
+    $modelLists = array();
+    if(!empty($selectedBrands)){
+        $modelLists = $common->getModelsByBrands($selectedBrands);
+    }
+?>
 <section class="ciiii">
   <div class="container">
     <div class="row">
@@ -46,21 +38,20 @@
 
 				<div class="all-slect-form">
 				
-				  <div class=" form-group for-sm">
-					<div class="">
-						<select class="form-control prothom"  id="manufacturer_select" multiple="multiple"  name="manufacturer[]" >
-							<?php
-								foreach($modelList as $model) { ?>
-									<option value="<?php echo trim($model['value']) ?>" <?php if ( @$manufacturerNameArray[trim($model['value'])] == trim($model['value']) )  { ?>selected="selected"<?php } ?> ><?php echo $model['value']; ?></option>
-							<?php } ?> 
-						 </select>
-					 </div> 
-				  </div>
+                    <div class=" form-group for-sm">
+                        <div class="">                  
+                            <select class="form-control prothom"  id="manufacturer_select" multiple="multiple" name="manufacturer[]" >
+                                <?php
+                                foreach($brands as $brand) { ?>
+                                    <option value="<?php echo trim($brand) ?>" <?php if (!empty($selectedBrands)) { if(in_array($brand,$selectedBrands)){ ?>selected="selected"<?php }} ?> ><?php echo $brand; ?></option>
+                                <?php }?> 
+                            </select>
+                        </div> 
+                    </div>
 
 				   <div class="form-group for-sm">
 					<div class="selt-box">
-					  <select class="form-control" name="model" id="model_select">
-						<option value="">Modèles</option>         
+					  <select class="form-control prothom" name="model[]" multiple="multiple" id="model_select">
 					  </select>					  
 					</div>
 						<div id="loader">
@@ -132,8 +123,6 @@
 				</div>
 		</form>
         </div>
-
-        
       </div>
     </div>
   </div>

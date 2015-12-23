@@ -67,7 +67,7 @@
               <ul class="dropdown-menu">
                 <li><a href="<?php echo DEFAULT_URL;?>/products"><i class="fa fa-angle-right"></i> Annonces USA actuelles</a></li>
                 <li><a href="<?php echo DEFAULT_URL;?>/products?products=inventory"><i class="fa fa-angle-right"></i> Notre Inventaire </a></li>
-                <li><a href="<?php echo DEFAULT_URL;?>/recherche-personalise.html"><i class="fa fa-angle-right"></i> Recherche Personnalisée</a></li>
+                <li><a href="/recherche_personalise"><i class="fa fa-angle-right"></i> Recherche Personnalisée</a></li>
                 <li><a href="<?php echo DEFAULT_URL;?>/accessories"><i class="fa fa-angle-right"></i> Accessoires Vintages</a></li>
               </ul>
             </li>

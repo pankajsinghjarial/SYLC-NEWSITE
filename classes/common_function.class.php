@@ -136,6 +136,20 @@ class commonFunction extends utility{
 		}
 /*---------------------------------------------------------------------------------------------*/		
 
+		/********************************************
+		*                                           *
+		* Function to get substring of string		  *
+		*          						             *
+		********************************************/
+		
+		function getSubstring($string, $endlength = 200, $endString = '...') {
+			
+			$newString = substr($string, 0 , $endlength);
+			if (strlen($string) > $endlength) {
+				$newString .= $endString;
+			}
+			return $newString;
+		}
 
 }
 		

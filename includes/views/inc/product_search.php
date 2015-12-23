@@ -1,12 +1,3 @@
-<?php
-//Get Brands List
-//~ $modelList = array();
-//~ $manf= $common ->CustomQuery("SELECT * FROM `attribute_option_value` WHERE `attribute_id` = '2' ORDER BY `value`,`sort_order` ASC");
-//~ while($row = mysql_fetch_assoc($manf)) {
-    //~ $modelList[] = $row;
-//~ }
-?>
-
 <!--Search scripts-->
 <script type="text/javascript" src="<?php echo DEFAULT_URL ?>/js/jquery.multiselect.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo DEFAULT_URL ?>/css/jquery.multiselect.css" />
@@ -25,35 +16,41 @@
               <h2>Recherche</h2>
               <a href="<?php echo DEFAULT_URL ?>/advancesearch">Recherche Avancée</a>
             </div>
-			<?php if(!empty($manufacturer)){
-				$manufacturerNameArray = array();
-				foreach( $manufacturer as $key => $value ) {
-					$manufacturerNameArray[trim($value)] = trim($value);
-					?> 
-					<script type="text/javascript"> 
-						ajaxcallNew('<?php echo trim($value)?>','manufacturer','model','','append','<?php echo $model; ?>');
-					</script>
-					<?php
-				} 
-
-			}?>
+			<?php
+                //Get Selected Brands
+                $selectedBrands = array();
+                if(isset($_GET['manufacturer'])){
+                    $selectedBrands = $_GET['manufacturer'];
+                }
+                $brands = unserialize(MAKE_LIST);
+                $modelLists = array();
+                if(!empty($selectedBrands)){
+                    $modelLists = $common->getModelsByBrands($selectedBrands);
+                }
+            ?>
             <div class="all-slect-form">
             
-             <div class=" form-group for-sm">
+            <div class=" form-group for-sm">
                 <div class="">                  
-                  <select class="form-control prothom"  id="manufacturer_select" multiple="multiple"  name="manufacturer[]" >
-							<?php
-								foreach($modelList as $model) { ?>
-									<option value="<?php echo trim($model['value']) ?>" <?php if ( @$manufacturerNameArray[trim($model['value'])] == trim($model['value']) )  { ?>selected="selected"<?php } ?> ><?php echo $model['value']; ?></option>
-							<?php }?> 
-						 </select>
-                 </div> 
-              </div>
+                    <select class="form-control prothom"  id="manufacturer_select" multiple="multiple" name="manufacturer[]" >
+                        <?php
+                        foreach($brands as $brand) { ?>
+                            <option value="<?php echo trim($brand) ?>" <?php if (!empty($selectedBrands)) { if(in_array($brand,$selectedBrands)){ ?>selected="selected"<?php }} ?> ><?php echo $brand; ?></option>
+                        <?php }?> 
+                    </select>
+                </div> 
+            </div>
 
                <div class="form-group for-sm">
                 <div class="selt-box">
-                    <select class="form-control" name="model" id="model_select">
-						<option value="">Modèles</option>         
+                    <select class="form-control prothom" name="model[]" id="model_select" multiple="multiple">
+						<?php 
+                            if(is_array($modelLists) && !empty($modelLists)){
+                                foreach($modelLists as $modelName){?>
+                                    <option value="<?php echo trim($modelName) ?>" <?php if (isset($_GET['model']) && !empty($_GET['model'])) { if(in_array($modelName,$_GET['model'])){ ?>selected="selected"<?php } }?> ><?php echo $modelName; ?></option>
+                                <?php }
+                            }
+                        ?>
 					</select>	
                 </div>
                 <div id="loader">
