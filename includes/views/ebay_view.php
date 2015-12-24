@@ -388,7 +388,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-4 product-form-2">
-                                <input type="text" class="form-control" name="logistique_pays1" id="inputPassword" placeholder="$3000.00" value="2600">
+                                <input type="text" readonly="readonly" class="form-control" name="logistique_pays1" id="inputPassword" placeholder="$3000.00" value="<?php echo $prestation;?>">
                             </div>
                         </div>
                         <div class="form-group">
@@ -401,7 +401,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-4 product-form-2">
-                                <input type="text" class="form-control" name="transport_terrestre1" id="inputPassword" value="650" placeholder="$1200.00">
+                                <input type="text" readonly="readonly" class="form-control" name="transport_terrestre1" id="inputPassword" value="<?php echo $transportUSA;?>" placeholder="$1200.00">
                             </div>
                         </div>
                         <div class="form-group">
@@ -414,19 +414,19 @@
                                 </select>
                             </div>
                             <div class="col-sm-4 product-form-2">
-                                <input type="text" class="form-control" name="transport_international1" id="inputPassword" placeholder="$2000.00" value="1450">
+                                <input type="text" readonly="readonly" class="form-control" name="transport_international1" id="inputPassword" placeholder="$2000.00" value="<?php echo $transport;?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-8 control-label trans-leb">Bank, fedex and doc fees:</label>
                             <div class="col-sm-4 product-form-2">
-                                <input type="text" class="form-control" id="inputPassword" placeholder="$260.00">
+                                <input type="text" readonly="readonly" class="form-control" value="<?php echo $bank;?>" id="inputPassword" placeholder="$260.00">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-7 control-label trans-leb">Frais Transitaire - Débarquement, Traction & Dépotage:</label>
                             <div class="col-sm-5 product-form-2">
-                                <input type="text" class="form-control" id="inputPassword" placeholder="€780.00">
+                                <input type="text" readonly="readonly" class="form-control" value="<?php echo $frais;?>" id="inputPassword" placeholder="€780.00">
                             </div>
                         </div>
                     </form>
@@ -436,13 +436,13 @@
                     <div class="col-md-9 no-padding">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"> Homologation - Francisation, passage aux mines<br> 
+                                <input id="chkHomologation" type="checkbox"> Homologation - Francisation, passage aux mines<br> 
                                 <h3 class="leger">pour tous vehicule léger obligatoire pout tout vehicule de moins de 30 ans</h3>
                             </label>
                         </div>
                     </div>
                     <div class="col-md-3 homolgy no-padding"> 
-                        <input type="text" class="form-control" id="inputPassword" placeholder="€">
+                        <input type="text" class="form-control" readonly="readonly" id="txtHomologation" placeholder="€">
                     </div>
                 </div>
                 <div class="col-md-12 prixi-1">
@@ -451,12 +451,12 @@
                         <div class="checkbox">
                             <h3 class="rendu">H.T rendu le port sélectionné </h3>
                             <label>
-                                <input type="checkbox"> Voiture 30 ans et plus 
+                                <input id="chkOverThirty" type="checkbox"> Voiture 30 ans et plus 
                             </label>
                         </div>
                     </div>
                     <div class="col-md-6 form-150"> 
-                        <input type="text" class="form-control" id="inputPassword" placeholder="15068">
+                        <input type="text" class="form-control" id="priceHT" readonly="readonly" value="<?php echo $priceHT;?>" placeholder="15068">
                     </div>
                 </div>
                 <div class="col-md-12 prixi-2">
@@ -466,7 +466,7 @@
                         <h3>le port selectionné </h3> 
                     </div>
                     <div class="col-md-6 no-padding"> 
-                            <input type="text" class="form-control" id="inputPassword" placeholder="26,848.80">
+                            <input type="text" class="form-control" readonly="readonly" value="<?php echo $priceTTC;?>" id="priceTTC" placeholder="26,848.80">
                     </div>
                 </div>
                 <div class="col-md-12 product-right-bottom">
@@ -518,7 +518,12 @@
         </div>
     </div>
 </section>
-
+<input type="hidden" id="prestation" value="<?php echo $prestation;?>" />
+<input type="hidden" id="transportUSA" value="<?php echo $transportUSA;?>" />
+<input type="hidden" id="transport" value="<?php echo $transport;?>" />
+<input type="hidden" id="bank" value="<?php echo $bank;?>" />
+<input type="hidden" id="frais" value="<?php echo $frais;?>" />
+<input type="hidden" id="carPrice" value="<?php echo $carPrice;?>" />
 <script>
     $(document).ready(function(){
         $(".example5").colorbox();
@@ -528,26 +533,60 @@
         $(".product-close-icon").click(function(){
             $(".product-hide-show-form").hide('blind');
         });
+        $('#chkHomologation').on('change',function(){
+            if($('#chkHomologation:checked').length){
+                $('#txtHomologation').val(3500);
+            }else{
+                $('#txtHomologation').val('€');
+            }
+            updatePrix();
+        });
+        $('#chkOverThirty').on('change',function(){
+            updatePrix();
+        });
     });
     $('.paroduct-carosel img').click(function(){
         $('.primary-image').attr('src',$(this).attr('src'));
     });
     function wishlistcar(carid,cartype,carname,carimg,carprice){
-            if(!confirm("Are you sure to add this car to Favorite")){
-                return false;
+        if(!confirm("Are you sure to add this car to Favorite")){
+            return false;
+        }
+        var wishlist = $('#car_'+carid);
+        var chk = 'checked';
+        divname = "#saved"+carid;
+        $.ajax({
+            type: "POST",
+            url: "<?php echo DEFAULT_URL?>/ajax_wishlistcar.php",
+            data: { carid: carid, cartype: cartype, carname: carname, carimg: carimg, carprice: carprice, ischk: chk},
+            dataType: "html",
+            success: function(data) {
+                  $(divname).remove();
+                  alert('Ajouté à la liste');
             }
-            var wishlist = $('#car_'+carid);
-            var chk = 'checked';
-            divname = "#saved"+carid;
-            $.ajax({
-                    type: "POST",
-                    url: "<?php echo DEFAULT_URL?>/ajax_wishlistcar.php",
-                    data: { carid: carid, cartype: cartype, carname: carname, carimg: carimg, carprice: carprice, ischk: chk},
-                    dataType: "html",
-                    success: function(data) {
-                          $(divname).remove();
-                          alert('Ajouté à la liste');
-                    }
-            });
+        });
+    }
+    function updatePrix(){
+        var prestation = $('#prestation').val();
+        var transportUSA = $('#transportUSA').val();
+        var transport = $('#transport').val();
+        var bank = $('#bank').val();
+        var frais = $('#frais').val();
+        var carPrice = $('#carPrice').val();
+        var homologation = 0;
+        //check homologation
+        if($('#chkHomologation:checked').length){
+            homologation = 3500;
+        }
+        var priceHT = parseFloat(carPrice) + parseFloat(prestation) + parseFloat(transportUSA) + parseFloat(transport) + parseFloat(bank) + parseFloat(frais) + parseFloat(homologation);
+        //over 30 year
+        if($('#chkOverThirty:checked').length){
+            priceTTC = ( (parseFloat(carPrice) + 2000) * 0.05) + parseFloat(carPrice) + parseFloat(prestation) + parseFloat(transportUSA) + parseFloat(transport) + parseFloat(bank) + parseFloat(frais);
+        }else{
+            priceTTC = ( (parseFloat(carPrice) + 2000) * 0.10 * 0.20) + parseFloat(carPrice) + parseFloat(prestation) + parseFloat(transportUSA) + parseFloat(transport) + parseFloat(bank) + parseFloat(frais) + parseFloat(homologation);
+        }
+        $('#priceHT').val(parseFloat(priceHT).toFixed(2));
+        $('#priceTTC').val(parseFloat(priceTTC).toFixed(2));
     }
 </script>
+

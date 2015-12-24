@@ -50,7 +50,7 @@
                     </div>
 
 				   <div class="form-group for-sm">
-					<div class="selt-box">
+					<div class="selt-box-model">
 					  <select class="form-control prothom" name="model[]" multiple="multiple" id="model_select">
 					  </select>					  
 					</div>

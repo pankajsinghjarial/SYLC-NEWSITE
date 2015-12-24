@@ -74,7 +74,7 @@
                 <li><a href="/accessories"><i class="fa fa-angle-right"></i> Accessoires Vintages</a></li>
               </ul>
             </li>
-            <li class='last'><a href="media.html"> Média</a></li>
+            <li class='last'><a href="/media"> Média</a></li>
           </ul>
         </div>
       </div>

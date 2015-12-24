@@ -42,7 +42,7 @@
             </div>
 
                <div class="form-group for-sm">
-                <div class="selt-box">
+                <div class="selt-box-model">
                     <select class="form-control prothom" name="model[]" id="model_select" multiple="multiple">
 						<?php 
                             if(is_array($modelLists) && !empty($modelLists)){

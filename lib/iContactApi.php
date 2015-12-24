@@ -217,7 +217,7 @@ class iContactApi {
 	
 /***********************Custom function to add custom attributes along with contact Form***********************/
 
-	public function CustomaddContactForm($sEmail, $sStatus = 'normal', $sPrefix = null, $sContact = null, $sTelephone =  null, $sNotes = null) {
+	public function CustomaddContactForm($sEmail, $sStatus = 'normal', $sPrefix = null, $sContact = null, $sTelephone =  null, $sNotes = null, $sName = null, $sTransport = null) {
 		// Valid statuses
 		$aValidStatuses = array('normal', 'bounced', 'donotcontact', 'pending', 'invitable', 'deleted');
 		// Contact placeholder
@@ -228,6 +228,18 @@ class iContactApi {
 		if (!empty($sContact)) {
 			// Add the new comments
 			$aContact['fax'] = (string) $sContact;
+		}
+		
+		// Check for a Contact name
+		if (!empty($sName)) {
+			// Add the new comments
+			$aContact['firstName'] = (string) $sName;
+		}
+		
+		// Check for a Type of transport
+		if (!empty($sTransport)) {
+			// Add the new comments
+			$aContact['typetransport'] = (string) $sTransport;
 		}
 		// Check for a Telephone name
 		if (!empty($sTelephone)) {

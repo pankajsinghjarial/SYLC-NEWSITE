@@ -343,14 +343,24 @@ Class validation {
 						$errorMsg .= $error."<br>";
 					}
 					break;
-				}
-				
+				}				
 				
 				case "url":{
 					$regexp = '|^http(s)?://[a-z0-9-]+(\.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i';
 					if (!preg_match($regexp, trim($postVar))){
    						$length = strlen(trim($postVar));
 						if($length)
+						$errorMsg .= $error."<br>";
+					}
+					break;
+				}
+				
+				case "youtubeurl":{
+					$theURL = "https://www.youtube.com/oembed?url=$postVar&format=json";
+					$headers = get_headers($theURL); //echo substr($headers[0], 9, 3);die;
+					if (substr($headers[0], 9, 3) !== "404") {
+						
+					} else{
 						$errorMsg .= $error."<br>";
 					}
 					break;

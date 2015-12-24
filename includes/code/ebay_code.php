@@ -210,3 +210,11 @@ foreach($spec as $spex)
 }
 
 $gallery = explode("**",$item->galleryURL);
+$prestation = 3000;
+$transportUSA = 1200;
+$transport = 2000;
+$bank = 2000;
+$frais = 2000;
+$carPrice = $common->CurrencyConverter($item->buyItNowPrice);
+$priceHT = $carPrice + $prestation + $transportUSA + $transport + $bank + $frais;
+$priceTTC = ( ($carPrice + 2000) * 0.10 * 0.20) + $carPrice + $prestation + $transportUSA + $transport + $bank + $frais;

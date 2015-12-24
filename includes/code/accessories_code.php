@@ -31,7 +31,7 @@ if ($_SERVER['QUERY_STRING']) {
 	}	
 }
 if($addtopaging1 != '') {
-	$addtopaging1 .= $addtopaging1 .'&';
+	$addtopaging1 .= '&';
 }
 //number of rows in pages table
 

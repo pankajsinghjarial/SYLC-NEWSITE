@@ -2,10 +2,20 @@
    
 	define('SITE_TITLE', "Website");
 	define('SITE_TITLE_ADMIN', "Administrator Panel");
+	define('SITE_ADMIN_EMAIL', "seobrandtester019@gamil.com"); 
+	
 	/* define('SITE_ADMIN_EMAIL', "info@americancarcentrale.com"); */
-//	define('SITE_ADMIN_EMAIL', "sylc.corp@gmail.com");
-//define('SITE_ADMIN_EMAIL', "ashley.damon999@gmail.com");
+	//	define('SITE_ADMIN_EMAIL', "sylc.corp@gmail.com");
+	//define('SITE_ADMIN_EMAIL', "ashley.damon999@gmail.com");
 	define('DEFAULT_DATE_FORMAT', "d-M-Y");
+
+	# ----------------------------------------------------------------------------------------------------
+	# ICONTACT API CONSTANTS
+	# ----------------------------------------------------------------------------------------------------
+
+	define('ICONTACT_APPID', "5PzjmGvRsjZiSs9ca4aOs0adVE8Txels"); 
+	define('ICONTACT_APIPASSWORD', "230300AY1"); 
+	define('ICONTACT_APIUSERNAME', "Sylccorp"); 
 
 	# ----------------------------------------------------------------------------------------------------
 	# IMAGE FOLDER CONSTANTS

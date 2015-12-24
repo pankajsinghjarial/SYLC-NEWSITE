@@ -23,7 +23,16 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.styledselect').selectbox({ inputClass: "selectbox_styled" });
+
+    $('#media_type').change(function() {
+        if ($(this).val() == '0') {                    
+            $('#urltr').removeAttr( 'style' );       
+        } else {
+			$('#urltr').css({'display':'none'}); 
+		}
+    });
 });
+
 </script>
 <style>
 	.whitelist_ips a {
@@ -126,28 +135,40 @@ $(document).ready(function() {
             <!--[if lte IE 6]><table><tr><td><![endif]-->
             <div class="select_sub show">
               <ul class="sub">
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>>
+                <li <?php if (strpos($_SERVER['REQUEST_URI'],'page') !== false && basename($_SERVER['REQUEST_URI']) == 'index.php') { ?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/page/index.php" >View all Pages</a>
                 </li>
                 
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='add.php'){?>class="sub_show"<?php } ?> >
+                <li <?php if (strpos($_SERVER['REQUEST_URI'],'page') !== false && basename($_SERVER['REQUEST_URI']) == 'add.php') { ?>class="sub_show"<?php } ?> >
 					<a href="<?=DEFAULT_ADMIN_URL?>/page/add.php">Add New Page</a>
                 </li>                
                
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='news.php'){?>class="sub_show"<?php } ?>>
+                <li <?php if (strpos($_SERVER['REQUEST_URI'],'page') !== false && basename($_SERVER['REQUEST_URI']) == 'news.php') { ?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/page/news_category.php">View All News Category</a>
 				</li>
 
-                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='actionnews.php'){?>class="sub_show"<?php } ?>>
+                 <li <?php if (strpos($_SERVER['REQUEST_URI'],'page') !== false && basename($_SERVER['REQUEST_URI']) == 'actionnews.php') {?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/page/actionnews_category.php">Add New News Category</a>
 				</li>
 
-				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='articles.php'){?>class="sub_show"<?php } ?>>
+				<li <?php if (strpos($_SERVER['REQUEST_URI'],'page') !== false && basename($_SERVER['REQUEST_URI']) == 'articles.php') { ?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/page/articles.php">View All Articles</a>
 				</li>
 				
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'page')!== false && basename($_SERVER['REQUEST_URI'])=='actionarticles.php'){?>class="sub_show"<?php } ?>>
+                <li <?php if (strpos($_SERVER['REQUEST_URI'],'page') !== false && basename($_SERVER['REQUEST_URI']) == 'actionarticles.php') { ?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/page/actionarticles.php">Add New Article</a>
+				</li>
+				
+				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'page') !== false && basename($_SERVER['REQUEST_URI']) == 'mediacontent.php') { ?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/page/mediacontent.php">Banner and Text for Media</a>
+				</li>
+
+				<li <?php if (strpos($_SERVER['REQUEST_URI'],'page') !== false && basename($_SERVER['REQUEST_URI']) == 'media.php') { ?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/page/media.php">View All Media</a>
+				</li>
+				
+				<li <?php if (strpos($_SERVER['REQUEST_URI'],'page') !== false && basename($_SERVER['REQUEST_URI']) == 'actionmedia.php') { ?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/page/actionmedia.php">Add New Media</a>
 				</li>              
                 
               </ul>
@@ -156,7 +177,7 @@ $(document).ready(function() {
           </li>
         </ul>
         <div class="nav-divider">&nbsp;</div>
-        <ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false){?> current<?php } ?>">
+        <ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'car') !== false){?> current<?php } ?>">
           <li><a href="#nogo" ><b>Cars</b></a>
             <!--[if IE 7]><!--></a><!--<![endif]-->
             <!--[if lte IE 6]><table><tr><td><![endif]-->
@@ -168,8 +189,8 @@ $(document).ready(function() {
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) =='import.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/import.php">Import Car</a></li>
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) =='from.php' && $_REQUEST['car'] == 72){?>class="sub_show"<?php } ?>> <a href="<?=DEFAULT_ADMIN_URL?>/car/from.php?car=72">From Cars.com</a></li>
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) =='from.php' && $_REQUEST['car'] == 73){?>class="sub_show"<?php } ?>> <a href="<?=DEFAULT_ADMIN_URL?>/car/from.php?car=73">From AutoTrader.com</a> </li>
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) =='feature.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/feature.php">Featured Cars</a> </li>
-                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) =='popular.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/popular.php">Popular Cars</a> </li>
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) == 'feature.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/feature.php">Featured Cars</a> </li>
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) == 'popular.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/popular.php">Popular Cars</a> </li>
               </ul>
             </div>
             <!--[if lte IE 6]></td></tr></table></a><![endif]-->

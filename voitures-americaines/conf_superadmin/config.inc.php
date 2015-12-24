@@ -23,11 +23,11 @@
 
 
 
-        define("DB_HOST","localhost");
+        define("DB_HOST","192.168.0.238");
 
-        define("DB_USER","sylcexpo_syadmin");
+        define("DB_USER","syl");
 
-        define("DB_PASS","admin1234");
+        define("DB_PASS","NetsoL_123");
 
         define("DB_NAME","sylcexpo_sylcorp");		
 		

@@ -500,7 +500,7 @@
         }
         function ajaxrequest(username,password){
             jQuery("#model_div").html("");
-            jQuery("#model_div").append('<?php echo DEFAULT_URL; ?>/images/popup/loading.gif" />');	
+            jQuery("#model_div").append('<img src="<?php echo DEFAULT_URL; ?>/images/popup/loading.gif" />');	
              jQuery.ajax({
 
                           type: "POST",

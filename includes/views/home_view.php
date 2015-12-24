@@ -264,10 +264,11 @@
 
         <div class="col-md-12 form-group no-padding">
           <div class="col-md-10 col-sm-12 col-xs-12 no-padding">
-            <input type="text" class="form-control" id="inputPassword3" name="comment" placeholder="Comments">
+            <input type="text" class="form-control" id="inputPassword3" name="comment" placeholder="Comments">            
           </div>
           <div class="col-md-2 col-sm-12 col-xs-12">
-            <button type="submit" class="btn btn-default">Envoyez <i class="fa fa-angle-right"></i></button>
+			<input type="hidden" id="realfactform" name="realfactform" value="reafacts">
+            <button type="submit" name=realfactsub" class="btn btn-default">Envoyez <i class="fa fa-angle-right"></i></button>
           </div>
         </div>
 

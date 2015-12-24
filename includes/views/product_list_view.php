@@ -128,7 +128,7 @@
 							  <div class="list-top-right col-md-12 no-padding">
 							  
 								<div class="col-md-6 col-sm-6 col-xs-12 no-padding list-right-text">
-								  <h2><a href="product.html"><?php echo $title[0];?></a></h2>
+								  <h2><a href="<?php echo $link;?>"><?php echo $title[0];?></a></h2>
 								  <h3>Prix De Vente:  <span> &nbsp; <?php echo $common->CurrencyConverter($buyItNowPrice);?> &euro;</span></h3>
 								</div>
 							

@@ -15,7 +15,7 @@
             <div id="flag"></div>
            </div>
             <div class="recherche-right-form">
-              <form>
+              <form method="post">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Marque:</label>
                   <select class="form-control">                    

@@ -566,7 +566,7 @@ VALUES ($carid,1) ");
         }
         if(!empty($models)){
             $models = array_unique($models);
-            asort($models);
+            sort($models);
             return $models;
         }else{
             return false;
