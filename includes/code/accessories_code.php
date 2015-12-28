@@ -11,11 +11,11 @@ if (!isset($_GET['page'])) {
 	$page = 1;
 }
 $pages = new Paginator;
-$pages->default_ipp = 1;
+$pages->default_ipp = 5;
 $total_rows			 = $common->numberOfRows('accessories'); 
 $pages->items_total  = $total_rows;
 $pages->paginate();
-$limit = 1;
+$limit = 5;
 $eu = $limit * ($page-1);
 $addtopaging  = "?";
 $addtopaging1 = '';
@@ -28,7 +28,7 @@ if ($_SERVER['QUERY_STRING']) {
 		if($keyval[0] == "page" ) $addtopaging1 .=  $arg;
 		if($keyval[0] == "ipp" )  $addtopaging1  .= "&" . $arg;
 		if($keyval[0] != "page" && $keyval[0] != "ipp" && $keyval[0] != "sort") $addtopaging1 .= "&" . $arg;
-	}	
+	}
 }
 if($addtopaging1 != '') {
 	$addtopaging1 .= '&';

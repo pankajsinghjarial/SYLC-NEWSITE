@@ -36,6 +36,11 @@
 									$ii = 1;
 									while($getPageData = mysql_fetch_object($allAccessories)) { 
 							?>
+							 <form method="post" action="process.php">
+								 	<input type="hidden" name="itemname" value="<?php echo $getPageData->productname;?>" /> 
+									<input type="hidden" name="itemnumber" value="<?php echo $getPageData->id;?>" /> 
+									<input type="hidden" name="itemdesc" value="<?php echo $getPageData->description;?>" /> 
+									<input type="hidden" name="itemprice" value="<?php echo $getPageData->amount;?>" />
 								<div class="col-md-12 col-sm-12 col-xs-12 no-padding list-first-section wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
 								  <div class="col-md-4 col-sm-4 col-xs-12 no-right-padding">
 									<img src="images/accessories/img-1.png" class="img-responsive">
@@ -61,7 +66,7 @@
 										  <div class="form-group">
 											<label for="inputPassword3" class="col-sm-2 control-label no-left-padding">Quantité</label>
 											<div class="col-sm-3 no-padding">
-											  <select class="form-control">
+											  <select class="form-control" name="itemQty">
 												<option>1</option>
 												<option>2</option>
 												<option>3</option>
@@ -73,7 +78,7 @@
 										</div>
 
 										<div class="col-md-6 no-padding accessoris-btn">
-										  <button class="btn btn-primary" type="submit">Acheter Maintenant <i class="fa fa-angle-double-right"></i></button>
+										  <button name="submitbutt" class="btn btn-primary" type="submit">Acheter Maintenant <i class="fa fa-angle-double-right"></i></button>
 										</div>
 										
 									  </div>
@@ -82,6 +87,7 @@
 									  <img src="images/listing/border.png" class="img-responsive">
 									</div>
 								 </div>
+							</form>
 
                            <?php $ii++; 
 							  } 

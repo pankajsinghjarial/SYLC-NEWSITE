@@ -65,55 +65,55 @@
                 </div>
                 <h2>Pour effectuer la réservation de ce véhicule, s'il vous plaît procéder et de remplir vos informations de facturation et de carte de crédit informations ci-dessous pour traiter les paiements.</h2>
                 <div class="col-md-12 no-padding product-right-bottom">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" onsubmit="javascript:return validatePayment(event);">
                         <div class="form-group">
                             <div class="col-sm-6 product-fst-input">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="Nom">
+                                <input type="text" class="form-control" id="first_name" placeholder="PreNom">
                             </div>
                             <div class="col-sm-6 product-snd-input">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="PreNom">
+                                <input type="text" class="form-control" id="last_name" placeholder="Nom de famille">
                             </div>
                         </div> 
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="Address">
+                                <input type="text" class="form-control" id="address" placeholder="Address">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-6 product-fst-input">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="Numero de telephone">
+                                <input type="text" class="form-control" id="telephone" placeholder="Numero de telephone">
                             </div>
                             <div class="col-sm-3 product-duta-input">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Ville">
+                                <input type="text" class="form-control" id="city" placeholder="Ville">
                             </div>
                             <div class="col-sm-3 product-thrd-input">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="Province">
+                                <input type="text" class="form-control" id="province" placeholder="Province">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-6 product-fst-input">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Code postal">
+                                <input type="text" class="form-control" id="postal_code" placeholder="Code postal">
                             </div>
                             <div class="col-sm-6 product-fst-input">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                <input type="email" class="form-control" id="email" placeholder="Email">
                             </div>
                         </div>
-                    </form>
                     <h2>Information de paiment :</h2>
                     <div class="col-md-12 no-padding product-right-bottom">
-                        <form class="form-horizontal">
                             <div class="form-group">
                                 <div class="col-sm-6 product-fst-input">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Numero de cart">
+                                    <input type="text" class="form-control" id="card_number" placeholder="Numero de carte">
                                 </div>
                                 <div class="col-sm-6 product-snd-input">
-                                    <select class="form-control">
-                                        <option>Type</option>
-                                        <option></option>
-                                        <option></option>
-                                        <option></option>
-                                        <option></option>
+                                    <select id="card_type" class="form-control">
+                                        <option value="">Type</option>
+                                        <option value="Visa">Visa</option>
+                                        <option value="MasterCard">MasterCard</option>
+                                        <option value="Discover">Discover</option>
+                                        <option value="Amex">Amex</option>
+                                        <option value="JCB">JCB</option>
+                                        <option value="Maestro">Maestro</option>
                                     </select>
                                 </div>
                             </div>
@@ -122,19 +122,19 @@
                                     <p>Date d'expiration :</p>
                                 </div>
                                 <div class="col-sm-3 product-fst-input">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Mois">
+                                    <input type="text" class="form-control" maxlength="2" id="month" placeholder="Mois">
                                 </div>
                                 <div class="col-sm-3 product-duta-input">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Année">
+                                    <input type="text" class="form-control" maxlength="4" id="year" placeholder="Année">
                                 </div>
                                 <div class="col-sm-3 product-thrd-input">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Sec">
+                                    <input type="text" class="form-control" maxlength="4" id="cvv" placeholder="cvv">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox"> J’ai lu et j’accepte expressement la <a href="">politique de confidential</a>
+                                        <input type="checkbox" value="1" id="chkTerms"> J’ai lu et j’accepte expressement la <a href="">politique de confidential</a>
                                     </label>
                                 </div>
                             </div>
@@ -146,10 +146,10 @@
                                     <img src="<?php echo DEFAULT_URL; ?>/images/product/paypal.png">
                                 </div>
                                 <div class="col-md-3 no-left-padding">
-                                    <h6>Montant €2000.00</h6>
+                                    <h6>Montant <?php echo (isset($item->buyItNowPrice))?'€'.$common->CurrencyConverter($item->buyItNowPrice):'NA';?></h6>
                                 </div>
                                 <div class="col-md-3 no-left-padding">
-                                    <button type="submit" class="btn btn-default"> Soumettre <i class="fa fa-angle-right"></i></button>
+                                    <button type="submit" class="btn btn-default" id="btnPayment"> Soumettre <i class="fa fa-angle-right"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -523,7 +523,8 @@
 <input type="hidden" id="transport" value="<?php echo $transport;?>" />
 <input type="hidden" id="bank" value="<?php echo $bank;?>" />
 <input type="hidden" id="frais" value="<?php echo $frais;?>" />
-<input type="hidden" id="carPrice" value="<?php echo $carPrice;?>" />
+<input type="hidden" id="carPrice" value="<?php echo $item->buyItNowPrice;?>" />
+<input type="hidden" id="item" value="<?php echo strtoupper($item->title);?>" />
 <script>
     $(document).ready(function(){
         $(".example5").colorbox();
@@ -543,6 +544,20 @@
         });
         $('#chkOverThirty').on('change',function(){
             updatePrix();
+        });
+        $("#year,#cvv").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                //display error message
+                return false;
+            }
+        });
+        $("#month").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                //display error message
+                return false;
+            }
         });
     });
     $('.paroduct-carosel img').click(function(){
@@ -588,5 +603,117 @@
         $('#priceHT').val(parseFloat(priceHT).toFixed(2));
         $('#priceTTC').val(parseFloat(priceTTC).toFixed(2));
     }
+    function validatePayment(e){
+        e.preventDefault();
+        $('.validateError').remove();
+        $('.validateSuccess').remove();
+        var first_name = $('#first_name').val();
+        var last_name = $('#last_name').val();
+        var address = $('#address').val();
+        var telephone = $('#telephone').val();
+        var city = $('#city').val();
+        var province = $('#province').val();
+        var postal_code = $('#postal_code').val();
+        var email = $('#email').val();
+        var card_number = $('#card_number').val();
+        var card_type = $('#card_type').val();
+        var month = $('#month').val();
+        var year = $('#year').val();
+        var cvv = $('#cvv').val();
+        var car_price = $('#carPrice').val();
+        var item = $('#item').val();
+        if(first_name.trim() == ""){
+            $('#first_name').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrez le nom</div>");
+            return false;
+        }
+        if(last_name.trim() == ""){
+            $('#last_name').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer Nom de famille</div>");
+            return false;
+        }
+        if(address.trim() == ""){
+            $('#address').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer Address</div>");
+            return false;
+        }
+        if(telephone.trim() == ""){
+            $('#telephone').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer Numero de telephone</div>");
+            return false;
+        }
+        if(city.trim() == ""){
+            $('#city').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer Ville</div>");
+            return false;
+        }
+        if(province.trim() == ""){
+            $('#province').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer Province</div>");
+            return false;
+        }
+        if(postal_code.trim() == ""){
+            $('#postal_code').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer Code Postal</div>");
+            return false;
+        }
+        if(email.trim() == ""){
+            $('#email').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer Email</div>");
+            return false;
+        }
+        if(card_number.trim() == ""){
+            $('#card_number').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer Numero de carte</div>");
+            return false;
+        }
+        if($('#card_type').val() == ''){
+            $('#card_type').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît sélectionner le type de carte</div>");
+            return false;
+        }
+        if(month.trim() == ""){
+            $('#month').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer Mois</div>");
+            return false;
+        }
+        if(year.trim() == ""){
+            $('#year').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer Année</div>");
+            return false;
+        }
+        if(cvv.trim() == ""){
+            $('#cvv').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer cvv</div>");
+            return false;
+        }
+        if($('#chkTerms:checked').length == 0){
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît accepter politique de confidentialité</div>");
+            return false;
+        }
+        
+        $('#btnPayment').hide();
+        jQuery("#btnPayment").after('<img class="ajaxLoader" src="<?php echo DEFAULT_URL; ?>/images/popup/loading.gif" />');
+        //ajax request
+        $.ajax({
+            type: "POST",
+            url: "<?php echo DEFAULT_URL?>/ajax_paypal_direct_payment.php",
+            data: { first_name: first_name, last_name: last_name, address: address, telephone: telephone, city: city, province: province,postal_code: postal_code,email: email,card_number: card_number,card_type: card_type,month: month,year: year,cvv: cvv,car_price:car_price,item:item},
+            success: function(response) {
+                response = $.parseJSON(response);
+                if(response.ACK == 'Failure'){
+                    $('.product-close-icon').after("<div class=\"validateError\">"+response.L_LONGMESSAGE0+"</div>");
+                }
+                if(response.ACK == 'Success'){
+                    $('.product-close-icon').after("<div class=\"validateSuccess\">Payment Successfully Done. Please check email for details.</div>");
+                }
+                $('.ajaxLoader').remove();
+                $('#btnPayment').show();
+            }
+        });
+    }
 </script>
-
+<style>
+.validateError{  color: red;  border: 1px solid red;  margin: 10px 0px;  padding: 5px 5px;}
+.validateSuccess{  color: green;  border: 1px solid green;  margin: 10px 0px;  padding: 5px 5px;}
+</style>

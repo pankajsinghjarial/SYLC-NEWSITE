@@ -15,8 +15,20 @@
 
 	define('ICONTACT_APPID', "5PzjmGvRsjZiSs9ca4aOs0adVE8Txels"); 
 	define('ICONTACT_APIPASSWORD', "230300AY1"); 
-	define('ICONTACT_APIUSERNAME', "Sylccorp"); 
+	define('ICONTACT_APIUSERNAME', "Sylccorp");
 
+	# ----------------------------------------------------------------------------------------------------
+	# PAYPAL API CONSTANTS
+	# ----------------------------------------------------------------------------------------------------
+
+	define('PAYPAL_MODE', "sandbox"); 
+	define("PAYPAL_API_USERNAME", "buisness_api1.seobrand.com"); 
+	define('PAYPAL_API_PASSWORD', "4B4Y2UVSU3TYH5MQ"); 
+	define('PAYPAL_API_SIGNATUE', "AS9MV74Nv7V8ku8ydAMFCwvsPhyiALZ03zgof6-kqrEisV9QSpy3YsCr"); 	
+	define('PAYPAL_CURRENCY_CODE', "USD"); 
+	define('PAYPAL_RETURN_URL', "http://sylc.local/thank_you.php"); 
+	define('PAYPAL_CANCEL_URL', "http://sylc.local/accessories"); 
+	
 	# ----------------------------------------------------------------------------------------------------
 	# IMAGE FOLDER CONSTANTS
 	# ----------------------------------------------------------------------------------------------------
