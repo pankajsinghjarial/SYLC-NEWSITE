@@ -75,7 +75,7 @@
 		var inp = $("#slug").val();
 		if($.trim(inp).length == 0)
 		{
-				var value = $('#name').val();
+				var value = $.trim($('#name').val()).replace(/ /g, "_");;
       			$("#slug").val(value);
 		 }
 		 
@@ -157,21 +157,23 @@
                           No </td>
                         <td>&nbsp;</td>
                       </tr>
-			<tr>
-                        <th valign="top">Page Category:</th>
-                        <td>
-				<select name="page_cat" id="page_cat" onblur="setSlug();">
-			<option value="">--Please Select--</option>
-			<option value="0">Parent</option>
-			<?php while($page_cat = mysql_fetch_array($fetchPage_cat)){?>
-			<option value="<?php echo $page_cat['id']; ?>"><?php echo $page_cat['name']; ?></option>
-			<?php } ?>
-			</select>
-			</td>
-                        <td><div class="error-left"></div>
-                          <div class="error-inner">This field is required.</div></td>
-                      </tr>
-			<tr>
+						<tr>
+							<th valign="top">Page Category:</th>
+								<td>
+									<select name="page_cat" id="page_cat" onblur="setSlug();">
+										<option value="">--Please Select--</option>
+										<option value="0">Parent</option>
+										<?php while($page_cat = mysql_fetch_array($fetchPage_cat)){?>
+										<option value="<?php echo $page_cat['id']; ?>"><?php echo $page_cat['name']; ?></option>
+										<?php } ?>
+									</select>
+								</td>
+								<td>
+									<div class="error-left"></div>
+									<div class="error-inner">This field is required.</div>
+								</td>
+						</tr>
+						<tr>
                         <th valign="top">Page Title:</th>
                         <td><input type="text" class="inp-form" name="name" id="name" value="<?php echo $name ;?>" onblur="setSlug();"/></td>
                         <td><div class="error-left"></div>

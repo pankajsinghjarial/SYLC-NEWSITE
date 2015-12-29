@@ -152,7 +152,6 @@
 							<td></td>
 						</tr>				
 					
-					
 						<tr>
 							<th valign="top">Status:</th>
 							<td>

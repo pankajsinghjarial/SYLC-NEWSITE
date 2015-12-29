@@ -2,7 +2,7 @@
 extract($_POST);
 extract($_GET);
 
-$obj_setting = new common();
+$obj_setting     = new common();
 $common_function = new commonFunction();
 /*Fetch tab content*/
 
@@ -20,12 +20,13 @@ $allCategories = $obj_setting->customQuery("SELECT * FROM  news_category WHERE  
 /*Fetch articles*/
 if ($articleId != '') {
 	$total_articles = $obj_setting->numberOfRows('news_articles', "id='". $articleId . "'"); 
-	$allArticles = $obj_setting->customQuery("SELECT category.category_name,category.id,articles.title,articles.content,articles.slug FROM  news_articles as articles LEFT JOIN news_category as category ON articles.category_id=category.id where articles.id='". $articleId ."'");
+	$allArticles    = $obj_setting->customQuery("SELECT category.category_name,category.id,category.slug as cateslug,articles.title,articles.content,articles.slug FROM  news_articles as articles LEFT JOIN news_category as category ON articles.category_id=category.id where articles.id='". $articleId ."'");
 } else {	
 	$total_articles = $obj_setting->numberOfRows('news_articles');
-	$allArticles = $obj_setting->customQuery("SELECT category.category_name,category.id,articles.title,articles.content,articles.slug FROM  news_articles as articles LEFT JOIN news_category as category ON articles.category_id=category.id  order by title ASC");
+	$allArticles    = $obj_setting->customQuery("SELECT category.category_name,category.id,articles.title,articles.content,articles.slug FROM  news_articles as articles LEFT JOIN news_category as category ON articles.category_id=category.id  order by title ASC");
 }
-$fetchSetting 	= $obj_setting->read('content_page', 'id = 7');		
+$fetchSetting 	= $obj_setting->read('content_page', 'id = 7');
 $getSetting 	= $db->fetchNextObject($fetchSetting);
 $sideBanner		= $getSetting->content;	
+
 

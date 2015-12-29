@@ -4174,6 +4174,7 @@ background: #f00;
 /* Error Class for Validation */
 .error {
 color: red;
+border-color: red;
 }
 
 #calc_error_sdasfsdf .err{
@@ -4452,4 +4453,7 @@ ul.ui-multiselect-checkboxes.ui-helper-reset {
 .ui-multiselect-menu.ui-widget.ui-widget-content.ui-corner-all {
   border: none;
     padding: 0 3px;
+}
+.per div {
+  padding: 6px 0px;
 }

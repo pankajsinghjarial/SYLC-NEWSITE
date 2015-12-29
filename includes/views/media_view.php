@@ -1,15 +1,13 @@
 <!-- header section -->
 
-<section class="media-header-section">
-</section>
+<section class="media-header-section" style="background:url('<?php echo DEFAULT_URL. '/images/pages/media/' .$bannerImage;?>') no-repeat scroll 0% 0% / 100% auto transparent"></section>
 <!-- End header section -->
 
 <section class="media-content-section wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
   <div class="container">
     <div class="row">
       <h1>Média</h1>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s, when an unknown printer took a galley of type and scrambled it to.</p>
+      <p><?php echo $content;?></p>
     </div>
   </div>
 </section>
@@ -70,20 +68,8 @@
 							?>
                            
                           <div class="col-md-12 pagination text-center">
-							  <?php echo $pages->display_pages(); ?>
-                              <ul class="list-inline list-unstyled">
-                                <li class="pre"><i class="fa fa-angle-double-left"></i> Précédent</li>
-                                <li class="active">1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                                <li>5</li>
-                                <li>...</li>
-                                <li>10</li>
-                                <li>11</li>
-                                <li class="next"> Suivant <i class="fa fa-angle-double-right"></i></li>
-                              </ul>
-                            </div>
+							  <?php echo $pages->display_pages(); ?>                            
+                           </div>
                         
 
                         </div> <!-- tab1default -->
@@ -124,20 +110,8 @@
                           <!-- col-md-12 -->                          
 
                           <div class="col-md-12 pagination text-center">
-							  <?php echo $pagesPhoto->display_pages(); ?>
-                              <ul class="list-inline list-unstyled">
-                                <li class="pre"><i class="fa fa-angle-double-left"></i> Précédent</li>
-                                <li class="active">1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                                <li>5</li>
-                                <li>...</li>
-                                <li>10</li>
-                                <li>11</li>
-                                <li class="next"> Suivant <i class="fa fa-angle-double-right"></i></li>
-                              </ul>
-                            </div>
+							  <?php echo $pagesPhoto->display_pages(); ?>                             
+                          </div>
                           
                         </div> <!-- tab2default -->
 

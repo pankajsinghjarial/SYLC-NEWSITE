@@ -25,7 +25,7 @@
 	define("PAYPAL_API_USERNAME", "buisness_api1.seobrand.com"); 
 	define('PAYPAL_API_PASSWORD', "4B4Y2UVSU3TYH5MQ"); 
 	define('PAYPAL_API_SIGNATUE', "AS9MV74Nv7V8ku8ydAMFCwvsPhyiALZ03zgof6-kqrEisV9QSpy3YsCr"); 	
-	define('PAYPAL_CURRENCY_CODE', "USD"); 
+	define('PAYPAL_CURRENCY_CODE', "EUR"); 
 	define('PAYPAL_RETURN_URL', "http://sylc.local/thank_you.php"); 
 	define('PAYPAL_CANCEL_URL', "http://sylc.local/accessories"); 
 	
@@ -48,7 +48,9 @@
 	define('FUNCTIONS_DIR', LIST_ROOT."/functions");
 	define('LIST_ROOT_ADMIN',  LIST_ROOT."/superadmin");
     define('LIST_ROOT_ADMIN_INCLUDES',  LIST_ROOT."/superadmin/includes");
-	define('DEFAULT_ADMIN_URL',DEFAULT_URL."/superadmin");
+    define('LIST_ROOT_ADMIN_REVIEW_IMAGEPATH',  LIST_ROOT."/superadmin/images/reviews/media");
+    define('DEFAULT_ADMIN_URL',DEFAULT_URL."/superadmin");
+    define('DEFAULT_ADMIN_URL_REVIEW_IMAGEPATH',DEFAULT_URL."/superadmin/images/reviews/media");
 
 	# ----------------------------------------------------------------------------------------------------
 	# USER ATRIBUTES

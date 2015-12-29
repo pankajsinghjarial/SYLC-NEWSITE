@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			}
 
 				$slug = str_replace(' ', '_', strtolower($tabtitle));
-				$dataArr  =  array('tab_title' => $tabtitle, 'banner_image' => $image_name, 'content' => $content, 'page_name' => 'Logistique', 'slug' => $slug);
+				$dataArr  =  array('tab_title' => mysql_real_escape_string($tabtitle), 'banner_image' => $image_name, 'content' => $content, 'page_name' => 'Logistique', 'slug' => $slug);
 				if ($id == "") {
 					$banner_insert   = $obj_setting->save('content_page', $dataArr);
 				} else {

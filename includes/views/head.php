@@ -16,6 +16,7 @@
                     echo $mainHandle->metaData();
                 } 
             ?>
+            <link rel="shortcut icon" href="<?php echo DEFAULT_URL; ?>/images/favicon.ico" type="image/x-icon">
             <title>SYL Corporation</title>
             <!--scripts-->
            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

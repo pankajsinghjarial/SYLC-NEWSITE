@@ -72,7 +72,7 @@ if (isset($_GET['orderBy'])and $_GET['orderBy'] != '') {
 
 
 $obj_setting = new common();
-$total_rows = $obj_setting->numberOfRows('content_page'); //number of rows in pages table
-$allAccessories = $obj_setting->customQuery("SELECT * FROM  content_page order by $field $orderby limit $eu, $limit");
+$total_rows = $obj_setting->numberOfRows('content_page',"page_name='presentation'"); //number of rows in pages table
+$allAccessories = $obj_setting->customQuery("SELECT * FROM  content_page  where page_name='presentation' order by $field $orderby limit $eu, $limit");
 
 unset($obj_setting);

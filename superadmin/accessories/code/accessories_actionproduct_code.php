@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				
 			if ($_FILES['file']['name'] != "" ) {
 			  $image_name = time().$_FILES['file']['name'];
-			  $path = LIST_ROOT.'/images/accessories/banner/';
+			  $path = LIST_ROOT.'/images/accessories/';
 			  move_uploaded_file($_FILES["file"]["tmp_name"],$path.$image_name);
 			} else {
 				$image_name = $oldimage;

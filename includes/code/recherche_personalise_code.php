@@ -5,55 +5,63 @@ extract($_GET);
 $common = new common();
 
 /*Fetch personalized search content*/
-	$fetchSetting 	= $common->read('content_page', "page_name = 'Personalized Search'");
-	$getSetting 	= $db->fetchNextObject($fetchSetting);
-	$content	= $getSetting->content;
+$fetchSetting = $common->read('content_page', "page_name = 'Personalized Search'");
+$getSetting   = $db->fetchNextObject($fetchSetting);
+$content	  = $getSetting->content;
 
 /*Fetch car brand names*/
-	$modelList = array();
-	$manf	   = $common->CustomQuery("SELECT * FROM `attribute_option_value` WHERE `attribute_id` = '2' ORDER BY `value`,`sort_order` ASC");
-	while ($row = mysql_fetch_assoc($manf)) {
-		$modelList[] = $row;
-	}
+$modelList = array();
+
+$manf = $common->CustomQuery("SELECT * FROM `attribute_option_value` WHERE `attribute_id` = '2' ORDER BY `value`, `sort_order` ASC");
+
+while ($row = mysql_fetch_assoc($manf)) {
+	$modelList[] = $row;
+}
+
 ini_set('display_errors', true);
 ini_set('error_reporting', E_ALL);
+
 /*Recherche personnalisee Inquiry*/
-if($_SERVER['REQUEST_METHOD'] == 'POST'  ) {
-	require_once('lib/iContactApi.php'); 
-	// code for lead save on iContact                        
+//if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+	require_once('lib/iContactApi.php');
+	
+	// code for lead save on iContact
 	iContactApi::getInstance()->setConfig(array(
-		'appId'       => ICONTACT_APPID,
+		'appId'		  => ICONTACT_APPID,
 		'apiPassword' => ICONTACT_APIPASSWORD,
 		'apiUsername' => ICONTACT_APIUSERNAME
 	));
 	
 	// Store the singleton
 	$oiContact = iContactApi::getInstance();
+	
 	try {
-			//Create a contact
-			var_dump($oiContact->addList('somelist', 1698, true, false, false, 'Just an example list', 'Some List'));
-            //$cid = $oiContact->addList('testlists', '78923');
-          /*  $cid = $oiContact->CustomaddContactForm($email, 'normal', '', null, $phone, $comment, $fname, null);
-			$res = $oiContact->subscribeContactToList($cid->contactId, 80263, 'normal');
+		//Create a contact
+		$oiContact->addList('testing','410014', true, false, false, 'Just an example lista', 'ASomeList');
+
+		/* $cid = $oiContact->CustomaddContactForm($email, 'normal', '', null, $phone, $comment,$fname, null);
+		 $res   = $oiContact->subscribeContactToList($cid->contactId, 80263, 'normal');
 			
-			/* Send Notification to Admin about this Lead * /			
-			$subject= 'NEW Recherche Personnalisee Inquiry Received:';		
-			$message = nl2br("NEW Recherche Personnalisee Inquiry Received:
-							Type de transportation :  ".trim($type_transport)."
-							Name :  ".trim($fname)."
-							Email :  ".trim($email)."
-							Phone : ".$phone."
-							Comment : ".$comment."");		
+		/* Send Notification to Admin about this Lead * /			
+		$subject = 'NEW Recherche Personnalisee Inquiry Received:';		
+		$message = nl2br("NEW Recherche Personnalisee Inquiry Received:
+						Type de transportation :  ".trim($type_transport)."
+						Name :  ".trim($fname)."
+						Email :  ".trim($email)."
+						Phone : ".$phone."
+						Comment : ".$comment."");
+	
+		$message = html_entity_decode(htmlentities($message, ENT_QUOTES, "UTF-8"));
+		//$sentmail = sendSmtpMail( SITE_ADMIN_EMAIL, $subject, $message );
+		echo '<script>location.href = "/thank_you.php";</script>';*/
+		//exit;
 		
-			$message = html_entity_decode(htmlentities($message, ENT_QUOTES, "UTF-8"));
-			//$sentmail = sendSmtpMail( SITE_ADMIN_EMAIL, $subject, $message );
-			echo '<script>location.href = "/thank_you.php";</script>';*/
-			//exit;
-		
-		} catch (Exception $oException) { // Catch any exceptions
-                    // Dump errors
-                    var_dump($oiContact->getErrors());                   
-                    // Grab the last raw response data
-                    var_dump($oiContact->getLastResponse());
-        }
-}
+	} catch (Exception $oException) {
+		// Catch any exceptions
+		// Dump errors
+		var_dump($oiContact->getErrors());                   
+		// Grab the last raw response data
+		var_dump($oiContact->getLastResponse());
+	}
+//}

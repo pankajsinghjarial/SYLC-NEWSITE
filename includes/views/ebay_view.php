@@ -68,20 +68,23 @@
                     <form class="form-horizontal" onsubmit="javascript:return validatePayment(event);">
                         <div class="form-group">
                             <div class="col-sm-6 product-fst-input">
-                                <input type="text" class="form-control" id="first_name" placeholder="PreNom">
+                                <input type="text" class="form-control" id="first_name" placeholder="Pre Nom">
                             </div>
                             <div class="col-sm-6 product-snd-input">
                                 <input type="text" class="form-control" id="last_name" placeholder="Nom de famille">
                             </div>
                         </div> 
                         <div class="form-group">
-                            <div class="col-sm-12">
+                            <div class="col-sm-6 product-fst-input">
                                 <input type="text" class="form-control" id="address" placeholder="Address">
+                            </div>
+                            <div class="col-sm-6 product-snd-input">
+                                <input type="text" class="form-control" id="telephone" placeholder="Numero de telephone">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-6 product-fst-input">
-                                <input type="text" class="form-control" id="telephone" placeholder="Numero de telephone">
+                                <input type="text" class="form-control" id="country" placeholder="Pays">
                             </div>
                             <div class="col-sm-3 product-duta-input">
                                 <input type="text" class="form-control" id="city" placeholder="Ville">
@@ -95,7 +98,7 @@
                             <div class="col-sm-6 product-fst-input">
                                 <input type="text" class="form-control" id="postal_code" placeholder="Code postal">
                             </div>
-                            <div class="col-sm-6 product-fst-input">
+                            <div class="col-sm-6 product-snd-input">
                                 <input type="email" class="form-control" id="email" placeholder="Email">
                             </div>
                         </div>
@@ -107,7 +110,7 @@
                                 </div>
                                 <div class="col-sm-6 product-snd-input">
                                     <select id="card_type" class="form-control">
-                                        <option value="">Type</option>
+                                        <option value="">Type de cart</option>
                                         <option value="Visa">Visa</option>
                                         <option value="MasterCard">MasterCard</option>
                                         <option value="Discover">Discover</option>
@@ -146,7 +149,7 @@
                                     <img src="<?php echo DEFAULT_URL; ?>/images/product/paypal.png">
                                 </div>
                                 <div class="col-md-3 no-left-padding">
-                                    <h6>Montant <?php echo (isset($item->buyItNowPrice))?'€'.$common->CurrencyConverter($item->buyItNowPrice):'NA';?></h6>
+                                    <h6>Montant $2,100</h6>
                                 </div>
                                 <div class="col-md-3 no-left-padding">
                                     <button type="submit" class="btn btn-default" id="btnPayment"> Soumettre <i class="fa fa-angle-right"></i></button>
@@ -214,7 +217,7 @@
                                             <h2 class="text-hlka-color">Engine</h2>
                                         </div>
                                         <div class="col-md-2 col-xs-6 side-border">
-                                            <h2><?php echo (isset($specs['Engine']))?$specs['Engine']:'NA';?></h2>
+                                            <h2><?php echo (isset($specs['Engine']))?substr($specs['Engine'],0,strpos($specs['Engine'],' ')):'NA';?></h2>
                                         </div>
                                         <div class="col-md-2 col-xs-6">
                                             <h2 class="text-hlka-color">Drive Type </h2>
@@ -388,45 +391,43 @@
                                 </select>
                             </div>
                             <div class="col-sm-4 product-form-2">
-                                <input type="text" readonly="readonly" class="form-control" name="logistique_pays1" id="inputPassword" placeholder="$3000.00" value="<?php echo $prestation;?>">
+                                <input type="text" readonly="readonly" class="form-control" name="logistique_pays1" id="inputPassword" placeholder="$3000.00" value="$<?php echo $prestation;?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Transport Terrestre USA:<br>
                             <span style="font-size:14px">Assurance incluse:</span></label>
                             <div class="col-sm-4 product-form-1">
-                                <select class="form-control" name="transport_terrestre" id="transport_terrestre">
-                                    <option value="groupé">groupé</option>
-                                    <option value="sécurisé">sécurisé</option>
+                                <select class="form-control" name="transport_terrestre" id="slctTransportUSA">
+                                    <option value="Ouvert">Ouvert</option>
+                                    <option value="Fermée">Fermée</option>
                                 </select>
                             </div>
                             <div class="col-sm-4 product-form-2">
-                                <input type="text" readonly="readonly" class="form-control" name="transport_terrestre1" id="inputPassword" value="<?php echo $transportUSA;?>" placeholder="$1200.00">
+                                <input type="text" readonly="readonly" class="form-control" name="transport_terrestre1" id="txtTransportUSA" value="$<?php echo $transportUSA;?>" placeholder="$1200.00">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-4 control-label trans-leb">Transport - International:</label>
                             <div class="col-sm-4 product-form-1">
                                 <select class="form-control" name="transport_international" id="transport_international">
-                                    <option value="économique">économique</option>
                                     <option value="conteneur">conteneur</option>
-                                    <option value="avion">avion</option>
                                 </select>
                             </div>
                             <div class="col-sm-4 product-form-2">
-                                <input type="text" readonly="readonly" class="form-control" name="transport_international1" id="inputPassword" placeholder="$2000.00" value="<?php echo $transport;?>">
+                                <input type="text" readonly="readonly" class="form-control" name="transport_international1" id="inputPassword" placeholder="$2000.00" value="$<?php echo $transport;?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-8 control-label trans-leb">Bank, fedex and doc fees:</label>
                             <div class="col-sm-4 product-form-2">
-                                <input type="text" readonly="readonly" class="form-control" value="<?php echo $bank;?>" id="inputPassword" placeholder="$260.00">
+                                <input type="text" readonly="readonly" class="form-control" value="$<?php echo $bank;?>" id="inputPassword" placeholder="$260.00">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-7 control-label trans-leb">Frais Transitaire - Débarquement, Traction & Dépotage:</label>
-                            <div class="col-sm-5 product-form-2">
-                                <input type="text" readonly="readonly" class="form-control" value="<?php echo $frais;?>" id="inputPassword" placeholder="€780.00">
+                            <label class="col-sm-8 control-label trans-leb">Frais Transitaire - Débarquement, Traction & Dépotage:</label>
+                            <div class="col-sm-4 product-form-2">
+                                <input type="text" readonly="readonly" class="form-control" value="€<?php echo $frais;?>" id="inputPassword" placeholder="€780.00">
                             </div>
                         </div>
                     </form>
@@ -442,10 +443,10 @@
                         </div>
                     </div>
                     <div class="col-md-3 homolgy no-padding"> 
-                        <input type="text" class="form-control" readonly="readonly" id="txtHomologation" placeholder="€">
+                        <input type="text" class="form-control" readonly="readonly" id="txtHomologation" placeholder="€" value="€3500">
                     </div>
                 </div>
-                <div class="col-md-12 prixi-1">
+                <!--<div class="col-md-12 prixi-1">
                     <h1>PRIX TOTAL </h1>
                     <div class="col-md-6 no-padding">
                         <div class="checkbox">
@@ -456,9 +457,9 @@
                         </div>
                     </div>
                     <div class="col-md-6 form-150"> 
-                        <input type="text" class="form-control" id="priceHT" readonly="readonly" value="<?php echo $priceHT;?>" placeholder="15068">
+                        <input type="text" class="form-control" id="priceHT" readonly="readonly" value="< ?php echo $priceHT;?>" placeholder="15068">
                     </div>
-                </div>
+                </div>-->
                 <div class="col-md-12 prixi-2">
                 <h1>PRIX TOTAL </h1>
                     <div class="col-md-6 no-padding rendu">
@@ -466,7 +467,18 @@
                         <h3>le port selectionné </h3> 
                     </div>
                     <div class="col-md-6 no-padding"> 
-                            <input type="text" class="form-control" readonly="readonly" value="<?php echo $priceTTC;?>" id="priceTTC" placeholder="26,848.80">
+                            <input type="text" class="form-control" readonly="readonly" value="€<?php echo number_format($priceTTC,2,'.','');?>" id="priceTTC" placeholder="€">
+                    </div>
+                    <div class="col-md-12 no-padding rendu">
+                        <font color="da2b10">
+                            <?php
+                                if($item->Year < 1985){
+                                    echo 'Taux de douane 5.5%, pour tous véhicules de 30 ans et plus, inclus.';
+                                }else{
+                                    echo 'Taux de douanes 10% et TVA 20% inclus';
+                                }
+                            ?>
+                        </font>
                     </div>
                 </div>
                 <div class="col-md-12 product-right-bottom">
@@ -508,25 +520,43 @@
         <div class="row">
             <h1>VIDEOS</h1>
                 <div class="col-md-6">
+		    <?php if( $firstVid !='') : ?>
+		    <iframe id="MainVideo" width="470" height="289" src="https://www.youtube.com/embed/<?php echo $firstVid; ?>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+		    <?php else : ?>
                     <img src="<?php echo DEFAULT_URL; ?>/images/product/video-img-1.png" class="img-responsive">
+		    <?php endif; ?>
                 </div>
                 <div class="col-md-6">
+		    <?php if( $secondVid !='') : ?>
+		    <iframe id="MainVideo" width="470" height="289" src="https://www.youtube.com/embed/<?php echo $secondVid; ?>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+		    <?php else : ?>
                     <img src="<?php echo DEFAULT_URL; ?>/images/product/video-img-2.png" class="img-responsive">
+		    <?php endif; ?>
                 </div>
                 <div class="col-md-10 col-md-offset-1  product-video-product">
             </div>
         </div>
     </div>
 </section>
-<input type="hidden" id="prestation" value="<?php echo $prestation;?>" />
-<input type="hidden" id="transportUSA" value="<?php echo $transportUSA;?>" />
-<input type="hidden" id="transport" value="<?php echo $transport;?>" />
-<input type="hidden" id="bank" value="<?php echo $bank;?>" />
+<input type="hidden" id="prestation" value="<?php echo $common->ConvertPrice($prestation);?>" />
+<input type="hidden" id="transportUSA" value="<?php echo $common->ConvertPrice($transportUSA);?>" />
+<input type="hidden" id="transport" value="<?php echo $common->ConvertPrice($transport);?>" />
+<input type="hidden" id="bank" value="<?php echo $common->ConvertPrice($bank);?>" />
 <input type="hidden" id="frais" value="<?php echo $frais;?>" />
-<input type="hidden" id="carPrice" value="<?php echo $item->buyItNowPrice;?>" />
+<input type="hidden" id="initPrice" value="<?php echo $initPrice;?>" />
 <input type="hidden" id="item" value="<?php echo strtoupper($item->title);?>" />
 <script>
     $(document).ready(function(){
+        $('#slctTransportUSA').on('change',function(){
+            if($('#slctTransportUSA').val() == 'Ouvert'){
+                $('#txtTransportUSA').val('$1200');
+                $('#transportUSA').val(1200);
+            }else{
+                $('#txtTransportUSA').val('$1800');
+                $('#transportUSA').val(1800);
+            }
+            updatePrix();
+        });
         $(".example5").colorbox();
         $("#btn-1-product").click(function(){
             $(".product-hide-show-form").show('blind');
@@ -535,11 +565,6 @@
             $(".product-hide-show-form").hide('blind');
         });
         $('#chkHomologation').on('change',function(){
-            if($('#chkHomologation:checked').length){
-                $('#txtHomologation').val(3500);
-            }else{
-                $('#txtHomologation').val('€');
-            }
             updatePrix();
         });
         $('#chkOverThirty').on('change',function(){
@@ -587,20 +612,14 @@
         var transport = $('#transport').val();
         var bank = $('#bank').val();
         var frais = $('#frais').val();
-        var carPrice = $('#carPrice').val();
+        var initPrice = $('#initPrice').val();
         var homologation = 0;
         //check homologation
         if($('#chkHomologation:checked').length){
             homologation = 3500;
         }
-        var priceHT = parseFloat(carPrice) + parseFloat(prestation) + parseFloat(transportUSA) + parseFloat(transport) + parseFloat(bank) + parseFloat(frais) + parseFloat(homologation);
         //over 30 year
-        if($('#chkOverThirty:checked').length){
-            priceTTC = ( (parseFloat(carPrice) + 2000) * 0.05) + parseFloat(carPrice) + parseFloat(prestation) + parseFloat(transportUSA) + parseFloat(transport) + parseFloat(bank) + parseFloat(frais);
-        }else{
-            priceTTC = ( (parseFloat(carPrice) + 2000) * 0.10 * 0.20) + parseFloat(carPrice) + parseFloat(prestation) + parseFloat(transportUSA) + parseFloat(transport) + parseFloat(bank) + parseFloat(frais) + parseFloat(homologation);
-        }
-        $('#priceHT').val(parseFloat(priceHT).toFixed(2));
+        priceTTC = parseFloat(initPrice) + parseFloat(prestation) + parseFloat(transportUSA) + parseFloat(bank) + parseFloat(frais) + parseFloat(homologation);
         $('#priceTTC').val(parseFloat(priceTTC).toFixed(2));
     }
     function validatePayment(e){
@@ -611,6 +630,7 @@
         var last_name = $('#last_name').val();
         var address = $('#address').val();
         var telephone = $('#telephone').val();
+        var country = $('#country').val();
         var city = $('#city').val();
         var province = $('#province').val();
         var postal_code = $('#postal_code').val();
@@ -640,6 +660,11 @@
         if(telephone.trim() == ""){
             $('#telephone').focus();
             $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer Numero de telephone</div>");
+            return false;
+        }
+        if(country.trim() == ""){
+            $('#country').focus();
+            $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrer Pays</div>");
             return false;
         }
         if(city.trim() == ""){

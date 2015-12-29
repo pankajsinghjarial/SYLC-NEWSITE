@@ -129,7 +129,7 @@ $(document).ready(function() {
           </li>
         </ul>
         <div class="nav-divider">&nbsp;</div>
-        <ul class="select<?php  if (strpos(array_shift(explode('?', $_SERVER['REQUEST_URI'])),'page')!== false){?> current<?php } ?>" >
+        <ul class="select<?php  if (strpos(array_shift(explode('?', $_SERVER['REQUEST_URI'])),'page')!== false || strpos(array_shift(explode('?', $_SERVER['REQUEST_URI'])),'accessories')!== false|| strpos(array_shift(explode('?', $_SERVER['REQUEST_URI'])),'presentation')!== false){?> current<?php } ?>" >
           <li><a href="#nogo"><b>Page Manager</b></a>
             <!--[if IE 7]><!--></a><!--<![endif]-->
             <!--[if lte IE 6]><table><tr><td><![endif]-->
@@ -169,8 +169,23 @@ $(document).ready(function() {
 				
 				<li <?php if (strpos($_SERVER['REQUEST_URI'],'page') !== false && basename($_SERVER['REQUEST_URI']) == 'actionmedia.php') { ?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/page/actionmedia.php">Add New Media</a>
-				</li>              
+				</li>
+
+				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false && basename($_SERVER['REQUEST_URI'])=='add_new.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/reviews/index.php">View Reviews</a></li>
+				
+				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false  && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/reviews/add_new.php">Add Review</a></li>
                 
+
+				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'accessories')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/accessories/index.php">View All Accessories</a></li>
+
+				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'accessories')!== false  && basename($_SERVER['REQUEST_URI'])=='actionproduct.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/accessories/actionproduct.php">Add Accessory</a></li>      
+
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'presentation')!== false  && basename($_SERVER['REQUEST_URI'])=='actionbanners.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/presentation/actionbanners.php">Presentation Banner</a>
+				</li>
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'tabs')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/presentation/index.php">View Presentation Tabs</a>
+				</li>               
               </ul>
             </div>
             <!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -191,6 +206,7 @@ $(document).ready(function() {
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) =='from.php' && $_REQUEST['car'] == 73){?>class="sub_show"<?php } ?>> <a href="<?=DEFAULT_ADMIN_URL?>/car/from.php?car=73">From AutoTrader.com</a> </li>
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) == 'feature.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/feature.php">Featured Cars</a> </li>
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) == 'popular.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/popular.php">Popular Cars</a> </li>
+		<li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) == 'productcars.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/productcars.php">Product Cars</a> </li>
               </ul>
             </div>
             <!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -220,6 +236,7 @@ $(document).ready(function() {
           </li>
          
         </ul>
+        <?php /*
         <div class="nav-divider">&nbsp;</div>
         <ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'banner')!== false){?> current<?php } ?>">
           <li><a href="#nogo" ><b>Banner Manager</b></a>
@@ -235,7 +252,7 @@ $(document).ready(function() {
             <!--[if lte IE 6]></td></tr></table></a><![endif]-->
           </li>
         </ul>
-        
+        */ ?>
          <div class="nav-divider">&nbsp;</div>
          <ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'faq')!== false){?> current<?php } ?>">
           <li><a href="#nogo" ><b>FAQ Manager</b></a>
@@ -356,6 +373,24 @@ $(document).ready(function() {
 				</li>                              
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'logistique')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/logistique/index.php">View All Tab</a>
+				</li>                              
+              </ul>
+            </div>
+            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+          </li>
+        </ul>
+         <div class="nav-divider">&nbsp;</div>			
+        <ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false){?> current<?php } ?>">
+          <li><a href="#nogo" ><b>Reviews</b></a>
+            <!--[if IE 7]><!--></a><!--<![endif]-->
+            <!--[if lte IE 6]><table><tr><td><![endif]-->
+            <div class="select_sub show">
+              <ul class="sub">               
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false && basename($_SERVER['REQUEST_URI'])=='add.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/reviews/add.php">Add New Review</a>
+				</li>                              
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/reviews/index.php">View All Review</a>
 				</li>                              
               </ul>
             </div>

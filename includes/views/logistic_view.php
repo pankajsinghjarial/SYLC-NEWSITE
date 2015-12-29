@@ -66,7 +66,7 @@
 					if ($total_rows > 0) {					
 						while ($tab = mysql_fetch_object($allTabs)) { 
 				?>
-						<li <?php if($slug == $tab->slug) {echo 'class="active"';}?>><a href="/logistic/<?php echo $tab->slug;?>"><?php echo $tab->tab_title;?></a></li>
+						<li <?php if($slug == $tab->slug) {echo 'class="active"';}?>><a href="/logistic/<?php echo $tab->slug;?>"><?php echo stripslashes($tab->tab_title);?></a></li>
 				<?php
 						}
 					}

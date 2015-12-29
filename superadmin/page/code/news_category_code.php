@@ -52,7 +52,7 @@ if (strlen($start) > 0 and !is_numeric($start)){
 
 $eu = ($start - 0); 
 
-if (!$limit > 0 ){ // if limit value is not available then let us use a default value
+if (!$limit > 0 ) { // if limit value is not available then let us use a default value
 	$limit = PAGING_LIMIT;    // No of records to be shown per page by default.
 }                             
 $this1 = $eu + $limit; 
@@ -71,8 +71,8 @@ if (isset($_GET['orderBy'])and $_GET['orderBy'] != '') {
 }
 
 
-$obj_setting = new common();
-$total_rows = $obj_setting->numberOfRows('news_category'); //number of rows in pages table
+$obj_setting   = new common();
+$total_rows    = $obj_setting->numberOfRows('news_category'); //number of rows in pages table
 $allcategories = $obj_setting->customQuery("SELECT * FROM  news_category order by $field $orderby limit $eu, $limit");
 
 unset($obj_setting);

@@ -32,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				$slug = str_replace(' ', '_', strtolower($category_name));
 				$dataArr  =  array('category_name' => $category_name, 'slug' => $slug);
 				if ($id == "") {
-					$categoryInsert   = $obj_setting->save('news_category', $dataArr);
+					$categoryInsert = $obj_setting->save('news_category', $dataArr);
 				} else {
-					$categoryInsert   = $obj_setting->update('news_category', $dataArr, "id=".$id);
+					$categoryInsert = $obj_setting->update('news_category', $dataArr, "id=".$id);
 				}
 				$_SESSION['success_msg'] = 'Successfully Saved';
 			

@@ -81,7 +81,7 @@ class AdminCarForm extends common{
 							$getAttrRow->default_value = $postArr[$getAttrRow->attribute_code];
 					}
 					
-				echo ' <tr>
+				echo '<tr>
                         <th valign="top">'.$getAttrRow->frontend_label.':</th>
                         <td><input type="text" class="inp-form'.$req_class.'" name="'.$getAttrRow->attribute_code.'" id="'.$getAttrRow->attribute_code.'" value="'.$getAttrRow->default_value.'" /></td>
                         <td>'.$req_text.'</td>

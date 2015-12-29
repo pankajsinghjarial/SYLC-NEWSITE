@@ -27,13 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		if ($_FILES['topbanner']['name'] != "" ) {
 			$image_name = time().$_FILES['topbanner']['name'];
-			$path = LIST_ROOT.'/images/pages/';
+			$path = LIST_ROOT.'/images/pages/media/';
 			move_uploaded_file($_FILES["topbanner"]["tmp_name"], $path.$image_name);
 		} else {
 			$image_name = $oldtopimage;
 		}
 		
-		$dataArr  =  array('content' => $content, 'banner_image' => $image_name);
+		$dataArr  =  array('page_name' => 'media', 'content' => $content, 'banner_image' => $image_name);
 		$aboutus_insert = $obj_setting->update('content_page', $dataArr, "id=16");
 		
 		$_SESSION['success_msg'] = 'Successfully Saved';

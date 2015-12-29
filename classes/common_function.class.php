@@ -144,7 +144,7 @@ class commonFunction extends utility{
 		
 		function getSubstring($string, $endlength = 200, $endString = '...') {
 			
-			$newString = substr($string, 0 , $endlength);
+			$newString = substr(strip_tags($string), 0 , $endlength);
 			if (strlen($string) > $endlength) {
 				$newString .= $endString;
 			}

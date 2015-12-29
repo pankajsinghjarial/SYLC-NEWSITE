@@ -12,6 +12,9 @@ body {
 	font-size: 12px;
 	line-height: 0;
 }
+#mediaAddYoutubeLink, #mediaAddVideo, #mediaAddImage{
+	cursor:pointer;
+}
 #page-top-outer {
 	background: url(../images/shared/top_bg.jpg) top center repeat-x;
 	border-bottom: 1px solid #7e7e7e;
@@ -638,6 +641,21 @@ a:hover.action-delete {
 	padding: 6px;
 	width: 186px;
 }
+.inp-form-fullone{
+
+	color: #393939;
+    height: 20px;
+    padding: 6px;
+    width: 97%;
+}
+.inp-form-fullonetextarea{
+	color: #393939;
+    height: 50px;
+    padding: 6px;
+    width: 97%;
+
+}
+}
 .select-form {
     background: url(../images/forms/form_inp.gif) no-repeat scroll 0 0 transparent;
     border: medium none;
@@ -797,6 +815,13 @@ a:hover.action-delete {
 	line-height: 14px;
 	height:25px;
 	background: url(../images/forms/error_right.gif) right no-repeat;
+}
+.delete-media {
+	float:left;
+	line-height: 14px;
+	height:38px;
+	width:138px;
+	background: url(../images/shared/delete_media.png) right no-repeat;
 }
 .file_1 {
 	border: 1px solid #acacac;

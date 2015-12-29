@@ -14,10 +14,14 @@ if($slug == '') {
 	$slug = 'notre_mission';
 }
 /*Fetch banner section content*/
-$fetchSetting 	= $common->read('content_page', "slug = '$slug'");		
+$fetchSetting 	= $common->read('content_page', "slug = '".mysql_real_escape_string($slug)."'");		
 $getSetting 	= $db->fetchNextObject($fetchSetting);
+if (empty($getSetting)) {
+	echo '<script>location.href = "/logistic";</script>';
+}
+
 $content		= $getSetting->content;
-$bannerImage		= $getSetting->banner_image;
+$bannerImage	= $getSetting->banner_image;
 
 /*Recherche Transport Inquiry*/
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logisticform']) ) {

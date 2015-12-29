@@ -141,7 +141,7 @@ function checkBoxCheckedForEdit(){
 					?>
 						<tr <?php if ($ii%2==0) echo 'class="alternate-row"';?>>
 						  <td><input  type="checkbox" name="allselect[]" class="case" id="allselect<?php echo $getPageData->id;?>" value="<?php echo $getPageData->id;?>"/></td>
-						  <td><?php echo $getPageData->tab_title;?></td>
+						  <td><?php echo stripslashes($getPageData->tab_title);?></td>
 						  <td><a href="actiontabs.php?id=<?php echo $getPageData->id;?>" title="Edit" class="icon-1 info-tooltip"></a>
 							 <a onclick="return confirm('Are you sure you want to delete.');" href="tabs_delete.php?id=<?php echo $getPageData->id;?>&action=delete" title="Delete" class="icon-2 info-tooltip"></a>
 						  </td>

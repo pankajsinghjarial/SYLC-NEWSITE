@@ -6,7 +6,9 @@ $obj_setting = new common();
 
 if (isset($id) and $id != '' and isset($action) and $action == 'delete') {
 	$obj_setting->delete('news_category', "id=$id");
-	$_SESSION['success_msg'] = 'Category deleted successfully.';
+	$obj_setting->delete('news_articles', "category_id=$id");
+	
+	$_SESSION['success_msg'] = 'Category and its associated articles deleted successfully.';
 	echo '<script>location.href="'.DEFAULT_ADMIN_URL.'/page/news_category.php'.'";</script>'; 
 }
 

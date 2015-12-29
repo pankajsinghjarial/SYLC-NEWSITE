@@ -832,5 +832,3 @@ Class validation {
 			//echo '<br/ >'.count($check);die;
 	}
 }
-
-?>

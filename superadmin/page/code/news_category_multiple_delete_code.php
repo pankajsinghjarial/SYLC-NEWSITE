@@ -10,7 +10,8 @@ $obj_setting = new common();
 # Here we are deleting all selected pages
 if (isset($id) and $id != '' and isset($action) and $action == 'delete') {
     $obj_setting->delete('news_category', "id IN('$id')");
-	$_SESSION['success_msg'] = 'Category deleted successfully.';
+    $obj_setting->delete('news_articles', "category_id IN('$id')");
+	$_SESSION['success_msg'] = 'Category and its associated articles deleted successfully.';
 	echo '<script>location.href="'.DEFAULT_ADMIN_URL.'/page/news_category.php'.'";</script>'; 
 }
 
@@ -18,7 +19,7 @@ if (isset($id) and $id != '' and isset($action) and $action == 'delete') {
 #if not then we are showing error message and if found then we are fetching names
 #of those pages to show
 $total_rows = $obj_setting->numberOfRows('news_category', "id IN('$totalIds')");
-if ($total_rows < 0){
+if ($total_rows < 0) {
 	$pageName  = 'There are no Category exists with these ids.';
 }
 

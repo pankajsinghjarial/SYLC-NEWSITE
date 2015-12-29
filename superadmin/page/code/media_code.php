@@ -3,6 +3,7 @@ extract($_GET);
 extract($_POST);
 $obj_setting = new common();
 
+
 $limit=$_GET['limit']; // Read the limit value from query string.records per page
 if (strlen($limit) > 0 and !is_numeric($limit)){
 	$limit= 10;
@@ -73,7 +74,7 @@ if (isset($_GET['orderBy'])and $_GET['orderBy'] != '') {
 
 $obj_setting = new common();
  //number of rows in pages table
-$total_rows = $obj_setting->numberOfRows('news_articles');
+$total_rows = $obj_setting->numberOfRows('media');
 $allMedia = $obj_setting->customQuery("SELECT * from media order by $field $orderby limit $eu, $limit");
 
 unset($obj_setting);

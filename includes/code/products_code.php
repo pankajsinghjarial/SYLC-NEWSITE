@@ -50,7 +50,7 @@ if($_GET){
     foreach($args as $arg){
         if($arg == '') continue;
         $keyval = explode("=",$arg);
-        if($keyval[0] != "page" && $keyval[0] != "ipp" && $keyval[0] != "sort") $addtopaging1 .= "&" . $arg;
+        if($keyval[0] != "page" && $keyval[0] != "products" && $keyval[0] != "ipp" && $keyval[0] != "sort") $addtopaging1 .= "&" . $arg;
     }
 }
 

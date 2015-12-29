@@ -24,14 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$obj->add_fields($url, 'req', 'Please Enter Youtube URL');
 		$obj->add_fields($url, 'url', 'Please Enter Valid Youtube URL');
 		$obj->add_fields($url, 'youtubeurl', 'Please Enter Valid Youtube URL' );
-	}		
+	} else {
+		$url = '';
+	}
 	 
 	if (!isset($_GET['id'])) {
 		$obj->add_fields($_FILES['file']['name'], 'req', 'Please Upload Image');
 	}
 	$obj->add_fields($_FILES['file'], 'ftype=jpg,gif,png', 'Please Upload Valid Image');
 	if ($_FILES['file']['name'] != "") {
-		$obj->add_fields($_FILES['file'], "imgwh=100,100", "Please Upload Valid Image(100pxX100px)");
+		$obj->add_fields($_FILES['file'], "imgwh=200,100", "Please Upload Valid Image(200pxX100px)");
 	}		
 	
 	$error = $obj->validate();		   
@@ -69,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$fetchSetting 	= $obj_setting->read('media', 'id = '.$_GET['id']);
 			$getSetting 	= $db->fetchNextObject($fetchSetting);
 			$id	= $getSetting->id;
+			$mediaType	= $getSetting->type;
 			$mediaTitle	 = $getSetting->title;
 			$bannerImage = $getSetting->image;
 			$url	= $getSetting->youtubeurl;

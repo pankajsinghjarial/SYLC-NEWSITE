@@ -58,7 +58,7 @@ $no_exists_carids  = $ebayidExists = array();
 						<h6>Prix :  $ <?php echo $convertedCurrentPrice;?></h6>
 					  </div>
 					  <div class="col-md-6 product-arrow">
-						<a href="product.html"><i class="fa fa-arrow-right"></i></a>
+						<a href="<?php echo DEFAULT_URL; ?>/ebay/<?php echo $jtemId; ?>"><i class="fa fa-arrow-right"></i></a>
 					  </div>
 					</div>
 				  </div>

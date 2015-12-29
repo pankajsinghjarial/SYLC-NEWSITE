@@ -212,9 +212,17 @@ foreach($spec as $spex)
 $gallery = explode("**",$item->galleryURL);
 $prestation = 3000;
 $transportUSA = 1200;
+$transportUSAFermee = 1800;
 $transport = 2000;
-$bank = 2000;
-$frais = 2000;
-$carPrice = $common->CurrencyConverter($item->buyItNowPrice);
-$priceHT = $carPrice + $prestation + $transportUSA + $transport + $bank + $frais;
-$priceTTC = ( ($carPrice + 2000) * 0.10 * 0.20) + $carPrice + $prestation + $transportUSA + $transport + $bank + $frais;
+$bank = 260;
+$frais = 780;
+$carPrice = $common->ConvertPrice($item->buyItNowPrice);
+//$priceHT = $carPrice + $prestation + $transportUSA + $transport + $bank + $frais;
+$initPrice = ( ($carPrice + $common->ConvertPrice($transport)) * 0.10 * 0.20);
+if($item->Year < 1985){
+    $initPrice = ( ($carPrice + $common->ConvertPrice($transport)) * 0.05);
+}
+$priceTTC = $initPrice + $common->ConvertPrice($prestation) + $common->ConvertPrice($transportUSA) + $common->ConvertPrice($bank) + $frais;
+
+$firstVid = $common->getValueByField("superadmin_options" ,"option_name='firstVid'" ,"option_value" );
+$secondVid = $common->getValueByField("superadmin_options" ,"option_name='secondVid'" ,"option_value" );

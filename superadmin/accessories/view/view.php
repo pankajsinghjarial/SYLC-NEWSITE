@@ -130,8 +130,7 @@ function checkBoxCheckedForEdit(){
                       <th width="5%" class="table-header-check"><input type="checkbox" id="selectall" />
                       </th>
                       <th width="45%" class="table-header-repeat line-left minwidth-1"><a href="javascript:void(0)">Product Name</a> </th>
-                      <th width="12%" class="table-header-repeat line-left minwidth-1"><a href="javascript:void(0)">Amount</a></th>
-                      <th width="20%" class="table-header-repeat line-left"><a href="javascript:void(0)">Type</a></th>
+                      <th width="33%" class="table-header-repeat line-left minwidth-1"><a href="javascript:void(0)">Amount</a></th>                    
                       <th width="18%" class="table-header-options line-left"><a href="javascript:void(0);">Options</a></th>
                     </tr>
                   </thead>
@@ -145,7 +144,6 @@ function checkBoxCheckedForEdit(){
 						  <td><input  type="checkbox" name="allselect[]" class="case" id="allselect<?php echo $getPageData->id;?>" value="<?php echo $getPageData->id;?>"/></td>
 						  <td><?php echo $getPageData->productname;?></td>
 						  <td><?php echo $getPageData->amount;?></td>
-						  <td></td>
 												
 						  <td><a href="actionproduct.php?id=<?php echo $getPageData->id;?>" title="Edit" class="icon-1 info-tooltip"></a>
 							 <a onclick="return confirm('Are you sure you want to delete.');" href="accessories_delete.php?id=<?php echo $getPageData->id;?>&action=delete" title="Delete" class="icon-2 info-tooltip"></a>

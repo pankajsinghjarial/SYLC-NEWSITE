@@ -34,23 +34,25 @@
 							 <?php 
 								  if ($total_rows > 0) {
 									$ii = 1;
-									while($getPageData = mysql_fetch_object($allAccessories)) { 
+									while($getPageData = mysql_fetch_object($allAccessories)) {
+										$galleryURL = DEFAULT_URL."/images/accessories/".$getPageData->image;
 							?>
 							 <form method="post" action="process.php">
 								 	<input type="hidden" name="itemname" value="<?php echo $getPageData->productname;?>" /> 
 									<input type="hidden" name="itemnumber" value="<?php echo $getPageData->id;?>" /> 
 									<input type="hidden" name="itemdesc" value="<?php echo $getPageData->description;?>" /> 
-									<input type="hidden" name="itemprice" value="<?php echo $getPageData->amount;?>" />
+									<input type="hidden" name="itemprice" value="<?php echo $common->CurrencyConverter($getPageData->amount);?>" />
 								<div class="col-md-12 col-sm-12 col-xs-12 no-padding list-first-section wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
 								  <div class="col-md-4 col-sm-4 col-xs-12 no-right-padding">
-									<img src="images/accessories/img-1.png" class="img-responsive">
+									<img src="<?php echo DEFAULT_URL; ?>/image_resizer.php?img=<?php echo $galleryURL; ?>&newWidth=291&newHeight=227"
+								width="291" height="227" class="img-responsive">
 								  </div>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 									  <div class="list-top-right col-md-12 no-padding">
 									  
 										<div class="col-md-6 col-sm-6 col-xs-12 no-padding list-right-text">
 										  <h2><?php echo $getPageData->productname;?></h2>
-										  <h3>Prix De Vente:  <span> &nbsp € <?php echo $getPageData->amount;?></span></h3>
+										  <h3>Prix De Vente:  <span> &nbsp € <?php echo $common->CurrencyConverter($getPageData->amount);?></span></h3>
 										</div>
 									
 									

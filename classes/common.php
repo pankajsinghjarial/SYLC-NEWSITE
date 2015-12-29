@@ -456,9 +456,24 @@ VALUES ($carid,1) ");
 		//jitendra
 		
 		$finalprice = ($price)*$this->exch_rate;
-		return number_format($finalprice,2);	
+		return number_format($finalprice, 2);	
 	}
-	
+    
+	function ConvertPrice($price){
+		if($this->exch_rate ==''){
+			$this->getExchangeRate();
+		}
+		
+		//$rateid = $this->customQuery("select * from currency where id = 1");
+		//$rate = mysql_fetch_object($rateid);	
+		//$finalprice = (($price + $rate->boat) * $rate->custom * $rate->tva) + $rate->transp + $rate->com;
+		//$finalprice = ($price + $rate->boat + $rate->transp + $rate->com)*$this->exch_rate;
+		//jitendra
+		
+		$finalprice = ($price)*$this->exch_rate;
+		return number_format($finalprice,2, '.', '');
+	}
+
 	function getOptionNameById($id){
 		$sql = $this->customQuery("Select value from attribute_option_value where value_id = $id");
 		$slug = mysql_fetch_object($sql);

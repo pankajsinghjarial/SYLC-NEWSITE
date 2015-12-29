@@ -41,3 +41,8 @@ $limit = 8;
 $eu = $limit * ($pagesnum-1);
 
 $allVideo = $common->customQuery("SELECT * FROM  media where type = '0' ORDER BY id ASC limit $eu, $limit");
+
+$fetchSetting 	= $common->read('content_page', 'id = 16');		
+$getSetting 	= $db->fetchNextObject($fetchSetting);
+$bannerImage	= $getSetting->banner_image;	
+$content		= $getSetting->content;	

@@ -131,8 +131,8 @@
 							<th valign="top">Media Type:</th>
 							<td>
 								<select name="media_type" id="media_type">
-									<option value="0">Video</option>
-									<option value="1">Photo</option>
+									<option value="0" <?php if($mediaType == 0){echo 'selected';} ?>>Video</option>
+									<option value="1" <?php if($mediaType == 1){echo 'selected';} ?>>Photo</option>
 								</select>
 							</td>
 							<td><div class="error-left"></div>
