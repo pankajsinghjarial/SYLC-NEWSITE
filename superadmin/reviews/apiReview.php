@@ -82,11 +82,11 @@ class getEntity
 	
 	
 }
-
+/*
 	$getEntityObj = new getEntity;
 	$arr = $getEntityObj->getEntityOutput(6001,3);
 	
 	print_r($arr);
 	
-	
+	*/
 ?>

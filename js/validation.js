@@ -15,6 +15,24 @@ $.validator.addMethod('isValidEmailAddress', function(value, element,e) {
 		} 
 		return false;       
 	}, 'Please enter a valid email address');
+	
+$.validator.addMethod('isValidPhone', function(value, element,e) {
+		var myRegExp =/^[0-9-+]+$/;
+	
+		
+		var urlToValidate = value;
+		
+		if (value == '') {
+		 return true;
+		}
+		
+		if (!myRegExp.test(urlToValidate)){
+			return false;
+			}else{
+			return true;
+		} 
+		return false;       
+	}, 'Please enter a valid email address');
 
 
 
@@ -34,7 +52,8 @@ $.validator.addMethod('isValidEmailAddress', function(value, element,e) {
 					isValidEmailAddress:true
 				},
 				'phone' : {
-					required : true
+					required : true,
+					isValidPhone : true
 				},
 				'comment' : {
 					required : true

@@ -147,8 +147,8 @@
                       <th valign="top">Type:</th>
 							<td>
 								<select name="old_new" id="old_new" >
-									<option value="1" >New Car</option>
-									<option value="0" >30 Year old car</option>
+									<option value="1" <?php if(isset($old_new)){ if($old_new ==1){echo "selected='selected'";} } ?> >New Car</option>
+									<option value="0" <?php if(isset($old_new)){ if($old_new ==0){echo "selected='selected'";} }?>>30 Year old car</option>
 								</select>
 							</td>
 							<td></td>
@@ -201,10 +201,17 @@
                           <div class="error-inner">This field is required.</div></td>
                       </tr>
                       <tr>
-                        <th valign="top">Image:</th>
-                        <td><input type="file" name="image" id="MainImage"  /></td>
+                        <th valign="top">Main Image:</th>
+                        <td><input type="file" name="image" id="MainImage"  /><div id='ImagePreview'></div></td>
                         <td><div class="error-left"></div>
                           <div class="error-inner">This field is required.</div></td>
+                      </tr>
+                      <tr>
+                        <th valign="top"></th>
+                        <td><br><br><b>ADDITIONAL MEDIA :-</b><br><br>
+						</td>
+                        <td>
+                          </td>
                       </tr>
                       <?php  if(isset($medias)){ 
 						  
@@ -227,7 +234,7 @@
 							}else if($mediaType=='youtube_link'){
 								
 								$mediaTitle = 'Youtube video link';
-								$mediaHtml = "<input type='text' id='".$order."' value='".$val."' name='youtube_link-".$order."' class='inp-form-fullone AdditionalMedia YoutubeVideoLink'>";
+								$mediaHtml = "<input type='text' id='".$order."' value='".$val."' name='youtube_link-".$order."' class='inp-form-fullone AdditionalMedia YoutubeVideoLink'><p class='ErrorYoutubeUrl' id='youtube-".$order."'></p>";
 							}
 						    
 						    
@@ -260,7 +267,7 @@
                       </tr>
                       <tr>
                         <th>&nbsp;</th>
-                        <td valign="top"><input type="submit" value="" class="form-submit" />
+                        <td valign="top"><input type="submit" value="" class="form-submit" id="form-submitID"/>
                           <!--input type="button" class="form-reset" onclick="javascript:location.href='<?php echo DEFAULT_ADMIN_URL; ?>/reviews/'"/-->
                         </td>
                         <td></td>

@@ -4173,8 +4173,8 @@ background: #f00;
 }
 /* Error Class for Validation */
 .error {
-color: red;
-border-color: red;
+	color: red;
+	border-color: red!important;
 }
 
 #calc_error_sdasfsdf .err{

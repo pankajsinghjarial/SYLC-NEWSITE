@@ -17,8 +17,8 @@
             <li <?php if($tab_title == 'nos_services') { echo 'class="active"';}?>>
 				<a href="/presentation/nos_services">Nos services</a>
 			</li>
-            <li <?php if($tab_title == 'comment_ça_marche') { echo 'class="active"';}?>>
-              <a href="/presentation/comment_ça_marche">Comment ça marche?</a>
+            <li <?php if($tab_title == 'comment_ca_marche') { echo 'class="active"';}?>>
+              <a href="/presentation/comment_ca_marche">Comment ça marche?</a>
             </li>
             <li <?php if($tab_title == 'fournisseurs') { echo 'class="active"';}?>>
 				<a href="/presentation/fournisseurs">Fournisseurs</a>
@@ -40,8 +40,8 @@
             <li <?php if($tab_title == 'nos_services') { echo 'class="active"';}?>>
 				<a href="/presentation/nos_services">Nos services</a>
 			</li>
-            <li <?php if($tab_title == 'comment_ça_marche') { echo 'class="active"';}?>>
-              <a href="/presentation/comment_ça_marche">Comment ça marche?</a>
+            <li <?php if($tab_title == 'comment_ca_marche') { echo 'class="active"';}?>>
+              <a href="/presentation/comment_ca_marche">Comment ça marche?</a>
             </li>
             <li <?php if($tab_title == 'fournisseurs') { echo 'class="active"';}?>>
 				<a href="/presentation/fournisseurs">Fournisseurs</a>

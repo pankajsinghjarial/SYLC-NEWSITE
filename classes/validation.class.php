@@ -124,20 +124,30 @@ Class validation {
 						break;
 				}
 				
+				case "uniquevalue": {
+					$obj_setting    = new common();
+					$total_articles = $obj_setting->numberOfRows($optionalparam[0], $optionalparam[1]);
+					if ($total_articles > 0) {
+						$errorMsg .=  $error;
+					}
+					
+					break;
+				}
+				
 				case "dupl": {
 					if(is_array($postVar)) {
 						$array_temp = array();
 						$j = 0;
 						foreach($postVar as $val) {
 							if($val != '') {
-								if (in_array($val, $optionalparam)) {									
+								if (in_array($val, $optionalparam)) {
 									$errorMsg .= $error." :Car Id ".($j+1)."<br>";
 								}
 							}
 							$j++;
 						}
-					} 
-						break;
+					}
+					break;
 				}
 				
 				case "year":{

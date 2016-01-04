@@ -222,7 +222,7 @@ $initPrice = ( ($carPrice + $common->ConvertPrice($transport)) * 0.10 * 0.20);
 if($item->Year < 1985){
     $initPrice = ( ($carPrice + $common->ConvertPrice($transport)) * 0.05);
 }
-$priceTTC = $initPrice + $common->ConvertPrice($prestation) + $common->ConvertPrice($transportUSA) + $common->ConvertPrice($bank) + $frais;
+$priceTTC = $initPrice + $carPrice + $common->ConvertPrice($transport)+ $common->ConvertPrice($prestation) + $common->ConvertPrice($transportUSA) + $common->ConvertPrice($bank) + $frais;
 
 $firstVid = $common->getValueByField("superadmin_options" ,"option_name='firstVid'" ,"option_value" );
 $secondVid = $common->getValueByField("superadmin_options" ,"option_name='secondVid'" ,"option_value" );

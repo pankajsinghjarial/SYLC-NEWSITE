@@ -20,11 +20,12 @@ if (empty($getSetting)) {
 	echo '<script>location.href = "/logistic";</script>';
 }
 
-$content		= $getSetting->content;
-$bannerImage	= $getSetting->banner_image;
+$title		 = $getSetting->tab_title;
+$content     = $getSetting->content;
+$bannerImage = $getSetting->banner_image;
 
 /*Recherche Transport Inquiry*/
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logisticform']) ) {
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logisticform'])) {
 	require_once('lib/iContactApi.php'); 
 	// code for lead save on iContact                        
 	iContactApi::getInstance()->setConfig(array(
@@ -41,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logisticform']) ) {
 			$res = $oiContact->subscribeContactToList($cid->contactId, 80263, 'normal');
 			
 			/* Send Notification to Admin about this Lead */			
-			$subject= 'NEW Recherche Transport Inquiry Received:';		
+			$subject = $title.'NEW Recherche Transport Inquiry Received:';		
 			$message = nl2br("NEW Recherche Transport Inquiry Received:
 							Type de transportation :  ".trim($type_transport)."
 							Name :  ".trim($fname)."
@@ -54,10 +55,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logisticform']) ) {
 			echo '<script>location.href = "/thank_you.php";</script>';
 			exit;
 		
-		} catch (Exception $oException) { // Catch any exceptions
-                    // Dump errors
-                    var_dump($oiContact->getErrors());                   
-                    // Grab the last raw response data
-                    var_dump($oiContact->getLastResponse());
+		} catch (Exception $oException) {
+			// Catch any exceptions
+			// Dump errors
+			var_dump($oiContact->getErrors());                   
+			// Grab the last raw response data
+			var_dump($oiContact->getLastResponse());
         }
 }

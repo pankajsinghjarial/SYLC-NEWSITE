@@ -38,9 +38,10 @@ ini_set('error_reporting', E_ALL);
 	
 	try {
 		//Create a contact
-		$oiContact->addList('testing','410014', true, false, false, 'Just an example lista', 'ASomeList');
-
-		/* $cid = $oiContact->CustomaddContactForm($email, 'normal', '', null, $phone, $comment,$fname, null);
+		$oiContact->addList('testing listd',136928, true, false, false, 'Jusdt', 'ASomedList');
+		
+		/* $cid = $oiContact->CustomaddContactForm($email, 'normal',
+		'', null, $phone, $comment,$fname, null);
 		 $res   = $oiContact->subscribeContactToList($cid->contactId, 80263, 'normal');
 			
 		/* Send Notification to Admin about this Lead * /			

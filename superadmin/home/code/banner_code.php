@@ -2,7 +2,7 @@
 extract($_GET);
 extract($_POST);
 $obj_setting = new common();
-$page_name="index.php";
+
 $limit=$_GET['limit']; // Read the limit value from query string.records per page
 if (strlen($limit) > 0 and !is_numeric($limit)){
 	$limit= 10;
@@ -45,7 +45,7 @@ switch($limit)
 }
 
 $start = $_GET['start'];
-if (strlen($start) > 0 and !is_numeric($start)){
+if (strlen($start) > 0 and !is_numeric($start)) {
 	$start = 0;
 }
 

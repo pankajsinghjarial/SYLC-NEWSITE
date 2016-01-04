@@ -49,22 +49,21 @@ if (strlen($start) > 0 and !is_numeric($start)){
 	$start = 0;
 }
 
-
 $eu = ($start - 0); 
 
-if (!$limit > 0 ){ // if limit value is not available then let us use a default value
+if (!$limit > 0 ) { // if limit value is not available then let us use a default value
 	$limit = PAGING_LIMIT;    // No of records to be shown per page by default.
 }                             
 $this1 = $eu + $limit; 
 $back = $eu - $limit; 
 $next = $eu + $limit; 
 
-if (isset($_GET['field'])and $_GET['field'] != ''){
+if (isset($_GET['field']) && $_GET['field'] != '') {
 	$field = $_GET['field'];
-}else{
+} else {
 	$field = 'id';
 }
-if (isset($_GET['orderBy'])and $_GET['orderBy'] != '') {
+if (isset($_GET['orderBy']) && $_GET['orderBy'] != '') {
 	$orderby = $_GET['orderBy'];
 } else {
 	$orderby = 'ASC';
@@ -72,7 +71,7 @@ if (isset($_GET['orderBy'])and $_GET['orderBy'] != '') {
 
 
 $obj_setting = new common();
-$total_rows = $obj_setting->numberOfRows('accessories'); //number of rows in pages table
+$total_rows  = $obj_setting->numberOfRows('accessories'); //number of rows in pages table
 $allAccessories = $obj_setting->customQuery("SELECT * FROM  accessories order by $field $orderby limit $eu, $limit");
 
 unset($obj_setting);

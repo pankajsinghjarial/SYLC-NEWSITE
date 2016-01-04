@@ -17,11 +17,12 @@ $currentTimestamp   = getCurrentTimestamp();
  
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-		$error='';
+		$error = '';
 		/*validate required fields*/
-		$obj->add_fields($tabtitle, 'req', 'Please Enter Tab Title');
+		$obj->add_fields($tabtitle, 'req', 'Please Enter Tab Title');		
+		$obj->add_fields($tabtitle, 'uniquevalue', 'Please Enter Unique Tab Title', array('content_page', 'tab_title'));
 		$obj->add_fields($content, 'req', 'Please Enter Content');		
-		 
+		
 		if (!isset($_GET['id'])) {
 			$obj->add_fields($_FILES['file']['name'], 'req', 'Please Upload Banner Image');
 		}
@@ -47,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			}
 
 				$slug = str_replace(' ', '_', strtolower($tabtitle));
-				$dataArr  =  array('tab_title' => mysql_real_escape_string($tabtitle), 'banner_image' => $image_name, 'content' => $content, 'page_name' => 'Logistique', 'slug' => $slug);
+				$dataArr  =  array('tab_title' => htmlentities($tabtitle), 'banner_image' => $image_name, 'content' => $content, 'page_name' => 'Logistique', 'slug' => $slug);
 				if ($id == "") {
 					$banner_insert   = $obj_setting->save('content_page', $dataArr);
 				} else {

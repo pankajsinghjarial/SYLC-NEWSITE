@@ -127,7 +127,7 @@ $mod = str_replace(",","",$model);
 $yr = str_replace(",","",$year);
 mysql_query("INSERT INTO `lead_details`(lead_id,car_brand,model,created_at,year,destination) VALUES ('$lastfetch->id','$brad','$mod','$current_time','$yr','$service');");
 
-require_once '/home1/sylcexpo/public_html/voitures-americaines/class.phpmailer.php';
+require_once 'class.phpmailer.php';
 //SMTP MAIL STARTS
 
 try {

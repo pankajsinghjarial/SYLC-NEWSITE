@@ -539,21 +539,31 @@
     </div>
 </section>
 <input type="hidden" id="prestation" value="<?php echo $common->ConvertPrice($prestation);?>" />
-<input type="hidden" id="transportUSA" value="<?php echo $common->ConvertPrice($transportUSA);?>" />
+<input type="hidden" id="transportUSA" value="<?php echo $common->ConvertPrice(1200);?>" />
+<input type="hidden" id="transportUSAFerme" value="<?php echo $common->ConvertPrice(1800);?>" />
+<input type="hidden" id="transportUSAOvete" value="<?php echo $common->ConvertPrice(1200);?>" />
 <input type="hidden" id="transport" value="<?php echo $common->ConvertPrice($transport);?>" />
 <input type="hidden" id="bank" value="<?php echo $common->ConvertPrice($bank);?>" />
 <input type="hidden" id="frais" value="<?php echo $frais;?>" />
 <input type="hidden" id="initPrice" value="<?php echo $initPrice;?>" />
 <input type="hidden" id="item" value="<?php echo strtoupper($item->title);?>" />
+<input type="hidden" id="itemID" value="<?php echo $carid;?>" />
+<input type="hidden" id="caryear" value="<?php echo $item->Year;?>" />
+<input type="hidden" id="make" value="<?php echo $item->Make;?>" />
+<input type="hidden" id="model" value="<?php echo $item->Model;?>" />
+<input type="hidden" id="carprice" value="<?php echo $common->ConvertPrice($item->buyItNowPrice);?>" />
+<input type="hidden" id="trim" value="<?php echo (isset($specs['Trim']))?$specs['Trim']:'NA';?>" />
+<input type="hidden" id="interior_color" value="<?php echo (isset($specs['Interior Color']))?$specs['Interior Color']:'NA';?>" />
+<input type="hidden" id="exterior_color" value="<?php echo (isset($specs['Exterior Color']))?$specs['Exterior Color']:'NA';?>" />
 <script>
     $(document).ready(function(){
         $('#slctTransportUSA').on('change',function(){
             if($('#slctTransportUSA').val() == 'Ouvert'){
                 $('#txtTransportUSA').val('$1200');
-                $('#transportUSA').val(1200);
+                $('#transportUSA').val($('#transportUSAOvete').val());
             }else{
                 $('#txtTransportUSA').val('$1800');
-                $('#transportUSA').val(1800);
+                $('#transportUSA').val($('#transportUSAFerme').val());
             }
             updatePrix();
         });
@@ -613,14 +623,15 @@
         var bank = $('#bank').val();
         var frais = $('#frais').val();
         var initPrice = $('#initPrice').val();
+        var carprice = $('#carprice').val();
         var homologation = 0;
         //check homologation
         if($('#chkHomologation:checked').length){
             homologation = 3500;
         }
         //over 30 year
-        priceTTC = parseFloat(initPrice) + parseFloat(prestation) + parseFloat(transportUSA) + parseFloat(bank) + parseFloat(frais) + parseFloat(homologation);
-        $('#priceTTC').val(parseFloat(priceTTC).toFixed(2));
+        priceTTC = parseFloat(initPrice) + parseFloat(carprice) + parseFloat(transport) + parseFloat(prestation) + parseFloat(transportUSA) + parseFloat(bank) + parseFloat(frais) + parseFloat(homologation);
+        $('#priceTTC').val('€'+parseFloat(priceTTC).toFixed(2));
     }
     function validatePayment(e){
         e.preventDefault();
@@ -640,8 +651,15 @@
         var month = $('#month').val();
         var year = $('#year').val();
         var cvv = $('#cvv').val();
-        var car_price = $('#carPrice').val();
+        var carprice = $('#carprice').val();
         var item = $('#item').val();
+        var year = $('#year').val();
+        var caryear = $('#caryear').val();
+        var make = $('#make').val();
+        var model = $('#model').val();
+        var trim = $('#trim').val();
+        var exterior_color = $('#exterior_color').val();
+        var interior_color = $('#interior_color').val();
         if(first_name.trim() == ""){
             $('#first_name').focus();
             $('.product-close-icon').after("<div class=\"validateError\">S'il vous plaît entrez le nom</div>");
@@ -719,17 +737,18 @@
         
         $('#btnPayment').hide();
         jQuery("#btnPayment").after('<img class="ajaxLoader" src="<?php echo DEFAULT_URL; ?>/images/popup/loading.gif" />');
+        var car_id = $('#itemID').val();
         //ajax request
         $.ajax({
             type: "POST",
             url: "<?php echo DEFAULT_URL?>/ajax_paypal_direct_payment.php",
-            data: { first_name: first_name, last_name: last_name, address: address, telephone: telephone, city: city, province: province,postal_code: postal_code,email: email,card_number: card_number,card_type: card_type,month: month,year: year,cvv: cvv,car_price:car_price,item:item},
+            data: { first_name: first_name, last_name: last_name, address: address, telephone: telephone, country:country,city: city, province: province,postal_code: postal_code,email: email,card_number: card_number,card_type: card_type,month: month,year: year,cvv: cvv,carprice:carprice,item:item,car_id:car_id,year:year,make:make,model:model,caryear:caryear,exterior_color:exterior_color,interior_color:interior_color,trim:trim},
             success: function(response) {
                 response = $.parseJSON(response);
-                if(response.ACK == 'Failure'){
+                if(response.ACK.toLowerCase() == 'failure'){
                     $('.product-close-icon').after("<div class=\"validateError\">"+response.L_LONGMESSAGE0+"</div>");
                 }
-                if(response.ACK == 'Success'){
+                if(response.ACK.toLowerCase() == 'success' || response.ACK.toLowerCase() == 'pending'){
                     $('.product-close-icon').after("<div class=\"validateSuccess\">Payment Successfully Done. Please check email for details.</div>");
                 }
                 $('.ajaxLoader').remove();

@@ -7,9 +7,17 @@ if(!$loginCheck->isLoggedIn() && !$loginCheck->isUserLoggedIn()){
 	exit;
 }
 
-include_once(LIST_ROOT_ADMIN."/reviews/code/page_add_code.php"); 
+error_reporting(E_ALL);
 
+// Report all PHP errors
+error_reporting(-1);
+
+// Same as error_reporting(E_ALL);
+ini_set('error_reporting', E_ALL);
+
+
+include_once(LIST_ROOT_ADMIN."/reviews/code/homepage_reviews_add_code.php");
 include(LIST_ROOT_ADMIN_INCLUDES."/views/admin_header.php");
-include(LIST_ROOT_ADMIN."/reviews/form/page_add_form.php");
+include(LIST_ROOT_ADMIN."/reviews/form/homepage_reviews_add_form.php");
 include(LIST_ROOT_ADMIN_INCLUDES."/views/admin_footer.php");   
 ?>

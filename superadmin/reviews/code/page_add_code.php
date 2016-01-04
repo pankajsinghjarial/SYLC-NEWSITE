@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************************************************
-#Coder         : Kapil Verma
+#Coder         : ishan Siddiqui
 #Description : This Code is used to Manage Pages
 *************************************************************************************************************/
 include(LIST_ROOT."/getEntity.php");
@@ -91,7 +91,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 					$image_name = time().'-'.$_FILES['image']['name'];
 					//$path = LIST_ROOT.'/images/reviews/media/';
 					$path = LIST_ROOT_ADMIN_REVIEW_IMAGEPATH.'/';
-					move_uploaded_file($_FILES["image"]["tmp_name"],$path.$_FILES["image"]["name"]);
+					move_uploaded_file($_FILES["image"]["tmp_name"],$path.$image_name);
 					$_SESSION['success_msg'] = 'New review has been saved successfully.';
 					
 					$dataArr = array('short_description'=>$short_description,'old_new'=>$old_new,'image'=>$image_name,'make'=>$make,'model'=>$model,'year'=>$year,'expert'=>$expert,'ensemble'=>$ensemble,'characteristique'=>$characteristique,'updated'=>getCurrentTimestamp(),'make_name'=>$make_name,'model_name'=>$model_name);

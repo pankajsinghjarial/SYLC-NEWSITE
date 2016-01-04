@@ -123,7 +123,8 @@
                           <!--  end message-green -->
                           <?php 
 							unset($_SESSION['success_msg']);
-						} ?>
+						}
+						?>
                         </td>
                       </tr>
 						
@@ -194,7 +195,7 @@
 						<tr>
 							<th>&nbsp;</th>
 							<td valign="top"><input type="submit" value="submit" name="submit" class="form-submit" />
-							  <input type="button" class="form-reset" onclick="javascript:location.href='<?php echo DEFAULT_ADMIN_URL; ?>/home/real_facts.php'"/>
+							  <input type="button" class="form-reset" onclick="javascript:location.href='<?php echo DEFAULT_ADMIN_URL; ?>/home/product_banner.php'"/>
 							</td>
 							<td></td>
                         </tr>

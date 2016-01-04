@@ -29,7 +29,24 @@ $getSetting 	= $db->fetchNextObject($fetchSetting);
 $realFactsContent        = $getSetting->content;
 $realFactBackgroundImage = $getSetting->image;
 
-
+/*Fetch homepage review content*/
+/////
+$check_home_review_one = $obj_setting->getValueByField("superadmin_options" ,"option_name='HomeReviewOne'" ,"option_value" );
+$check_home_review_two = $obj_setting->getValueByField("superadmin_options" ,"option_name='HomeReviewTwo'" ,"option_value" );
+$check_home_review = $check_home_review_one."','".$check_home_review_two;
+$home_reviews    = $obj_setting->customQuery("SELECT * FROM  reviews WHERE id IN ('".$check_home_review."')  ");
+$reviewsArr = array();
+$review_calsses = array('fadeInLeft','fadeInRight');
+while ($rev = mysql_fetch_object($home_reviews)) {
+	$short_description = $rev->short_description;
+    $make = $rev->make_name;
+    $model = $rev->model_name;
+    $year = $rev->year;
+    $title = $make.' '.$model.' '.$year;
+    $image = DEFAULT_ADMIN_URL_REVIEW_IMAGEPATH.'/'.$rev->image;
+    $reviewsArr[] = array('short_description'=>$short_description, 'image'=>$image, 'title'=>$title ); 
+}
+/////
 // Generates an indexed URL snippet from the array of item filters
 function buildURLArray ($filterarray) {
 	global $urlfilter;
@@ -83,14 +100,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['realfactform']) ) {
 		
 		
 		$message = html_entity_decode(htmlentities($message, ENT_QUOTES, "UTF-8"));
-		$sentmail = sendSmtpMail( SITE_ADMIN_EMAIL, $subject, $message );
+		//$sentmail = sendSmtpMail( SITE_ADMIN_EMAIL, $subject, $message );
 		echo '<script>location.href = "/thank_you.php";</script>';
 		exit;
 		
 		} catch (Exception $oException) { // Catch any exceptions
-                    // Dump errors
-                    var_dump($oiContact->getErrors());                   
-                    // Grab the last raw response data
-                    var_dump($oiContact->getLastResponse());
+                   
         }
 }

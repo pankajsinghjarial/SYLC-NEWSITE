@@ -11,10 +11,6 @@ $obj_setting 		= new common();
 $obj 				= new validation();
 
 #Code to Fetch page category data  
-#END
-$publish = 1;
-/* Get Current Date Time Stamp */ 
-$currentTimestamp   = getCurrentTimestamp();
  
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {

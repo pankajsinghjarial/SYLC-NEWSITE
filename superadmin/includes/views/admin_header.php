@@ -17,6 +17,12 @@
 <link rel="stylesheet" href="<?php echo DEFAULT_ADMIN_URL; ?>/css/tabs.css" type="text/css" />
 <script src="<?php echo DEFAULT_ADMIN_URL; ?>/js/jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
 
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript">
+var jQueryF = $.noConflict(true);
+</script>
+
+
 <![if !IE 7]>
 <!--  styled select box script version 1 -->
 <script src="<?php echo DEFAULT_ADMIN_URL; ?>/js/jquery/jquery.selectbox-0.5.js" type="text/javascript"></script>
@@ -170,12 +176,6 @@ $(document).ready(function() {
 				<li <?php if (strpos($_SERVER['REQUEST_URI'],'page') !== false && basename($_SERVER['REQUEST_URI']) == 'actionmedia.php') { ?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/page/actionmedia.php">Add New Media</a>
 				</li>
-
-				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false && basename($_SERVER['REQUEST_URI'])=='add_new.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/reviews/index.php">View Reviews</a></li>
-				
-				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false  && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/reviews/add_new.php">Add Review</a></li>
-                
-
 				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'accessories')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/accessories/index.php">View All Accessories</a></li>
 
 				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'accessories')!== false  && basename($_SERVER['REQUEST_URI'])=='actionproduct.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/accessories/actionproduct.php">Add Accessory</a></li>      
@@ -391,6 +391,9 @@ $(document).ready(function() {
 				</li>                              
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/reviews/index.php">View All Review</a>
+				</li>
+				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false && basename($_SERVER['REQUEST_URI'])=='select_reviews.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/reviews/select_reviews.php">Homepage Reviews</a>
 				</li>                              
               </ul>
             </div>

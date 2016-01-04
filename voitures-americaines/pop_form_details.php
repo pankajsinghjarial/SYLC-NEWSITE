@@ -59,7 +59,7 @@ La signature électronique est simple, rapide et économise le papier. Il suffit
           <td colspan='2'><p>Merci de votre confiance, SYLC Corporation</p></td>
           </tr>
 		 </table>";
-	require_once '/home1/sylcexpo/public_html/voitures-americaines/class.phpmailer.php';
+	require_once 'class.phpmailer.php';
 	//SMTP MAIL STARTS
 	
 	try {
@@ -70,11 +70,11 @@ La signature électronique est simple, rapide et économise le papier. Il suffit
 		$body             = preg_replace('/\\\\/','', $body); //Strip backslashes
 			
 		$mail->IsSMTP();                           // tell the class to use SMTP
-	$mail->SMTPAuth   = true;                  // enable SMTP authentication
-	$mail->Port       = 25;                    // set the SMTP server port
-	$mail->Host       = "localhost"; // SMTP server
-	$mail->Username   = "test@sylc-export.com";     // SMTP server username
-	$mail->Password   = "Sylc!@34";            // SMTP server password
+        $mail->SMTPAuth   = true;                  // enable SMTP authentication
+        $mail->Port       = 25;                    // set the SMTP server port
+        $mail->Host       = "localhost"; // SMTP server
+        $mail->Username   = "test@sylc-export.com";     // SMTP server username
+        $mail->Password   = "Sylc!@34";            // SMTP server password
 			
 		//$mail->IsSendmail();  // tell the class to use Sendmail
 			

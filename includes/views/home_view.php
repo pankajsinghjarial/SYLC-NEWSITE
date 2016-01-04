@@ -383,28 +383,23 @@ foreach($objVideos as $objVideo){
         <h1>Sylc Export Avis et Revues des voitures americaines</h1>
         <h3 class="big-car-details-heading">Retrouvez les revues des grands classiques américains, des automobiles iconiques de part leur histoire ou par leurs innovations.</h3>
       </div>
+      <?php 
+      if(!empty($reviewsArr)){ //echo "<pre>";
+		foreach($reviewsArr as $k => $rev) { //print_r($review_calsses); die;
+	  ?>
       <div class="col-md-6 col-sm-6 col-xs-12 big-car">
-        <div class="big-car-hover wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s">
-          <img src="images/big-car-img-1.png" class="img-responsive">
+        <div class="big-car-hover wow <?php echo $review_calsses[$k]; ?>" data-wow-duration="2s" data-wow-delay=".5s">
+          <img src="<?php echo DEFAULT_URL.'/image_resizer.php?img='.$rev['image'].'&newWidth=456&newHeight=280'; ?>" class="img-responsive">
         </div>
         <div class="dummy-text wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
-          <h2>Lorem Ipsum is Simply Dummy</h2>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-            has been the industry's standard dummy text ever since the 1500s, when an 
-            unknown printer took a galley of type and scrambled it ...</p>      
+          <h2><?php echo $rev['title']; ?></h2>
+          <p><?php echo $rev['short_description']; ?></p>      
         </div>
       </div>
-      <div class="col-md-6 col-sm-6 col-xs-12 big-car">
-        <div class="big-car-hover wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
-          <img src="images/big-car-img-2.png" class="img-responsive">
-        </div>
-        <div class="dummy-text wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
-          <h2>Lorem Ipsum is Simply Dummy</h2>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry
-            has been the industry's standard dummy text ever since the 1500s, when an 
-            unknown printer took a galley of type and scrambled it ...</p>      
-        </div>
-      </div>
+      <?php 	}
+			}
+      ?>
+     
        <div class="bottom-common-btn text-center wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
         <a href=""><button type="button" class="btn btn-default"> Voir tous les avis <i class="fa fa-angle-right"></i></button></a>
       </div>

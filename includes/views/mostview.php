@@ -15,6 +15,20 @@ while ($row = mysql_fetch_object($ebayids)) {
 }	
 
 $no_exists_carids  = $ebayidExists = array();
+$ebayids = $common->CustomQuery("Select itemId from ebay_car where itemId in (" . implode(",", $carids) . ")");
+
+while ($row = mysql_fetch_object($ebayids)) {
+   $ebayidExists[] = $row->itemId;
+}
+		
+$no_exists_carids = array_diff($carids, $ebayidExists);
+
+foreach ($no_exists_carids as $insertid) {
+	$ebayid = fetchEbayCar($insertid, "save");				
+}
+$ebayid = $common->CustomQuery("Select * from ebay_car where itemId in (" . implode(",", $carids) . ")");
+$item = '';
+if (mysql_num_rows($ebayid) > 0) {			
 ?>
 <section class="carousel-2 wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
   <div class="container">
@@ -24,19 +38,6 @@ $no_exists_carids  = $ebayidExists = array();
       </div>
       <div id="owl-demo" class="mostview owl-carousel">
 		  <?php
-			$ebayids = $common->CustomQuery("Select itemId from ebay_car where itemId in (" . implode(",", $carids) . ")");
-			while ($row = mysql_fetch_object($ebayids)) {
-			   $ebayidExists[] = $row->itemId;
-			}
-					
-			$no_exists_carids = array_diff($carids, $ebayidExists);
-			
-			foreach ($no_exists_carids as $insertid) {
-				$ebayid = fetchEbayCar($insertid, "save");				
-			}
-			$ebayid = $common->CustomQuery("Select * from ebay_car where itemId in (" . implode(",", $carids) . ")");
-			$item = '';
-			if (mysql_num_rows($ebayid) > 0) {				
 				while ($data = mysql_fetch_object($ebayid)) {
 					$jtemId = $data->itemId;					
 					$title  =  $data->title;
@@ -67,17 +68,19 @@ $no_exists_carids  = $ebayidExists = array();
 			</div>
 	<?php
 			
-			if($data->vin == ''){
+			if ($data->vin == '') {
 				$ebayids = fetchEbayCar($jtemId, "update");
 			}
-		} 		
-	}
+		} 	
 
 	?>
       </div>
     </div>
   </div>  
 </section>
+<?php
+	}
+?>
 <link href="<?php echo DEFAULT_URL; ?>/css/owl.carousel.css" rel="stylesheet">
 <script src="<?php echo DEFAULT_URL; ?>/js/owl.carousel.js"></script>
 

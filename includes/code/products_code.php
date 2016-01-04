@@ -422,6 +422,3 @@ $addCarToQuery = '';
 $carPages->items_total  = $common->total_getCarListWithAttr();
 $carPages->paginate();
 $all_car = $common->getCarListWithAttr($carPages->limit, array("fullName", "mileage", "price", "features", "description"));	
-
-
-

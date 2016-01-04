@@ -19,8 +19,10 @@ if(isset($totalIds) and $totalIds!=''){
     while($all_reviews_m = mysql_fetch_object($all_reviews_media))
     {
 			$mediaNme = $all_reviews_m->media_name;
-			unlink(LIST_ROOT_ADMIN_REVIEW_IMAGEPATH.'/'.$mediaNme);
-			
+			$mediatyp = $all_reviews_m->media_type;
+			if($mediatyp !='youtube_link'){
+				@unlink(LIST_ROOT_ADMIN_REVIEW_IMAGEPATH.'/'.$mediaNme);
+			}
 	}
     $obj_setting->delete('reviews_media'," review_id IN('$totalIds')");
     

@@ -100,7 +100,23 @@
 
 <div class="rightTabs wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
   <ul>
-    <li><a href=""><img src="<?php echo DEFAULT_URL; ?>/images/facebook.png"></a></li>
+    <li>
+     <?php
+		 if(!isset($title)) {
+			$title = '$title_for_layout';
+		 }
+		 if(!isset($content)) {
+			$content = '$description_for_layout';
+		 }
+		 if(!isset($img)) {
+			$img ='';
+		 }
+	 ?>
+      
+      <a onclick="window.open('https://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo urlencode(ucwords(strtolower(addslashes(str_replace('&','and',$title)))));?>&amp;p[summary]=<?php echo urlencode(preg_replace('/[^a-zA-Z0-9_!@#$%,.() -]/s','',strip_tags(str_replace('&','and',str_replace('&amp;','',str_replace('&nbsp;','',nl2br($content)))))));?>&amp;p[url]=<?=FULL_BASE_URL.$_SERVER['REQUEST_URI'];?>&amp;&p[images][0]=<?php echo $img;?>', 'sharer', 'toolbar=0,status=0,width=500,height=400,top=160,left=390');" href="javascript: void(0)" title="Click to share on facebook">
+			<img src="<?php echo DEFAULT_URL; ?>/images/facebook.png">
+        </a>
+     </li>              
     <li><a href=""><img src="<?php echo DEFAULT_URL; ?>/images/youtube-new-logo.png"></a></li>
   </ul>
 </div>

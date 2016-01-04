@@ -165,7 +165,7 @@
 						<tr>
 							<th>&nbsp;</th>
 							<td valign="top"><input type="submit" value="submit" name="submit" class="form-submit" />
-							  <input type="button" class="form-reset" onclick="javascript:location.href='<?php echo DEFAULT_ADMIN_URL; ?>/home/welcome.php'"/>
+							  <input type="button" class="form-reset" onclick="javascript:location.href='<?php echo DEFAULT_ADMIN_URL; ?>/home/index.php'"/>
 							</td>
 							<td></td>
                         </tr>

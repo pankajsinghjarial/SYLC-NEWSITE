@@ -1,5 +1,111 @@
 $(document).ready(function() {
 
+	function validateYouTubeUrl(url)
+	{
+		//var url = $(this).val();
+		
+			if (url != undefined || url != '') {
+				var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+				var match = url.match(regExp);
+				if (match && match[2].length == 11) {
+					return 0;
+					// Do anything for being valid
+					// if need to change the url to embed url then use below line
+					$('#ytplayerSide').attr('src', 'https://www.youtube.com/embed/' + match[2] + '?autoplay=0');
+				}
+				else {
+					// Do anything for not being valid
+					return 1;
+				}
+				
+			}
+	}
+	//$(".YoutubeVideoLink").blur(validateYouTubeUrl);
+	
+	$("#form-submitID").click(function(){
+		
+		
+		
+		elements = $('.YoutubeVideoLink');
+			var count =0;
+			elements.each(function(index){
+					
+					var newlarge = $(this).attr('id');
+					var linkvalue = $(this).val();
+					var ret = validateYouTubeUrl(linkvalue);
+					if(ret)
+					{
+						count++;
+						
+						$("#youtube-"+newlarge).html('Invalid youtube video link');
+					}else{
+						
+						$("#youtube-"+newlarge).html('');
+					}
+			});
+			if(count){
+					 return false;
+			}
+		
+		
+	});
+	
+	
+	$("#MainImageEdit").change(function(event){
+		
+		files = event.target.files;
+		console.log(files);
+		Itype = files[0].type;
+		imagetype = Itype.split('/').pop();
+		arr = ['png','jpeg'];
+		//alert(imagetype); 
+		if($.inArray( imagetype , arr ) == -1){
+			alert("Only JPG and PNG image formats are allowed.");
+			$(this).val('');
+			return false;
+		}
+		
+		
+		
+		var respon = confirm("Do you want to change the Main Image ?");
+		
+		if(respon){
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$("#ImagePreview").html('<img width="200px" height="100px" id="MainImageShowing" src="' + e.target.result + '" />');				
+			};
+			reader.readAsDataURL(this.files[0]);
+			
+			$("#MainImageShowing").hide();
+			$("#PreviousMainImage").attr('value',0);
+		}else{
+			$(this).val('');
+			return false;	
+		}
+	});
+	$("#MainImage").change(function(event){
+		
+		files = event.target.files;
+		console.log(files);
+		Itype = files[0].type;
+		imagetype = Itype.split('/').pop();
+		arr = ['png','jpeg'];
+		//alert(imagetype); 
+		if($.inArray( imagetype , arr ) == -1){
+			alert("Only JPG and PNG image formats are allowed.");
+			$(this).val('');
+			return false;
+		}
+		
+	
+		var reader = new FileReader();
+			reader.onload = function(e){
+				$("#ImagePreview").html('<img width="200px" height="100px" id="MainImageShowing" src="' + e.target.result + '" />');				
+			};
+			reader.readAsDataURL(this.files[0]);
+	
+	});
+	
 	function PathUrl(){
 		
 		pathArray = location.href.split( '/' );
@@ -74,11 +180,14 @@ $(document).ready(function() {
 			});
 			large++;
 		
-		var newLink = "<tr><th valign=\"top\">Youtube Video Link:</th>";
-			newLink +="<td><input type=\"text\" class=\"inp-form-fullone AdditionalMedia YoutubeVideoLink\" name=\"youtube_link-"+large+"\" id=\""+large+"\" /></td>";
+			var newLink = "<tr><th valign=\"top\">Youtube Video Link:</th>";
+			newLink +="<td><input type=\"text\" class=\"inp-form-fullone AdditionalMedia YoutubeVideoLink\" name=\"youtube_link-"+large+"\" id=\""+large+"\" /><p class=\"ErrorYoutubeUrl\" id=\"youtube-"+large+"\"></p></td>";
 			newLink +="<td><div class=\"delete-media\"></div></td></tr>";
-		//<div class=\"error-left\"></div><div class=\"error-inner\"></div>
-		$(this).parent().parent().before(newLink);
+			//<div class=\"error-left\"></div><div class=\"error-inner\"></div>
+			$(this).parent().parent().before(newLink);
+			
+			//$(".YoutubeVideoLink").bind('blur',validateYouTubeUrl);
+		
 			
 			$(".delete-media").bind('click',function(){
 			
@@ -266,7 +375,7 @@ $(document).ready(function() {
 			var mediaPosition = jQueryF(this).attr('id'); 
 			//alert(mediaPosition); return false;
 			files = event.target.files;
-			console.log(files);
+			//console.log(files);
 			Itype = files[0].type;
 			imagetype = Itype.split('/').pop();
 			arr = ['png','jpeg'];
@@ -334,7 +443,7 @@ $(document).ready(function() {
 			var imageid = event.target;
 			var mediaPosition = jQueryF(this).attr('id'); 
 			files = event.target.files;
-			console.log(files);
+			//console.log(files);
 			Itype = files[0].type;
 			imagetype = Itype.split('/').pop();
 			arr = ['mp4'];

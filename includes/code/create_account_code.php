@@ -32,7 +32,7 @@ if(trim($_POST['email'])!=""){
 		$error_msg = "Cet e-mail est déjà enregistré.";
 	}	
 	
-	if($error==0){		
+	if($error==0){
 		$dob = trim($_POST['birthday_year'])."-".trim($_POST['birthday_month'])."-".trim($_POST['birthday_day']);
 		$insertQuery = "INSERT INTO users (prefix,firstname,name,dob,address,postal_code,city,country,phone_number,sec_phone_number,email,password,original_pswd,created)
 		VALUES ('".trim($_POST['prefix'])."','".trim($_POST['firstname'])."','".trim($_POST['name'])."','".$dob."','".trim($_POST['address'])."','".trim($_POST['postal_code'])."','".trim($_POST['city'])."','".trim($_POST['country'])."','".trim($_POST['phone_number'])."','".trim($_POST['sec_phone_number'])."','".trim($_POST['email'])."','".base64_encode(trim($_POST['password']))."','".base64_encode(trim($_POST['confirm_password']))."',now())";

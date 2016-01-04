@@ -392,17 +392,17 @@ class iContactApi {
 		// Setup the list
 		$aList = array(
 			'name'               => $sName, 
-			'welcomeMessageId'   => $iWelcomeMessageId, 
-			'emailOwnerOnChange' => intval($bEmailOwnerOnChange), 
-			'welcomeOnManualAdd' => intval($bWelcomeOnManualAdd), 
-			'welcomeOnSignupAdd' => intval($bWelcomeOnSignupAdd), 
+			'welcomeMessageId'   => 136928, 
+			'emailOwnerOnChange' => 1, 
+			'welcomeOnManualAdd' => 0, 
+			'welcomeOnSignupAdd' => 0, 
 			'description'        => $sDescription, 
 			'publicname'         => $sPublicName
 		);
 		// Make the call
 		$aLists = $this->makeCall("/a/{$this->setAccountId()}/c/{$this->setClientFolderId()}/lists", 'POST', array($aList), 'lists');
 		// Return the list
-		return $aLists[0];
+		return $aLists;
 	}
 
 	/**
@@ -567,7 +567,7 @@ class iContactApi {
 			break;
 		}
 		// Store the URL into the instance
-		$this->sRequestUri = (string) $sApiUrl;
+		echo $this->sRequestUri = (string) $sApiUrl;echo "<br/>";
 		// Give our handle a URL
 		curl_setopt($rHandle, CURLOPT_URL, $sApiUrl);
 		// Try to execute the handle

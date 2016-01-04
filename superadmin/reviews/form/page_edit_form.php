@@ -1,4 +1,8 @@
 <!-- TinyMCE -->
+<script type="text/javascript" src="<?php echo DEFAULT_URL; ?>/js/get_make_model.js"></script>
+<!--script type="text/javascript" src="<?php echo DEFAULT_URL; ?>/jwplayer/jwplayer.js"></script>
+<script type="text/javascript">jwplayer.key="a5kxJz7p2PKETtgsHHcgSswjpaKjwb81vBAy5A";</script-->
+<script type="text/javascript"src="https://content.jwplatform.com/libraries/GxpjMdbJ.js"></script>
 <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_URL; ?>/js/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript">
 	tinyMCE.init({
@@ -70,35 +74,17 @@
     return false;
   }
   
-  //function to check if slug and meta title field is empty wo filled
-  //if empty then we are filling page title value in these 2 fields at onblur of page title
-  function setSlug(){
   
-		var inp = $("#slug").val();
-		if($.trim(inp).length == 0)
-		{
-				var value = $('#name').val();
-      			$("#slug").val(value);
-		 }
-		 
-		var inp = $("#metatitle").val();
-		if($.trim(inp).length == 0)
-		{
-				var value = $('#name').val();
-      			$("#metatitle").val(value);
-		 }
-		 
-  }
 </script>
 <!-- /TinyMCE -->
-
+<?php //print_r($makes);?>
 <div id="content-outer">
   <!-- start content -->
   <div id="content">
     <div id="page-heading">
-      <h1>Edit Page - <?php echo $nameToShow ;?></h1>
+      <h1>Edit Review</h1>
     </div>
-    <form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post" name="account_form" id="account_form">
+    <form action="<?php echo $_SERVER['REQUEST_URI'];?>" enctype="multipart/form-data" method="post" name="account_form" id="account_form">
       <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
         <tr>
           <th rowspan="3" class="sized"><img src="<?php echo ADMIN_IMAGE_URL; ?>/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
@@ -121,7 +107,7 @@
                           <div id="message-red">
                             <table border="0" width="100%" cellpadding="0" cellspacing="0">
                               <tr>
-                                <td class="red-left" style="padding-left: 35px;"><?php echo $errorMsg?></td>
+                                <td class="red-left" style="padding-left: 35px;"><?php echo $errorMsg;?></td>
                                 <td class="red-right"><a class="close-red"><img src="<?php echo ADMIN_IMAGE_URL; ?>/table/icon_close_red.gif" alt="" /></a></td>
                               </tr>
                             </table>
@@ -143,38 +129,148 @@
 						} ?>
                         </td>
                       </tr>
-                      <?php /* <tr>
+                     <!--  <tr>
                         <th valign="top">Status:</th>
-                        <td><input type="radio" name="publish" id="publish_active" value="1" <?php  if($publish==1){ ?>checked="checked"<?php }?>/>
+                        <td><input type="radio" name="publish" id="publish_active" checked="checked" value="1"/>
                           Active&nbsp;&nbsp;&nbsp;&nbsp;
-                          <input type="radio" name="publish" id="publish_inactive" value="0" <?php  if($publish==0){ ?>checked="checked"<?php }?>/>
+                          <input type="radio" name="publish" id="publish_inactive" value="0"/>
                           Inactive </td>
                         <td>&nbsp;</td>
-                      </tr> */?>
-						<tr>
-                        <th valign="top">Can Be Deleted:</th>
-                        <td><input type="radio" name="can_delete" id="can_delete_yes" value="1" <?php  if($can_delete==1){ ?>checked="checked"<?php }?>/>
-                          Yes&nbsp;&nbsp;&nbsp;&nbsp;
-                          <input type="radio" name="can_delete" id="can_delete_no" value="0" <?php  if($can_delete==0){ ?>checked="checked"<?php }?>/>
-                          No </td>
-                        <td>&nbsp;</td>
+                      </tr> -->
+						
+					  <tr>
+                        <th valign="top">Short Description:</th>
+                        <td><textarea rows="4" type="text" class="inp-form-fullonetextarea" name="short_description" id="short_description" ><?php echo $short_description;?> </textarea></td>
+                        <td><div class="error-left"></div>
+                          <div class="error-inner">This field is required.</div></td>
                       </tr>
-		
-                        <th valign="top">Title:</th>
-                        <td><input type="text" class="inp-form-fullone" name="name" id="name" value="<?php echo $title ;?>" onblur="setSlug();"/></td>
+                      <th valign="top">Type:</th>
+							<td>
+								<select name="old_new" id="old_new" >
+									<option value="1" <?php if($old_new ==1){echo "selected='selected'";} ?> >New Car</option>
+									<option value="0" <?php if($old_new ==0){echo "selected='selected'";} ?>>30 Year old car</option>
+								</select>
+							</td>
+							<td></td>
+						</tr>
+                      	<th valign="top">Make:</th>
+							<td>
+								<select name="make" id="makeSelector" >
+									<?php foreach($makes as $id =>$mak){?>
+									<option value="<?php echo $id;?>" <?php if($make ==$id){echo "selected='selected'";} ?>><?php echo $mak; ?></option>
+									<?php }?>
+								</select>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th valign="top">Model:</th>
+							<td>
+								<select name="model" id="makeSelectorModel" >
+									<?php foreach($models as $id =>$mode){?>
+									<option value="<?php echo $id;?>" <?php if($model ==$id){echo "selected='selected'";} ?> ><?php echo $mode; ?></option>
+									<?php }?>
+								</select>
+								<img id="SpinnerImg" src="<?php echo ADMIN_IMAGE_URL; ?>/shared/spinner-small.gif" height="30px"/>
+							</td>
+							<td></td>
+						</tr>
+						
+                      <tr>
+						 <tr>
+                        <th valign="top">Year:</th>
+                        <td><input type="text" class="inp-form-fullone" value="<?php echo $year;?>" name="year" id="year" /></td>
+                        <td><div class="error-left"></div>
+                          <div class="error-inner">This field is required.</div></td>
+                      </tr>
+                        <th valign="top">Avis d’expert:</th>
+                        <td><textarea rows="" cols="" class="form-textarea myTextEditor" name="expert" id="expert"><?php echo $expert; ?></textarea></td>
                         <td><div class="error-left"></div>
                           <div class="error-inner">This field is required.</div></td>
                       </tr>
                       <tr>
-                        <th valign="top">Description:</th>
-                        <td><textarea rows="" cols="" class="form-textarea myTextEditor" name="desc" id="desc"><?php echo $description ;?></textarea></td>
+                        <th valign="top">Vue d’ensemble:</th>
+                        <td><textarea rows="" cols="" class="form-textarea myTextEditor" name="ensemble" id="ensemble"><?php echo $ensemble; ?></textarea></td>
                         <td><div class="error-left"></div>
                           <div class="error-inner">This field is required.</div></td>
+                      </tr>
+                      <tr>
+                        <th valign="top">Characteristique:</th>
+                        <td><textarea rows="" cols="" class="form-textarea myTextEditor" name="characteristique" id="characteristique"><?php echo $characteristique; ?></textarea></td>
+                        <td><div class="error-left"></div>
+                          <div class="error-inner">This field is required.</div></td>
+                      </tr>
+                      <tr>
+                        <th valign="top">Main Image:</th>
+                        <td><input type="file" name="image" id="MainImageEdit"  />
+							<?php if(isset($image)){echo "<img width='200px' height='100px' src='/superadmin/images/reviews/media/".$image."'  id='MainImageShowing' ><div id='ImagePreview'></div><input id='PreviousMainImage' type='hidden' name='main_image' value='".$image."'>";}?>
+                        </td>
+                        <td><div class="error-left"></div>
+                          <div class="error-inner">This field is required.</div></td>
+                      </tr>
+                      <tr>
+                        <th valign="top"></th>
+                        <td><br><br><br><br><b>ADDITIONAL MEDIA :-</b><br><br>
+						</td>
+                        <td>
+                          </td>
+                      </tr>
+                      <?php  if(isset($medias)){ 
+						  
+						  
+						  foreach($medias as $mkey=>$media){
+						  
+							$mediaType = $media['mediatype'];
+						    $order =  $media['order'];
+						    $val = $media['value'];
+						    
+						    if($mediaType=='image'){
+									
+									$mediaTitle = 'Image';
+									$mediaHtml = "<img width='200px' height='100px' src='/superadmin/images/reviews/media/".$val."' id='".$order."' class='AdditionalMedia'><input type='hidden' name='image-".$order."' value='".$val."'>";
+								
+							}else if($mediaType=='video'){
+								$mediaTitle = 'Video';
+								$mediaHtml = "<div class='AdditionalMedia' id='".$order."' src='/superadmin/images/reviews/media/".$val."'><div  id='video".$order."' ></div></div><input type='hidden' value='".$val."' name='video-".$order."'/>";
+								
+							}else if($mediaType=='youtube_link'){
+								
+								$mediaTitle = 'Youtube video link';
+								$mediaHtml = "<input type='text' id='".$order."' value='".$val."' name='youtube_link-".$order."' class='inp-form-fullone AdditionalMedia YoutubeVideoLink'><p class='ErrorYoutubeUrl' id='youtube-".$order."'></p>";
+							}
+						    
+						    
+						    
+						  ?>
+							
+							
+							
+							
+						<tr>
+                        <th valign="top"><?php echo $mediaTitle;?>:</th>
+                        <td>	
+							<?php echo $mediaHtml; ?>
+						</td>
+                        <td><div class="delete-media"></div></td>
+                      </tr>
+							
+						<?php
+							} //end foreach
+						
+						 } //end if ?>
+                      
+                      <tr>
+                        <th valign="top">Add Media</th>
+                        <td>
+							<img id="mediaAddYoutubeLink" src="<?php echo ADMIN_IMAGE_URL; ?>/shared/add_youtube_link.png" height="30px"/>
+							<img id="mediaAddImage" src="<?php echo ADMIN_IMAGE_URL; ?>/shared/add_image.png" height="30px"/>
+							<img id="mediaAddVideo" src="<?php echo ADMIN_IMAGE_URL; ?>/shared/add_video.png" height="30px"/>
+                        </td>
                       </tr>
                       <tr>
                         <th>&nbsp;</th>
-                        <td valign="top"><input type="hidden" name="id" id="id" value="<?php echo $id ;?>" /><input type="submit" value="" class="form-submit" />
-                          <input type="button" class="form-reset" onclick="javascript:location.href='<?php echo DEFAULT_ADMIN_URL; ?>/page/'"/>
+                        <td valign="top"><input type="submit" value="" class="form-submit" id="form-submitID"/>
+                          <!--input type="button" class="form-reset" onclick="javascript:location.href='<?php echo DEFAULT_ADMIN_URL; ?>/reviews/'"/-->
                         </td>
                         <td></td>
                       </tr>
@@ -200,13 +296,6 @@
           <th class="sized bottomright"></th>
         </tr>
       </table>
-		<?php if(isset($_REQUEST['searchtext']) and $_REQUEST['searchtext']!=''){  ?>
-        <input type="hidden" name="searchtext" id="searchtext" value="<?php echo $_REQUEST['searchtext'];?>" />
-        <?php } ?>
-        <?php if(isset($_REQUEST['searchcombo']) and $_REQUEST['searchcombo']!=''){  ?>
-        <input type="hidden" name="searchcombo" id="searchcombo" value="<?php echo $_REQUEST['searchcombo'];?>" />
-        <?php } ?>
-
     </form>
     <div class="clear">&nbsp;</div>
   </div>

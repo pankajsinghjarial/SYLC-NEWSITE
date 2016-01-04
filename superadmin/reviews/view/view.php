@@ -144,7 +144,7 @@ function checkBoxCheckedForEdit(){
 				  ?>
                     <tr <?php if($ii%2==0) echo 'class="alternate-row"';?>>
                       <td><input  type="checkbox" name="allselect[]" class="case" id="allselect<?php echo $getPageData->id;?>" value="<?php echo $getPageData->id;?>"/></td>
-                      <td><?php echo ($getPageData->oldnew)?  "New Cars" : "30 yr Old cars"; ?></td>
+                      <td><?php echo ($getPageData->old_new)?  "New Cars" : "30 yr Old cars"; ?></td>
                       <td><?php echo $getPageData->make_name; ?></td>
                       <td><?php echo $getPageData->model_name; ?></td>
                       <td><?php echo $getPageData->year; ?></td>
