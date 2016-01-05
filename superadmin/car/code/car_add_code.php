@@ -13,12 +13,6 @@ $obj = new validation();
 $formObj = new AdminCarForm();
 /* Get Current Date Time Stamp */ 
 $currentTimestamp   = getCurrentTimestamp();
-/*echo "<pre>";
-print_r($_POST);
-print_r($_FILES);
-echo "</pre>";
-
-exit;*/
 
 if($_SERVER['REQUEST_METHOD']=='POST')
     {

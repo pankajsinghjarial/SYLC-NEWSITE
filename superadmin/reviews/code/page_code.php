@@ -55,11 +55,13 @@ $eu = ($start - 0);
 if(!$limit > 0 ){ // if limit value is not available then let us use a default value
 	$limit = PAGING_LIMIT;    // No of records to be shown per page by default.
 	
-}                             
+}   
+
+                       
 $this1 = $eu + $limit; 
 $back = $eu - $limit; 
 $next = $eu + $limit; 
-
+   
 if(isset($_GET['field'])and $_GET['field']!=''){
 	$field = $_GET['field'];
 }else{

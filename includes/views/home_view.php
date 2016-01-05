@@ -208,19 +208,31 @@
 					$ii = 1;
 				
 					while($getPageData = mysql_fetch_object($allBanner)) {
-					
+						
 						$class = "";
 						if ($ii == 1) {
 							$class = "active";
 						}
+						
 			?>
 						<div class="item <?php echo $class;?>">
+						<?php
+							if ($getPageData->url != '') {
+								echo '<a href="'.$getPageData->url.'" target="_blank">';
+							}
+						?>
 						  <img src="<?php echo DEFAULT_URL. '/images/home/banner/' . $getPageData->banner_image;?>" alt="Slider Image 1">
 						  <div class="carousel-caption">
 							<p class="lead"><?php echo $getPageData->content;?></p>   
 						  </div>
+						<?php
+							if ($getPageData->url != '') {
+								echo '</a>';
+							}
+						?>
 						</div>
             <?php
+						
 						$ii++;
 					}
 			

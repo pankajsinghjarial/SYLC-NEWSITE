@@ -149,7 +149,7 @@ if(isset($submit) && $submit != "" && $_SERVER['REQUEST_METHOD']=='POST') {
           </tr>
 		 </table>";
 			}
-			require_once '/home1/sylcexpo/public_html/voitures-americaines/class.phpmailer.php';
+			require_once '../class.phpmailer.php';
 			//SMTP MAIL STARTS
 
 			try {
@@ -159,14 +159,14 @@ if(isset($submit) && $submit != "" && $_SERVER['REQUEST_METHOD']=='POST') {
 				$body             = $message;
 				$body             = preg_replace('/\\\\/','', $body); //Strip backslashes
 			
-				$mail->IsSMTP();                           // tell the class to use SMTP
-	$mail->SMTPAuth   = true;                  // enable SMTP authentication
-	$mail->Port       = 25;                    // set the SMTP server port
-	$mail->Host       = "localhost"; // SMTP server
-	$mail->Username   = "test@sylc-export.com";     // SMTP server username
-	$mail->Password   = "Sylc!@34";            // SMTP server password
-			
-				//$mail->IsSendmail();  // tell the class to use Sendmail
+                $mail->IsSMTP();                           // tell the class to use SMTP
+                $mail->SMTPAuth   = true;                  // enable SMTP authentication
+                $mail->Port       = 25;                    // set the SMTP server port
+                $mail->Host       = "mail.livemarketnews.com"; // SMTP server
+                $mail->Username   = "mails@livemarketnews.com";     // SMTP server username
+                $mail->Password   = "Stone!@#";            // SMTP server password
+                    
+                $mail->IsSendmail();  // tell the class to use Sendmail
 			
 				$mail->AddReplyTo("no-reply@example.com","First Last");
 			

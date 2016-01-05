@@ -66,7 +66,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Voitures Americaines a vendre </a>
               <ul class="dropdown-menu">
                 <li><a href="<?php echo DEFAULT_URL;?>/annouce_usa_actuelle"><i class="fa fa-angle-right"></i> Annonces USA actuelles</a></li>
-                <li><a href="<?php echo DEFAULT_URL;?>/products?products=inventory"><i class="fa fa-angle-right"></i> Notre Inventaire </a></li>
+                <li><a href="<?php echo DEFAULT_URL;?>/notre_inventaire"><i class="fa fa-angle-right"></i> Notre Inventaire </a></li>
                 <li><a href="/recherche_personalise"><i class="fa fa-angle-right"></i> Recherche Personnalisée</a></li>
                 <li><a href="<?php echo DEFAULT_URL;?>/accessories"><i class="fa fa-angle-right"></i> Accessoires Vintages</a></li>
               </ul>
@@ -117,7 +117,7 @@
 			<img src="<?php echo DEFAULT_URL; ?>/images/facebook.png">
         </a>
      </li>              
-    <li><a href=""><img src="<?php echo DEFAULT_URL; ?>/images/youtube-new-logo.png"></a></li>
+    <li><a href="https://www.youtube.com/channel/UCEiq60VEWjogm67Qt2Ujl9g" target="_blank"><img src="<?php echo DEFAULT_URL; ?>/images/youtube-new-logo.png"></a></li>
   </ul>
 </div>
 <!--header-bg Section end  -->

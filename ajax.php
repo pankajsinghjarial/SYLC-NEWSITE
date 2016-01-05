@@ -7,15 +7,16 @@ if($page == 'logout') {
 	//session_destroy();	
 }else {
 
-$con = mysql_connect(DB_HOST,DB_USER,DB_PASS);
+$con = mysql_connect(DB_HOST,DB_USER,DB_PASS)or die('Host not connected');
 // Check connection
 if (!$con)
 {
 	echo "Failed to connect to mysql: ";
 }
-mysql_select_db($con, DB_SYL_NAME);
+mysql_select_db(DB_SYL_NAME,$con)or die('database not selected');
 $pass = md5($id);
-$result = mysql_query($con,"SELECT * FROM users where username = '$page' and password = '$pass'");
+$result = mysql_query("SELECT * FROM users where username = '$page' and password = '$pass'");
+mysql_num_rows($result);
 if(mysql_num_rows($result) > 0 )
 {
 	$row = mysql_fetch_object($result);

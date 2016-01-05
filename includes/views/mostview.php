@@ -53,7 +53,13 @@ if (mysql_num_rows($ebayid) > 0) {
 				<div class="col-md-12">
 				  <img class="lazyOwl" data-src="<?php echo DEFAULT_URL; ?>/image_resizer.php?img=<?php echo urlencode($galleryURL); ?>&newWidth=130&newHeight=100" alt="<?php echo $title;?>">
 				  <div class="car-details-bottom">
-					<h6><?php echo substr($title, 0, strpos($title, " ", 35) ? strlen($title) : 35);?></h6>
+                    <?php 
+                        $maxChar = 50;
+                        if(strlen($title)>$maxChar){
+                            $title = substr($title, 0, $maxChar)."...";
+                        }
+                    ?>
+					<h6><?php echo $title;?></h6>
 					<div class="col-md-12 no-padding">
 					  <div class="col-md-6 no-padding">
 						<h6>Prix :  $ <?php echo $convertedCurrentPrice;?></h6>
@@ -66,7 +72,7 @@ if (mysql_num_rows($ebayid) > 0) {
 				</div>
 			  </div>
 			</div>
-	<?php
+        <?php
 			
 			if ($data->vin == '') {
 				$ebayids = fetchEbayCar($jtemId, "update");

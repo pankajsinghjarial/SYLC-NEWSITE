@@ -115,6 +115,7 @@ $(document).pngFix( );
 });
 </script>
 <script type="text/javascript" src="<?php echo DEFAULT_ADMIN_URL; ?>/js/jquery/jquery.tablesorter.js"></script>
+<script type="text/javascript" src="<?php echo DEFAULT_ADMIN_URL; ?>/js/jquery/functions.js"></script>
 <script type="text/javascript">
 function sendSearch(){
 	if($('#searchcombo').val()=='pages'){

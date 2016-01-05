@@ -273,7 +273,7 @@ class common extends utility {
 	}
 	public $total_getSearchCarListWithAttr;
 	
-	public function getSearchCarListWithAttr($start = 0, $limit = 25,$searchcar,$searchattr){
+	public function getSearchCarListWithAttr($start = 0, $limit = 25,$searchcar,$searchattr,$searchmodel=''){
 		$temp = array();
 		$searchcar = trim($searchcar);
 		$attr_list = array("fullName", "mileage", "price", "features");
@@ -292,7 +292,10 @@ class common extends utility {
 			}
 			else{
 				
-				$option_result	= $this->customQuery("select car_id from car_".$backtype['1']." where attribute_id = '".$backtype['0']."' and value like '"."%".$searchcar."%"."'");
+				//$option_result	= $this->customQuery("select car_int.car_id from car_".$backtype['1'].", car_varchar where car_int.attribute_id = '".$backtype['0']."' and car_int.value in ("."".$searchcar."".") and car_varchar.car_id= car_int.car_id and car_varchar.attribute_id = '".$backtype['2']."' and car_varchar.value in ("."".$searchmodel."".") and car_int.attribute_id='1' and car_int.value=1980");
+
+				$option_result	= $this->customQuery("select car_int.car_id from car_varchar,car_".$backtype['1']."  JOIN car_int ints on car_int.car_id=ints.car_id and ints.value between ".$backtype['3']." and ".$backtype['4']." and  ints.attribute_id=1 where car_int.attribute_id = '".$backtype['0']."' and car_int.value in ("."".$searchcar."".") and car_varchar.car_id= car_int.car_id and car_varchar.attribute_id = '".$backtype['2']."' and car_varchar.value in ("."".$searchmodel."".")  ");
+				
 			}
 		} 
 		
@@ -300,7 +303,7 @@ class common extends utility {
 		$count=1;
 		$this->total_getSearchCarListWithAttr = mysql_num_rows($option_result);
 		
-		while($row = mysql_fetch_object($option_result)){ 
+		while($row = mysql_fetch_object($option_result)){
 			if($start < $i){
 				if($count > $limit){
 					break;

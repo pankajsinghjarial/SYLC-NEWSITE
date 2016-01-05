@@ -15,7 +15,6 @@ $amount = 10;
 $countryCode = "US";
 $street = $_POST['address'];
 $city = $_POST['city'];
-$state = $_POST['province'];
 $zip = $_POST['postal_code'];
 $desc = $_POST['item'];
 $carId = $_POST['car_id'];
@@ -34,7 +33,7 @@ $trim = $_POST['trim'];
 //Insert into temp table
 $link = mysql_connect(DB_HOST, DB_USER, DB_PASS) or die(mysql_error());
 mysql_select_db(DB_SYL_NAME, $link) or die('Could not select database.');
-$insertQuery = "INSERT INTO temp_car_detail_payment_info ( first_name, last_name, address, telephone, country, city, province, postal_code,email, make, model, year, price, exterior_color, interior_color, trim ) VALUES( '".mysql_real_escape_string($firstName)."', '".mysql_real_escape_string($lastName)."', '".mysql_real_escape_string($street)."', '".mysql_real_escape_string($phone)."', '".mysql_real_escape_string($country)."', '".mysql_real_escape_string($city)."', '".mysql_real_escape_string($state)."', '".mysql_real_escape_string($zip)."', '".mysql_real_escape_string($email)."', '".mysql_real_escape_string($make)."', '".mysql_real_escape_string($model)."', '".mysql_real_escape_string($caryear)."', '".mysql_real_escape_string($price)."', '".mysql_real_escape_string($exterior_color)."', '".mysql_real_escape_string($interior_color)."', '".mysql_real_escape_string($trim)."' )";
+$insertQuery = "INSERT INTO temp_car_detail_payment_info ( first_name, last_name, address, telephone, country, city,  postal_code,email, make, model, year, price, exterior_color, interior_color, trim ) VALUES( '".mysql_real_escape_string($firstName)."', '".mysql_real_escape_string($lastName)."', '".mysql_real_escape_string($street)."', '".mysql_real_escape_string($phone)."', '".mysql_real_escape_string($country)."', '".mysql_real_escape_string($city)."', '".mysql_real_escape_string($zip)."', '".mysql_real_escape_string($email)."', '".mysql_real_escape_string($make)."', '".mysql_real_escape_string($model)."', '".mysql_real_escape_string($caryear)."', '".mysql_real_escape_string($price)."', '".mysql_real_escape_string($exterior_color)."', '".mysql_real_escape_string($interior_color)."', '".mysql_real_escape_string($trim)."' )";
 
 $result = mysql_query($insertQuery);
 
@@ -64,8 +63,7 @@ $userdata = array(
     'LASTNAME' => $lastName,
     'EMAIL' => $email,
     'SOFTDESCRIPTORCITY' => $email,
-    'COUNTRYCODE' => $phone,
-    'STATE' => $state,
+    'COUNTRYCODE' => 'US',
     'CITY' => $city,
     'STREET' => $street,
     'ZIP' => $zip,

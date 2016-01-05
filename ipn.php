@@ -138,7 +138,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
     if(strtolower($payment_status)=='completed'){
         $data = unserialize($custom);
         if($data['pg'] == 1){
-            $getQuery = 'SELECT first_name, last_name, address, telephone, country, city, province, postal_code,email, make, model, year, price, exterior_color, interior_color, trim FROM temp_car_detail_payment_info WHERE id ='.$data['id'];
+            $getQuery = 'SELECT first_name, last_name, address, telephone, country, city, postal_code,email, make, model, year, price, exterior_color, interior_color, trim FROM temp_car_detail_payment_info WHERE id ='.$data['id'];
             $infoResource = mysql_query($getQuery);
             $info = mysql_fetch_array($infoResource);
             //error_log(serialize($info), 3, LOG_FILE);

@@ -230,7 +230,8 @@ class AdminCarForm extends common{
 	function getdropdown($attrObj, $class='', $onchange='',$default_value='') {
 		global $db;
 		$optionArrayObj = $this->getOptionObj($attrObj->attribute_id);
-		$return = '<select name="'.$attrObj->attribute_code.'" id="'.$attrObj->attribute_code.'" class="'.$class.'" onchange="'.$onchange.'" >';
+		$return ="<input type='hidden' name='".$attrObj->attribute_code."txt' id='".$attrObj->attribute_code."txt' value='".$default_value."'/>";
+		$return.= '<select name="'.$attrObj->attribute_code.'" id="'.$attrObj->attribute_code.'" class="'.$class.'" onchange="'.$onchange.'" >';
 		$return .= '<option value="">'.$attrObj->default_value.'</option>';
 		while($getAttrRow = $db->fetchNextObject($optionArrayObj)){
 			if($default_value == $getAttrRow->value_id){

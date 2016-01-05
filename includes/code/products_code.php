@@ -12,7 +12,7 @@ if (isset($_GET['products']) && $_GET['products'] == 'products') { //Buy Now API
 	unset($_SESSION['mysearch']);
 	$_SESSION['mysearch'][] = $_GET;
 }
-if (isset($_GET['products']) && $_GET['products'] == 'inventory') { // Our Inventory Admin
+if (parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) == "/notre_inventaire") { // Our Inventory Admin
 	$auctionClass = false;
 }
 
@@ -57,7 +57,7 @@ if($_GET){
 $aspect_count = 0;
 $searched = '<br>You Searched for ';
 $where .= "&outputSelector(1)=AspectHistogram";
-
+$searchedCar = $dataId = $searchedModel = '';
 //Check if brand selected while search
 $where .= "&aspectFilter(".$aspect_count.").aspectName=Make";
 if (isset($manufacturer)) {
@@ -70,8 +70,13 @@ if (isset($manufacturer)) {
             $manfCount++;
             if ($manfCount<count($manufacturer)) {
                 $searched .=$mnf.",";
+                $searchedCar .=$mnf.",";
+                $dataId .= $common->getIdByOptionName(2,urldecode($mnf));
+                $dataId .= ',';
             }else{
                  $searched .=$mnf;
+                 $searchedCar .=$mnf;
+                 $dataId .= $common->getIdByOptionName(2,urldecode($mnf));
             }
         }
         $searched .= '</span>';
@@ -127,8 +132,10 @@ if (isset($model) && $model != '' && $model != 'Not+Specified') {
             $manfCount++;
             if ($manfCount<count($model)) {
                 $searched .=$mnf.",";
+                $searchedModel .="'".$mnf."'".",";
             }else{
                  $searched .=$mnf;
+                 $searchedModel .="'".$mnf."'";
             }
         }
         $searched .= '</span>';
@@ -362,6 +369,8 @@ if (!isset($_GET['page'])) {
 }
 $pages = new Paginator;
 $pages->default_ipp = 20;
+$pages->pageUrl = 'annouce_usa_actuelle';
+$pages->extraParam = 'annouce_usa_actuelle';
 $pages->items_total = $_SESSION['products']['total'];
 $pages->paginate();
 
@@ -390,14 +399,19 @@ if ($num != 0) {
 	}
 }
 
+
 $carPages = new Paginator;
 
 // If there is a selection or value of limit then the list box should show that value , so we have to lock that options //
 // Based on the value of limit we will assign selected value to the respective option//
 
 $carPages->default_ipp = 20;
+$carPages->pageUrl = 'notre_inventaire';
+$carPages->extraParam = 'notre_inventaire';
 $limit = 20;
-$page = (isset($_GET['page']))?$_GET['page']:1;
+
+$carPages->current_page = 1;
+
 $eu = $limit * ($page-1) ;
 
 $total_rows = $common->numberOfRows('car');
@@ -413,12 +427,18 @@ if (isset($_GET['orderBy'])and $_GET['orderBy']!='') {
 	$orderby = 'ASC';
 }
 
-
 $total_rows = $common->numberOfRows('car'); //number of rows in pages table
-
 
 $addCarToQuery = '';
 
 $carPages->items_total  = $common->total_getCarListWithAttr();
 $carPages->paginate();
-$all_car = $common->getCarListWithAttr($carPages->limit, array("fullName", "mileage", "price", "features", "description"));	
+$fromYear = $_GET['madeYear'][0];
+if($fromYear == '') {
+	$fromYear = 1920;
+}
+$toYear   = $_GET['madeYear'][1];
+if($toYear == '') {
+	$toYear = 2017;
+}
+$all_car = $common->getSearchCarListWithAttr('limit '.$limit, array("fullName", "mileage", "price", "features", "description"), $dataId, "2~int~4~".$fromYear."~".$toYear,$searchedModel);

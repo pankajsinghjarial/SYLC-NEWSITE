@@ -20,6 +20,7 @@ class Paginator{
 	var $querystring;
 	var $ipp_array;
 	var $extraParam;
+	var $pageUrl;
 
 	function Paginator()
 	{
@@ -42,7 +43,8 @@ class Paginator{
 			if(!is_numeric($this->items_per_page) OR $this->items_per_page <= 0) $this->items_per_page = $this->default_ipp;
 			$this->num_pages = ceil($this->items_total/$this->items_per_page);
 		}
-			$this->current_page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1 ; // must be numeric > 0
+
+		$this->current_page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1 ; // must be numeric > 0
 			//customization for media page
 		if(basename($_SERVER['SCRIPT_NAME']) == 'media.php') {
 			if($this->extraParam == "video" && $_GET['media'] == "video") {
@@ -52,6 +54,19 @@ class Paginator{
 			} else {
 				$this->current_page = (isset($_GET['page']) ) ? 1 : 1 ; // must be numeric > 0
 			}
+		}
+	
+		if(basename($_SERVER['SCRIPT_NAME']) == 'products.php') {
+			if(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) == "/notre_inventaire" && $this->extraParam == "notre_inventaire") {	
+				 $this->current_page = (isset($_GET['page'])) ? $_GET['page'] : 1;
+				
+			} else if(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) == "/annouce_usa_actuelle" && $this->extraParam == "annouce_usa_actuelle") {		
+				$this->current_page = (isset($_GET['page'])) ? $_GET['page'] : 1;
+				
+			} else {
+				$this->current_page = 1;
+			}
+			
 		}
 		$prev_page = $this->current_page-1;
 		$next_page = $this->current_page+1;
@@ -82,10 +97,11 @@ class Paginator{
 				else if($key != "page" And $key != "ipp") $this->querystring .= "&$key=$val";
 			}
 		}
+		if(!isset($this->pageUrl)) $_SERVER[PHP_SELF];
 		if($this->num_pages > 10)
 		{
 			$this->return .= "<ul class=\"list-inline list-unstyled\">";
-			$this->return .= ($this->current_page > 1 And $this->items_total >= 10) ? "<li class=\"pre\"><a class=\"paginate\" href=\"$_SERVER[PHP_SELF]?page=$prev_page&ipp=$this->items_per_page$this->querystring\"><i class=\"fa fa-angle-double-left\"></i> Précédent</a></li></a></li> ":"<li class=\"pre\"><i class=\"fa fa-angle-double-left\"></i> Précédent</li>";
+			$this->return .= ($this->current_page > 1 And $this->items_total >= 10) ? "<li class=\"pre\"><a class=\"paginate\" href=\"$this->pageUrl?page=$prev_page&ipp=$this->items_per_page$this->querystring\"><i class=\"fa fa-angle-double-left\"></i> Précédent</a></li></a></li> ":"<li class=\"pre\"><i class=\"fa fa-angle-double-left\"></i> Précédent</li>";
 
 			$this->start_range = $this->current_page - floor($this->mid_range/2);
 			$this->end_range = $this->current_page + floor($this->mid_range/2);
@@ -108,11 +124,11 @@ class Paginator{
 				// loop through all pages. if first, last, or in range, display
 				if($i==1 Or $i==$this->num_pages Or in_array($i,$this->range))
 				{
-					$this->return .= ($i == $this->current_page And @$_GET['page'] != 'All') ? "<li class=\"active\"><a title=\"Go to page $i of $this->num_pages\" href=\"javascript:void(0)\">$i</a></li> ":"<li><a class=\"paginate\" title=\"Go to page $i of $this->num_pages\" href=\"$_SERVER[PHP_SELF]?page=$i&ipp=$this->items_per_page$this->querystring\">$i</a></li> ";
+					$this->return .= ($i == $this->current_page And @$_GET['page'] != 'All') ? "<li class=\"active\"><a title=\"Go to page $i of $this->num_pages\" href=\"javascript:void(0)\">$i</a></li> ":"<li><a class=\"paginate\" title=\"Go to page $i of $this->num_pages\" href=\"$this->pageUrl?page=$i&ipp=$this->items_per_page$this->querystring\">$i</a></li> ";
 				}
 				if($this->range[$this->mid_range-1] < $this->num_pages-1 And $i == $this->range[$this->mid_range-1]) $this->return .= "<li><a><span class=\"dots\"> ...</span></a></li>  ";
 			}
-			$this->return .= (($this->current_page < $this->num_pages And $this->items_total >= 10) And ($_GET['page'] != 'All') And $this->current_page > 0) ? "<li class=\"next\"><a class=\"paginate\" href=\"$_SERVER[PHP_SELF]?page=$next_page&ipp=$this->items_per_page$this->querystring\"> Suivant <i class=\"fa fa-angle-double-right\"></i></a></li>\n":"<li class=\"next\"> Suivant <i class=\"fa fa-angle-double-right\"></i></li>\n";
+			$this->return .= (($this->current_page < $this->num_pages And $this->items_total >= 10) And ($_GET['page'] != 'All') And $this->current_page > 0) ? "<li class=\"next\"><a class=\"paginate\" href=\"$this->pageUrl?page=$next_page&ipp=$this->items_per_page$this->querystring\"> Suivant <i class=\"fa fa-angle-double-right\"></i></a></li>\n":"<li class=\"next\"> Suivant <i class=\"fa fa-angle-double-right\"></i></li>\n";
 			/*$this->return .= ($_GET['page'] == 'All') ? "<a class=\"current\" style=\"margin-left:10px\" href=\"#\">All</a> \n":"<a class=\"paginate\" style=\"margin-left:10px\" href=\"$_SERVER[PHP_SELF]?page=1&ipp=All$this->querystring\">All</a> \n";*/
 			$this->return .= "</ul>";
 		}
@@ -122,7 +138,7 @@ class Paginator{
 
             for($i=1;$i<=$this->num_pages;$i++)
             {
-                $this->return .= ($i == $this->current_page) ? "<li class=\"active\"><a href=\"javascript:void(0)\">$i</a></li> ":"<li><a href=\"$_SERVER[PHP_SELF]?page=$i&ipp=$this->items_per_page$this->querystring\">$i</a></li> ";
+                $this->return .= ($i == $this->current_page) ? "<li class=\"active\"><a href=\"javascript:void(0)\">$i</a></li> ":"<li><a href=\"$this->pageUrl?page=$i&ipp=$this->items_per_page$this->querystring\">$i</a></li> ";
             }
             $this->return .= "</ul>";
         }

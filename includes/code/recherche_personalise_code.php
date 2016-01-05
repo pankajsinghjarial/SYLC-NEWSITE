@@ -38,7 +38,7 @@ ini_set('error_reporting', E_ALL);
 	
 	try {
 		//Create a contact
-		$oiContact->addList('testing listd',136928, true, false, false, 'Jusdt', 'ASomedList');
+		var_Dump( $oiContact->addList('testing listd',410014, true, false, false, 'Jusdt', 'ASomedList'));
 		
 		/* $cid = $oiContact->CustomaddContactForm($email, 'normal',
 		'', null, $phone, $comment,$fname, null);
