@@ -100,18 +100,13 @@ var google_remarketing_only = false;
 
 </div>
 <?php
-	if (isset($_GET["token"]) && isset($_GET["PayerID"])) {
-		$subject= 'Paypal Order';		
-		$message = 'Hello,Thanks for your payment.The transaction was successful. ';
-		$message = html_entity_decode(htmlentities($message, ENT_QUOTES, "UTF-8"));
-		//$sentmail = sendSmtpMail( "seobrandtester019@gmail.com", $subject, $message );
+	if (isset($_GET["token"]) && isset($_GET["PayerID"])) {		
+	
 	}
-
-
 ?>
  <?php  include(LIST_ROOT."/includes/views/sidebar.php"); ?>
 </div>
  <?php  include(LIST_ROOT."/includes/views/bottom_strip.php"); ?>
-</div></div>
-<?php /************************end thank_you page code here***********************************************/?>
+</div>
+</div>
 <?php include(LIST_ROOT."/includes/views/footer.php"); ?>

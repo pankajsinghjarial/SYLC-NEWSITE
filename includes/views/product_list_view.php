@@ -129,7 +129,7 @@
 							  
 								<div class="col-md-6 col-sm-6 col-xs-12 no-padding list-right-text">
 								  <h2><a href="<?php echo $link;?>"><?php echo $title[0];?></a></h2>
-								  <h3>Prix De Vente:  <span> &nbsp; <?php echo $common->CurrencyConverter($buyItNowPrice);?> &euro;</span></h3>
+								  <h3>Prix De Vente:  <span> &nbsp;&euro; <?php echo $common->CurrencyConverter($buyItNowPrice);?> </span></h3>
 								</div>
 							
 							
@@ -203,49 +203,51 @@
 
 				  <div class="tab-pane fade <?php echo (!$auctionClass)?'in active':'';?>" id="tab2default">
 						<?php 
-				
-						//for($i = 0;$i < count($all_car);$i++){
-						foreach($all_car as $car) {
-							
+							foreach($all_car as $car) {
+                                $carImage = explode(',',$car['images']);
 						?>
-						<div class="col-md-12 col-sm-12 col-xs-12 no-padding list-first-section wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
+							<div class="col-md-12 col-sm-12 col-xs-12 no-padding list-first-section wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
 							<div class="col-md-4 col-sm-4 col-xs-12 no-right-padding">
-								<a href="product.html"><img src="images/listing/img1.png" class="img-responsive"></a>
+								<a href="<?php echo DEFAULT_URL;?>/inventaire/<?php echo $car['car_id'];?>">									
+									<img alt="<?php echo $title[0];?>"
+									src="<?php echo DEFAULT_URL; ?>/image_resizer.php?img=<?php echo $carImage[0]; ?>&newWidth=291&newHeight=227"
+									width="291" height="227" class="img-responsive">
+								</a>
 							</div>
-						<div class="col-md-8 col-sm-8 col-xs-12">
-						  <div class="list-top-right col-md-12 no-padding">
-						  
-							<div class="col-md-6 col-sm-6 col-xs-12 no-padding list-right-text">
-							  <h2><a href="product.html"><?php echo $car['fullName'];?></a></h2>
-							  <h3>Prix De Vente:  <span> &nbsp € 379.23</span></h3>
-							</div>
-						
-						
-							<div class="col-md-6 col-sm-6 col-xs-12 date-list">
-							  <h5>Fin De La Vente</h5>
-							  <div class="btn-group" role="group" aria-label="...">
-								<button type="button" class="btn btn-default">6d</button>
-								<button type="button" class="btn btn-default" id="btn">19h</button>
-								<button type="button" class="btn btn-default">57m</button>
+							<div class="col-md-8 col-sm-8 col-xs-12">
+							  <div class="list-top-right col-md-12 no-padding">
+							  
+								<div class="col-md-6 col-sm-6 col-xs-12 no-padding list-right-text">
+								  <h2><a href="<?php echo DEFAULT_URL;?>/inventaire/<?php echo $car['car_id'];?>"><?php echo $car['title'];?></a></h2>
+								  <h3>Prix De Vente:  <span> &nbsp &nbsp;&euro; <?php echo $common->CurrencyConverter($car['price']);?></span></h3>
+								</div>
+							
+							
+								<div class="col-md-6 col-sm-6 col-xs-12 date-list">
+								  <h5>Fin De La Vente</h5>
+								  <div class="btn-group" role="group" aria-label="...">
+									<button type="button" class="btn btn-default">6d</button>
+									<button type="button" class="btn btn-default" id="btn">19h</button>
+									<button type="button" class="btn btn-default">57m</button>
+								  </div>
+								</div>
+							 </div>
+							  <div class="col-md-12 col-sm-12 col-xs-12 listmiddle-text no-padding">
+								<h6><?php echo $car['description'];?></h6>
+							  </div>
+
+							  <div class="col-md-12 bottom-link no-padding">
+								<ul class="list-inline list-unstyled">
+								  <li class="list-border-right"><a href=""><i class="fa fa-star-o"></i> Ajouter a ma selection</a></li>
+								  <li class="list-border"><a href="<?php echo DEFAULT_URL;?>/inventaire/<?php echo $car['car_id'];?>"><i class="fa fa-external-link"></i> Consultez cette annonce</a></li>
+								  <li class="list-border-last"><a href=""><i class="fa fa-headphones"></i> Contactez un specialisted</a></li>
+								</ul>
 							  </div>
 							</div>
+							<div class="col-md-12 border-img-border bottom-border-bottom no-padding hidden-sm">
+							  <img src="images/listing/border.png" class="img-responsive">
+							</div>
 						 </div>
-						  <div class="col-md-12 col-sm-12 col-xs-12 listmiddle-text no-padding">
-							<h6><?php echo $car['description'];?></h6>
-						  </div>
-
-						  <div class="col-md-12 bottom-link no-padding">
-							<ul class="list-inline list-unstyled">
-							  <li class="list-border-right"><a href=""><i class="fa fa-star-o"></i> Ajouter a ma selection</a></li>
-							  <li class="list-border"><a href="product.html"><i class="fa fa-external-link"></i> Consultez cette annonce</a></li>
-							  <li class="list-border-last"><a href=""><i class="fa fa-headphones"></i> Contactez un specialisted</a></li>
-							</ul>
-						  </div>
-						</div>
-						<div class="col-md-12 border-img-border bottom-border-bottom no-padding hidden-sm">
-						  <img src="images/listing/border.png" class="img-responsive">
-						</div>
-					 </div>
 						<?php
 						}
 

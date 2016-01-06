@@ -109,6 +109,12 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 		    {
 				$_SESSION['success_msg'] = 'New car has been saved successfully.';
 				if($formObj->AddCar($_POST,$_FILES)){
+					
+					/*Save data in car_flat for searching*/
+					$lastInsertedId = mysql_insert_id();
+					$images = $obj_setting->getAllImage($lastInsertedId);
+					$dataArr  =  array('car_id' => $lastInsertedId, 'make' => $obj_setting->getOptionNameById($manufacturer), 'model' => $model, 'year' => $madeYear, 'price' => $price, 'description' => $description, 'title' => $fullName, 'date' => date("Y-m-d H:i:s"), 'images' => implode(',',$images));
+					$obj_setting->save('car_flat', $dataArr);
 					  if( !empty($_REQUEST['type']) && $_REQUEST['type'] == 'nostock') {
 							echo '<script>location.href="'.DEFAULT_ADMIN_URL.'/new_stock/new_car/index.php";</script>'; 
 					  }

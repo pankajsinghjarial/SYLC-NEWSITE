@@ -467,8 +467,8 @@ a:focus{
 
 .commence-text a{
   font-size: 16px;
-  /*margin-left: 6px;*/
-  margin-left: 10%;
+  margin-left: 6px;
+  /*margin-left: 10%;*/
   color: rgb(255, 255, 255);
   text-decoration: underline;
 }
@@ -3234,7 +3234,7 @@ background: #f00;
    /* margin-right: 10px;
     padding: 6px 0px; */
     margin-top: 10px;
-    padding: 6px 14px;
+    padding: 6px 0px;
     border-radius: 5px;
     text-shadow: 0px 0px 0px;
 }
@@ -4461,7 +4461,7 @@ ul.ui-multiselect-checkboxes.ui-helper-reset {
   padding: 6px 0px;
 }
 /*160105*/
-.list-car-details .pagination li a{padding:0;} 
+/*.list-car-details .pagination li a{padding:0;} */
 .list-car-details  ul.list-inline.list-unstyled li{margin-right:5px;}
 .list-car-details  ul.list-inline.list-unstyled li:last-child{margin-right:0;}
 .list-car-details .pagination li a.page-left{color:#ffffff;}

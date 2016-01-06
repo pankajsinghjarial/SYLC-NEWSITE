@@ -117,7 +117,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
    }
    if($error_tab4 == '' && $error_tab3 == '' && $error_tab1 == '' && $error_tab2 == ''){
 		$_SESSION['success_msg'] = 'Car has been saved successfully.';
+		$value = '';
 		if($formObj->AddCar($_POST,$_FILES, true , $_GET['id'])){
+			/*Save data in car_flat for searching*/
+			$images = $obj_setting->getAllImage($_GET['id']);
+			$dataArr  =  array( 'make' => $obj_setting->getOptionNameById($manufacturer), 'model' => $model, 'year' => $madeYear, 'price' => $price, 'description' => $description, 'title' => $fullName, 'images' => implode(',',$images));
+			$obj_setting->update('car_flat', $dataArr,'car_id='.$_GET['id']);
+			
 			if( !empty($_REQUEST['type']) && $_REQUEST['type'] == 'nostock') {
 							echo '<script>location.href="'.DEFAULT_ADMIN_URL.'/new_stock/new_car/index.php";</script>'; 
 					  }

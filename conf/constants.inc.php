@@ -2,13 +2,22 @@
    
 	define('SITE_TITLE', "Website");
 	define('SITE_TITLE_ADMIN', "Administrator Panel");
-	define('SITE_ADMIN_EMAIL', "seobrandtester019@gamil.com"); 
+	define('SITE_ADMIN_EMAIL', "sneha.gupta@netsolutionsindia.com"); 
 	
 	/* define('SITE_ADMIN_EMAIL', "info@americancarcentrale.com"); */
 	//	define('SITE_ADMIN_EMAIL', "sylc.corp@gmail.com");
 	//define('SITE_ADMIN_EMAIL', "ashley.damon999@gmail.com");
 	define('DEFAULT_DATE_FORMAT', "d-M-Y");
 
+	# ----------------------------------------------------------------------------------------------------
+	# SMTP MAIL CONSTANTS
+	# ----------------------------------------------------------------------------------------------------
+
+	define('SMTP_HOST', "mail.livemarketnews.com"); 	
+	define('SMTP_USERNAME', "mails@livemarketnews.com");
+	define('SMTP_PASSWORD', "Stone!@#"); 	
+	define('SMTP_FROMNAME', "Sylc-Export Update"); 	
+	define('SMTP_FROMEMAIL', "info@sylc-export.com"); 	
 	# ----------------------------------------------------------------------------------------------------
 	# ICONTACT API CONSTANTS
 	# ----------------------------------------------------------------------------------------------------
@@ -26,8 +35,8 @@
 	define('PAYPAL_API_PASSWORD', "4B4Y2UVSU3TYH5MQ"); 
 	define('PAYPAL_API_SIGNATUE', "AS9MV74Nv7V8ku8ydAMFCwvsPhyiALZ03zgof6-kqrEisV9QSpy3YsCr"); 	
 	define('PAYPAL_CURRENCY_CODE', "EUR"); 
-	define('PAYPAL_RETURN_URL', "http://sylc.local/thank_you.php"); 
-	define('PAYPAL_CANCEL_URL', "http://sylc.local/accessories"); 
+	define('PAYPAL_RETURN_URL', "http://seobrand-dev.com/process.php"); 
+	define('PAYPAL_CANCEL_URL', "http://seobrand-dev.com/accessories"); 
 	
 	# ----------------------------------------------------------------------------------------------------
 	# IMAGE FOLDER CONSTANTS

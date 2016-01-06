@@ -106,16 +106,15 @@
 
                <div class="form-group for-sm">
                 <div class="selt-box">
-					<input type="text" class="form-control" placeholder="Prix min"/>
-				</div>
+					<input type="text" name="price[]" class="form-control" placeholder="Prix min"/>
+				</div> 
               </div>
 
               <div class="form-group for-sm">
                 <div class="selt-box">
-					<input type="text" class="form-control" placeholder="Prix max" />
+					<input type="text" name="price[]" class="form-control" placeholder="Prix max" />
                 </div>
               </div>
-              <input id="Slider1" type="hidden" name="price" class="combo_box min_box1" />
               <div class="list-research-img"><a id="search_submit" href="javascript:void(0);"><img src="<?php echo DEFAULT_URL; ?>/images/recharche-btn.png"></a></div>
             </div>
            

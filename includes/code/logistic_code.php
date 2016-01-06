@@ -42,16 +42,54 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['logisticform'])) {
 			$res = $oiContact->subscribeContactToList($cid->contactId, 80263, 'normal');
 			
 			/* Send Notification to Admin about this Lead */			
-			$subject = $title.'NEW Recherche Transport Inquiry Received:';		
-			$message = nl2br("NEW Recherche Transport Inquiry Received:
-							Type de transportation :  ".trim($type_transport)."
-							Name :  ".trim($fname)."
-							Email :  ".trim($email)."
-							Phone : ".$phone."
-							Comment : ".$comment."");		
-		
-			$message = html_entity_decode(htmlentities($message, ENT_QUOTES, "UTF-8"));
-			//$sentmail = sendSmtpMail( SITE_ADMIN_EMAIL, $subject, $message );
+			$subject = $title.'-NEW Recherche Transport Inquiry Received:';		
+			 $message = "<p>NEW Recherche Transport Inquiry Received:</p>
+						<table>
+						<tr>
+						<td><strong>Type de transportation</strong>:</td>
+						<td>$type_transport</td>
+						</tr>
+						<tr>
+						<td><strong>Nom</strong>:</td>
+						<td>$fname</td>
+						</tr>
+						<tr>
+						<td><strong>Email</strong>:</td>
+						<td>$email</td>
+						</tr>
+						<tr>
+						<td><strong>Telephone</strong>:</td>
+						<td>$phone</td>
+						</tr>
+						<tr>
+						<td><strong>Notes</strong>:</td>
+						<td>$comment</td>
+						</tr>                           
+						</table>";
+			$mail = new PHPMailer(true); //New instance, with exceptions enabled
+				
+			$body             = $message;
+			$body             = preg_replace('/\\\\/','', $body); //Strip backslashes
+				
+			$mail->IsSMTP();                           // tell the class to use SMTP
+			$mail->SMTPAuth   = true;                  // enable SMTP authentication
+			$mail->Port       = 25;                    // set the SMTP server port
+			$mail->Host       = SMTP_HOST; // SMTP server
+			$mail->Username   = SMTP_USERNAME;     // SMTP server username
+			$mail->Password   = SMTP_PASSWORD;            // SMTP server password
+				
+			$mail->IsSendmail();  // tell the class to use Sendmail
+				
+			$mail->AddReplyTo("no-reply@example.com","First Last");				
+			$mail->From       = "info@sylc-export.com";
+			$mail->FromName   = SMTP_FROMNAME;					
+			$mail->AddAddress(SITE_ADMIN_EMAIL);				
+			$mail->Subject  = $subject;			
+			$mail->WordWrap   = 80; // set word wrap
+				
+			$mail->MsgHTML($body);				
+			$mail->IsHTML(true); // send as HTML				
+			$mail->Send();
 			echo '<script>location.href = "/thank_you.php";</script>';
 			exit;
 		

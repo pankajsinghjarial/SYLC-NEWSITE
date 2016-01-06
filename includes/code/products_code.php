@@ -12,7 +12,7 @@ if (isset($_GET['products']) && $_GET['products'] == 'products') { //Buy Now API
 	unset($_SESSION['mysearch']);
 	$_SESSION['mysearch'][] = $_GET;
 }
-if (parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) == "/notre_inventaire") { // Our Inventory Admin
+if (isset($_GET['products']) && $_GET['products'] == 'inventory') { // Our Inventory Admin
 	$auctionClass = false;
 }
 
@@ -158,21 +158,17 @@ if (isset($style) && $style != '' && $style != 'Not+Specified') {
 
 //Check if price selected while search
 $filterarray = array();
-if (isset($price) && $price != '') {
-	$price = explode('~', $price);	
-	$filterarray[] = array(
-						'name' => 'MaxPrice',
-						'value' => (string)($price[1] * 1000),
-						'paramName' => 'Currency',
-						'paramValue' => 'USD');
-	$filterarray[] = array(
-						'name' => 'MinPrice',
-						'value' => (string)($price[0] * 1000),
-						'paramName' => 'Currency',
-						'paramValue' => 'USD');
-	
-	$searched .= " with price range <span class=\"searched\"> $".$price[0] * 1000 ." USD  to $".$price[1] * 1000 ." USD </span>";	
-	$dataArray['price'] = array('0'=>(int)$price[0]*1000,'1'=>(int)$price[1]*1000);
+if (isset($price) && $price[0] != '' && $price[1] != '') {
+    $filterarray[] = array(
+                        'name' => 'MaxPrice',
+                        'value' => (string)($common->ConvertPriceRev($price[1])),
+                        'paramName' => 'Currency',
+                        'paramValue' => 'USD');
+    $filterarray[] = array(
+                        'name' => 'MinPrice',
+                        'value' => (string)($common->ConvertPriceRev($price[0])),
+                        'paramName' => 'Currency',
+                        'paramValue' => 'USD');
 }
 
 //Only Buy It Now Section
@@ -364,6 +360,7 @@ if (!isset($sort)) {
 	$now_order = $oder[1];
 }
 $num = $common->numberOfRows($userTblName);
+
 if (!isset($_GET['page'])) {
 	$page = 1;
 }
@@ -377,12 +374,11 @@ $pages->paginate();
 if ($num != 0) {
 	if ( $page % $_SESSION['products']['page'] == 0) {
 		$startLim = ( $_SESSION['products']['page'] - 1 ) * 20;
-	}  
-	else{
+	} else {
 		$startLim = ( ( $page % $_SESSION['products']['page'] ) - 1 ) * 20;
 	}
 	
-	$list = $common->customQuery("SELECT * FROM ".$userTblName." ORDER BY $now_sort $now_order LIMIT $startLim ,20");
+	$list = $common->customQuery("SELECT * FROM ". $userTblName ." ORDER BY $now_sort $now_order LIMIT $startLim , 20");
 	
 	if (!isset($cars_arr) && !isset($ebay_arr)) {
 		$cars_arr = array();
@@ -390,8 +386,7 @@ if ($num != 0) {
 		while($resource_data = mysql_fetch_object($list)) {
 			if ($resource_data->type == 1) {
 				$cars_arr[$resource_data->itemId] = unserialize(base64_decode($resource_data->content));
-			}
-			elseif ($resource_data->type == 2) {
+			} elseif ($resource_data->type == 2) {
 				$ebay_arr[$resource_data->itemId] = unserialize(base64_decode($resource_data->content));
 			}
 		}
@@ -416,12 +411,12 @@ $eu = $limit * ($page-1) ;
 
 $total_rows = $common->numberOfRows('car');
 
-if (isset($_GET['field'])and $_GET['field']!='') {
+if (isset($_GET['field'])and $_GET['field'] != '') {
 	$field = $_GET['field'];
 } else {
 	$field = 'car_id';
 }
-if (isset($_GET['orderBy'])and $_GET['orderBy']!='') {
+if (isset($_GET['orderBy'])and $_GET['orderBy'] != '') {
 	$orderby = $_GET['orderBy'];
 }else{
 	$orderby = 'ASC';
@@ -441,4 +436,8 @@ $toYear   = $_GET['madeYear'][1];
 if($toYear == '') {
 	$toYear = 2017;
 }
-$all_car = $common->getSearchCarListWithAttr('limit '.$limit, array("fullName", "mileage", "price", "features", "description"), $dataId, "2~int~4~".$fromYear."~".$toYear,$searchedModel);
+$all_cars = $common->read('car_flat');
+$all_car = array();
+while($row = mysql_fetch_array($all_cars)){
+    $all_car[] = $row;
+}

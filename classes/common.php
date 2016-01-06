@@ -215,10 +215,13 @@ class common extends utility {
 	
 	
 
-	function CarAttributesFromID($carIds = array(), $attr_list =  array("fullName", "mileage", "price", "features")){
+	function CarAttributesFromID($carIds = array(), $attr_list =  false){
 		if(count($this->attributs) == 0){
 			$this->setAttributsToArray();
 		}
+        if(!$attr_list){
+            $attr_list = array_keys($this->attributs);
+        }
 		$table_prefix="car_";
 		$temp = array();
 		foreach($carIds as $carId){
@@ -229,7 +232,7 @@ class common extends utility {
 				foreach($attr_list as $attr){
 					$option_result = $this->customQuery("SELECT value From ".$table_prefix.$this->attributs[$attr]["back"]." Where car_id = ".$value->car_id." and attribute_id = ".$this->attributs[$attr]["id"]);
 					$option_result  = mysql_fetch_object($option_result);
-					$temp[$value->car_id][$attr] = $option_result->value;
+					$temp[$value->car_id][$attr] = @$option_result->value;
 				}	
 			}
 		}
@@ -237,7 +240,51 @@ class common extends utility {
 		return $temp;
 	}
 	
-	
+	function getCar($id, $view =false){
+		global $db;
+		$attrs = $this->getAttributes();
+		$postArr = array();
+		
+		$result = $this->customQuery("Select stock_id,brand_id, vin From car Where car_id = ".$id);
+		$value = $db->fetchNextObject($result);
+		$postArr['stock_id'] = $value->stock_id;
+		$postArr['vin'] = $value->vin;
+		$postArr['brand_id'] = $value->brand_id;
+		$for_option= array("select", "multiselect", "radio", "checkbox");
+		foreach($attrs as $key=>$attr ){
+			
+			$result = $this->customQuery("Select value From car_".$attr["back"]." Where car_id = ".$id." and attribute_id = ".$attr["id"]);
+			$value = $db->fetchNextObject($result);
+			
+			$value = $value->value;
+			if($view){
+				if(in_array($attr["front"],$for_option)){
+					$value = $attr["options"][$value];
+				}
+			}
+			if($attr["front"] == "media_upload"){
+				
+				
+				$query = "Select value From car_".$attr["back"]." Where car_id = ".$id." and attribute_id = ".$attr["id"];
+				$queryResult = mysql_query($query);
+				while($image = mysql_fetch_array($queryResult)) {
+					$postArr[$key][] = $image['value'];
+				}
+				
+				/*$value = $db->fetchNextObject($result);
+			
+				
+				$postArr[$key][images_1] = $value;
+				$val = $db->fetchNextObject($result);
+				$val = $val->value;
+				$postArr[$key][images_2] = $val;*/
+			}
+			else{
+				$postArr[$key] = $value;
+			}	  
+		}
+		return $postArr;
+	}
 	
 	public function total_getCarListWithAttr($condition = ''){
         $where = '';
@@ -276,7 +323,7 @@ class common extends utility {
 	public function getSearchCarListWithAttr($start = 0, $limit = 25,$searchcar,$searchattr,$searchmodel=''){
 		$temp = array();
 		$searchcar = trim($searchcar);
-		$attr_list = array("fullName", "mileage", "price", "features");
+		$attr_list = array("fullName", "mileage", "price", "features", "description", "images");
 		if(count($this->attributs) == 0){
 			$this->setAttributsToArray();
 		}
@@ -293,14 +340,22 @@ class common extends utility {
 			else{
 				
 				//$option_result	= $this->customQuery("select car_int.car_id from car_".$backtype['1'].", car_varchar where car_int.attribute_id = '".$backtype['0']."' and car_int.value in ("."".$searchcar."".") and car_varchar.car_id= car_int.car_id and car_varchar.attribute_id = '".$backtype['2']."' and car_varchar.value in ("."".$searchmodel."".") and car_int.attribute_id='1' and car_int.value=1980");
-
-				$option_result	= $this->customQuery("select car_int.car_id from car_varchar,car_".$backtype['1']."  JOIN car_int ints on car_int.car_id=ints.car_id and ints.value between ".$backtype['3']." and ".$backtype['4']." and  ints.attribute_id=1 where car_int.attribute_id = '".$backtype['0']."' and car_int.value in ("."".$searchcar."".") and car_varchar.car_id= car_int.car_id and car_varchar.attribute_id = '".$backtype['2']."' and car_varchar.value in ("."".$searchmodel."".")  ");
+				if($searchcar != '') {
+					if($searchmodel != '') {
+						$option_result	= $this->customQuery("select car_int.car_id from car_decimal,car_varchar,car_".$backtype['1']."  JOIN car_int ints on car_int.car_id=ints.car_id and ints.value between ".$backtype['3']." and ".$backtype['4']." and  ints.attribute_id=1 where car_int.attribute_id = '".$backtype['0']."' and car_int.value in ("."".$searchcar."".") and car_varchar.car_id= car_int.car_id and car_varchar.attribute_id = '".$backtype['2']."' and car_varchar.value in ("."".$searchmodel."".") and car_decimal.car_id= car_int.car_id  ");
+					} else {
+						$option_result	= $this->customQuery("select car_int.car_id from car_decimal,car_varchar,car_".$backtype['1']."  JOIN car_int ints on car_int.car_id=ints.car_id and ints.value between ".$backtype['3']." and ".$backtype['4']." and  ints.attribute_id=1 where car_int.attribute_id = '".$backtype['0']."' and car_int.value in ("."".$searchcar."".")  and car_decimal.car_id= car_int.car_id  ");
+						//and car_decimal.attribute_id = '11' and car_decimal.value=000000002000
+					}
+				} else {
+					$option_result	= $this->customQuery("select car_int.car_id from car_decimal,car_varchar,car_".$backtype['1']."  JOIN car_int ints on car_int.car_id=ints.car_id and ints.value between ".$backtype['3']." and ".$backtype['4']." and  ints.attribute_id=1 where car_varchar.car_id= car_int.car_id and  car_decimal.car_id= car_int.car_id ");
+				}
 				
 			}
 		} 
 		
-		$i =1;
-		$count=1;
+		$i = 1;
+		$count = 1;
 		$this->total_getSearchCarListWithAttr = mysql_num_rows($option_result);
 		
 		while($row = mysql_fetch_object($option_result)){
@@ -320,7 +375,7 @@ class common extends utility {
 			$temp[$row->car_id]["id"] = $row->car_id;
 			$temp[$row->car_id]["stock_id"] = $fetch_value->stock_id;
 			
-			foreach($attr_list as $attr){ 
+			foreach ($attr_list as $attr) { 
 					$option_resulte = $this->customQuery("SELECT value From car_".$this->attributs[$attr]["back"]." Where car_id = ".$row->car_id." and attribute_id = ".$this->attributs[$attr]["id"]);
 					$option_resulte  = mysql_fetch_object($option_resulte);
 					$temp[$row->car_id][$attr] = $option_resulte->value;
@@ -476,6 +531,21 @@ VALUES ($carid,1) ");
 		$finalprice = ($price)*$this->exch_rate;
 		return number_format($finalprice,2, '.', '');
 	}
+
+    function ConvertPriceRev($price){
+		if($this->exch_rate ==''){
+			$this->getExchangeRate();
+		}
+		
+		//$rateid = $this->customQuery("select * from currency where id = 1");
+		//$rate = mysql_fetch_object($rateid);	
+		//$finalprice = (($price + $rate->boat) * $rate->custom * $rate->tva) + $rate->transp + $rate->com;
+		//$finalprice = ($price + $rate->boat + $rate->transp + $rate->com)*$this->exch_rate;
+		//jitendra
+		
+		$finalprice = ($price)/$this->exch_rate;
+		return number_format($finalprice,2, '.', '');
+    }
 
 	function getOptionNameById($id){
 		$sql = $this->customQuery("Select value from attribute_option_value where value_id = $id");

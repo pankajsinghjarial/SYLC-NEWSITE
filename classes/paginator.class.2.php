@@ -128,7 +128,7 @@ class Paginator{
 				}
 				if($this->range[$this->mid_range-1] < $this->num_pages-1 And $i == $this->range[$this->mid_range-1]) $this->return .= "<li><a><span class=\"dots\"> ...</span></a></li>  ";
 			}
-			$this->return .= (($this->current_page < $this->num_pages And $this->items_total >= 10) And ($_GET['page'] != 'All') And $this->current_page > 0) ? "<li class=\"next\"><a class=\"paginate\" href=\"$this->pageUrl?page=$next_page&ipp=$this->items_per_page$this->querystring\"> Suivant <i class=\"fa fa-angle-double-right\"></i></a></li>\n":"<li class=\"next\"> Suivant <i class=\"fa fa-angle-double-right\"></i></li>\n";
+			$this->return .= (($this->current_page < $this->num_pages And $this->items_total >= 10) And (@$_GET['page'] != 'All') And $this->current_page > 0) ? "<li class=\"next\"><a class=\"paginate\" href=\"$this->pageUrl?page=$next_page&ipp=$this->items_per_page$this->querystring\"> Suivant <i class=\"fa fa-angle-double-right\"></i></a></li>\n":"<li class=\"next\"> Suivant <i class=\"fa fa-angle-double-right\"></i></li>\n";
 			/*$this->return .= ($_GET['page'] == 'All') ? "<a class=\"current\" style=\"margin-left:10px\" href=\"#\">All</a> \n":"<a class=\"paginate\" style=\"margin-left:10px\" href=\"$_SERVER[PHP_SELF]?page=1&ipp=All$this->querystring\">All</a> \n";*/
 			$this->return .= "</ul>";
 		}

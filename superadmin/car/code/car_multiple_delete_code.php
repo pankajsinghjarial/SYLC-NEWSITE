@@ -16,6 +16,7 @@ if($totalIds !='' and isset($action) and $action=='delete'){
 	}
     $obj_setting->delete('car'," car_id IN ($totalIds)");
 	$obj_setting->delete('contact'," car_id IN ($totalIds)");
+	$obj_setting->delete('car_flat'," car_id IN ($totalIds)");
 	$_SESSION['success_msg'] = 'Cars deleted successfully.';
 	echo '<script>location.href="'.DEFAULT_ADMIN_URL.'/car/index.php'.$addToUrl.'";</script>'; 
 }

@@ -56,7 +56,7 @@
 <!-- Add jQuery library -->
 	
 	<!-- Add mousewheel plugin (this is optional) -->
-	<script type="text/javascript" src="/js/jquery.mousewheel-3.0.6.pack.js"></script>
+	<!--<script type="text/javascript" src="/js/jquery.mousewheel-3.0.6.pack.js"></script>-->
 
 	<!-- Add fancyBox main JS and CSS files -->
 	<script type="text/javascript" src="/js/jquery.fancybox.js?v=2.1.5"></script>

@@ -16,6 +16,7 @@ if(isset($car_id) and $car_id!='' and isset($action) and $action=='delete'){
 	if($total_rows > 0){
 		$obj_setting->delete('car'," car_id=$car_id");
 		$obj_setting->delete('contact'," car_id=$car_id");
+		$obj_setting->delete('car_flat'," car_id=$car_id");
 		$_SESSION['success_msg'] = 'Car deleted successfully.';
 		if( !empty($_REQUEST['type']) && $_REQUEST['type'] == 'nostock') {
 							echo '<script>location.href="'.DEFAULT_ADMIN_URL.'/new_stock/new_car/index.php";</script>'; 
