@@ -85,7 +85,103 @@
 					buttons : {}
 				}
 			});
-		});
+		
+		
+		$('.fancybox-media-youtube').fancybox({
+				openEffect : 'none',
+				closeEffect : 'none',
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				arrows : false,
+				helpers : {
+					media : {},
+					buttons : {}
+				}
+			});
+			/*
+			$('.fancybox-media-video').fancybox({
+						openEffect : 'none',
+						closeEffect : 'none',
+						prevEffect : 'none',
+						nextEffect : 'none',
+
+						arrows : false,
+						
+						afterLoad: function () {
+							
+								alert($(this).attr('class'));
+						}
+					});
+			*/
+			
+			
+    /*
+			$(".fancybox-media-video").click(function(){
+				
+				
+				var Id = $(this).attr("id");
+				var video = $(this).attr("rel");
+				var image = $(this).attr('data-thumb');
+				
+				
+				 $(this).fancybox({
+						openEffect : 'none',
+						closeEffect : 'none',
+						prevEffect : 'none',
+						nextEffect : 'none',
+
+						arrows : false,
+						
+						beforeLoad: function () {
+								
+								
+								jwplayer("vid"+Id).setup({
+									file: video,
+									image:image,
+									width: '600px',
+									height:'400px'			
+								});
+								
+								
+						}
+					});
+
+				
+				
+			});
+		*/	
+			/*
+			
+			
+			$(".fancybox-media-video").fancybox({
+			fitToView: false, // to show videos in their own size
+			content: '<span></span>', // create temp content
+			scrolling: 'no', // don't show scrolling bars in fancybox
+			afterLoad: function () {
+			  
+			  
+			  // get dimensions from data attributes
+			  var $width = $(this.element).data('width'); 
+			  var $height = $(this.element).data('height');
+			  // replace temp content
+			  this.content = "<embed src='../jwplayer/jwplayer.flash.swf?file=" + this.href + "&autostart=true&amp;wmode=opaque' type='application/x-shockwave-flash' width='" + $width + "' height='" + $height + "'></embed>"; 
+
+			this.content ="<div id='Fancybox-video' class='abc'></div>"; //return false;
+			
+			alert($("#Fancybox-video").attr('class'));
+			
+			jwplayer("Fancybox-video").setup({
+							file: this.href,
+							width: '400px',
+							height:'300px'			
+						});
+			
+			}
+		  });
+		  */
+		  
+		  });
 	</script>
             <script>
                 new WOW().init();

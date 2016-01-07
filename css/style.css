@@ -105,6 +105,16 @@
 .videoOfList{
 	cursor:pointer;
 }
+.upperTextForm {
+    padding: 5px;
+}
+.brochure-button {
+
+    text-align: center;
+}
+.brochure-button button { margin-top:5px !important; }
+.car-details-thumbnail .video-play { position:absolute; top:50%; left:50%; margin:-32px 0 0 -40px; }
+.car-details-thumbnail .video-play img{ width:64px; height:64px; }
 
 .carousel-control {
     position: absolute;
@@ -703,6 +713,7 @@ color: #DE3E15;
 }
 .car-details-thumbnail-img{
   padding: 5px 4px 0px;
+  min-height:160px;
 }
 .car-details-thumbnail-img .thumbnail {
     border: none;
@@ -3234,7 +3245,7 @@ background: #f00;
    /* margin-right: 10px;
     padding: 6px 0px; */
     margin-top: 10px;
-    padding: 6px 0px;
+    padding: 6px 14px;
     border-radius: 5px;
     text-shadow: 0px 0px 0px;
 }
@@ -3309,6 +3320,13 @@ background: #f00;
     border-bottom: 1px solid transparent;
     padding-bottom: 15px;
 }
+
+
+/*160106 */
+
+.car-details-thumbnail img { width:220px; height:140px; }
+.tab-content .thumbnail { margin-bottom: 0; }
+
 /*-------------------
     media section
 ---------------------*/

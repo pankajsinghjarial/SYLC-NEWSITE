@@ -75,7 +75,7 @@ if ($_POST) {
 	//We need to execute the "SetExpressCheckOut" method to obtain paypal token
 	$paypal= new MyPayPal();
 	$httpParsedResponseAr = $paypal->PPHttpPost('SetExpressCheckout', $padata, PAYPAL_API_USERNAME, PAYPAL_API_PASSWORD, PAYPAL_API_SIGNATUE, PAYPAL_MODE);
-	print_r($httpParsedResponseAr);die;
+	
 	//Respond according to message we receive from Paypal
 	if("SUCCESS" == strtoupper($httpParsedResponseAr["ACK"]) || "SUCCESSWITHWARNING" == strtoupper($httpParsedResponseAr["ACK"])) {
 		//Redirect user to PayPal store with Token received.
@@ -93,41 +93,6 @@ if ($_POST) {
 //Paypal redirects back to this page using ReturnURL, We should receive TOKEN and Payer ID
 if (isset($_GET["token"]) && isset($_GET["PayerID"])) {
 
-	/* Send Notification to Admin about this Lead */
-		$message = "
-					<p>Successful Payment:</p>
-					<table>
-					<tr>
-					<td>We appreciate your prompt payment and look forward to continued business with you in the future.</td>
-					<td></td>
-					</tr>					                           
-					</table>";
-		$mail = new PHPMailer(true); //New instance, with exceptions enabled			
-		$body = $message;
-		$body = preg_replace('/\\\\/','', $body); //Strip backslashes
-			
-		$mail->IsSMTP();                           // tell the class to use SMTP
-		$mail->SMTPAuth   = true;                  // enable SMTP authentication
-		$mail->Port       = 25;                    // set the SMTP server port
-		$mail->Host       = SMTP_HOST; // SMTP server
-		$mail->Username   = SMTP_USERNAME;     // SMTP server username
-		$mail->Password   = SMTP_PASSWORD;            // SMTP server password
-			
-		$mail->IsSendmail();  // tell the class to use Sendmail
-			
-		$mail->AddReplyTo("no-reply@example.com","First Last");				
-		$mail->From       = SMTP_FROMEMAIL;
-		$mail->FromName   = SMTP_FROMNAME;					
-		$mail->AddAddress(SITE_ADMIN_EMAIL);				
-		$mail->Subject  = 'Successful Payment';			
-		$mail->WordWrap   = 80; // set word wrap
-			
-		$mail->MsgHTML($body);				
-		$mail->IsHTML(true); // send as HTML
-		$mail->Send();
-		
-
-	
 	//we will be using these two variables to execute the "DoExpressCheckoutPayment"
 	//Note: we haven't received any payment yet.
 	
@@ -167,10 +132,9 @@ if (isset($_GET["token"]) && isset($_GET["PayerID"])) {
 				'&PAYMENTREQUEST_0_CURRENCYCODE='.urlencode(PAYPAL_CURRENCY_CODE);
 	
 	//We need to execute the "DoExpressCheckoutPayment" at this point to Receive payment from user.
-		$paypal= new MyPayPal();
-		$httpParsedResponseAr = $paypal->PPHttpPost('DoExpressCheckoutPayment', $padata, PAYPAL_API_USERNAME, PAYPAL_API_PASSWORD, PAYPAL_API_SIGNATUE, PAYPAL_MODE);
-		echo '<script>location.href = "/thank_you.php";</script>';
-		exit;
+	$paypal= new MyPayPal();
+	$httpParsedResponseAr = $paypal->PPHttpPost('DoExpressCheckoutPayment', $padata, PAYPAL_API_USERNAME, PAYPAL_API_PASSWORD, PAYPAL_API_SIGNATUE, PAYPAL_MODE);
+	
 	//Check if everything went ok..
 	if("SUCCESS" == strtoupper($httpParsedResponseAr["ACK"]) || "SUCCESSWITHWARNING" == strtoupper($httpParsedResponseAr["ACK"])) {
 
@@ -200,11 +164,113 @@ if (isset($_GET["token"]) && isset($_GET["PayerID"])) {
 		if("SUCCESS" == strtoupper($httpParsedResponseAr["ACK"]) || "SUCCESSWITHWARNING" == strtoupper($httpParsedResponseAr["ACK"])) {
 			
 			echo '<br /><b>Stuff to store in database :</b><br /><pre>';
-			
-			
 			echo '<pre>';
 			print_r($httpParsedResponseAr);
 			echo '</pre>';
+			/* Send Notification to Customer about this Lead */
+			$message = "
+						<p>Successful Payment:</p>
+						<table>
+						<tr>
+						<td>We appreciate your prompt payment and look forward to continued business with you in the future.</td>
+						<td></td>
+						</tr>					                           
+						</table>";
+			$mail = new PHPMailer(true); //New instance, with exceptions enabled			
+			$body = $message;
+			$body = preg_replace('/\\\\/','', $body); //Strip backslashes
+				
+			$mail->IsSMTP();                           // tell the class to use SMTP
+			$mail->SMTPAuth   = true;                  // enable SMTP authentication
+			$mail->Port       = 25;                    // set the SMTP server port
+			$mail->Host       = SMTP_HOST; // SMTP server
+			$mail->Username   = SMTP_USERNAME;     // SMTP server username
+			$mail->Password   = SMTP_PASSWORD;            // SMTP server password
+				
+			$mail->IsSendmail();  // tell the class to use Sendmail
+				
+			$mail->AddReplyTo("no-reply@example.com","First Last");				
+			$mail->From       = SMTP_FROMEMAIL;
+			$mail->FromName   = SMTP_FROMNAME;					
+			$mail->AddAddress(urldecode($httpParsedResponseAr['EMAIL']));				
+			$mail->Subject  = 'Successful Payment';			
+			$mail->WordWrap   = 80; // set word wrap
+				
+			$mail->MsgHTML($body);				
+			$mail->IsHTML(true); // send as HTML
+			$mail->Send();
+		
+			/* Send Notification to Admin about this Lead */
+			  $message = "
+						<p>Product Order Detail:</p>
+						<table>
+						<tr>
+						<td><strong>Item Name</strong>:</td>
+						<td>".urldecode($httpParsedResponseAr['L_NAME0'])."</td>
+						</tr>
+						<tr>
+						<td><strong>Quantity</strong>:</td>
+						<td>".urldecode($httpParsedResponseAr['L_QTY0'])."</td>
+						</tr>
+						<tr>
+						<td><strong>Amount Paid</strong>:</td>
+						<td>&euro; ".urldecode($httpParsedResponseAr['ITEMAMT'])."</td>
+						</tr>
+						<tr>
+						<td><strong><p>Shipping Detail:</p></strong></td>
+						<td></td>
+						</tr>
+						<tr>
+						<tr>
+						<td><strong>Name</strong>:</td>
+						<td>".urldecode($httpParsedResponseAr['SHIPTONAME'])."</td>
+						</tr>
+						<tr>
+						<td><strong>Street</strong>:</td>
+						<td>".urldecode($httpParsedResponseAr['SHIPTOSTREET'])."</td>
+						</tr>
+						<tr>
+						<td><strong>City</strong>:</td>
+						<td>".urldecode($httpParsedResponseAr['SHIPTOCITY'])."</td>
+						</tr>
+						<tr>
+						<td><strong>State</strong>:</td>
+						<td>".urldecode($httpParsedResponseAr['SHIPTOSTATE'])."</td>
+						</tr>                           
+						<tr>
+						<td><strong>Zip</strong>:</td>
+						<td>".urldecode($httpParsedResponseAr['SHIPTOZIP'])."</td>
+						</tr>                           
+						<tr>
+						<td><strong>Country</strong>:</td>
+						<td>".urldecode($httpParsedResponseAr['SHIPTOCOUNTRYNAME'])."</td>
+						</tr>                           
+						</table>";
+			$mail = new PHPMailer(true); //New instance, with exceptions enabled			
+			$body = $message;
+			$body = preg_replace('/\\\\/','', $body); //Strip backslashes
+				
+			$mail->IsSMTP();                           // tell the class to use SMTP
+			$mail->SMTPAuth   = true;                  // enable SMTP authentication
+			$mail->Port       = 25;                    // set the SMTP server port
+			$mail->Host       = SMTP_HOST; // SMTP server
+			$mail->Username   = SMTP_USERNAME;     // SMTP server username
+			$mail->Password   = SMTP_PASSWORD;            // SMTP server password
+				
+			$mail->IsSendmail();  // tell the class to use Sendmail
+				
+			$mail->AddReplyTo("no-reply@example.com","First Last");				
+			$mail->From       = SMTP_FROMEMAIL;
+			$mail->FromName   = SMTP_FROMNAME;					
+			$mail->AddAddress(SITE_ADMIN_EMAIL);				
+			$mail->Subject  = 'Product Detail';			
+			$mail->WordWrap   = 80; // set word wrap
+				
+			$mail->MsgHTML($body);				
+			$mail->IsHTML(true); // send as HTML
+			$mail->Send();
+			echo '<script>location.href = "/thank_you.php";</script>';
+			exit;
 		} else  {
 			echo '<div style="color:red"><b>GetTransactionDetails failed:</b>'.urldecode($httpParsedResponseAr["L_LONGMESSAGE0"]).'</div>';
 			echo '<pre>';

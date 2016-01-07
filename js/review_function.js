@@ -65,5 +65,37 @@ $("#modelID").change(function(){
 });
 	
 	
+	var form = $('#ReviewForm');
+	
+	$(form).submit(function(event) {
+		// Stop the browser from submitting the form.
+		event.preventDefault();
+		
+		// TODO
+		var formData = $(form).serialize();
+		
+		$.ajax({
+			type: 'POST',
+			url: $(form).attr('action'),
+			data: formData
+		})
+		
+		.done(function(response) {
+			
+			if(response == 1){ 
+				$("#carDetailsForm").hide();
+				$("#PlaceButtonAfterSubmission").html("<div class='upperTextForm'><h4>Merci de voter demande.Telecharger votre brochure ci dessous</h4></div><div class='brochure-button'><button class='btn btn-primary' type='submit'>Telecharger la brochure<i class='fa fa-angle-double-right'></i></button></div>");
+			
+			}else{
+				alert(response);	
+			}
+		})
+		
+		.fail(function(data) {
+			alert("We are unable to process this request. Please try after some time.");
+		});
+		
+	});
+	
 	
 });

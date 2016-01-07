@@ -78,22 +78,18 @@ if(isset($makeID) || isset($modelID) || isset($Year)){
 		}
 		
 	}else{
-		/*
-		$all_year_query    = $obj_setting->customQuery("SELECT year FROM  reviews WHERE make=".$makeID);
+		if($modelID != ''){
+		$all_year_query    = $obj_setting->customQuery("SELECT year FROM  reviews WHERE model=".$modelID);
 		$all_years = array();
 
 		while($yearrow = mysql_fetch_object($all_year_query)){
 				$year=$yearrow->year;
 				$all_years[$year]= $year;
 		}
-		*/
+		}
 	}
 
 }
-
-
-
-
 
 $reviewsArrNew = array();
 $reviewsArrOld = array();
@@ -113,7 +109,9 @@ $all_reviews_new = $obj_setting->customQuery("SELECT * FROM  reviews ".$QueryStr
 //$all_reviews_old = $obj_setting->customQuery("SELECT * FROM  reviews WHERE old_new=0 ".$QueryString);
 //
 while ($revNew = mysql_fetch_object($all_reviews_new)) {
+	
 	$short_description = $revNew->short_description;
+    $id = $revNew->id;
     $make = $revNew->make_name;
     $model = $revNew->model_name;
     $year = $revNew->year;
@@ -121,15 +119,15 @@ while ($revNew = mysql_fetch_object($all_reviews_new)) {
     $title = $make.' '.$model.' '.$year;
     $image = DEFAULT_ADMIN_URL_REVIEW_IMAGEPATH.'/'.$revNew->image;
     if($old_new){
-		$reviewsArrNew[] = array('short_description'=>$short_description, 'image'=>$image, 'title'=>$title, 'old_new'=>$old_new); 
+		$reviewsArrNew[] = array('id'=>$id,'short_description'=>$short_description, 'image'=>$image, 'title'=>$title, 'old_new'=>$old_new); 
 	}else{
-		$reviewsArrOld[] = array('short_description'=>$short_description, 'image'=>$image, 'title'=>$title, 'old_new'=>$old_new); 
+		$reviewsArrOld[] = array('id'=>$id,'short_description'=>$short_description, 'image'=>$image, 'title'=>$title, 'old_new'=>$old_new); 
 	}
 }
 /*
 echo "<pre>";
 $_SERVER['REQUEST_URI'];
-print_r(); die;
+print_r($reviewsArrOld); die;
 */
 /*
 while ($revOld = mysql_fetch_object($all_reviews_old)) {

@@ -114,7 +114,7 @@ if(($Year != '') && ($Year == $yeaid )){ echo "selected='selected'"; }}?>><?php 
                           <div class="col-md-12 col-xs-12 col-sm-12 car-rivew-details post">
                             <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s">
                               <h3><?php echo $reviewArrOld['title']; ?></h3>
-                              <img src="<?php echo DEFAULT_URL.'/image_resizer.php?img='.$reviewArrOld['image'].'&newWidth=565&newHeight=359'; ?>" class="img-responsive">
+                              <a target="_blank" href="/detail-review?reviewID=<?php echo base64_encode(convert_uuencode($reviewArrOld['id'])); ?>"><img src="<?php echo DEFAULT_URL.'/image_resizer.php?img='.$reviewArrOld['image'].'&newWidth=565&newHeight=359'; ?>" class="img-responsive"></a>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s" id="car-details-car-review">
                               <img src="images/car-review/left-qute.png" class="left-qute">
@@ -122,7 +122,7 @@ if(($Year != '') && ($Year == $yeaid )){ echo "selected='selected'"; }}?>><?php 
                                 <?php echo $reviewArrOld['short_description']; ?>
                                 <img src="images/car-review/right-qute.png" class="right-qute"></i>
                               </h2>
-                              <a href="car-details-1.html"><button class="btn btn-default" id="default-btn" type="submit">En savoir plus</button></a>
+                              <a target="_blank" href="/detail-review?reviewID=<?php echo base64_encode(convert_uuencode($reviewArrOld['id'])); ?>"><button class="btn btn-default" id="default-btn" type="submit">En savoir plus</button></a>
                             </div>
                           </div>
                         <?php 
@@ -151,7 +151,7 @@ if(($Year != '') && ($Year == $yeaid )){ echo "selected='selected'"; }}?>><?php 
                                 <?php echo $reviewArrNew['short_description']; ?>
                                 <img src="images/car-review/right-qute.png" class="right-qute"></i>
                               </h2>
-                              <a href="car-details-1.html"><button class="btn btn-default" id="default-btn" type="submit">En savoir plus</button></a>
+                              <a target="_blank" href="/detail-review?reviewID=<?php echo base64_encode(convert_uuencode($reviewArrNew['id'])); ?> "><button class="btn btn-default" id="default-btn" type="submit">En savoir plus</button></a>
                             </div>
                           </div>
 						<?php 
@@ -259,52 +259,6 @@ if(($Year != '') && ($Year == $yeaid )){ echo "selected='selected'"; }}?>><?php 
                   <h2>BMW : 2016 760 LI</h2>
                 </div>
 
-                <!-- hdden -md -->
-
-                <div class="hidden-lg hidden-md hidden-sm">
-                  <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-1.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>BMW : 2016 760 LI</h2>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-2.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>TOYOTA : 2016 RAV-4</h2>
-                  </div>
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-3.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>BMW: 2016 X5 M-Series</h2>
-                </div>
-              </div>
-
-                  <!-- 2 -->
-
-                  <div class="hidden-lg hidden-md hidden-sm">
-                  <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-1.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>BMW : 2016 760 LI</h2>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-2.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>TOYOTA : 2016 RAV-4</h2>
-                  </div>
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-3.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>BMW: 2016 X5 M-Series</h2>
-                </div>
-
-                </div>
               </div><!--.row-->
             </div><!--.item-->
              

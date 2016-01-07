@@ -3,6 +3,12 @@ extract($_POST);
 extract($_GET);
 
 $obj_setting = new common();
+/*Fetch tabs*/
+$total_rows = $common->numberOfRows('content_page', "page_name='presentation'"); 
+$allTabs = $common->customQuery("SELECT slug,tab_title FROM  content_page where page_name='presentation' ORDER BY id ASC");
+if($slug == '') {
+	$slug = 'notre_mission';
+}
 /*Fetch tab content*/
 
 if($tab_title == '') {

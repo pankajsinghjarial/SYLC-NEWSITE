@@ -7,22 +7,16 @@
   <div class="container">
       <div class="col-md-12 tabbable tabs-right">
         <div class="col-md-8 tab-content">
-          <ul class="nav nav-tabs hidden-md hidden-lg">
-             <li <?php if($tab_title == 'presentation') { echo 'class="active"';}?>>
-				<a href="/presentation/">Présentation</a>
-			</li>
-            <li <?php if($tab_title == 'pourquoi_nous_choisir') { echo 'class="active"';}?>>
-				<a href="/presentation/pourquoi_nous_choisir" >Pourquoi nous choisir?</a>
-			</li>
-            <li <?php if($tab_title == 'nos_services') { echo 'class="active"';}?>>
-				<a href="/presentation/nos_services">Nos services</a>
-			</li>
-            <li <?php if($tab_title == 'comment_ca_marche') { echo 'class="active"';}?>>
-              <a href="/presentation/comment_ca_marche">Comment ça marche?</a>
-            </li>
-            <li <?php if($tab_title == 'fournisseurs') { echo 'class="active"';}?>>
-				<a href="/presentation/fournisseurs">Fournisseurs</a>
-			</li>
+          <ul class="nav nav-tabs hidden-md hidden-lg">            
+			<?php 	
+				if ($total_rows > 0) {					
+					while ($tab = mysql_fetch_object($allTabs)) { 
+			?>
+					<li <?php if($slug == $tab->slug) {echo 'class="active"';}?>><a href="/presentation/<?php echo $tab->slug;?>"><?php echo $tab->tab_title;?></a></li>
+			<?php
+					}
+				}
+			?>
           </ul>
 
            <div class="tab-pane active wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s" id="1"> 
@@ -31,21 +25,16 @@
 			</div>
         <div class="col-md-4 wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
           <ul class="nav nav-tabs hidden-xs hidden-sm">
-            <li <?php if($tab_title == 'presentation') { echo 'class="active"';}?>>
-				<a href="/presentation/">Présentation</a>
-			</li>
-            <li <?php if($tab_title == 'pourquoi_nous_choisir') { echo 'class="active"';}?>>
-				<a href="/presentation/pourquoi_nous_choisir" >Pourquoi nous choisir?</a>
-			</li>
-            <li <?php if($tab_title == 'nos_services') { echo 'class="active"';}?>>
-				<a href="/presentation/nos_services">Nos services</a>
-			</li>
-            <li <?php if($tab_title == 'comment_ca_marche') { echo 'class="active"';}?>>
-              <a href="/presentation/comment_ca_marche">Comment ça marche?</a>
-            </li>
-            <li <?php if($tab_title == 'fournisseurs') { echo 'class="active"';}?>>
-				<a href="/presentation/fournisseurs">Fournisseurs</a>
-			</li>
+            
+			<?php mysql_data_seek($allTabs, 0);
+					if ($total_rows > 0) {					
+						while ($tab = mysql_fetch_object($allTabs)) { 
+				?>
+						<li <?php if($slug == $tab->slug) {echo 'class="active"';}?>><a href="/presentation/<?php echo $tab->slug;?>"><?php echo stripslashes($tab->tab_title);?></a></li>
+				<?php
+						}
+					}
+				?>
           </ul>
           <img src="<?php echo DEFAULT_URL. '/images/presentation/' .$sideBanner;?>" class="img-responsive center">
         </div>

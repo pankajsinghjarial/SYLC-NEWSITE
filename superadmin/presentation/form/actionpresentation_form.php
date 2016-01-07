@@ -126,7 +126,14 @@
 						} ?>
                         </td>
                       </tr>										
-					
+
+						<tr>
+							<th valign="top">Tab Title:</th>
+							<td><input class="inp-form" name="tabtitle" id="tabtitle" value="<?php echo $tabTitle ;?>" /></td>
+							<td><div class="error-left"></div>
+							  <div class="error-inner">This field is required.</div></td>
+						</tr>
+						
 						<tr>
 							<th valign="top">Content:</th>
 							<td><textarea rows="" cols="" class="form-textarea myTextEditor" name="content" id="content1"><?php echo $content ;?></textarea></td>

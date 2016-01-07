@@ -41,7 +41,7 @@
 								 	<input type="hidden" name="itemname" value="<?php echo $getPageData->productname;?>" /> 
 									<input type="hidden" name="itemnumber" value="<?php echo $getPageData->id;?>" /> 
 									<input type="hidden" name="itemdesc" value="<?php echo $getPageData->description;?>" /> 
-									<input type="hidden" name="itemprice" value="<?php echo $common->CurrencyConverter($getPageData->amount);?>" />
+									<input type="hidden" name="itemprice" value="<?php echo str_replace( ',', '',$common->CurrencyConverter($getPageData->amount));?>" />
 								<div class="col-md-12 col-sm-12 col-xs-12 no-padding list-first-section wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
 								  <div class="col-md-4 col-sm-4 col-xs-12 no-right-padding">
 									<img src="<?php echo DEFAULT_URL; ?>/image_resizer.php?img=<?php echo $galleryURL; ?>&newWidth=291&newHeight=227"

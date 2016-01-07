@@ -3,7 +3,6 @@
 extract($_POST);
 extract($_GET);
 //Init neccessary classes
-$search = new search();
 $common = new common();
 
 //Choosing which tab is selected
@@ -70,13 +69,12 @@ if (isset($manufacturer)) {
             $manfCount++;
             if ($manfCount<count($manufacturer)) {
                 $searched .=$mnf.",";
-                $searchedCar .=$mnf.",";
-                $dataId .= $common->getIdByOptionName(2,urldecode($mnf));
-                $dataId .= ',';
+                $searchedCar .= "'".$mnf."',";
+                
             }else{
                  $searched .=$mnf;
-                 $searchedCar .=$mnf;
-                 $dataId .= $common->getIdByOptionName(2,urldecode($mnf));
+                 $searchedCar .= "'".$mnf."'";
+                
             }
         }
         $searched .= '</span>';
@@ -116,6 +114,14 @@ if (isset($madeYear)) {
         $where .= "&aspectFilter(".$aspect_count.").aspectValueName=".$madeYearStr;
         $searched .= ', Year: <span class="searched">'.$madeYearStr.'</span>';
         $dataArray['madeYear'] = $madeYearArr;
+        $aspect_count++;
+    }
+}else{
+    if(!isset($search)){
+        $where .= "&aspectFilter(".$aspect_count.").aspectName=Model%20Year";
+        for($i= 1920,$k = 0;$i <= 1986 ; $i++,$k++) {
+            $where .= "&aspectFilter(".$aspect_count.").aspectValueName(".$k.")=".$i;
+        }
         $aspect_count++;
     }
 }
@@ -158,19 +164,21 @@ if (isset($style) && $style != '' && $style != 'Not+Specified') {
 
 //Check if price selected while search
 $filterarray = array();
-if (isset($price) && $price[0] != '' && $price[1] != '') {
+if (isset($price) && ($price[0] != "" || $price[1] != "")) {
+    $price[0]= ($price[0])?$price[0]:0;
+    $price[1]= ($price[1])?$price[1]:0;
     $filterarray[] = array(
                         'name' => 'MaxPrice',
-                        'value' => (string)($common->ConvertPriceRev($price[1])),
+                        'value' => (string)($price[1]),
                         'paramName' => 'Currency',
-                        'paramValue' => 'USD');
+                        'paramValue' => 'EUR');
     $filterarray[] = array(
                         'name' => 'MinPrice',
-                        'value' => (string)($common->ConvertPriceRev($price[0])),
+                        'value' => (string)($price[0]),
                         'paramName' => 'Currency',
-                        'paramValue' => 'USD');
+                        'paramValue' => 'EUR');
 }
-
+$common->ConvertPriceRev($price[1]); echo $common->ConvertPriceRev($price[1]);
 //Only Buy It Now Section
 $val = array('FixedPrice','StoreInventory','AuctionWithBIN');
 
@@ -422,12 +430,6 @@ if (isset($_GET['orderBy'])and $_GET['orderBy'] != '') {
 	$orderby = 'ASC';
 }
 
-$total_rows = $common->numberOfRows('car'); //number of rows in pages table
-
-$addCarToQuery = '';
-
-$carPages->items_total  = $common->total_getCarListWithAttr();
-$carPages->paginate();
 $fromYear = $_GET['madeYear'][0];
 if($fromYear == '') {
 	$fromYear = 1920;
@@ -436,7 +438,32 @@ $toYear   = $_GET['madeYear'][1];
 if($toYear == '') {
 	$toYear = 2017;
 }
-$all_cars = $common->read('car_flat');
+$whereCondition = '';
+if ($searchedCar != '' ) { 
+	$whereCondition .= 'make in ('.$searchedCar.')';
+	if($searchedModel != '') {
+		$whereCondition .= ' and model in ('.$searchedModel.')';
+	}
+	$whereCondition .= ' and ';
+}
+$whereCondition .= 'year between '. $fromYear .' and '.$toYear ;
+if (isset($price) && $price[0] != "" && $price[1] == "") {
+	$whereCondition .= ' and price >= '. $price[0] ;
+}
+if (isset($price) && $price[0]=="" && $price[1] != "") {
+	$whereCondition .= ' and price <= '. $price[1] ;
+}
+if (isset($price) && $price[0] != "" && $price[1] != "") {
+	$whereCondition .= ' and price between '. $price[0] .' and '.$price[1] ;
+}
+$total_rows = $common->numberOfRows('car_flat', $whereCondition); //number of rows in pages table
+
+$addCarToQuery = '';
+
+$carPages->items_total  = $common->total_getCarListWithAttr();
+$carPages->paginate();
+
+$all_cars = $common->read('car_flat', $whereCondition,$orderBy[0]." ".$orderBy[1]);
 $all_car = array();
 while($row = mysql_fetch_array($all_cars)){
     $all_car[] = $row;

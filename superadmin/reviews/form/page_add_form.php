@@ -144,6 +144,20 @@
                         <td><div class="error-left"></div>
                           <div class="error-inner">This field is required.</div></td>
                       </tr>
+                      <tr>
+						 <tr>
+                        <th valign="top">PDSF de départ:</th>
+                        <td><input type="text" class="inp-form-fullone" value="<?php echo $pdsf;?>" name="pdsf" id="pdsf" /></td>
+                        <td><div class="error-left"></div>
+                          <div class="error-inner">This field is required.</div></td>
+                      </tr>
+                      <tr>
+						 <tr>
+                        <th valign="top">MPG Estimé:</th>
+                        <td><input type="text" class="inp-form-fullone" value="<?php echo $mpg;?>" name="mpg" id="pdsf" /></td>
+                        <td><div class="error-left"></div>
+                          <div class="error-inner">This field is required.</div></td>
+                      </tr>
                       <th valign="top">Type:</th>
 							<td>
 								<select name="old_new" id="old_new" >
@@ -184,19 +198,199 @@
                           <div class="error-inner">This field is required.</div></td>
                       </tr>
                         <th valign="top">Avis d’expert:</th>
-                        <td><textarea rows="" cols="" class="form-textarea myTextEditor" name="expert" id="expert"><?php echo $expert; ?></textarea></td>
+                        <td><textarea rows="" cols="" class="form-textarea myTextEditor" name="expert" id="expert"><?php if(isset($expert)){echo $expert;}else{ ?> 
+							
+							 <div class="car-details-tab-head">
+                                <h1>Avis d'experts</h1>
+                              </div>
+                              <h2>Adorable</h2>
+                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been
+                              dustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                              scrambled it to make a type specimen book. <span style="font-style:italic; color: #da2b10"> It has survived not only five centuries, but also the lea
+                              electronic typesetting, remaining essentially unchanged </span> it was popularised in the with the release
+                              of Letraset sheet containing orem Ipsum passages more recently with desktop publishing software
+                              like Aldus PageMaker including versions off.<br><br>
+
+                              <span style="font-style:italic; color: #000">Dustry's standard dummy text ever since the 1500s,</span> when an unknown printer took a galley of typ
+                              scrambled it to make a type specimen book. It has survived not only five centuries, but also the lea
+                              electronic typesetting, remaining essentially unchanged it was popularised in the 1960 with the re
+                              of Letraset sheets containing <span style="font-style:italic; color: #da2b10"> Lorem Ipsum passages & more recently </span> with desktop publishing soft like Aldus PageMaker including versions off.<br><br>Scrambled it to make a type specimen book. It has survived not only five centuries, but also the lea
+                              electronic typesetting, remaining essentially unchanged it was popularised in the 1960 with the re
+                              of Letraset sheets containing <span style="font-style:italic; color: #000">Lorem Ipsum passages, & more recently with desktop publishing sof
+                              like Aldus PageMaker including versions off.</span> <br><br>
+
+                              Electronic typesetting, remaining essentially unchanged it was popularised in the 1960 with the re
+                              of Letraset sheets containing Lorem Ipsum passages & more recently with desktop publishing soft
+                              like Aldus PageMaker including versions off.<br><br>
+
+                              <span style="font-style:italic; color: #da2b10">Electronic typesetting, remaining essentially unchanged it was popularised in the 1960 with the rel of Letraset sheets containing Lorem Ipsum passages, & more recently with desktop publishing sof
+                              like Aldus PageMaker including versions off.</span>
+                              </p>
+                            </div>
+							
+							
+							
+							
+							
+							<?php } ?></textarea></td>
                         <td><div class="error-left"></div>
                           <div class="error-inner">This field is required.</div></td>
                       </tr>
                       <tr>
                         <th valign="top">Vue d’ensemble:</th>
-                        <td><textarea rows="" cols="" class="form-textarea myTextEditor" name="ensemble" id="ensemble"><?php echo $ensemble; ?></textarea></td>
+                        <td><textarea rows="" cols="" class="form-textarea myTextEditor" name="ensemble" id="ensemble"><?php if(isset($ensemble)){echo $ensemble;}else{ ?>
+                        
+                        <div class="col-md-12 feature-list no-padding">
+							<h1 class="feature-tab-heading">Notable Features</h1>
+							<div class="col-md-4">
+							<ul style="list-style-type: square;">
+							<li><span>Fold-into-floor second and third rowss</span></li>
+							<li><span>Available dual-screen Blu-ray entertainment system</span></li>
+							<li><span>Seats seven</span></li>
+							<li><span>Value-priced American Value Package</span></li>
+							<li><span>Related to Chrysler Town &amp; Country</span></li>
+							</ul>
+							</div>
+							<div class="col-md-4">
+							<h2>Available Engines:</h2>
+							<p>283-hp, 3.6-liter V-6 (regular gas)</p>
+							</div>
+							<div class="col-md-4">
+							<h2>Transmissions:</h2>
+							<p>6-speed multi-speed automatic w/OD and auto-manual</p>
+							<p>&nbsp;</p>
+							</div>
+							</div>
+							<div class="col-md-12 feature-list no-padding">
+							<h1 class="feature-tab-heading">Notable Features</h1>
+							<div class="col-md-6">
+							<h2 class="list-what">What We Like:</h2>
+							<ul style="list-style-type: square;">
+							<li><span>Seating flexibility </span></li>
+							<li><span>Value </span></li>
+							<li><span>Visibility</span></li>
+							<li><span>Feature-packed rear entertainment system </span></li>
+							<li><span>Soft ride</span></li>
+							</ul>
+							</div>
+							<div class="col-md-6">
+							<h2 class="list-what">What We Don't Like:</h2>
+							<ul style="list-style-type: square;">
+							<li><span>Accelerator lag </span></li>
+							<li><span>Comfort of Stow 'n Go seats </span></li>
+							<li><span>Outdated dashboard multimedia system </span></li>
+							<li><span>Spotty crash tests </span></li>
+							<li><span>Reliability for current generation </span></li>
+							</ul>
+							</div>
+							</div>
+                        
+                        
+                        <?php } ?>
+                        </textarea></td>
                         <td><div class="error-left"></div>
                           <div class="error-inner">This field is required.</div></td>
                       </tr>
                       <tr>
                         <th valign="top">Characteristique:</th>
-                        <td><textarea rows="" cols="" class="form-textarea myTextEditor" name="characteristique" id="characteristique"><?php echo $characteristique; ?></textarea></td>
+                        <td><textarea rows="" cols="" class="form-textarea myTextEditor" name="characteristique" id="characteristique"><?php if(isset($characteristique)){echo $characteristique; }else{?>
+                        
+                        <div class="col-md-12 forth-tab no-padding">
+							<div class="col-md-12">
+							<h1 class="feature-tab-heading">Warranty</h1>
+							<div class="col-md-3 no-padding">
+							<p class="basic-table">Basic</p>
+							<p class="basic-table">Powertrain</p>
+							<p class="basic-table">Corrosion Perforation</p>
+							<p class="basic-table">Roadside Assistance Coverage</p>
+							</div>
+							<div class="col-md-3 text-right no-padding">
+							<p class="basic-table">36 months/36,000 miles</p>
+							<p class="basic-table">60 months/100,000 miles</p>
+							<p class="basic-table">60 months/100,000 miles</p>
+							<p class="basic-table">60 months/100,000 miles</p>
+							</div>
+							</div>
+							<div class="col-md-10">
+							<h1 class="feature-tab-heading">Standard Features &amp; Options</h1>
+							<table class="table table-striped table-condensed">
+							<tbody>
+							<tr>
+							<td class="table-head">Styles</td>
+							<td>AVP/SE</td>
+							<td>SXT</td>
+							<td>R/T</td>
+							</tr>
+							</tbody>
+							<tbody>
+							<tr>
+							<td class="table-head">Starting MSRP</td>
+							<td>$21,795</td>
+							<td>$27,395</td>
+							<td>$30,995</td>
+							</tr>
+							<tr>
+							<td class="table-head">Body Exterior</td>
+							<td>AVP/SE</td>
+							<td>SXT</td>
+							<td>R/T</td>
+							</tr>
+							<tr>
+							<td class="table-head">Heated door mirrors</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							</tr>
+							<tr>
+							<td class="table-head">Power door mirrors</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							</tr>
+							<tr>
+							<td class="table-head">Right rear passenger:power sliding</td>
+							<td>--</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							</tr>
+							<tr>
+							<td class="table-head">Spoiler</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							</tr>
+							<tr class="table-head">
+							<td>Trailer hitch receiver</td>
+							<td>--</td>
+							<td>--</td>
+							<td class="price">$895</td>
+							</tr>
+							<tr class="table-head">
+							<td>Left rear passenger door:power sliding</td>
+							<td>--</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							</tr>
+							<tr class="table-head">
+							<td>Right rear passenger:power sliding</td>
+							<td>--</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							</tr>
+							<tr class="table-head">
+							<td>Number of doors:4</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							</tr>
+							</tbody>
+							</table>
+							</div>
+							</div>
+									  
+                        <?php }?>
+                        
+                        </textarea></td>
                         <td><div class="error-left"></div>
                           <div class="error-inner">This field is required.</div></td>
                       </tr>

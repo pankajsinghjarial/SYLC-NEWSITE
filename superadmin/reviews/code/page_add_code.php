@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 		 $medias=array();
 		 foreach($_POST as $key =>$value){
 			 $count++;
-			 if($count>8)
+			 if($count>10)
 			 {
 				$explodedkey = explode("-",$key);
 				$mediaType = $explodedkey[0]; 
@@ -56,7 +56,9 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 		  
 		  $obj->add_fields($short_description, 'req', 'Please Enter Short Description');
 		  $obj->add_fields($make, 'req', 'Please select a Make');
-		  $obj->add_fields($old_new, 'req', 'Please select a Make');
+		  $obj->add_fields($old_new, 'req', 'Please select a Value');
+		  $obj->add_fields($pdsf, 'req', 'Please Enter this field');
+		  $obj->add_fields($mpg, 'req', 'Please Enter this field');
 		  //$obj->add_fields($model, 'req', 'Please select a Model');
 		  $obj->add_fields($year, 'req', 'Please Enter year');
 		  $obj->add_fields($expert, 'req', 'Please Enter Excerpt');
@@ -81,29 +83,22 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 				$make_name = $makes[$make];
 				$models_new = $getEntityObj->getEntityOutput($make,4);
 				$model_name = $models_new[$model];	
-				/*
-				 echo "<pre>";
-				 print_r($_FILES);
-				 print_r($_POST); 
-				 print_r($medias);
-				 die;
-				 */
-					$image_name = time().'-'.$_FILES['image']['name'];
-					//$path = LIST_ROOT.'/images/reviews/media/';
-					$path = LIST_ROOT_ADMIN_REVIEW_IMAGEPATH.'/';
-					move_uploaded_file($_FILES["image"]["tmp_name"],$path.$image_name);
-					$_SESSION['success_msg'] = 'New review has been saved successfully.';
+				$image_name = time().'-'.$_FILES['image']['name'];
+				//$path = LIST_ROOT.'/images/reviews/media/';
+				$path = LIST_ROOT_ADMIN_REVIEW_IMAGEPATH.'/';
+				move_uploaded_file($_FILES["image"]["tmp_name"],$path.$image_name);
+				$_SESSION['success_msg'] = 'New review has been saved successfully.';
 					
-					$dataArr = array('short_description'=>$short_description,'old_new'=>$old_new,'image'=>$image_name,'make'=>$make,'model'=>$model,'year'=>$year,'expert'=>$expert,'ensemble'=>$ensemble,'characteristique'=>$characteristique,'updated'=>getCurrentTimestamp(),'make_name'=>$make_name,'model_name'=>$model_name);
+				$dataArr = array('short_description'=>$short_description,'old_new'=>$old_new,'pdsf'=>$pdsf,'mpg'=>$mpg,'image'=>$image_name,'make'=>$make,'model'=>$model,'year'=>$year,'expert'=>$expert,'ensemble'=>$ensemble,'characteristique'=>$characteristique,'updated'=>getCurrentTimestamp(),'make_name'=>$make_name,'model_name'=>$model_name);
 					
-					$review_id		=	$obj_setting->save('reviews', $dataArr);
+				$review_id		=	$obj_setting->save('reviews', $dataArr);
 					
-					foreach($medias as $media){
-						$dataArrMedia = array('review_id'=>$review_id,'media_type'=>$media['mediatype'],'order_id'=>$media['order'],'media_name'=>$media['value'],'updated'=>getCurrentTimestamp());
-						$review_media_id =	$obj_setting->save('reviews_media', $dataArrMedia);
-					}
-					echo '<script>location.href="'.DEFAULT_ADMIN_URL.'/reviews";</script>'; 
-					exit;
+				foreach($medias as $media){
+					$dataArrMedia = array('review_id'=>$review_id,'media_type'=>$media['mediatype'],'order_id'=>$media['order'],'media_name'=>$media['value'],'updated'=>getCurrentTimestamp());
+					$review_media_id =	$obj_setting->save('reviews_media', $dataArrMedia);
+				}
+				echo '<script>location.href="'.DEFAULT_ADMIN_URL.'/reviews";</script>'; 
+				exit;
 				
 			}
 		}

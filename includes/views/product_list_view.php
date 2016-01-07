@@ -202,6 +202,28 @@
 				  </div> <!-- tab1default -->
 
 				  <div class="tab-pane fade <?php echo (!$auctionClass)?'in active':'';?>" id="tab2default">
+						<div class="col-md-12 no-padding list-tabs-top">
+						  <div class="col-md-6 annonces no-padding">
+							<h4><?php echo $total_rows;?> Annonces Correspondent</h4>
+						  </div>
+						  <div class="col-md-6 tri-par no-padding">
+							<ul class="list-unstyled list-inline">
+							  <li class="trier">Trier par:</li>
+							  <li class="dropdown">
+								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								  Prix Bas au plus élevé
+								  <i class="fa fa-angle-down"></i>
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<li <?php if(@$sort =='price~asc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."&sort=price~asc" ?>">Prix: Bas au plus chers</a></li>
+									<li <?php if(@$sort =='price~desc') { ?> class="activesort" <?php } ?>><a href="<?php echo $newurl.$addtopaging1."&sort=price~desc" ?>">Prix: Chers au plus bas</a></li>
+								</ul>
+							  </li>
+							</ul>
+						  </div> <!-- col-md-6 -->
+						</div> <!-- col-md-12 -->
+
+					
 						<?php 
 							foreach($all_car as $car) {
                                 $carImage = explode(',',$car['images']);
@@ -210,7 +232,7 @@
 							<div class="col-md-4 col-sm-4 col-xs-12 no-right-padding">
 								<a href="<?php echo DEFAULT_URL;?>/inventaire/<?php echo $car['car_id'];?>">									
 									<img alt="<?php echo $title[0];?>"
-									src="<?php echo DEFAULT_URL; ?>/image_resizer.php?img=<?php echo $carImage[0]; ?>&newWidth=291&newHeight=227"
+									src="<?php echo DEFAULT_URL; ?>/image_resizer.php?img=<?php echo DEFAULT_URL.'/uploads/car/'.$carImage[0]; ?>&newWidth=291&newHeight=227"
 									width="291" height="227" class="img-responsive">
 								</a>
 							</div>
@@ -233,7 +255,7 @@
 								</div>
 							 </div>
 							  <div class="col-md-12 col-sm-12 col-xs-12 listmiddle-text no-padding">
-								<h6><?php echo $car['description'];?></h6>
+								<h6><?php echo strip_tags($car['description']);?></h6>
 							  </div>
 
 							  <div class="col-md-12 bottom-link no-padding">

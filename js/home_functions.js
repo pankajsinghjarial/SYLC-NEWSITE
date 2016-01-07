@@ -9,7 +9,16 @@ $(document).ready(function() {
 	$(".car-imgs2").hide('blind');
 	$("#show").show();
 });
+$("#hover-tab-1").click(function(){
+  $(".fst-icon").css('display','none');
+  $(".hover-icon").show();
+  });
+  $("#hover-tab-2").click(function(){
+  $(".fst-icon").css('display','none');
+  $(".hover-icon").hide();
+  $(".fst-icon").show();
 
+});
 	
 $('#search_submit').click(function(e) {
 	e.preventDefault(); 

@@ -20,7 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		$error = '';
 		/*validate required fields*/
 		$obj->add_fields($tabtitle, 'req', 'Please Enter Tab Title');		
-		$obj->add_fields($tabtitle, 'uniquevalue', 'Please Enter Unique Tab Title', array('content_page', 'tab_title'));
+		
+		if ($id == "") {
+			$obj->add_fields($tabtitle, 'uniquevalue', 'Please Enter Unique Tab Title', array('content_page', "tab_title='". mysql_real_escape_string($tabtitle) ."' and page_name= 'Logistique'"));
+		} else {
+			$obj->add_fields($tabtitle, 'uniquevalue', 'Please Enter Unique Tab Title', array('content_page', "tab_title='". mysql_real_escape_string($tabtitle) ."' and page_name= 'Logistique' and id!=".$id));
+		}
+	
 		$obj->add_fields($content, 'req', 'Please Enter Content');		
 		
 		if (!isset($_GET['id'])) {

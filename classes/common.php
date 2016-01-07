@@ -467,14 +467,15 @@ class common extends utility {
 	}
 	function getAllImage($carid)
 	{	
-	$tempo = array();
-	$imgArr = array();
+		$tempo = array();
+		$imgArr = array();
 		$images_result = $this->customQuery("select * from car_media_gallery where car_id = $carid  and attribute_id = 10");
 		while($images = mysql_fetch_object($images_result))
 		{
-			$imageArr[] = $this->getImageUrl($images->value);
-			}
-return	$tempo[$carid]["allImage"] = $imageArr;
+			//$imageArr[] = $this->getImageUrl($images->value);
+			$imageArr[] = $images->value;
+		}
+			return	$tempo[$carid]["allImage"] = $imageArr;
 		}
 		
 		

@@ -107,13 +107,13 @@
 
 				   <div class="form-group for-sm">
 					<div class="selt-box">
-						<input type="text" class="form-control" placeholder="Prix min"/>
+						<input type="text" class="form-control" value="<?php echo $price[0];?>" placeholder="Prix min"/>
 					</div>
 				  </div>
 
 				  <div class="form-group for-sm">
 					<div class="selt-box">
-						<input type="text" class="form-control" placeholder="Prix max" />
+						<input type="text" class="form-control" value="<?php echo $price[1];?>" placeholder="Prix max" />
 					</div>
 				  </div>
 				  <input id="Slider1" type="hidden" name="price" class="combo_box min_box1" />
@@ -121,6 +121,7 @@
 				</div>
 			   
 				</div>
+                <input type="hidden" name="search" value="search" />
 		</form>
         </div>
       </div>

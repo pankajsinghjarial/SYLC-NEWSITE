@@ -106,19 +106,20 @@
 
                <div class="form-group for-sm">
                 <div class="selt-box">
-					<input type="text" name="price[]" class="form-control" placeholder="Prix min"/>
+					<input type="text" name="price[]" class="form-control"  value="<?php echo $price[0];?>" placeholder="Prix min"/>
 				</div> 
               </div>
 
               <div class="form-group for-sm">
                 <div class="selt-box">
-					<input type="text" name="price[]" class="form-control" placeholder="Prix max" />
+					<input type="text" name="price[]" class="form-control" value="<?php echo $price[1];?>" placeholder="Prix max" />
                 </div>
               </div>
               <div class="list-research-img"><a id="search_submit" href="javascript:void(0);"><img src="<?php echo DEFAULT_URL; ?>/images/recharche-btn.png"></a></div>
             </div>
            
             </div>
+            <input type="hidden" name="search" value="search" />
 			</form>
         </div>
 

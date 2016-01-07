@@ -21,6 +21,8 @@ $old_new				= $getSetting->old_new;
 $make					= $getSetting->make;
 $model                  = $getSetting->model;
 $year                   = $getSetting->year;
+$pdsf					= $getSetting->pdsf;
+$mpg					= $getSetting->mpg;
 $expert                 = $getSetting->expert;
 $ensemble               = $getSetting->ensemble;
 $ensemble               = $getSetting->ensemble;
@@ -97,7 +99,9 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 		  
 		  $obj->add_fields($short_description, 'req', 'Please Enter Short Description');
 		  $obj->add_fields($make, 'req', 'Please select a Make');
-		  $obj->add_fields($old_new, 'req', 'Please select a Make');
+		  $obj->add_fields($old_new, 'req', 'Please select a Value');
+		  $obj->add_fields($pdsf, 'req', 'Please Enter this field');
+		  $obj->add_fields($mpg, 'req', 'Please Enter this field');
 		  //$obj->add_fields($model, 'req', 'Please select a Model');
 		  $obj->add_fields($year, 'req', 'Please Enter year');
 		  $obj->add_fields($expert, 'req', 'Please Enter Excerpt');
@@ -120,7 +124,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 		 
 		  foreach($_POST as $key =>$value){
 			 $count++;
-			 if($count>9)
+			 if($count>11)
 			 {
 				$explodedkey = explode("-",$key);
 				$mediaType = $explodedkey[0]; 
@@ -164,7 +168,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 					}
 					$_SESSION['success_msg'] = 'Review has been updated successfully.';
 					
-					$dataArr = array('short_description'=>$short_description,'old_new'=>$old_new,'image'=>$image_name,'make'=>$make,'model'=>$model,'year'=>$year,'expert'=>$expert,'ensemble'=>$ensemble,'characteristique'=>$characteristique,'updated'=>getCurrentTimestamp(),'make_name'=>$make_name,'model_name'=>$model_name);
+					$dataArr = array('short_description'=>$short_description,'old_new'=>$old_new,'pdsf'=>$pdsf,'mpg'=>$mpg,'image'=>$image_name,'make'=>$make,'model'=>$model,'year'=>$year,'expert'=>$expert,'ensemble'=>$ensemble,'characteristique'=>$characteristique,'updated'=>getCurrentTimestamp(),'make_name'=>$make_name,'model_name'=>$model_name);
 					
 					$review_id		=	$obj_setting->update('reviews', $dataArr,"id=".$id);
 					

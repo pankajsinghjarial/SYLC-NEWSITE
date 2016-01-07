@@ -125,12 +125,13 @@ Class validation {
 				}
 				
 				case "uniquevalue": {
-					$obj_setting    = new common();
-					$total_articles = $obj_setting->numberOfRows($optionalparam[0], $optionalparam[1]);
-					if ($total_articles > 0) {
-						$errorMsg .=  $error;
+					if($postVar != '') {
+						$obj_setting    = new common();
+						$total_articles = $obj_setting->numberOfRows($optionalparam[0], $optionalparam[1]);
+						if ($total_articles > 0) {
+							$errorMsg .=  $error."<br>";
+						}
 					}
-					
 					break;
 				}
 				

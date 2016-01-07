@@ -183,8 +183,13 @@ $(document).ready(function() {
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'presentation')!== false  && basename($_SERVER['REQUEST_URI'])=='actionbanners.php'){?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/presentation/actionbanners.php">Presentation Banner</a>
 				</li>
+				
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'tabs')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/presentation/index.php">View Presentation Tabs</a>
+				</li>
+				              
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'tabs')!== false && basename($_SERVER['REQUEST_URI'])=='actionpresentation.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/presentation/actionpresentation.php">Add Presentation Tab</a>
 				</li>               
               </ul>
             </div>

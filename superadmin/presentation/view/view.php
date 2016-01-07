@@ -123,7 +123,7 @@ function checkBoxCheckedForEdit(){
 				} 
 			  ?>
               <!--  start product-table ..................................................................................... -->
-              <form id="mainform" action="accessories_multiple_delete.php" method="post">
+              <form id="mainform" action="presentation_multiple_delete.php" method="post">
                 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table" class="tablesorter">
                   <thead>
                     <tr>
@@ -142,7 +142,10 @@ function checkBoxCheckedForEdit(){
 						<tr <?php if ($ii%2==0) echo 'class="alternate-row"';?>>
 						  <td><input  type="checkbox" name="allselect[]" class="case" id="allselect<?php echo $getPageData->id;?>" value="<?php echo $getPageData->id;?>"/></td>
 						  <td><?php echo $getPageData->tab_title;?></td>
-						  <td><a href="actionpresentation.php?id=<?php echo $getPageData->id;?>" title="Edit" class="icon-1 info-tooltip"></a>							 
+						  <td>
+							<a href="actionpresentation.php?id=<?php echo $getPageData->id;?>" title="Edit" class="icon-1 info-tooltip">
+							 <a onclick="return confirm('Are you sure you want to delete.');" href="tabs_delete.php?id=<?php echo $getPageData->id;?>&action=delete" title="Delete" class="icon-2 info-tooltip"></a>						
+						  </a>							 
 						  </td>
 						</tr>
                     <?php $ii++; 
@@ -161,7 +164,13 @@ function checkBoxCheckedForEdit(){
             </div>
             <?php if ($total_rows > 0){?>
             <!--  end content-table  -->
-           
+            <!--  start actions-box ............................................... -->
+            <div id="actions-box"> <a href="" class="action-slider"></a>
+              <div id="actions-box-slider">
+              <a href="javascript:"  onclick="checkBoxChecked();" class="action-delete">Delete</a> </div>
+              <div class="clear"></div>
+            </div>
+            <!-- end actions-box........... -->
             <!--  start paging..................................................... -->
             <table border="0" cellpadding="0" cellspacing="0" id="paging-table">
               <tr>

@@ -144,6 +144,20 @@
                         <td><div class="error-left"></div>
                           <div class="error-inner">This field is required.</div></td>
                       </tr>
+                      <tr>
+						 <tr>
+                        <th valign="top">PDSF de départ:</th>
+                        <td><input type="text" class="inp-form-fullone" value="<?php echo $pdsf;?>" name="pdsf" id="pdsf" /></td>
+                        <td><div class="error-left"></div>
+                          <div class="error-inner">This field is required.</div></td>
+                      </tr>
+                      <tr>
+						 <tr>
+                        <th valign="top">MPG Estimé:</th>
+                        <td><input type="text" class="inp-form-fullone" value="<?php echo $mpg;?>" name="mpg" id="pdsf" /></td>
+                        <td><div class="error-left"></div>
+                          <div class="error-inner">This field is required.</div></td>
+                      </tr>
                       <th valign="top">Type:</th>
 							<td>
 								<select name="old_new" id="old_new" >
