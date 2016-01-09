@@ -1,133 +1,3 @@
-<?php 
-if(isset($_POST['sendMail'])){
-    print_r($_POST);
-    $mail = new PHPMailer();
-    $email=$_POST['email'];
-    $body = '<table cellpadding="0" cellspacing="0" border="2">
-        
-        <tr>
-            <td style="padding:10px;">Current Bid</td>
-            <td style="padding:10px;">€'.$_POST['carprice'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">Logistique pays</td>
-            <td style="padding:10px;">'.$_POST['logistique_pays'].'/'.$_POST['logistique_pays1'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">Transport terrestre</td>
-            <td style="padding:10px;">'.$_POST['transport_terrestre'].'/'.$_POST['transport_terrestre1'].'</td>
-        </tr>
-        
-        <tr>
-            <td style="padding:10px;">Transport international</td>
-            <td style="padding:10px;">'.$_POST['transport_international'].'/'.$_POST['transport_international1'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">Assurance transport</td>
-            <td style="padding:10px;">'.$_POST['assurance_transport'].'/'.$_POST['assurance_transport1 	'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">Frais transitaire</td>
-            <td style="padding:10px;">'.$_POST['frais_transitaire'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">Homologation francisation</td>
-            <td style="padding:10px;">'.$_POST['homologation_francisation'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">Prix total HT</td>
-            <td style="padding:10px;">'.$_POST['prix_total_ht'].'</td>
-        </tr>
-                
-        <tr>
-            <td style="padding:10px;">prix total TTC</td>
-            <td style="padding:10px;">'.$_POST['prix_total_ttc'].'</td>
-        </tr>
-        
-        <tr>
-            <td style="padding:10px;">Nom</td>
-            <td style="padding:10px;">'.$_POST['fname'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">Prénom</td>
-            <td style="padding:10px;">'.$_POST['lname'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">Téléphone</td>
-            <td style="padding:10px;">'.$_POST['phone'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">E-mail</td>
-            <td style="padding:10px;">'.$_POST['email'].'</td>
-        </tr>
-        
-        <tr>
-            <td style="padding:10px;">Addresse</td>
-            <td style="padding:10px;">'.$_POST['address'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">Code Postal</td>
-            <td style="padding:10px;">'.$_POST['code_postal'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">Ville</td>
-            <td style="padding:10px;">'.$_POST['ville'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">Pays</td>
-            <td style="padding:10px;">'.$_POST['pays'].'</td>
-        </tr>
-        <tr>
-            <td style="padding:10px;">Message</td>
-            <td style="padding:10px;">'.$_POST['message'].'</td>
-        </tr>
-    </table>';
-    
-    $mail->IsSMTP();                           // tell the class to use SMTP
-    $mail->SMTPAuth   = true;                  // enable SMTP authentication
-    $mail->Port       = 25;                    // set the SMTP server port
-    $mail->Host       = "mail.livemarketnews.com"; // SMTP server
-    $mail->Username   = "mails@livemarketnews.com";     // SMTP server username
-    $mail->Password   = "Stone!@#";            // SMTP server password
-        
-    $mail->IsSendmail();  // tell the class to use Sendmail
-    $mail->From = $_POST['email'];
-    $mail->FromName = "americancarcentrale";
-    
-    $to = array("jelmaleh@seobrand.net");
-    //$to = array("seobranddevelopers@gmail.com");
-    foreach($to as $sendsto){
-    $mail->AddAddress($sendsto);
-    }
-    //$mail->AddReplyTo("Email Address HERE", "Name HERE"); // Adds a "Reply-to" address. Un-comment this to use it.
-    $mail->Subject = "americancarcentrale";
-    $mail->MsgHTML($body);
-
-    if ($mail->Send() == true) {
-        //echo "The message has been sent";
-        //echo $mail->ErrorInfo;
-    $_SESSION['success']=1;
-    }
-    else {
-        echo "The email message has NOT been sent for some reason. Please try again later.<br/>";
-        //echo "Mailer error: " . $mail->ErrorInfo;
-    }
-     //$sql = "INSERT INTO contact (car_id,name,email,phone,website,time,question,message,address,code_postal,ville,pays,created)
-        //VALUES ('','".$_POST['lname']." ".$_POST['fname']."','".$_POST['email']."','".$_POST['phone']."','','','','".$_POST['message']."','".$_POST['address']."','".$_POST['code_postal']."','".$_POST['ville']."','".$_POST['pays']."','".date('Y-m-d')."')";
-
-    //$conn->query($sql);
-    //$last_insert_id = mysqli_insert_id($conn);
-    //if(isset($last_insert_id)){
-        $sql_last = "INSERT INTO contact_bid (current_bid,miximum_bid,logistique_pays,transport_terrestre,transport_international,assurance_transport,frais_transitaire,homologation_francisation,administratives,prix_total_ht,taxe_de,tva_franch,prix_total_ttc,name,email,phone,message,address,code_postal,ville,pays,created)
-        VALUES ('".$_POST['current_bid']."','".$_POST['miximum_bid']."','".$_POST['logistique_pays']."/".$_POST['logistique_pays1']."','".$_POST['transport_terrestre']."/".$_POST['transport_terrestre1']."','".$_POST['transport_international']."/".$_POST['transport_international1']."','".$_POST['assurance_transport']."/".$_POST['assurance_transport1']."','".$_POST['frais_transitaire']."','".$_POST['homologation_francisation']."','".$_POST['administratives']."','".$_POST['prix_total_ht']."','".$_POST['taxe_de']."','".$_POST['tva_franch']."','".$_POST['prix_total_ttc']."','".$_POST['lname']." ".$_POST['fname']."','".$_POST['email']."','".$_POST['phone']."','".$_POST['message']."','".$_POST['address']."','".$_POST['code_postal']."','".$_POST['ville']."','".$_POST['pays']."','".date('Y-m-d')."')";
-        
-        $conn->query($sql_last);
-    //}
-    ?>
-    <script type="text/javascript">window.location = "<?php echo DEFAULT_URL;?>/thank_you.php"</script>
-    <?php
-}
-?>
 <?php if(isset($_SESSION['sentmail_txt'])){ echo $_SESSION['sentmail_txt']; unset($_SESSION['sentmail_txt']);}?>
 <section class="product-page">
     <div class="container">
@@ -409,7 +279,7 @@ if(isset($_POST['sendMail'])){
                     <h5 class="product-right-reser">SÉLECTIONNEZ LES SERVICES DÉSIRÉS</h5>
                     <h6 class="product-right-pour">Pour la France, les véhicules arriveront au Port Le Havre. Une livraison à Domicile est possible, merci de nous contacter</h6>
                 </div>
-                <form class="form-horizontal">
+                <form class="form-horizontal" accept-charset="ISO-8859-1" onsubmit="return testInfo()" method="post">
                     <div class="col-md-12 product-form-right">
                         
                             <div class="form-group">
@@ -457,13 +327,13 @@ if(isset($_POST['sendMail'])){
                             <div class="form-group">
                                 <label class="col-sm-8 control-label trans-leb">Bank, fedex and doc fees:</label>
                                 <div class="col-sm-4 product-form-2">
-                                    <input type="text" readonly="readonly" class="form-control" value="$<?php echo $bank;?>" id="inputPassword" placeholder="$260.00">
+                                    <input type="text" readonly="readonly" name="assurance_transport" class="form-control" value="$<?php echo $bank;?>" id="inputPassword" placeholder="$260.00">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-8 control-label trans-leb">Frais Transitaire - Débarquement, Traction & Dépotage:</label>
                                 <div class="col-sm-4 product-form-2">
-                                    <input type="text" readonly="readonly" class="form-control" value="€<?php echo $frais;?>" id="inputPassword" placeholder="€780.00">
+                                    <input type="text" readonly="readonly" class="form-control" name="frais_transitaire" value="€<?php echo $frais;?>" id="inputPassword" placeholder="€780.00">
                                 </div>
                             </div>
                     </div>
@@ -472,7 +342,7 @@ if(isset($_POST['sendMail'])){
                         <div class="col-md-9 no-padding">
                             <div class="checkbox">
                                 <label>
-                                    <input id="chkHomologation" type="checkbox"> Homologation - Francisation, passage aux mines<br> 
+                                    <input id="chkHomologation" name="homologation_francisation" value="$3500" type="checkbox"> Homologation - Francisation, passage aux mines<br> 
                                     <h3 class="leger">pour tous vehicule léger obligatoire pout tout vehicule de moins de 30 ans</h3>
                                 </label>
                             </div>
@@ -502,7 +372,7 @@ if(isset($_POST['sendMail'])){
                             <h3>le port selectionné </h3> 
                         </div>
                         <div class="col-md-6 no-padding"> 
-                                <input type="text" class="form-control" readonly="readonly" value="€<?php echo number_format($priceTTC,2,'.','');?>" id="priceTTC" placeholder="€">
+                                <input type="text" name="prix_total_ht" class="form-control" readonly="readonly" value="€<?php echo number_format($priceTTC,2,'.','');?>" id="priceTTC" placeholder="€">
                         </div>
                         <div class="col-md-12 no-padding rendu">
                             <font color="da2b10">
@@ -543,17 +413,17 @@ if(isset($_POST['sendMail'])){
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" name="postal_code" id="postal_code" placeholder="Code Postal">
+                                <input type="text" class="form-control" name="code_postal" id="code_postal" placeholder="Code Postal">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" name="city" id="city" placeholder="Ville">
+                                <input type="text" class="form-control" name="ville" id="ville" placeholder="Ville">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" name="country" id="country" placeholder="Pays">
+                                <input type="text" class="form-control" name="pays" id="pays" placeholder="Pays">
                             </div>
                         </div>
                         <div class="form-group">
@@ -563,19 +433,10 @@ if(isset($_POST['sendMail'])){
                         </div>
                         <div class="form-group">
                             <div class="text-right" style="padding-right: 14px">
-                                <button type="submit" name="sendMail" id="sendMail" onclick="sendMail()" class="btn btn-default">Etape Suivante <i class="fa fa-angle-right"></i></button>
+                                <button type="submit" name="sendMail" id="sendMail" class="btn btn-default">Etape Suivante <i class="fa fa-angle-right"></i></button>
                             </div>
                         </div>
-                        <input type="hidden" id="prestation" name="prestation" value="<?php echo $common->ConvertPrice($prestation);?>" />
-                        <input type="hidden" id="transportUSA" name="transportUSA" value="<?php echo $common->ConvertPrice(1200);?>" />
-                        <input type="hidden" id="transportUSAFerme" name="transportUSAFerme" value="<?php echo $common->ConvertPrice(1800);?>" />
-                        <input type="hidden" id="transportUSAOvete" name="transportUSAOvete" value="<?php echo $common->ConvertPrice(1200);?>" />
-                        <input type="hidden" id="transport" name="transport" value="<?php echo $common->ConvertPrice($transport);?>" />
-                        <input type="hidden" id="bank" name="bank" value="<?php echo $common->ConvertPrice($bank);?>" />
-                        <input type="hidden" id="frais" name="frais" value="<?php echo $frais;?>" />
-                        <input type="hidden" id="initPrice" name="initPrice" value="<?php echo $initPrice;?>" />
-                        <input type="hidden" id="carprice" name="carprice" value="<?php echo $common->ConvertPrice($item->buyItNowPrice);?>" />
-                    
+                  
                     <p>Nous sommes disponible de 12H a 22H pour la France du Lundi au Jeudi/ de 12h a 18h le Vendredi / Samedi a partir de 19h au 01.76.63.32.16</p>
                     </div>
                 </form>
@@ -607,6 +468,15 @@ if(isset($_POST['sendMail'])){
         </div>
     </div>
 </section>
+<input type="hidden" id="prestation" name="prestation" value="<?php echo $common->ConvertPrice($prestation);?>" />
+<input type="hidden" id="transportUSA" name="transportUSA" value="<?php echo $common->ConvertPrice(1200);?>" />
+<input type="hidden" id="transportUSAFerme" name="transportUSAFerme" value="<?php echo $common->ConvertPrice(1800);?>" />
+<input type="hidden" id="transportUSAOvete" name="transportUSAOvete" value="<?php echo $common->ConvertPrice(1200);?>" />
+<input type="hidden" id="transport" name="transport" value="<?php echo $common->ConvertPrice($transport);?>" />
+<input type="hidden" id="bank" name="bank" value="<?php echo $common->ConvertPrice($bank);?>" />
+<input type="hidden" id="frais" name="frais" value="<?php echo $frais;?>" />
+<input type="hidden" id="initPrice" name="initPrice" value="<?php echo $initPrice;?>" />
+<input type="hidden" id="carprice" name="carprice" value="<?php echo $common->ConvertPrice($item->buyItNowPrice);?>" />
 <script>
     $(document).ready(function(){
         $('#slctTransportUSA').on('change',function(){
@@ -670,6 +540,58 @@ if(isset($_POST['sendMail'])){
         //over 30 year
         priceTTC = parseFloat(initPrice) + parseFloat(carprice) + parseFloat(transport) + parseFloat(prestation) + parseFloat(transportUSA) + parseFloat(bank) + parseFloat(frais) + parseFloat(homologation);
         $('#priceTTC').val('€'+parseFloat(priceTTC).toFixed(2));
+    }
+    function testInfo(){
+        $('.validateError').remove();
+        $('.validateSuccess').remove();
+        var fname = $('#fname').val();
+        var lname = $('#lname').val();
+        var address = $('#address').val();
+        var phone = $('#phone').val();
+        var ville = $('#ville').val();
+        var pays = $('#pays').val();
+        var code_postal = $('#code_postal').val();
+        var email = $('#email').val();
+        if(fname.trim() == ""){
+            $('#fname').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrez le nom</div>");
+            return false;
+        }
+        if(lname.trim() == ""){
+            $('#lname').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Nom de famille</div>");
+            return false;
+        }
+        if(phone.trim() == ""){
+            $('#phone').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Numero de telephone</div>");
+            return false;
+        }
+        if(email.trim() == ""){
+            $('#email').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Email</div>");
+            return false;
+        }
+        if(address.trim() == ""){
+            $('#address').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Address</div>");
+            return false;
+        }
+        if(code_postal.trim() == ""){
+            $('#code_postal').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Code Postal</div>");
+            return false;
+        }
+        if(ville.trim() == ""){
+            $('#ville').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Ville</div>");
+            return false;
+        }
+        if(pays.trim() == ""){
+            $('#pays').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Pays</div>");
+            return false;
+        }
     }
 </script>
 

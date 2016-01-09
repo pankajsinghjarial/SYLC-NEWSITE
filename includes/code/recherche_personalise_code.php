@@ -38,7 +38,7 @@ ini_set('error_reporting', E_ALL);
 	
 	try {
 		//Create a contact
-		var_Dump( $oiContact->addList('testing listd',410014, true, false, false, 'Jusdt', 'ASomedList'));
+		 $oiContact->addList('testing listd',410014, true, false, false, 'Jusdt', 'ASomedList');
 		
 		/* $cid = $oiContact->CustomaddContactForm($email, 'normal',
 		'', null, $phone, $comment,$fname, null);
@@ -61,8 +61,8 @@ ini_set('error_reporting', E_ALL);
 	} catch (Exception $oException) {
 		// Catch any exceptions
 		// Dump errors
-		var_dump($oiContact->getErrors());                   
+		$oiContact->getErrors();                   
 		// Grab the last raw response data
-		var_dump($oiContact->getLastResponse());
+		$oiContact->getLastResponse();
 	}
 //}

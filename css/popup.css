@@ -13,7 +13,7 @@
 	background:url(../images/top_headbg.png) top no-repeat;
 }
 .popup_head p {
-	font-family:"Trebuchet MS"; font-size:22px; font-weight:bold; color:#ffffff; text-align:center; padding:8px 0 0 0;
+	font-family:"Trebuchet MS"; font-size:22px; font-weight:bold; color:#ffffff; text-align:center; /*padding:8px 0 0 0;*/
 	}
 	
 /*---- popup_cnt ----*/	

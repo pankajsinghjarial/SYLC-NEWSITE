@@ -1,0 +1,180 @@
+# For security reasons, Option followsymlinks cannot be overridden.
+Options +FollowSymLinks
+RewriteEngine On
+
+
+<IfModule mod_geoip.c>
+#GeoIPEnable On
+#GeoIPDBFile /usr/local/share/GeoIP/GeoIP.dat 
+#GeoIPDBFile /usr/local/share/GeoIP/GeoLiteCity.dat 
+
+# Start Redirecting countries
+
+# US
+#RewriteCond %{ENV:GEOIP_COUNTRY_CODE} ^US$
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ http://sylc-seb.netsol.local/visitor.php [L]
+
+# Start Redirecting countries
+
+
+</IfModule>
+
+RewriteCond %{HTTP_HOST} !^sylc-seb\.netsol.in$ [NC]
+RewriteRule ^(.*)$ http://sylc-seb.netsol.in/$1 [R=301,L]
+
+rewriteRule ^index\.(php|html|htm) http://sylc-seb.netsol.in [R=permanent,L]
+
+
+RewriteRule ^home$ index.php
+
+##RewriteRule ^test/test$ page.php?page_id=test
+
+
+RewriteRule ^((page)/([a-zA-Z0-9-]+)?)$ page.php?page_id=$3
+
+RewriteRule ^voitures-americaines$ page.php?page_id=voitures-americaines
+RewriteRule ^presentation$ presentation.php
+RewriteRule ^vente-voitures-anciennes-americaines$ page.php?page_id=vente-voitures-anciennes-americaines
+RewriteRule ^classic-car$ page.php?page_id=classic-car
+RewriteRule ^american-cars$ page.php?page_id=american-cars
+RewriteRule ^exportation$ page.php?page_id=exportation
+RewriteRule ^acheter-une-voiture$ page.php?page_id=acheter-une-voiture
+RewriteRule ^transport-de-voiture$ page.php?page_id=transport-de-voiture
+RewriteRule ^voiture-d-occasion$ page.php?page_id=voiture-d-occasion
+RewriteRule ^voiture$ page.php?page_id=voiture
+RewriteRule ^importateur-voiture-americaine$ page.php?page_id=importateur-voiture-americaine
+RewriteRule ^voiture-americaine-a-restaurer$ page.php?page_id=voiture-americaine-a-restaurer
+RewriteRule ^mustang$ page.php?page_id=mustang
+RewriteRule ^accessories$ accessories.php
+
+RewriteRule ^voitures-americaines/vielle-voiture-americaine-pas-cher$ page.php?page_id=qwery1
+RewriteRule ^vente-voitures-anciennes-americaines/voiture-americaine-de-collection-a-vendre$ page.php?page_id=qwery2
+RewriteRule ^acheter-une-voiture/acheter-une-voiture-d-occasion$ page.php?page_id=qwery3
+RewriteRule ^voiture-d-occasion/voiture-americaine-occasion$ page.php?page_id=qwery4
+
+RewriteRule ^site-voiture-occasion$ page.php?page_id=site-voiture-occasion
+RewriteRule ^voiture-neuve-pas-cher$ page.php?page_id=voiture-neuve-pas-cher
+RewriteRule ^Corvette$ page.php?page_id=Corvette
+RewriteRule ^vente-voitures-anciennes-americaines$ page.php?page_id=qwery9
+
+RewriteRule ^Corvette/corvette-c3$ page.php?page_id=corvette-c3
+RewriteRule ^Corvette/corvette-c1$ page.php?page_id=corvette-c1
+RewriteRule ^Corvette/corvette-c2$ page.php?page_id=corvette-c2
+RewriteRule ^Corvette/corvette-c1-1958$ page.php?page_id=corvette-c1-1958
+RewriteRule ^Corvette/corvette-c1-1960$ page.php?page_id=corvette-c1-1960
+RewriteRule ^Corvette/corvette-c3-1972$ page.php?page_id=corvette-c3-1972
+RewriteRule ^Corvette/corvette-c3-1976$ page.php?page_id=corvette-c3-1976
+
+RewriteRule ^((notre_inventaire))$ products.php?&products=inventory&page=list
+RewriteRule ^((inventaire)/([0-9]+)?)$ inventaire.php?id=$3
+RewriteRule ^((annouce_usa_actuelle))$ products.php?page=list
+RewriteRule ^((revue_automobiles))$ revue_automobiles.php
+RewriteRule ^((contacts))$ contact.php
+RewriteRule ^((nosstock))$ nos_stock.php
+
+RewriteRule ^((accessories))$ accessories.php
+RewriteRule ^((logistic))$ logistic.php
+RewriteRule ^((presentation))$ presentation.php
+RewriteRule ^((recherche_personalise))$ recherche_personalise.php
+RewriteRule ^((presentation)/([^/]*))$ presentation.php?tab_title=$3
+RewriteRule ^((logistic)/([^/]*))$ logistic.php?slug=$3
+RewriteRule ^((contacts))$ contact.php
+RewriteRule ^((media))$ media.php
+RewriteRule ^((news))$ news.php
+RewriteRule ^((news)/([^/]*))$ news.php?category_name=$3
+RewriteRule ^((latest_news)/([^/]*))$ news.php?slug=$3
+RewriteRule ^((conditions-de-vente)/?)$ page.php?page_id=$1
+RewriteRule ^((contact))$ contact.php
+#RewriteRule http://sylc-seb.netsol.local/calculateur $   http://sylc-seb.netsol.local/page/calculateur [R=302,L]
+
+RewriteRule ^((calculateur)/?)$ page.php?page_id=$1
+RewriteRule ^((products)/?)$ products.php
+RewriteRule ^((conseils)/?)$ page.php?page_id=$1
+RewriteRule ^((devis)/?)$ page.php?page_id=$1
+RewriteRule ^((dmca-policy)/?)$ page.php?page_id=$1
+RewriteRule ^((logistique)/?)$ page.php?page_id=$1
+RewriteRule ^((nos-garanties)/?)$ page.php?page_id=$1
+RewriteRule ^((notre-mission)/?)$ page.php?page_id=$1
+RewriteRule ^((presentation)/?)$ page.php?page_id=$1
+RewriteRule ^((privacy-policy)/?)$ page.php?page_id=$1
+RewriteRule ^((qui-sommes-nous)/?)$ page.php?page_id=$1
+RewriteRule ^((services)/?)$ page.php?page_id=$1
+RewriteRule ^((terms-and-conditions)/?)$ page.php?page_id=$1
+RewriteRule ^((voitures-americaines)/?)$ page.php?page_id=$1
+RewriteRule ^((vielle-voiture-americaine-pas-cher)/?)$ page.php?page_id=$1
+RewriteRule ^((voiture-americaine-de-collection-a-vendre)/?)$ page.php?page_id=$1
+RewriteRule ^((voitures-americaines)/(classic-car)/?)$ page.php?page_id=$3&parent_id=$2
+RewriteRule ^((voitures-americaines)/(voiture-americaine-de-collection-a-vendre)/?)$ page.php?page_id=$3&parent_id=$2
+RewriteRule ^((voitures-americaines)/(vente-voitures-anciennes-americaines)/?)$ page.php?page_id=$3&parent_id=$2
+RewriteRule ^((page)/([a-zA-Z0-9-]+)/([a-zA-Z0-9-]+)?)$ page.php?page_id=$4&parent_id=$3
+RewriteRule ^((page)/([a-zA-Z0-9-]+)?)$ page.php?page_id=$3
+RewriteRule ^((faq))$ faq.php
+RewriteRule ^((car)/([0-9]+)?)$ carview.php?carid=$3
+RewriteRule ^((ebay)/([a-zA-Z0-9-]+)?)$ ebayview.php?carid=$3
+RewriteRule ^((search-result))$ carlist.php
+RewriteRule ^((advancesearch))$ advance-search.php
+RewriteRule ^((car-save))$ savecar.php
+RewriteRule ^((wishlist))$ wishlist.php
+RewriteRule ^((delete_selection)/([a-zA-Z0-9-]+))$ delete_selection.php?carId=$3
+RewriteRule ^((createaccount))$ create_account.php
+RewriteRule ^((loginaccount))$ login_account.php
+RewriteRule ^((editaccount))$ edit_account.php
+RewriteRule ^((forgotpswd))$ forgot_password.php
+RewriteRule ^((logout))$ logout_account.php
+RewriteRule ^((sitemap))$ sitemap.php
+
+RewriteRule ^((edmunds))$ Edmunds/index.html
+ErrorDocument 404 /404.php
+
+#RewriteCond %{REQUEST_URI}  ^/carview\.php$
+#RewriteCond %{QUERY_STRING} ^carid=([0-9]+)$
+#RewriteRule ^(.*)$ http://sylc-seb.netsol.local/car/%1? [R=302,L]
+#RewriteRule ^((car)/([0-9]+)?)$ carview.php?carid=$3 [L]
+
+<IfModule mod_deflate.c>
+    #The following line is enough for .js and .css
+    AddOutputFilter DEFLATE js css
+    AddOutputFilterByType DEFLATE text/plain text/xml application/xhtml+xml text/css application/xml application/rss+xml application/atom_xml application/x-javascript application/x-httpd-php application/x-httpd-fastphp text/html
+
+    #The following lines are to avoid bugs with some browsers
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html 
+</IfModule>
+
+# BEGIN EXPIRES
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 10 days"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType text/plain "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType application/x-icon "access plus 1 year"
+</IfModule>
+# END EXPIRES
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js|css|xml|gz)$">
+        Header append Vary Accept-Encoding
+    </FilesMatch>
+    <FilesMatch "\.(ico|jpe?g|png|gif|swf)$">  
+        Header set Cache-Control "public"  
+    </FilesMatch>  
+    <FilesMatch "\.(css)$">  
+        Header set Cache-Control "public"  
+    </FilesMatch>  
+    <FilesMatch "\.(js)$">  
+        Header set Cache-Control "private"  
+    </FilesMatch>  
+    <FilesMatch "\.(x?html?|php)$">  
+        Header set Cache-Control "private, must-revalidate"  
+    </FilesMatch>
+</IfModule>
+
+

@@ -2,7 +2,7 @@
    
 	define('SITE_TITLE', "Website");
 	define('SITE_TITLE_ADMIN', "Administrator Panel");
-	define('SITE_ADMIN_EMAIL', "sneha.gupta@netsolutionsindia.com"); 
+	//define('SITE_ADMIN_EMAIL', "sneha.gupta@netsolutionsindia.com"); 
 	
 	/* define('SITE_ADMIN_EMAIL', "info@americancarcentrale.com"); */
 	//	define('SITE_ADMIN_EMAIL', "sylc.corp@gmail.com");
@@ -13,11 +13,11 @@
 	# SMTP MAIL CONSTANTS
 	# ----------------------------------------------------------------------------------------------------
 
-	define('SMTP_HOST', "mail.livemarketnews.com"); 	
+	define('SMTP_HOST', "mail.livemarketnews.com");
 	define('SMTP_USERNAME', "mails@livemarketnews.com");
-	define('SMTP_PASSWORD', "Stone!@#"); 	
-	define('SMTP_FROMNAME', "Sylc-Export Update"); 	
-	define('SMTP_FROMEMAIL', "info@sylc-export.com"); 	
+	define('SMTP_PASSWORD', "Stone!@#");
+	define('SMTP_FROMNAME', "Sylc-Export Update");
+	define('SMTP_FROMEMAIL', "info@sylc-export.com");
 	# ----------------------------------------------------------------------------------------------------
 	# ICONTACT API CONSTANTS
 	# ----------------------------------------------------------------------------------------------------
@@ -60,7 +60,8 @@
     define('LIST_ROOT_ADMIN_REVIEW_IMAGEPATH',  LIST_ROOT."/superadmin/images/reviews/media");
     define('DEFAULT_ADMIN_URL',DEFAULT_URL."/superadmin");
     define('DEFAULT_ADMIN_URL_REVIEW_IMAGEPATH',DEFAULT_URL."/superadmin/images/reviews/media");
-
+	define('LIST_ROOT_ADMIN_REVIEW_DOCUMENT',  LIST_ROOT."/superadmin/images/reviews/document");
+	define('DEFAULT_ADMIN_URL_REVIEW_DOCUMENT_PATH',DEFAULT_URL."/superadmin/images/reviews/document/document.pdf");
 	# ----------------------------------------------------------------------------------------------------
 	# USER ATRIBUTES
 	# ----------------------------------------------------------------------------------------------------

@@ -81,7 +81,7 @@
       <a class="navbar-brand" href="<?php echo DEFAULT_URL;?>"><img src="<?php echo DEFAULT_URL; ?>/images/logo.png" class="img-responsive"></a>
 
 
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav menu-right">
         <div id='cssmenu'>
           <ul class="list-unstyled list-inline">
             <li><a href="<?php echo DEFAULT_URL;?>/revue_automobiles">Revues Automobiles  </a></li>

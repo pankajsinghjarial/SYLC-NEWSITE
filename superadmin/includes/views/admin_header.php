@@ -399,6 +399,9 @@ $(document).ready(function() {
 				</li>
 				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false && basename($_SERVER['REQUEST_URI'])=='select_reviews.php'){?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/reviews/select_reviews.php">Homepage Reviews</a>
+				</li>
+				<li <?php  if (strpos($_SERVER['REQUEST_URI'],'reviews')!== false && basename($_SERVER['REQUEST_URI'])=='select_review_document.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/reviews/select_review_document.php">Review Document</a>
 				</li>                              
               </ul>
             </div>

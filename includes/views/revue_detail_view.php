@@ -1,3 +1,4 @@
+<script src="<?php echo DEFAULT_URL; ?>/js/review_function.js"></script>
 <script type="text/javascript"src="https://content.jwplatform.com/libraries/GxpjMdbJ.js"></script>
 <!-- car deatails -->
 <section class="car-details-1">
@@ -180,9 +181,17 @@
                                 <div class="text-center" id="fst-hide-btn">
                                   <a href="car-details-1.html"><button type="button" class="btn btn-primary">Télécharger la brochure <i class="fa fa-angle-double-right"></i></button></a>
                                 </div>
-                                <div class="after-hide" id="PlaceButtonAfterSubmission">
+                                <div class="after-hide" >
                                   <h4>Telechargez gratutement la brochure. Rentrez simplement vos informations pour avoir acces a votre brochure.</h4>
                                   <h5>Le lien de telechargeement apparaitra sous la forme une fois celle-ci completee, enjoy!!!</h5>
+                                </div>
+                                <div class="after-hide" id="PlaceButtonAfterSubmission" style='display:none;'>
+                                  <div class='upperTextForm'>
+									  <h4>Merci pour votre demande</h4>
+								  </div>
+								  <div class='brochure-button'>
+									  <a href="<?php echo DEFAULT_ADMIN_URL_REVIEW_DOCUMENT_PATH; ?>" download><button class='btn btn-primary' type='submit'>Télécharger la brochure<i class='fa fa-angle-double-right'></i></button></a>
+								  </div>
                                 </div>
                               </div>
                               <div id="flag"></div>

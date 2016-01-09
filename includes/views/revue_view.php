@@ -1,4 +1,4 @@
-
+<script src="<?php echo DEFAULT_URL; ?>/js/review_function.js"></script>
 <section class="list-ciiii">
   <div class="container">
     <div class="row">
@@ -101,13 +101,22 @@ if(($Year != '') && ($Year == $yeaid )){ echo "selected='selected'"; }}?>><?php 
     <div class="col-md-12 no-padding">
           <div class="panel with-nav-tabs wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab1default" data-toggle="tab" id="hover-tab-1"><img src="images/car-review/1st-car-black.png" class="fst-icon"> <img src="images/car-review/hover-white-caar.png" class="hover-icon"> Plus de 30 ans</a></li>
-                <li class="marque" id="hover-tab-2"><a href="#tab2default" data-toggle="tab"><i class="fa fa-car"></i>
-                Voitures neuves</a></li>
+                <li class="<?php if(!isset($startNew)){echo "active";}else{echo "";} ?>">
+					<a href="#tab1default" data-toggle="tab" id="hover-tab-1">
+						<img src="images/car-review/1st-car-black.png" class="fst-icon" style="<?php if(isset($startNew)){echo "display:inline;";}else{echo "";} ?>"> 
+						<img src="images/car-review/hover-white-caar.png" class="hover-icon" style="<?php if(isset($startNew)){echo "display:none;";}else{echo "";} ?>"> 
+						Plus de 30 ans
+					</a>
+				</li>
+                <li class="marque <?php if(isset($startNew)){echo "active";}else{echo "";} ?>" id="hover-tab-2">
+					<a href="#tab2default" data-toggle="tab">
+						<i class="fa fa-car"></i>
+                Voitures neuves</a>
+                </li>
             </ul>
                 <div class="panel-body no-padding">
                     <div class="tab-content">
-                        <div class="tab-pane fade in active" id="tab1default">
+                        <div class="tab-pane fade in <?php if(!isset($startNew)){echo "active in";}else{echo "";} ?>" id="tab1default">
 						<?php if(!empty($reviewsArrOld)){
 							foreach($reviewsArrOld as $reviewArrOld){ //print_r($reviewArrNew);die;
 							 ?>
@@ -131,11 +140,61 @@ if(($Year != '') && ($Year == $yeaid )){ echo "selected='selected'"; }}?>><?php 
                         
 
                   
+                        <div class="col-md-12 pagination text-center">
+							<ul class="list-inline list-unstyled">        
+								  <?php
+								
+									if($backOld >=0) { 
+										echo '<li class="pre"><i class="fa fa-angle-double-left"></i><a href="'.$page_name.'?makeID='.$makeID.'&modelID='.$modelID.'&Year='.$Year.'&startOld='.$backOld.'&limit='.$limit.$addToPagging.'" class="page-left">
+										 Précédent</a></li>';
+									}else{
+										echo '<li class="pre"><i class="fa fa-angle-double-left"></i><a href="javascript:" class="page-left" onclick="void(0);"> Précédent</a></li>';
+									}
+								 ?>
+								  
+									<?php
+									$i=0;
+									$l=1;
+									for($i=0;$i < $total_rowsOld;$i=$i+$limit){
+									if($i <> $euOld){
+										echo "<li><a href='".$page_name."?makeID=".$makeID."&modelID=".$modelID."&Year=".$Year."&startOld=".$i."&limit=".$limit.$addToPagging."'>$l</a></li>";
+									}
+										else { echo '<li class="active" >'.$l.'</li>';}        /// Current page is not displayed as link and given font color red
+										$l=$l+1;
+									}
+								?>
+								 
+								  <?php
+									if($this1Old < $total_rowsOld) { 
+										echo '<li class="next"> <a href="'.$page_name.'?makeID='.$makeID.'&modelID='.$modelID.'&Year='.$Year.'&startOld='.$nextOld.'&limit='.$limit.$addToPagging.'" class="page-right">Suivant </a><i class="fa fa-angle-double-right"></i></li>';
+									}else{
+										echo '<li class="next"><a href="javascript:" class="page-right" onclick="void(0);"> Suivant </a><i class="fa fa-angle-double-right"></i></li>';
+									}
+								 ?>  
+							   </ul>
+										   
+									  <!--ul class="list-inline list-unstyled">
+										<li class="pre"><i class="fa fa-angle-double-left"></i> Précédent</li>
+										<li class="active">1</li>
+										<li>2</li>
+										<li>3</li>
+										<li>4</li>
+										<li>5</li>
+										<li>...</li>
+										<li>10</li>
+										<li>11</li>
+										<li class="next"> Suivant <i class="fa fa-angle-double-right"></i></li>
+									  </ul-->
+									
+									
+									
+						</div>
+						
                             
                        
                         </div> <!-- tab1default -->
                         
-                        <div class="tab-pane fade" id="tab2default">
+                        <div class="tab-pane fade <?php if(isset($startNew)){echo "active in";}else{echo "";}?>" id="tab2default">
                           
                        <?php if(!empty($reviewsArrNew)){
 							foreach($reviewsArrNew as $reviewArrNew){ //print_r($reviewArrNew);die;
@@ -159,58 +218,64 @@ if(($Year != '') && ($Year == $yeaid )){ echo "selected='selected'"; }}?>><?php 
                         }else{ echo "No records found.";} ?> 
                         
                         
+                        
+                        
+                        <div class="col-md-12 pagination text-center">
+							<ul class="list-inline list-unstyled">        
+								  <?php
+								
+									if($backNew >=0) { 
+										echo '<li class="pre"><i class="fa fa-angle-double-left"></i><a href="'.$page_name.'?makeID='.$makeID.'&modelID='.$modelID.'&Year='.$Year.'&startNew='.$backNew.'&limit='.$limit.$addToPagging.'" class="page-left">
+										 Précédent</a></li>';
+									}else{
+										echo '<li class="pre"><i class="fa fa-angle-double-left"></i><a href="javascript:" class="page-left" onclick="void(0);"> Précédent</a></li>';
+									}
+								 ?>
+								  
+									<?php
+									$i=0;
+									$l=1;
+									for($i=0;$i < $total_rowsNew;$i=$i+$limit){
+									if($i <> $euNew){
+										echo "<li><a href='".$page_name."?makeID=".$makeID."&modelID=".$modelID."&Year=".$Year."&startNew=".$i."&limit=".$limit.$addToPagging."'>$l</a></li>";
+									}
+										else { echo '<li class="active" >'.$l.'</li>';}        /// Current page is not displayed as link and given font color red
+										$l=$l+1;
+									}
+								?>
+								 
+								  <?php
+									if($this1New < $total_rowsNew) { 
+										echo '<li class="next"> <a href="'.$page_name.'?makeID='.$makeID.'&modelID='.$modelID.'&Year='.$Year.'&startNew='.$nextNew.'&limit='.$limit.$addToPagging.'" class="page-right">Suivant </a><i class="fa fa-angle-double-right"></i></li>';
+									}else{
+										echo '<li class="next"><a href="javascript:" class="page-right" onclick="void(0);"> Suivant </a><i class="fa fa-angle-double-right"></i></li>';
+									}
+								 ?>  
+							   </ul>
+										   
+									  <!--ul class="list-inline list-unstyled">
+										<li class="pre"><i class="fa fa-angle-double-left"></i> Précédent</li>
+										<li class="active">1</li>
+										<li>2</li>
+										<li>3</li>
+										<li>4</li>
+										<li>5</li>
+										<li>...</li>
+										<li>10</li>
+										<li>11</li>
+										<li class="next"> Suivant <i class="fa fa-angle-double-right"></i></li>
+									  </ul-->
+									
+									
+									
+						</div>
+						
+                        
                         </div> <!-- tab2default -->
                         <?php //if($total_rows > $limit) {?>
                         
-                        <div class="col-md-12 pagination text-center">
-                    <ul class="list-inline list-unstyled">        
-						  <?php
-						
-							if($back >=0) { 
-								echo '<li class="pre"><i class="fa fa-angle-double-left"></i><a href="'.$page_name.'?makeID='.$makeID.'&modelID='.$modelID.'&Year='.$Year.'&start='.$back.'&limit='.$limit.$addToPagging.'" class="page-left">
-								 Précédent</a></li>';
-							}else{
-								echo '<li class="pre"><i class="fa fa-angle-double-left"></i><a href="javascript:" class="page-left" onclick="void(0);"> Précédent</a></li>';
-							}
-						 ?>
-						  
-							<?php
-							$i=0;
-							$l=1;
-							for($i=0;$i < $total_rows;$i=$i+$limit){
-							if($i <> $eu){
-								echo "<li><a href='".$page_name."?makeID=".$makeID."&modelID=".$modelID."&Year=".$Year."&start=".$i."&limit=".$limit.$addToPagging."'>$l</a></li>";
-							}
-								else { echo '<li class="active" >'.$l.'</li>';}        /// Current page is not displayed as link and given font color red
-								$l=$l+1;
-							}
-						?>
-						 
-						  <?php
-							if($this1 < $total_rows) { 
-								echo '<li class="next"> <a href="'.$page_name.'?makeID='.$makeID.'&modelID='.$modelID.'&Year='.$Year.'&start='.$next.'&limit='.$limit.$addToPagging.'" class="page-right">Suivant </a><i class="fa fa-angle-double-right"></i></li>';
-							}else{
-								echo '<li class="next"><a href="javascript:" class="page-right" onclick="void(0);"> Suivant </a><i class="fa fa-angle-double-right"></i></li>';
-							}
-						 ?>  
-                       </ul>
-                                   
-                              <!--ul class="list-inline list-unstyled">
-                                <li class="pre"><i class="fa fa-angle-double-left"></i> Précédent</li>
-                                <li class="active">1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                                <li>5</li>
-                                <li>...</li>
-                                <li>10</li>
-                                <li>11</li>
-                                <li class="next"> Suivant <i class="fa fa-angle-double-right"></i></li>
-                              </ul-->
-                            
-                            
-                            
-                            </div><?php //} ?>
+									
+                            <?php //} ?>
                     </div> <!-- tab-content -->
                 </div><!-- panel body -->
               </div><!-- panel -->
@@ -230,6 +295,9 @@ if(($Year != '') && ($Year == $yeaid )){ echo "selected='selected'"; }}?>><?php 
 
 
     <!---********************** carosul 2 **********************-->
+    
+
+    
 <section class="car-rivew-carosel wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
   <div class="container">
     <div class="row">
@@ -238,77 +306,57 @@ if(($Year != '') && ($Year == $yeaid )){ echo "selected='selected'"; }}?>><?php 
         <div id="Carousel" class="carousel slide"> 
           <!-- Carousel items -->
           <div class="carousel-inner"> 
+            
+            
+            
+            <?php 
+            if(!empty($editorialReviews)) { 
+				
+				foreach($editorialReviews as $key => $editorialReview){
+					
+					if($key ==0) {
+					
+				
+			 ?>
+            
+            
             <div class="item active">
-              <div class="row" id="carosel-all-img">
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-1.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>BMW : 2016 760 LI</h2>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-2.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>TOYOTA : 2016 RAV-4</h2>
-                  </div>
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-3.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>BMW : 2016 760 LI</h2>
-                </div>
+                
+                <div class="row" id="carosel-all-img">
+					<?php foreach($editorialReview as $editorialRev) {?>
+					<div class="col-md-4">
+						<a target="_blank" href="/detail-review?reviewID=<?php echo base64_encode(convert_uuencode($editorialRev['id'])); ?>" class="">
+							<img src="<?php echo DEFAULT_URL.'/image_resizer.php?img='.$editorialRev['image'].'&newWidth=308&newHeight=225'; ?>" alt="Image" style="max-width:100%;">
+						</a>
+						<h2><?php echo $editorialRev['title'];?></h2>
+					</div>
+					<?php } ?>
+				</div><!--.row-->
+            
+            </div><!--.item-->
+             <?php }else{ ?>
+            <div class="item hidden-xs">
+             
+				<div class="row" id="carosel-all-img">
+                <?php foreach($editorialReview as $editorialRev) {?>
+					<div class="col-md-4">
+						<a target="_blank" href="/detail-review?reviewID=<?php echo base64_encode(convert_uuencode($editorialRev['id'])); ?>" class="">
+							<img src="<?php echo DEFAULT_URL.'/image_resizer.php?img='.$editorialRev['image'].'&newWidth=308&newHeight=225'; ?>" alt="Image" style="max-width:100%;">
+						</a>
+						<h2><?php echo $editorialRev['title'];?></h2>
+					</div>
+                <?php } ?>
 
-              </div><!--.row-->
+                </div><!--.row-->
+            
             </div><!--.item-->
              
-            <div class="item hidden-xs">
-              <div class="row" id="carosel-all-img">
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-1.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>BMW : 2016 760 LI</h2>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-2.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>TOYOTA : 2016 RAV-4</h2>
-                  </div>
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-3.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>BMW: 2016 X5 M-Series</h2>
-                </div>
-
-              </div><!--.row-->
-            </div><!--.item-->
-             
-            <div class="item hidden-xs">
-              <div class="row" id="carosel-all-img">
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-1.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>BMW : 2016 760 LI</h2>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-2.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>TOYOTA : 2016 RAV-4</h2>
-                  </div>
-                <div class="col-md-4">
-                  <a href="#" class="">
-                    <img src="images/car-review/carosel-img-3.png" alt="Image" style="max-width:100%;">
-                  </a>
-                  <h2>BMW: 2016 X5 M-Series</h2>
-                </div>
-              </div><!--.row-->
-            </div><!--.item-->
-                   
+            <?php } 
+				
+				}
+			}
+			 ?>
+               
             </div><!--.carousel-inner-->
               <a data-slide="prev" href="#Carousel" class="left carousel-control hidden-xs  hidden-sm"><span class="fa fa-arrow-left" aria-hidden="true" id="arrow-left"></span></a>
               <a data-slide="next" href="#Carousel" class="right carousel-control hidden-xs hidden-sm"><span class="fa fa-arrow-right" aria-hidden="true"></span></a>
@@ -317,3 +365,21 @@ if(($Year != '') && ($Year == $yeaid )){ echo "selected='selected'"; }}?>><?php 
      </div>
    </div><!--.container-->
 </section>
+<script>
+      $(document).ready(function(){
+          $("#hover-tab-1").click(function(){
+          $(".fst-icon").css('display','none');
+          $(".hover-icon").show();
+              
+
+              //$(".voir-icon2").show();
+          });
+          $("#hover-tab-2").click(function(){
+          $(".fst-icon").css('display','none');
+          $(".hover-icon").hide();
+          $(".fst-icon").show();
+
+        });
+         
+      });
+    </script>

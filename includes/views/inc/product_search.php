@@ -9,7 +9,7 @@
       <div class="col-md-12 col-xs-12 wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s">
         <img src="<?php echo DEFAULT_URL; ?>/images/ash-bg.png" class="img-responsive commence">
         <div class="commence-text">
-			 <form action="products.php" id="searchcars" method="get" >
+			 <form action="<?php echo DEFAULT_URL; ?>/products.php" id="searchcars" method="get" >
 				 <input type="hidden" name="products" value="products" />
           <div class="form-group form-inline">
             <div class="col-md-3 col-xs-12 col-sm-6">
@@ -106,13 +106,13 @@
 
                <div class="form-group for-sm">
                 <div class="selt-box">
-					<input type="text" name="price[]" class="form-control"  value="<?php echo $price[0];?>" placeholder="Prix min"/>
+					<input type="text" name="price[]" class="form-control"  value="<?php echo @$price[0];?>" placeholder="Prix min"/>
 				</div> 
               </div>
 
               <div class="form-group for-sm">
                 <div class="selt-box">
-					<input type="text" name="price[]" class="form-control" value="<?php echo $price[1];?>" placeholder="Prix max" />
+					<input type="text" name="price[]" class="form-control" value="<?php echo @$price[1];?>" placeholder="Prix max" />
                 </div>
               </div>
               <div class="list-research-img"><a id="search_submit" href="javascript:void(0);"><img src="<?php echo DEFAULT_URL; ?>/images/recharche-btn.png"></a></div>

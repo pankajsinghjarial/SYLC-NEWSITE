@@ -2,47 +2,32 @@
 //Make QueryString Parameters as Variables
 extract($_POST);
 extract($_GET);
+
 //Init neccessary classes
 $common = new common();
 
 //Choosing which tab is selected
 $auctionClass = true;
-if (isset($_GET['products']) && $_GET['products'] == 'products') { //Buy Now API Default
-	unset($_SESSION['mysearch']);
-	$_SESSION['mysearch'][] = $_GET;
-}
+$productTab = true;
 if (isset($_GET['products']) && $_GET['products'] == 'inventory') { // Our Inventory Admin
 	$auctionClass = false;
+	$productTab = false;
 }
-
-//Checking if Brand Selected
-//~ if (isset($_REQUEST['manufacturer'])) {
-	//~ unset($_SESSION['mysearch']);
-	//~ $_SESSION['mysearch'][] = $_REQUEST;
-//~ }
-
-//Check if search is done previously and stored in session
-//~ if(isset($_SESSION['mysearch'][0])){
-    //~ extract($_SESSION['mysearch'][0]);
-//~ }
-
 //Get Wishlist Cars
-//~ if (isset($_SESSION['User']['id']) && $_SESSION['User']['id'] > 0) {
-    //~ $getSelectedCarListSQL = "SELECT car_id from wishlist where user_id = ".$_SESSION['User']['id'];
-    //~ $result = mysql_query($getSelectedCarListSQL);
-    //~ while($row = mysql_fetch_assoc($result)) {
-        //~ $favList[] = $row['car_id'];
-    //~ }
-//~ }
+$favList = array();
+if (isset($_SESSION['User']['id']) && $_SESSION['User']['id'] > 0) {
+    $getSelectedCarListSQL = "SELECT car_id from wishlist where user_id = ".$_SESSION['User']['id'];
+    $result = mysql_query($getSelectedCarListSQL);
+    while($row = mysql_fetch_assoc($result)) {
+        $favList[] = $row['car_id'];
+    }
+}
+////////////////////////////////////////////// EBAY CARS SECTION //////////////////////////////////////////////////
 
-/*Fetch car listings from ebay API*/
-//Start creating request URL from the query string
-$where 		 = "&outputSelector(0)=PictureURLLarge";
-$searched    = '';
+
 
 //Make URL for sorting and paging
 $addtopaging = "?";
-include("functions/ebay_functions.php");
 $addtopaging1 = '';
 if($_GET){
     $args = explode("&",$_SERVER['QUERY_STRING']);
@@ -52,29 +37,28 @@ if($_GET){
         if($keyval[0] != "page" && $keyval[0] != "products" && $keyval[0] != "ipp" && $keyval[0] != "sort") $addtopaging1 .= "&" . $arg;
     }
 }
-
+//Start creating request URL from the query string
 $aspect_count = 0;
 $searched = '<br>You Searched for ';
-$where .= "&outputSelector(1)=AspectHistogram";
-$searchedCar = $dataId = $searchedModel = '';
+$where = "&outputSelector(0)=PictureURLLarge&outputSelector(1)=AspectHistogram";
+$searchedCar = $searchedModel = '';
+
 //Check if brand selected while search
 $where .= "&aspectFilter(".$aspect_count.").aspectName=Make";
-if (isset($manufacturer)) {
-    $manfCount = 0;                
+if (isset($manufacturer) && $productTab) {
+    $manfCount = 0;
     if (is_array($manufacturer)) {
         $searched .= ' Manufacturer: <span class="searched">';
         $manufacturer = array_filter($manufacturer);
         foreach($manufacturer as $mnf) {
             $where .= "&aspectFilter(".$aspect_count.").aspectValueName($manfCount)=".urlencode(urldecode($mnf));
             $manfCount++;
-            if ($manfCount<count($manufacturer)) {
+            if($manfCount<count($manufacturer)){
                 $searched .=$mnf.",";
                 $searchedCar .= "'".$mnf."',";
-                
             }else{
-                 $searched .=$mnf;
-                 $searchedCar .= "'".$mnf."'";
-                
+                $searched .=$mnf;
+                $searchedCar .= "'".$mnf."'";
             }
         }
         $searched .= '</span>';
@@ -94,7 +78,7 @@ if (isset($manufacturer)) {
 }
 
 //Check if Year range selected while search
-if (isset($madeYear)) {
+if (isset($madeYear) && $productTab) {
     $madeYearArr = array_filter($madeYear);
     if (count($madeYearArr) == 2) {
         if ($madeYearArr[0] < $madeYearArr[1]) {
@@ -127,7 +111,7 @@ if (isset($madeYear)) {
 }
 
 //Check if model selected while search
-if (isset($model) && $model != '' && $model != 'Not+Specified') {
+if (isset($model) && $model != '' && $model != 'Not+Specified' && $productTab) {
     $where .= "&aspectFilter(".$aspect_count.").aspectName=Model";
     $manfCount = 0;                
     if (is_array($model)) {
@@ -154,7 +138,7 @@ if (isset($model) && $model != '' && $model != 'Not+Specified') {
 }
 
 //Check if style selected while search
-if (isset($style) && $style != '' && $style != 'Not+Specified') {
+if (isset($style) && $style != '' && $style != 'Not+Specified' && $productTab) {
     $where .= "&aspectFilter(".$aspect_count.").aspectName=Style";
     $where .= "&aspectFilter(".$aspect_count.").aspectValueName=".urlencode(urldecode($style));
     $searched .= ', Style: <span class="searched">'.urldecode($style).'</span>';
@@ -164,21 +148,21 @@ if (isset($style) && $style != '' && $style != 'Not+Specified') {
 
 //Check if price selected while search
 $filterarray = array();
-if (isset($price) && ($price[0] != "" || $price[1] != "")) {
+if (isset($price) && ($price[0] != "" || $price[1] != "") && $productTab) {
     $price[0]= ($price[0])?$price[0]:0;
     $price[1]= ($price[1])?$price[1]:0;
     $filterarray[] = array(
                         'name' => 'MaxPrice',
-                        'value' => (string)($price[1]),
+                        'value' => (string)1500,
                         'paramName' => 'Currency',
                         'paramValue' => 'EUR');
     $filterarray[] = array(
                         'name' => 'MinPrice',
-                        'value' => (string)($price[0]),
+                        'value' => (string)0,
                         'paramName' => 'Currency',
                         'paramValue' => 'EUR');
 }
-$common->ConvertPriceRev($price[1]); echo $common->ConvertPriceRev($price[1]);
+
 //Only Buy It Now Section
 $val = array('FixedPrice','StoreInventory','AuctionWithBIN');
 
@@ -189,281 +173,202 @@ $filterarray[] =  array(
 					'paramValue' => ''
 					);
 
-//Create Table for cache
-$userTblName = 'temp_'.$_SESSION['unique_id'][0];
-
-if (!isset($_SESSION['products'])) {
-    $common->customQuery('DROP TABLE IF EXISTS `'.$userTblName.'`');
-    $common->customQuery('CREATE TABLE `'.$userTblName.'` (
-                            `type` int(10) NOT NULL,
-                            `itemId` bigint(20) NOT NULL,
-                            `title` varchar(255) NOT NULL,
-                            `Price` float NOT NULL,
-                            `content` longtext
-                        ) ENGINE=MyISAM DEFAULT CHARSET=latin1');
-    $common->customQuery('INSERT INTO master_temp (user_id, tbl_name, lastAct) VALUES ("'.$_SESSION['unique_id'][0].'","'.$userTblName.'",'.getCurrentTimestamp().')');
-}
-
 //Get Pagination Parameters
-if (!isset($_GET['page'])) {
-	$_SESSION['products'] = array();
-	$_SESSION['products']['fill'] = true;
-	$page = 1;
-	$_SESSION['products']['page']    = 8;
-	$_SESSION['products']['fillfor'] = 1;
-	$common->customQuery("DELETE FROM ".$userTblName);
-} else {
-	if ($_SESSION['products']['fillfor'] != $_GET['page']) {
-		$_SESSION['products']['fill'] = true;
-		$_SESSION['products']['fillfor'] = $_GET['page'];
-	}
+$current_page = 1;
+if (isset($_GET['page']) && $productTab) {
+    $current_page = $_GET['page'];
 }
+$limit = 20;
 $orderfield='';
-if ($_SESSION['products']['fill']) {
-	
-	$fillfor = $_SESSION['products']['fillfor'];
+$fillfor = true;
 
-	// API request variables
-	$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  // URL to call
-	$version = '1.0.0';  // API version supported by your application
-	$appid = 'dothejob-c9de-4e5d-adf2-73a736a2651a';  // Replace with your own AppID
-	$globalid = 'EBAY-US';  // Global ID of the eBay site you want to search (e.g., EBAY-DE)
-	$query = 'car';  // You may want to supply your own query
-	$safequery = urlencode($query);  // Make the query URL-friendly
-	$i = '0';  // Initialize the item filter index to 0
-	
-	
-		// Create a PHP array of the item filters you want to use in your request
-	// Generates an indexed URL snippet from the array of item filters
-	function buildURLArray ($filterarray) {
-	  global $urlfilter;
-	  global $i;
-	  // Iterate through each filter in the array
-	  foreach($filterarray as $itemfilter) {
-		// Iterate through each key in the filter
-		foreach ($itemfilter as $key =>$value) {
-		  if (is_array($value)) {
-			foreach($value as $j => $content) { // Index the key for each value
-			  $urlfilter .= "&itemFilter($i).$key($j)=$content";
-			}
-		  }
-		  else {
-			if ($value != "") {
-			  $urlfilter .= "&itemFilter($i).$key=$value";
-			}
-		  }
-		}
-		$i++;
-	  }
-	  
-	  return "$urlfilter";
-	} // End of buildURLArray function
 
-	// Build the indexed item filter URL snippet
-	buildURLArray($filterarray);
+// API request variables
+$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  // URL to call
+$version = '1.0.0';  // API version supported by your application
+$appid = 'dothejob-c9de-4e5d-adf2-73a736a2651a';  // Replace with your own AppID
+$globalid = 'EBAY-US';  // Global ID of the eBay site you want to search (e.g., EBAY-DE)
+$query = 'car';  // You may want to supply your own query
+$safequery = urlencode($query);  // Make the query URL-friendly
+$i = '0';  // Initialize the item filter index to 0
 
-	// Construct the findItemsByKeywords HTTP GET call 
-	$apicall = "$endpoint?";
-	$apicall .= "OPERATION-NAME=findItemsAdvanced";
-	$apicall .= "&SERVICE-VERSION=$version";
-	$apicall .= "&SECURITY-APPNAME=$appid";
-	$apicall .= "&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD";
-	$apicall .= "&GLOBAL-ID=$globalid";
-	$apicall .= ($where == '') ? "&keywords=$safequery": '' ;
-	$apicall .= "&categoryId=6001";
-	$apicall .= "&paginationInput.entriesPerPage=20";
-	if (isset($page)) {
-		$apicall .= "&paginationInput.pageNumber=".$fillfor;
-	}
-	$apicall .= "&sellingStatus.sellingState=Active";
-	$apicall .= "&descriptionSearch=true";
-	$apicall .= "$urlfilter";
-	if (isset($sort) && $sort != '') {
-		$orderBy = explode('~',$sort);
-		$order = '';
-		if ($orderBy[0] == 'buyItNowPrice') {
-			if ($orderBy[1] == 'asc') $order ='&sortOrder=CurrentPriceHighest';
-			else $order = '&sortOrder=PricePlusShippingLowest';
-		}
-		if ($orderBy[0] == 'time') {
-			if ($orderBy[1] == 'asc') $order ='&sortOrder=EndTimeSoonest';
-			else $order = '&sortOrder=StartTimeNewest';
-		}
-		
-		$orderfield = '<input type="hidden" name="sort" value="'.$orderBy[0].'~'.$orderBy[1].'">';
-		$apicall .= $order;
-	}
-	$apicall .= $where;
-
-	// Load the call and capture the document returned by eBay API
-	$resp = simplexml_load_file($apicall);
-
-	$ebay_total = (int)$resp->paginationOutput->totalEntries; 
-	
-	
-	$ins_str = '';
-	$ebay_arr = array();
-    $dbCarCount = 0;
-	foreach($resp->searchResult->item as $item) {
-		$dbCarCount++;
-		
-		$itemId = (string)$item->itemId;
-		$link   = $item->viewItemURL;
-		$postalCode = $item->postalCode;
-		$location   = $item->location;
-		$country    = $item->country;
-		$listingType = $item->listingInfo->listingType;
-		$buyItNowAvailable = $item->listingInfo->buyItNowAvailable;
-		$buyItNowPrice = $item->sellingStatus->convertedCurrentPrice;
-		if ($item->listingInfo->buyItNowAvailable == 'true') {
-			$buyItNowPrice = $item->listingInfo->buyItNowPrice;
-			$buyItNowAvailable = 1;
-		}
-		else{
-			$buyItNowAvailable = 0;
-		}
-		
-		$time = convertTimeLeft($item->sellingStatus->timeLeft);
-		$endson = $item->listingInfo->endTime;
-		$endtimestamp = strtotime($endson);
-		$galleryURL = (isset($item->galleryPlusPictureURL)) ? $item->galleryPlusPictureURL : $item->pictureURLLarge;
-				
-		
-		$forward_str = "&title=".urlencode($item->title)."&buyItNowPrice=".$buyItNowPrice."&postalCode=".$postalCode."&location=".urlencode($location)."&listingType=".$listingType."&endson=".$endson."&endtimestamp=".$endtimestamp."&buyItNowAvailable=".$buyItNowAvailable;
-		
-		$arr = array(
-				"link"=>DEFAULT_URL."/ebay/".$itemId,
-				"time"=>$time,
-				"title" => (string)$item->title,
-				"buyItNowPrice" => (int)$buyItNowPrice,
-				"galleryURL" => (string)$galleryURL,
-				"forward_str" => $forward_str
-				);
-				
-		$ebay_arr[$itemId] = $arr;	
-		
-		$ins_str .= "(2, $itemId, \"".mysql_real_escape_string($arr['title'])."\", $arr[buyItNowPrice],'".base64_encode(serialize($arr))."'),";	
-	}
-	
-	if ($ins_str != '') {
-		$common->customQuery("DELETE FROM ". $userTblName);
-		$ins_str = substr($ins_str, 0, strlen($ins_str)-1);
-		$query = "INSERT INTO ". $userTblName ." Values " . $ins_str;
-		$common->customQuery($query);
-	}
-	
-	$_SESSION['products']['page'] = ceil($dbCarCount/20);
-	
-	$_SESSION['products']['total'] = $ebay_total;
-	$_SESSION['products']['fill']  = false;
+function buildURLArray ($filterarray) {
+    global $urlfilter;
+    global $i;
+    foreach($filterarray as $itemfilter) {
+        foreach ($itemfilter as $key =>$value) {
+            if (is_array($value)) {
+                foreach($value as $j => $content) {
+                    $urlfilter .= "&itemFilter($i).$key($j)=$content";
+                }
+            } else {
+                if ($value != "") {
+                    $urlfilter .= "&itemFilter($i).$key=$value";
+                }
+            }
+        }
+        $i++;
+    }
+    return "$urlfilter";
 }
 
+// Build the indexed item filter URL snippet
+buildURLArray($filterarray);
 
-if (!isset($sort)) {
-	$now_sort  = "price";
-	$now_order = "ASC";
-} else {
-	$oder = explode("~",$sort);
-	$now_sort  = $oder[0];
-	$now_order = $oder[1];
+// Construct the findItemsByKeywords HTTP GET call 
+$apicall = "$endpoint?";
+$apicall .= "OPERATION-NAME=findItemsAdvanced";
+$apicall .= "&SERVICE-VERSION=$version";
+$apicall .= "&SECURITY-APPNAME=$appid";
+$apicall .= "&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD";
+$apicall .= "&GLOBAL-ID=$globalid";
+$apicall .= ($where == '') ? "&keywords=$safequery": '' ;
+$apicall .= "&categoryId=6001";
+$apicall .= "&paginationInput.entriesPerPage=".$limit;
+if (isset($page)) {
+    $apicall .= "&paginationInput.pageNumber=".$current_page;
 }
-$num = $common->numberOfRows($userTblName);
+$apicall .= "&sellingStatus.sellingState=Active";
+$apicall .= "&descriptionSearch=true";
+$apicall .= "$urlfilter";
 
-if (!isset($_GET['page'])) {
-	$page = 1;
+//Sorting
+$order ='&sortOrder=PricePlusShippingLowest';
+if (isset($sort) && $sort != "") {
+    $orderBy = explode('~',$sort);
+    $order = '';
+    if ($orderBy[0] == 'price') {
+        if ($orderBy[1] == 'asc'){
+            $order ='&sortOrder=CurrentPriceHighest';
+        }else{ 
+            $order = '&sortOrder=PricePlusShippingLowest';
+        }
+    }
+    $orderfield = '<input type="hidden" name="sort" value="'.$orderBy[0].'~'.$orderBy[1].'">';
+    
 }
+$apicall .= $order;
+$apicall .= $where;
+
+// Load the call and capture the document returned by eBay API
+$resp = simplexml_load_file($apicall);
+$ebay_total = (int)$resp->paginationOutput->totalEntries;
+$ebay_arr = array();
+foreach($resp->searchResult->item as $item) {
+    $itemId = (string)$item->itemId;
+    $link   = $item->viewItemURL;
+    $postalCode = $item->postalCode;
+    $location   = $item->location;
+    $country    = $item->country;
+    $listingType = $item->listingInfo->listingType;
+    $buyItNowAvailable = $item->listingInfo->buyItNowAvailable;
+    $buyItNowPrice = $item->sellingStatus->convertedCurrentPrice;
+    if ($item->listingInfo->buyItNowAvailable == 'true') {
+        $buyItNowPrice = $item->listingInfo->buyItNowPrice;
+        $buyItNowAvailable = 1;
+    }
+    else{
+        $buyItNowAvailable = 0;
+    }
+    $time = convertTimeLeft($item->sellingStatus->timeLeft);
+    $endson = $item->listingInfo->endTime;
+    $endtimestamp = strtotime($endson);
+    $galleryURL = (isset($item->galleryPlusPictureURL)) ? $item->galleryPlusPictureURL : $item->pictureURLLarge;
+    
+    $forward_str = "&title=".urlencode($item->title)."&buyItNowPrice=".$buyItNowPrice."&postalCode=".$postalCode."&location=".urlencode($location)."&listingType=".$listingType."&endson=".$endson."&endtimestamp=".$endtimestamp."&buyItNowAvailable=".$buyItNowAvailable;
+    
+    $arr = array(
+            "link"=>DEFAULT_URL."/ebay/".$itemId,
+            "time"=>$time,
+            "title" => (string)$item->title,
+            "buyItNowPrice" => (int)$buyItNowPrice,
+            "galleryURL" => (string)$galleryURL,
+            "forward_str" => $forward_str
+            );
+            
+    $ebay_arr[$itemId] = $arr;
+    
+}
+
 $pages = new Paginator;
-$pages->default_ipp = 20;
-$pages->pageUrl = 'annouce_usa_actuelle';
-$pages->extraParam = 'annouce_usa_actuelle';
-$pages->items_total = $_SESSION['products']['total'];
-$pages->paginate();
-
-if ($num != 0) {
-	if ( $page % $_SESSION['products']['page'] == 0) {
-		$startLim = ( $_SESSION['products']['page'] - 1 ) * 20;
-	} else {
-		$startLim = ( ( $page % $_SESSION['products']['page'] ) - 1 ) * 20;
-	}
-	
-	$list = $common->customQuery("SELECT * FROM ". $userTblName ." ORDER BY $now_sort $now_order LIMIT $startLim , 20");
-	
-	if (!isset($cars_arr) && !isset($ebay_arr)) {
-		$cars_arr = array();
-		$ebay_arr = array();
-		while($resource_data = mysql_fetch_object($list)) {
-			if ($resource_data->type == 1) {
-				$cars_arr[$resource_data->itemId] = unserialize(base64_decode($resource_data->content));
-			} elseif ($resource_data->type == 2) {
-				$ebay_arr[$resource_data->itemId] = unserialize(base64_decode($resource_data->content));
-			}
-		}
-		mysql_data_seek($list, 0);
-	}
+$pages->default_ipp = $limit;
+$pages->pageUrl = 'products.php';
+$pages->tab = 'products';
+if(!isset($search)){
+    $pages->pageUrl = 'annouce_usa_actuelle';
 }
-
+//$pages->extraParam = 'annouce_usa_actuelle';
+$pages->items_total = $ebay_total;
+$pages->paginate();
 
 $carPages = new Paginator;
 
-// If there is a selection or value of limit then the list box should show that value , so we have to lock that options //
-// Based on the value of limit we will assign selected value to the respective option//
 
-$carPages->default_ipp = 20;
-$carPages->pageUrl = 'notre_inventaire';
-$carPages->extraParam = 'notre_inventaire';
-$limit = 20;
+//////////////////////////////////////////////OUR INVENTORY SECTION ///////////////////////////////////////////
 
-$carPages->current_page = 1;
-
-$eu = $limit * ($page-1) ;
-
-$total_rows = $common->numberOfRows('car');
-
-if (isset($_GET['field'])and $_GET['field'] != '') {
-	$field = $_GET['field'];
-} else {
-	$field = 'car_id';
-}
-if (isset($_GET['orderBy'])and $_GET['orderBy'] != '') {
-	$orderby = $_GET['orderBy'];
-}else{
-	$orderby = 'ASC';
-}
-
-$fromYear = $_GET['madeYear'][0];
-if($fromYear == '') {
-	$fromYear = 1920;
-}
-$toYear   = $_GET['madeYear'][1];
-if($toYear == '') {
-	$toYear = 2017;
-}
+$invCurPage = 1;
+$invPageLimit = 20;
+$invSort = "price~asc";
 $whereCondition = '';
-if ($searchedCar != '' ) { 
-	$whereCondition .= 'make in ('.$searchedCar.')';
-	if($searchedModel != '') {
-		$whereCondition .= ' and model in ('.$searchedModel.')';
-	}
-	$whereCondition .= ' and ';
+$first = true;
+$carPages->current_page = 1;
+$carPages->tab = 'inventory';
+if( !$productTab){
+    if(isset($page) && $page!=""){
+        $invCurPage = $page;
+    }
+    if (isset($sort) && $sort != "") {
+        $invSort = $sort;
+    }
+    if(isset($manufacturer)){
+        $whereCondition .= " make in ('".implode("','",$manufacturer)."')";
+        $first = false;
+    }
+    if(isset($model)){
+        if($first){
+            $whereCondition .= " model in ('".implode("','",$model)."')";
+            $first = false;
+        }else{
+            $whereCondition .= " and model in ('".implode("','",$model)."')";
+        }
+    }
+    if(isset($madeYear) && $madeYear[0]!="" && $madeYear[1]!=""){
+        if($first){
+            $whereCondition .= 'year between '. $madeYear[0] .' and '.$madeYear[1] ;
+            $first = false;
+        }else{
+            $whereCondition .= ' and year between '. $madeYear[0] .' and '.$madeYear[1] ;
+        }
+    }
+    if(isset($price) && $price[0]!="" && $price[1]!=""){
+        if($first){
+            $whereCondition .= 'price between '. $price[0] .' and '.$price[1] ;
+            $first = false;
+        }else{
+            $whereCondition .= ' and price between '. $price[0] .' and '.$price[1] ;
+        }
+    }
+    if(isset($page)){
+        $carPages->current_page = $page;
+    }
 }
-$whereCondition .= 'year between '. $fromYear .' and '.$toYear ;
-if (isset($price) && $price[0] != "" && $price[1] == "") {
-	$whereCondition .= ' and price >= '. $price[0] ;
+$invOrderBy = explode('~',$invSort);
+
+$carPages->default_ipp = $invPageLimit;
+$carPages->pageUrl = 'products.php';
+if(!isset($search)){
+    $carPages->pageUrl = 'notre_inventaire';
 }
-if (isset($price) && $price[0]=="" && $price[1] != "") {
-	$whereCondition .= ' and price <= '. $price[1] ;
-}
-if (isset($price) && $price[0] != "" && $price[1] != "") {
-	$whereCondition .= ' and price between '. $price[0] .' and '.$price[1] ;
-}
-$total_rows = $common->numberOfRows('car_flat', $whereCondition); //number of rows in pages table
+
+$eu = $invPageLimit * ($invCurPage-1) ;
+$inventoryTotalRows = $common->numberOfRows('car_flat', $whereCondition); //number of rows in pages table
 
 $addCarToQuery = '';
 
-$carPages->items_total  = $common->total_getCarListWithAttr();
+$carPages->items_total  = $inventoryTotalRows;
 $carPages->paginate();
 
-$all_cars = $common->read('car_flat', $whereCondition,$orderBy[0]." ".$orderBy[1]);
+$all_cars = $common->read('car_flat', $whereCondition,$invOrderBy[0]." ".$invOrderBy[1]." LIMIT 0, ".$invPageLimit);
 $all_car = array();
 while($row = mysql_fetch_array($all_cars)){
     $all_car[] = $row;

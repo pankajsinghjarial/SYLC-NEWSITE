@@ -133,9 +133,6 @@ $item = array_shift($common->CarAttributesFromID(array($id)));
                 .product-page .product-hide-show-form{display:block;}
                 .container{padding:0px;}
                 .product-page .product-hide-show-form{margin:0px;border:none;}
-                .validateError{  color: red;  border: 1px solid red;  margin: 10px 0px;  padding: 5px 5px;}
-                .validateSuccess{  color: green;  border: 1px solid green;  margin: 10px 0px;  padding: 5px 5px;}
-                .validateWarning{  color: yellow;  border: 1px solid green;  margin: 10px 0px;  padding: 5px 5px;}
                 @media (min-width: 500px) and (max-width:767px){
                     .col-sm-6 {
                       width: 50%;

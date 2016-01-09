@@ -145,6 +145,17 @@
                           <div class="error-inner">This field is required.</div></td>
                       </tr>
                       <tr>
+                        <th valign="top">Choix Éditoriale:</th>
+                        <td>
+                        
+							<input type="hidden" name="editorial" id="editorial_" value="0" />
+							<input type="checkbox" name="editorial" value="1" <?php if(isset($editorial)){if(($editorial==1)){ echo "checked";}else{echo "";}} ?> id="editorial" />
+                        
+                        </td>
+                        <td>
+                          </td>
+                      </tr>
+                      <tr>
 						 <tr>
                         <th valign="top">PDSF de départ:</th>
                         <td><input type="text" class="inp-form-fullone" value="<?php echo $pdsf;?>" name="pdsf" id="pdsf" /></td>
@@ -152,12 +163,13 @@
                           <div class="error-inner">This field is required.</div></td>
                       </tr>
                       <tr>
-						 <tr>
+						 
                         <th valign="top">MPG Estimé:</th>
                         <td><input type="text" class="inp-form-fullone" value="<?php echo $mpg;?>" name="mpg" id="pdsf" /></td>
                         <td><div class="error-left"></div>
                           <div class="error-inner">This field is required.</div></td>
                       </tr>
+                      <tr>
                       <th valign="top">Type:</th>
 							<td>
 								<select name="old_new" id="old_new" >
@@ -167,6 +179,7 @@
 							</td>
 							<td></td>
 						</tr>
+						<tr>
                       	<th valign="top">Make:</th>
 							<td>
 								<select name="make" id="makeSelector" >
@@ -189,14 +202,13 @@
 							</td>
 							<td></td>
 						</tr>
-						
-                      <tr>
-						 <tr>
+					<tr>
                         <th valign="top">Year:</th>
                         <td><input type="text" class="inp-form-fullone" value="<?php echo $year;?>" name="year" id="year" /></td>
                         <td><div class="error-left"></div>
                           <div class="error-inner">This field is required.</div></td>
                       </tr>
+                      <tr>
                         <th valign="top">Avis d’expert:</th>
                         <td><textarea rows="" cols="" class="form-textarea myTextEditor" name="expert" id="expert"><?php echo $expert; ?></textarea></td>
                         <td><div class="error-left"></div>

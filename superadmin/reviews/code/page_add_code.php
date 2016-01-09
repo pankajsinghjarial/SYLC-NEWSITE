@@ -30,22 +30,19 @@ $models = $getEntityObj->getEntityOutput($first,4);
 
 if($_SERVER['REQUEST_METHOD']=='POST')
     {
-		 //echo "<pre>";
-		 //print_r($_FILES);
-		 //print_r($_POST); 
-		 
+
 		 $count = 0;
 		 $order = 1;
 		 $medias=array();
 		 foreach($_POST as $key =>$value){
 			 $count++;
-			 if($count>10)
+			 if($count>11)
 			 {
 				$explodedkey = explode("-",$key);
 				$mediaType = $explodedkey[0]; 
 				$order = $explodedkey[1];
 				$medias[] = array('mediatype'=>$mediaType,'order'=>$order,'value'=>$value);   
-				$order++; 
+				$order++;
 			 }
 		 }
 		// print_r($medias);
@@ -76,7 +73,6 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 		  if($error){
  				$errorMsg = "<font color='#FF0000' family='verdana' size=2>Please fill all required fields.</font>";
  				
- 				
  		   }  
 		  else
 		    {
@@ -89,7 +85,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 				move_uploaded_file($_FILES["image"]["tmp_name"],$path.$image_name);
 				$_SESSION['success_msg'] = 'New review has been saved successfully.';
 					
-				$dataArr = array('short_description'=>$short_description,'old_new'=>$old_new,'pdsf'=>$pdsf,'mpg'=>$mpg,'image'=>$image_name,'make'=>$make,'model'=>$model,'year'=>$year,'expert'=>$expert,'ensemble'=>$ensemble,'characteristique'=>$characteristique,'updated'=>getCurrentTimestamp(),'make_name'=>$make_name,'model_name'=>$model_name);
+				$dataArr = array('short_description'=>$short_description,'old_new'=>$old_new,'editorial'=>$editorial,'pdsf'=>$pdsf,'mpg'=>$mpg,'image'=>$image_name,'make'=>$make,'model'=>$model,'year'=>$year,'expert'=>$expert,'ensemble'=>$ensemble,'characteristique'=>$characteristique,'updated'=>getCurrentTimestamp(),'make_name'=>$make_name,'model_name'=>$model_name);
 					
 				$review_id		=	$obj_setting->save('reviews', $dataArr);
 					

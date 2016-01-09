@@ -32,19 +32,19 @@ class Paginator{
 
 	function paginate()
 	{
-		if(!isset($this->default_ipp)) $this->default_ipp=25;
+		if(!isset($this->default_ipp)) $this->default_ipp=20;
 		if(isset($_GET['ipp']) && $_GET['ipp'] == 'All')
 		{
 			$this->num_pages = 1;
-//			$this->items_per_page = $this->default_ipp;
 		}
 		else
 		{
 			if(!is_numeric($this->items_per_page) OR $this->items_per_page <= 0) $this->items_per_page = $this->default_ipp;
 			$this->num_pages = ceil($this->items_total/$this->items_per_page);
 		}
-
-		$this->current_page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1 ; // must be numeric > 0
+        if(!isset($this->current_page)){
+            $this->current_page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1 ; // must be numeric > 0
+        }
 			//customization for media page
 		if(basename($_SERVER['SCRIPT_NAME']) == 'media.php') {
 			if($this->extraParam == "video" && $_GET['media'] == "video") {
@@ -56,18 +56,18 @@ class Paginator{
 			}
 		}
 	
-		if(basename($_SERVER['SCRIPT_NAME']) == 'products.php') {
-			if(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) == "/notre_inventaire" && $this->extraParam == "notre_inventaire") {	
-				 $this->current_page = (isset($_GET['page'])) ? $_GET['page'] : 1;
-				
-			} else if(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) == "/annouce_usa_actuelle" && $this->extraParam == "annouce_usa_actuelle") {		
-				$this->current_page = (isset($_GET['page'])) ? $_GET['page'] : 1;
-				
-			} else {
-				$this->current_page = 1;
-			}
-			
-		}
+		//~ if(basename($_SERVER['SCRIPT_NAME']) == 'products.php') {
+			//~ if(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) == "/notre_inventaire" && $this->extraParam == "notre_inventaire") {	
+				 //~ $this->current_page = (isset($_GET['page'])) ? $_GET['page'] : 1;
+				//~ 
+			//~ } else if(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) == "/annouce_usa_actuelle" && $this->extraParam == "annouce_usa_actuelle") {		
+				//~ $this->current_page = (isset($_GET['page'])) ? $_GET['page'] : 1;
+				//~ 
+			//~ } else {
+				//~ $this->current_page = 1;
+			//~ }
+			//~ 
+		//~ }
 		$prev_page = $this->current_page-1;
 		$next_page = $this->current_page+1;
 				
@@ -81,7 +81,7 @@ class Paginator{
 			foreach($args as $arg)
 			{
 				$keyval = explode("=",$arg);
-				if($keyval[0] != "page" And $keyval[0] != "ipp") $this->querystring .= "&" . $arg;
+				if($keyval[0] != "page" And $keyval[0] != "ipp" And $keyval[0]!="products") $this->querystring .= "&" . $arg;
 			}
 		}
 
@@ -93,10 +93,12 @@ class Paginator{
 					foreach($val as $v){
 						$this->querystring .= "&".$key."[]=$v";
 					}
-				}
-				else if($key != "page" And $key != "ipp") $this->querystring .= "&$key=$val";
+				}else if($key != "page" And $key != "ipp" And $keyval[0]!="products") $this->querystring .= "&$key=$val";
 			}
 		}
+        if(isset($this->tab)){
+            $this->querystring .= "&products=".$this->tab;
+        }
 		if(!isset($this->pageUrl)) $_SERVER[PHP_SELF];
 		if($this->num_pages > 10)
 		{
@@ -129,7 +131,6 @@ class Paginator{
 				if($this->range[$this->mid_range-1] < $this->num_pages-1 And $i == $this->range[$this->mid_range-1]) $this->return .= "<li><a><span class=\"dots\"> ...</span></a></li>  ";
 			}
 			$this->return .= (($this->current_page < $this->num_pages And $this->items_total >= 10) And (@$_GET['page'] != 'All') And $this->current_page > 0) ? "<li class=\"next\"><a class=\"paginate\" href=\"$this->pageUrl?page=$next_page&ipp=$this->items_per_page$this->querystring\"> Suivant <i class=\"fa fa-angle-double-right\"></i></a></li>\n":"<li class=\"next\"> Suivant <i class=\"fa fa-angle-double-right\"></i></li>\n";
-			/*$this->return .= ($_GET['page'] == 'All') ? "<a class=\"current\" style=\"margin-left:10px\" href=\"#\">All</a> \n":"<a class=\"paginate\" style=\"margin-left:10px\" href=\"$_SERVER[PHP_SELF]?page=1&ipp=All$this->querystring\">All</a> \n";*/
 			$this->return .= "</ul>";
 		}
 		else

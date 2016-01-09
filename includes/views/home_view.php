@@ -44,39 +44,39 @@
                       <div class="tab-content">
                           <div class="tab-pane fade in active" id="tab1default">
                             <div class="col-md-12 no-padding car-imgs1">
-                              <div class="col-md-3 no-padding">
+                              <div class="col-md-3 col-sm-6 no-padding">
                                 <a title="PONY" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Chevrolet&manufacturer[]=Ford&manufacturer[]=Pontiac&manufacturer[]=Mercury&model[]=Mustang&model[]=Camaro&model[]=cougar&model[]=Firebird&madeYear[]=1965&madeYear[]=1968"><img src="images/pony-car.png" class="img-responsive"></a>
                                 <a title="PONY" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Chevrolet&manufacturer[]=Ford&manufacturer[]=Pontiac&manufacturer[]=Mercury&model[]=Mustang&model[]=Camaro&model[]=cougar&model[]=Firebird&madeYear[]=1965&madeYear[]=1968"><h3>PONY</h3></a>
                               </div>
-                              <div class="col-md-3 no-padding">
+                              <div class="col-md-3 col-sm-6 no-padding">
                                 <a title="Muscle Car" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&manufacturer[]=Dodge&manufacturer[]=Chevy&model[]=Mustang&model[]=Charger&model[]=cougar&model[]=Challenger&model[]=Chevelle&madeYear[]=1965&madeYear[]=1973"><img src="images/muscl-car.png" class="img-responsive"></a>
                                 <a title="Muscle Car" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&manufacturer[]=Dodge&manufacturer[]=Chevy&model[]=Mustang&model[]=Charger&model[]=cougar&model[]=Challenger&model[]=Chevelle&madeYear[]=1965&madeYear[]=1973"><h3>Muscle Car</h3></a>
                               </div>
-                              <div class="col-md-3 no-padding">
+                              <div class="col-md-3 col-sm-6 no-padding">
                                 <a title="Pick ups" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&manufacturer[]=Chevy&manufacturer[]=Chevrolet&manufacturer[]=GMC&model[]=Pickup&model[]=Other Pickups&madeYear[]=1940&madeYear[]=1979"><img src="images/pick-car.png" class="img-responsive"></a>
                                 <a title="Pick ups" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&manufacturer[]=Chevy&manufacturer[]=Chevrolet&manufacturer[]=GMC&model[]=Pickup&model[]=Other Pickups&madeYear[]=1940&madeYear[]=1979"><h3>Pick ups</h3></a>
                                 
                               </div>
-                              <div class="col-md-3 no-padding">
+                              <div class="col-md-3 col-sm-6 no-padding">
                                 <a title="Cabriolet" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&manufacturer[]=Chevy&manufacturer[]=Corvette&manufacturer[]=Cadillac&manufacturer[]=Buick&model[]=Thunderbird&model[]=Mustang&model[]=Camaro&model[]=C1&model[]=C2&model[]=C3&model[]=Eldorado&model[]=Riviera&model[]=Model A&madeYear[]=1920&madeYear[]=1980"><img src="images/cab-car.png" class="img-responsive"></a>
                                 <a title="Cabriolet" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&manufacturer[]=Chevy&manufacturer[]=Corvette&manufacturer[]=Cadillac&manufacturer[]=Buick&model[]=Thunderbird&model[]=Mustang&model[]=Camaro&model[]=C1&model[]=C2&model[]=C3&model[]=Eldorado&model[]=Riviera&model[]=Model A&madeYear[]=1920&madeYear[]=1980"><h3>Cabriolet</h3></a>
                               </div>
                             </div>
                             <div class="col-md-12 no-padding car-imgs2">
-                              <div class="col-md-3 no-padding">
+                              <div class="col-md-3 col-sm-6 no-padding">
                                 <a title="SEDAN" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Chevrolet&manufacturer[]=Cadillac&manufacturer[]=Buick&style[]=Sedan&madeYear[]=1920&madeYear[]=1960"><img src="images/sedan-car.png" class="img-responsive"></a>
                                 <a title="SEDAN" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Chevrolet&manufacturer[]=Cadillac&manufacturer[]=Buick&style[]=Sedan&madeYear[]=1920&madeYear[]=1960"><h3>SEDAN</h3></a>
                               </div>
-                              <div class="col-md-3 no-padding">
+                              <div class="col-md-3 col-sm-6 no-padding">
                                 <a title="HOT ROD" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&model[]=Model A&model[]=Model T&madeYear[]=1920&madeYear[]=1960"><img src="images/hot-car.png" class="img-responsive"></a>
                                 <a title="HOT ROD" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Ford&model[]=Model A&model[]=Model T&madeYear[]=1920&madeYear[]=1960"><h3>HOT ROD</h3></a>
                               </div>
-                              <div class="col-md-3 no-padding">
+                              <div class="col-md-3 col-sm-6 no-padding">
                                <a title="Porsche US" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Porsche&model[]=911&model[]=356&madeYear[]=1956&madeYear[]=1986"><img src="images/porsche-car.png" class="img-responsive"></a>
                                 <a title="Porsche US" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Porsche&model[]=911&model[]=356&madeYear[]=1956&madeYear[]=1986"><h3>Porsche US</h3></a>
                                
                               </div>
-                              <div class="col-md-3 no-padding">
+                              <div class="col-md-3 col-sm-6 no-padding">
                                 <a title="Mercedes US" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Mercedes-Benz&madeYear[]=1950&madeYear[]=1986"><img src="images/merceds-car.png" class="img-responsive"></a>
                                 <a title="Mercedes US" href="<?php echo DEFAULT_URL ?>/products.php?products=products&manufacturer[]=Mercedes-Benz&madeYear[]=1950&madeYear[]=1986"><h3>Mercedes US</h3></a>
                                 
@@ -274,13 +274,13 @@
         </div>
         
 
-        <div class="col-md-12 form-group no-padding">
+        <div class="col-md-12 col-xs-12 form-group no-padding">
           <div class="col-md-10 col-sm-12 col-xs-12 no-padding">
             <input type="text" class="form-control" id="inputPassword3" name="comment" placeholder="Comments">            
           </div>
-          <div class="col-md-2 col-sm-12 col-xs-12">
+          <div class="col-md-2 col-sm-12 col-xs-12 home-btn">
 			<input type="hidden" id="realfactform" name="realfactform" value="reafacts">
-            <button type="submit" name=realfactsub" class="btn btn-default">Envoyez <i class="fa fa-angle-right"></i></button>
+            <button type="submit" name="realfactsub" class="btn btn-default">Envoyez <i class="fa fa-angle-right"></i></button>
           </div>
         </div>
 
@@ -381,7 +381,7 @@ foreach($objVideos as $objVideo){
         
         
       </div>
-      <div class="col-md-7 wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
+      <div class="col-md-7 wow fadeInRight iframe-video" data-wow-duration="2s" data-wow-delay=".5s">
         <iframe id="MainVideo" width="560" height="306" src="https://www.youtube.com/embed/<?php echo $firstVideoID;?>?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
       </div>
     
@@ -432,21 +432,33 @@ foreach($objVideos as $objVideo){
         <section class="footer-top">
             <div class="container">
                 <div class="row">
-                  <h1>Pourquoi choisir Sylc-Export</h1>
-                  <div class="col-md-3 no-padding icon-img">
-                    <p class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/power-off.png"> Jusqu'à 40% d'économies</p>
-                    <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/user.png"> 97.4% de clients satisfaits</p>
-                  </div>
+                  <div class="pourquri">
+        <h1>Pourquoi choisir Sylc-Export</h1>
+        <div class="col-md-3 no-padding icon-img">
+          <ul class="list-unstyle list-inline">
+            <li style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeInDown;" class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/power-off.png"> <h6>Jusqu'à 40% d'économies</h6></li>
 
-                  <div class="col-md-4 no-padding icon-img">
-                    <p class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/thumbs.png">Tarifs logistique imbattables</p>
-                    <p class="wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/earth.png">L'exportateur la plus réactive du marché</p>
-                  </div>
+            <li style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeInDown;" class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/user.png"> <h6>97.4% de clients satisfaits</h6></li>
+          </ul>
+          
+        </div>
 
-                  <div class="col-md-5 no-padding icon-img">
-                    <p class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/fil.png">Un interlocuteur français aux US et en France.</p>
-                    <p class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/lock.png">Fonds sécurisés et garantis par Bank of America</p>
-                  </div>
+        <div class="col-md-4 no-padding icon-img">
+          <ul class="list-unstyle list-inline">
+            <li style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeInDown;" class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/thumbs.png"><h6>Tarifs logistique imbattables</h6></li>
+
+            <li style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeInDown;" class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/earth.png"><h6>L'exportateur la plus réactive du marché</h6></li>
+          </ul>
+        </div>
+
+        <div class="col-md-5 no-padding icon-img">
+          <ul class="list-unstyle list-inline">
+            <li style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeInDown;" class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/fil.png"> <h6>Un interlocuteur français aux US et en France.</h6></li>
+
+            <li style="visibility: visible; animation-duration: 2s; animation-delay: 0.5s; animation-name: fadeInDown;" class="wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s"><img src="images/lock.png"> <h6>Fonds sécurisés et garantis par Bank of America</h6></li>
+          </ul>
+        </div>
+      </div>
                 </div>
             </div>
         </section>

@@ -52,7 +52,7 @@
 									  
 										<div class="col-md-6 col-sm-6 col-xs-12 no-padding list-right-text">
 										  <h2><?php echo $getPageData->productname;?></h2>
-										  <h3>Prix De Vente:  <span> &nbsp € <?php echo $common->CurrencyConverter($getPageData->amount);?></span></h3>
+										  <h3>Prix De Vente:  <span> &nbsp $ <?php echo number_format($getPageData->amount,2);?></span><span> &nbsp € <?php echo $common->CurrencyConverter($getPageData->amount);?></span></h3>
 										</div>
 									
 									

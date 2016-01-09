@@ -18,7 +18,8 @@ while($makerow = mysql_fetch_object($all_makes_query)){
 }
 $QueryString='';
 
-$limit = PAGING_LIMIT;
+//$limit = PAGING_LIMIT;
+$limit = 1;
     
 if(strlen($start) > 0 and !is_numeric($start)){
 	$start=0;
@@ -28,7 +29,29 @@ $eu = ($start - 0);
 
 $this1 = $eu + $limit; 
 $back = $eu - $limit; 
-$next = $eu + $limit; 
+$next = $eu + $limit;
+
+if(strlen($startOld) > 0 and !is_numeric($startOld)){
+	$startOld=0;
+}
+
+$euOld = ($startOld - 0); 
+
+$this1Old = $euOld + $limit; 
+$backOld = $euOld - $limit; 
+$nextOld = $euOld + $limit;
+
+if(strlen($startNew) > 0 and !is_numeric($startNew)){
+	$startNew=0;
+}
+
+$euNew = ($startNew - 0); 
+
+$this1New = $euNew + $limit; 
+$backNew = $euNew - $limit; 
+$nextNew = $euNew + $limit;
+
+
 
 
 
@@ -94,20 +117,65 @@ if(isset($makeID) || isset($modelID) || isset($Year)){
 $reviewsArrNew = array();
 $reviewsArrOld = array();
 
-$total_rows = $obj_setting->numberOfRows('reviews', $QueryString);
+$total_rowsOld = $obj_setting->numberOfRows('reviews', $QueryString);
+
 if($QueryString){
-	$QueryString	= 'WHERE '.$QueryString;
+	
+	$total_rowsOld = $obj_setting->numberOfRows('reviews', 'old_new = 0 AND '.$QueryString);
+	$total_rowsNew = $obj_setting->numberOfRows('reviews', 'old_new = 1 AND '.$QueryString);
+	
+	$QueryStringOld	= 'WHERE old_new =0 AND '.$QueryString;
+	$QueryStringNew	= 'WHERE old_new =1 AND '.$QueryString;
+}else{
+	
+	
+	$total_rowsOld = $obj_setting->numberOfRows('reviews', 'old_new = 0 '.$QueryString);
+	$total_rowsNew = $obj_setting->numberOfRows('reviews', 'old_new = 1 '.$QueryString);
+	
+	
+	//$QueryString	= 'WHERE '.$QueryString;
+	$QueryStringOld	= 'WHERE old_new =0 '.$QueryString;
+	$QueryStringNew	= 'WHERE old_new =1 '.$QueryString;
+	
 }
+
+//print_r($total_rowsOld);echo "kgjrkh"; print_r($total_rowsNew);die;
 
 if(isset($start)){
 	$QueryString .= ' limit '.$eu.', '.$limit;
+	//$QueryStringOld	.= ' limit '.$euOld.', '.$limit;
+	//$QueryStringNew	.= ' limit '.$euNew.', '.$limit;
 }else{
 	$QueryString .= ' limit '.$eu.', '.$limit;
+	//$QueryStringOld	.= ' limit '.$euOld.', '.$limit;
+	//$QueryStringNew	.= ' limit '.$euNew.', '.$limit;
+}
+if(isset($startNew)){
+	//$QueryString .= ' limit '.$eu.', '.$limit;
+	//$QueryStringOld	.= ' limit '.$euOld.', '.$limit;
+	$QueryStringNew	.= ' limit '.$euNew.', '.$limit;
+}else{
+	//$QueryString .= ' limit '.$eu.', '.$limit;
+	//$QueryStringOld	.= ' limit '.$euOld.', '.$limit;
+	$QueryStringNew	.= ' limit '.$euNew.', '.$limit;
 }
 
-$all_reviews_new = $obj_setting->customQuery("SELECT * FROM  reviews ".$QueryString);
-//$all_reviews_old = $obj_setting->customQuery("SELECT * FROM  reviews WHERE old_new=0 ".$QueryString);
-//
+if(isset($startOld)){
+	//$QueryString .= ' limit '.$eu.', '.$limit;
+	$QueryStringOld	.= ' limit '.$euOld.', '.$limit;
+	//$QueryStringNew	.= ' limit '.$euNew.', '.$limit;
+}else{
+	//$QueryString .= ' limit '.$eu.', '.$limit;
+	$QueryStringOld	.= ' limit '.$euOld.', '.$limit;
+	//$QueryStringNew	.= ' limit '.$euNew.', '.$limit;
+}
+
+
+
+
+$all_reviews_new = $obj_setting->customQuery("SELECT * FROM  reviews ".$QueryStringOld);
+$all_reviews_old = $obj_setting->customQuery("SELECT * FROM  reviews ".$QueryStringNew);
+
 while ($revNew = mysql_fetch_object($all_reviews_new)) {
 	
 	$short_description = $revNew->short_description;
@@ -119,11 +187,53 @@ while ($revNew = mysql_fetch_object($all_reviews_new)) {
     $title = $make.' '.$model.' '.$year;
     $image = DEFAULT_ADMIN_URL_REVIEW_IMAGEPATH.'/'.$revNew->image;
     if($old_new){
-		$reviewsArrNew[] = array('id'=>$id,'short_description'=>$short_description, 'image'=>$image, 'title'=>$title, 'old_new'=>$old_new); 
+		//$reviewsArrNew[] = array('id'=>$id,'short_description'=>$short_description, 'image'=>$image, 'title'=>$title, 'old_new'=>$old_new); 
 	}else{
 		$reviewsArrOld[] = array('id'=>$id,'short_description'=>$short_description, 'image'=>$image, 'title'=>$title, 'old_new'=>$old_new); 
 	}
 }
+
+while ($revOld = mysql_fetch_object($all_reviews_old)) {
+	
+	$short_description = $revOld->short_description;
+    $id = $revOld->id;
+    $make = $revOld->make_name;
+    $model = $revOld->model_name;
+    $year = $revOld->year;
+    $old_new = $revOld->old_new;
+    $title = $make.' '.$model.' '.$year;
+    $image = DEFAULT_ADMIN_URL_REVIEW_IMAGEPATH.'/'.$revOld->image;
+    if($old_new){
+		$reviewsArrNew[] = array('id'=>$id,'short_description'=>$short_description, 'image'=>$image, 'title'=>$title, 'old_new'=>$old_new); 
+	}else{
+		//$reviewsArrOld[] = array('id'=>$id,'short_description'=>$short_description, 'image'=>$image, 'title'=>$title, 'old_new'=>$old_new); 
+	}
+}
+/*
+print_r("<pre>");
+print_r($reviewsArrOld);
+print_r($reviewsArrNew);
+die;
+*/
+$editorialReviews = array();
+
+$all_editorial_reviews = $obj_setting->customQuery("SELECT * FROM  reviews WHERE editorial=1");
+
+while ($revEditorial = mysql_fetch_object($all_editorial_reviews)) {
+
+	$idEditorial = $revEditorial->id;
+	$makeEditorial = $revEditorial->make_name;
+    $modelEditorial = $revEditorial->model_name;
+    $yearEditorial = $revEditorial->year;
+    $titleEditorial = $makeEditorial.' '.$modelEditorial.' '.$yearEditorial;
+	$imageEditorial = DEFAULT_ADMIN_URL_REVIEW_IMAGEPATH.'/'.$revEditorial->image;
+	$editorialReviews[] = array('id'=>$idEditorial,'image'=>$imageEditorial, 'title'=>$titleEditorial); 
+
+}
+
+$editorialReviews = array_chunk($editorialReviews,3);
+
+
 /*
 echo "<pre>";
 $_SERVER['REQUEST_URI'];

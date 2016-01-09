@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cabin Regular'), local('Cabin-Regular'), url(http://fonts.gstatic.com/s/cabin/v7/JEgmtEDzc-IH8jBshQXrYA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Cabin Medium'), local('Cabin-Medium'), url(http://fonts.gstatic.com/s/cabin/v7/km2iCywk7CnC11BE8pBNVPesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Cabin SemiBold'), local('Cabin-SemiBold'), url(http://fonts.gstatic.com/s/cabin/v7/bSicyj3YibVhVPhGZyWVI_esZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Cabin Bold'), local('Cabin-Bold'), url(http://fonts.gstatic.com/s/cabin/v7/haOjnueK8Or1ztuuRtr8dvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Cabin Italic'), local('Cabin-Italic'), url(http://fonts.gstatic.com/s/cabin/v7/jZSwn9gMgsQpyndNljYDIw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Cabin Medium Italic'), local('Cabin-MediumItalic'), url(http://fonts.gstatic.com/s/cabin/v7/l3VlC5SZU-ZceiU15Vs2gBsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Cabin SemiBold Italic'), local('Cabin-SemiBoldItalic'), url(http://fonts.gstatic.com/s/cabin/v7/Sn-0zpaF2c3wYt9xdgoYFRsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Cabin Bold Italic'), local('Cabin-BoldItalic'), url(http://fonts.gstatic.com/s/cabin/v7/Ww23LQNlhn4dAm9uegPaXxsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}

@@ -23,6 +23,7 @@ $model                  = $getSetting->model;
 $year                   = $getSetting->year;
 $pdsf					= $getSetting->pdsf;
 $mpg					= $getSetting->mpg;
+$editorial				= $getSetting->editorial;
 $expert                 = $getSetting->expert;
 $ensemble               = $getSetting->ensemble;
 $ensemble               = $getSetting->ensemble;
@@ -90,10 +91,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 		 $count = 0;
 		 $order = 1;
 		 $medias=array();
-		 
-		// print_r($medias);
-		// die;
-		 
+		
 		 
 		  $error='';
 		  
@@ -124,7 +122,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 		 
 		  foreach($_POST as $key =>$value){
 			 $count++;
-			 if($count>11)
+			 if($count>12)
 			 {
 				$explodedkey = explode("-",$key);
 				$mediaType = $explodedkey[0]; 
@@ -168,7 +166,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 					}
 					$_SESSION['success_msg'] = 'Review has been updated successfully.';
 					
-					$dataArr = array('short_description'=>$short_description,'old_new'=>$old_new,'pdsf'=>$pdsf,'mpg'=>$mpg,'image'=>$image_name,'make'=>$make,'model'=>$model,'year'=>$year,'expert'=>$expert,'ensemble'=>$ensemble,'characteristique'=>$characteristique,'updated'=>getCurrentTimestamp(),'make_name'=>$make_name,'model_name'=>$model_name);
+					$dataArr = array('short_description'=>$short_description,'old_new'=>$old_new,'editorial'=>$editorial,'pdsf'=>$pdsf,'mpg'=>$mpg,'image'=>$image_name,'make'=>$make,'model'=>$model,'year'=>$year,'expert'=>$expert,'ensemble'=>$ensemble,'characteristique'=>$characteristique,'updated'=>getCurrentTimestamp(),'make_name'=>$make_name,'model_name'=>$model_name);
 					
 					$review_id		=	$obj_setting->update('reviews', $dataArr,"id=".$id);
 					

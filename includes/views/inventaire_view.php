@@ -1,4 +1,3 @@
-<?php //print_r($item);echo DEFAULT_URL.'/uploads/car/'.$item['images'][0]; die;?>
 <?php if(isset($_SESSION['sentmail_txt'])){ echo $_SESSION['sentmail_txt']; unset($_SESSION['sentmail_txt']);}?>
 <section class="product-page">
   <div class="container">
@@ -336,7 +335,7 @@
                         <h3 class="product-right-prix">Prix du véhicules actuelle</h3>
                     </div>
                     <div class="col-md-6 text-right no-padding">
-                        <h4 class="product-right-price"><?php echo $common->CurrencyConverter($carPrice);?> &euro;</h4>
+                        <h4 class="product-right-price"><?php echo $common->CurrencyConverter($item->buyItNowPrice);?> &euro;</h4>
                     </div>
                 </div>
                 <div class="col-md-12 appels no-padding">
@@ -344,143 +343,168 @@
                     <h5 class="product-right-reser">SÉLECTIONNEZ LES SERVICES DÉSIRÉS</h5>
                     <h6 class="product-right-pour">Pour la France, les véhicules arriveront au Port Le Havre. Une livraison à Domicile est possible, merci de nous contacter</h6>
                 </div>
-                <div class="col-md-12 product-form-right">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label trans-leb">Prestation SYLC:</label>
-                            <div class="col-sm-4 product-form-1">
-                                <select class="form-control" name="logistique_pays" id="logistique_pays">
-                                    <option selected="selected" class="list_select_1" value="France (Le Havre)">France </option>
-                                    <option class="list_select_0" value="Allemagne (Hambourg)">Allemagne </option>
-                                    <option class="list_select_1" value="Belgique (Anvers)">Belgique </option>
-                                    <option class="list_select_0" value="Espagne (Barcelone)">Espagne </option>
-                                22374
-                                    <option class="list_select_0" value="Luxembourg">Luxembourg</option>
-                                    <option class="list_select_1" value="Rotterdam">Rotterdam</option>
-                                    <option class="list_select_0" value="Suisse">Suisse</option>
-                                </select>
+                <form class="form-horizontal" accept-charset="ISO-8859-1" onsubmit="return testInfo()" method="post">
+                    <div class="col-md-12 product-form-right">
+                        
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label trans-leb">Prestation SYLC:</label>
+                                <div class="col-sm-4 product-form-1">
+                                    <select class="form-control" name="logistique_pays" id="logistique_pays">
+                                        <option selected="selected" class="list_select_1" value="France (Le Havre)">France </option>
+                                        <option class="list_select_0" value="Allemagne (Hambourg)">Allemagne </option>
+                                        <option class="list_select_1" value="Belgique (Anvers)">Belgique </option>
+                                        <option class="list_select_0" value="Espagne (Barcelone)">Espagne </option>
+                                    22374
+                                        <option class="list_select_0" value="Luxembourg">Luxembourg</option>
+                                        <option class="list_select_1" value="Rotterdam">Rotterdam</option>
+                                        <option class="list_select_0" value="Suisse">Suisse</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 product-form-2">
+                                    <input type="text" readonly="readonly" class="form-control" name="logistique_pays1" id="inputPassword" placeholder="$3000.00" value="$<?php echo $prestation;?>">
+                                </div>
                             </div>
-                            <div class="col-sm-4 product-form-2">
-                                <input type="text" readonly="readonly" class="form-control" name="logistique_pays1" id="inputPassword" placeholder="$3000.00" value="$<?php echo $prestation;?>">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Transport Terrestre USA:<br>
+                                <span style="font-size:14px">Assurance incluse:</span></label>
+                                <div class="col-sm-4 product-form-1">
+                                    <select class="form-control" name="transport_terrestre" id="slctTransportUSA">
+                                        <option value="Ouvert">Ouvert</option>
+                                        <option value="Fermée">Fermée</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 product-form-2">
+                                    <input type="text" readonly="readonly" class="form-control" name="transport_terrestre1" id="txtTransportUSA" value="$<?php echo $transportUSA;?>" placeholder="$1200.00">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label trans-leb">Transport - International:</label>
+                                <div class="col-sm-4 product-form-1">
+                                    <select class="form-control" name="transport_international" id="transport_international">
+                                        <option value="conteneur">conteneur</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4 product-form-2">
+                                    <input type="text" readonly="readonly" class="form-control" name="transport_international1" id="inputPassword" placeholder="$2000.00" value="$<?php echo $transport;?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-8 control-label trans-leb">Bank, fedex and doc fees:</label>
+                                <div class="col-sm-4 product-form-2">
+                                    <input type="text" readonly="readonly" name="assurance_transport" class="form-control" value="$<?php echo $bank;?>" id="inputPassword" placeholder="$260.00">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-8 control-label trans-leb">Frais Transitaire - Débarquement, Traction & Dépotage:</label>
+                                <div class="col-sm-4 product-form-2">
+                                    <input type="text" readonly="readonly" class="form-control" name="frais_transitaire" value="€<?php echo $frais;?>" id="inputPassword" placeholder="€780.00">
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-md-12 select-text-bottom-form">
+                        <h1>Sélectionnez les options désirés</h1>
+                        <div class="col-md-9 no-padding">
+                            <div class="checkbox">
+                                <label>
+                                    <input id="chkHomologation" name="homologation_francisation" value="$3500" type="checkbox"> Homologation - Francisation, passage aux mines<br> 
+                                    <h3 class="leger">pour tous vehicule léger obligatoire pout tout vehicule de moins de 30 ans</h3>
+                                </label>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">Transport Terrestre USA:<br>
-                            <span style="font-size:14px">Assurance incluse:</span></label>
-                            <div class="col-sm-4 product-form-1">
-                                <select class="form-control" name="transport_terrestre" id="slctTransportUSA">
-                                    <option value="Ouvert">Ouvert</option>
-                                    <option value="Fermée">Fermée</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-4 product-form-2">
-                                <input type="text" readonly="readonly" class="form-control" name="transport_terrestre1" id="txtTransportUSA" value="$<?php echo $transportUSA;?>" placeholder="$1200.00">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label trans-leb">Transport - International:</label>
-                            <div class="col-sm-4 product-form-1">
-                                <select class="form-control" name="transport_international" id="transport_international">
-                                    <option value="conteneur">conteneur</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-4 product-form-2">
-                                <input type="text" readonly="readonly" class="form-control" name="transport_international1" id="inputPassword" placeholder="$2000.00" value="$<?php echo $transport;?>">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-8 control-label trans-leb">Bank, fedex and doc fees:</label>
-                            <div class="col-sm-4 product-form-2">
-                                <input type="text" readonly="readonly" class="form-control" value="$<?php echo $bank;?>" id="inputPassword" placeholder="$260.00">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-8 control-label trans-leb">Frais Transitaire - Débarquement, Traction & Dépotage:</label>
-                            <div class="col-sm-4 product-form-2">
-                                <input type="text" readonly="readonly" class="form-control" value="€<?php echo $frais;?>" id="inputPassword" placeholder="€780.00">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md-12 select-text-bottom-form">
-                    <h1>Sélectionnez les options désirés</h1>
-                    <div class="col-md-9 no-padding">
-                        <div class="checkbox">
-                            <label>
-                                <input id="chkHomologation" type="checkbox"> Homologation - Francisation, passage aux mines<br> 
-                                <h3 class="leger">pour tous vehicule léger obligatoire pout tout vehicule de moins de 30 ans</h3>
-                            </label>
+                        <div class="col-md-3 homolgy no-padding"> 
+                            <input type="text" class="form-control" readonly="readonly" id="txtHomologation" placeholder="€" value="€3500">
                         </div>
                     </div>
-                    <div class="col-md-3 homolgy no-padding"> 
-                        <input type="text" class="form-control" readonly="readonly" id="txtHomologation" placeholder="€" value="€3500">
-                    </div>
-                </div>
-                <!--<div class="col-md-12 prixi-1">
+                    <!--<div class="col-md-12 prixi-1">
+                        <h1>PRIX TOTAL </h1>
+                        <div class="col-md-6 no-padding">
+                            <div class="checkbox">
+                                <h3 class="rendu">H.T rendu le port sélectionné </h3>
+                                <label>
+                                    <input id="chkOverThirty" type="checkbox"> Voiture 30 ans et plus 
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-150"> 
+                            <input type="text" class="form-control" id="priceHT" readonly="readonly" value="< ?php echo $priceHT;?>" placeholder="15068">
+                        </div>
+                    </div>-->
+                    <div class="col-md-12 prixi-2">
                     <h1>PRIX TOTAL </h1>
-                    <div class="col-md-6 no-padding">
-                        <div class="checkbox">
-                            <h3 class="rendu">H.T rendu le port sélectionné </h3>
-                            <label>
-                                <input id="chkOverThirty" type="checkbox"> Voiture 30 ans et plus 
-                            </label>
+                        <div class="col-md-6 no-padding rendu">
+                            <h3>Prix Total TTC tout inclus rendu </h3>
+                            <h3>le port selectionné </h3> 
+                        </div>
+                        <div class="col-md-6 no-padding"> 
+                                <input type="text" name="prix_total_ht" class="form-control" readonly="readonly" value="€<?php echo number_format($priceTTC,2,'.','');?>" id="priceTTC" placeholder="€">
+                        </div>
+                        <div class="col-md-12 no-padding rendu">
+                            <font color="da2b10">
+                                <?php
+                                    if($item->Year < 1985){
+                                        echo 'Taux de douane 5.5%, pour tous véhicules de 30 ans et plus, inclus.';
+                                    }else{
+                                        echo 'Taux de douanes 10% et TVA 20% inclus';
+                                    }
+                                ?>
+                            </font>
                         </div>
                     </div>
-                    <div class="col-md-6 form-150"> 
-                        <input type="text" class="form-control" id="priceHT" readonly="readonly" value="< ?php echo $priceHT;?>" placeholder="15068">
-                    </div>
-                </div>-->
-                <div class="col-md-12 prixi-2">
-                <h1>PRIX TOTAL </h1>
-                    <div class="col-md-6 no-padding rendu">
-                        <h3>Prix Total TTC tout inclus rendu </h3>
-                        <h3>le port selectionné </h3> 
-                    </div>
-                    <div class="col-md-6 no-padding"> 
-                            <input type="text" class="form-control" readonly="readonly" value="€<?php echo number_format($priceTTC,2,'.','');?>" id="priceTTC" placeholder="€">
-                    </div>
-                    <div class="col-md-12 no-padding rendu">
-                        <font color="da2b10">
-                            <?php
-                                if($year < 1985){
-                                    echo 'Taux de douane 5.5%, pour tous véhicules de 30 ans et plus, inclus.';
-                                }else{
-                                    echo 'Taux de douanes 10% et TVA 20% inclus';
-                                }
-                            ?>
-                        </font>
-                    </div>
-                </div>
-                <div class="col-md-12 product-right-bottom">
-                <h1>A PROPOS DE VOUS </h1>
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-sm-6 product-fst-input">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    <div class="col-md-12 product-right-bottom">
+                    <h1>A PROPOS DE VOUS </h1>
+                        <div class="form-group">
+                            <div class="col-sm-6 product-fst-input">
+                                <input type="text" class="form-control" name="fname" id="fname" placeholder="Nom">
+                            </div>
+                            <div class="col-sm-6 product-snd-input">
+                                <input type="text" class="form-control" name="lname" id="lname" placeholder="Prénom">
+                            </div>
+                        </div>                    
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="Téléphone">
+                            </div>
                         </div>
-                        <div class="col-sm-6 product-snd-input">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="E-mail">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="address" id="address" placeholder="Adresse">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <textarea class="form-control" rows="3"></textarea>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="code_postal" id="code_postal" placeholder="Code Postal">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="text-right" style="padding-right: 14px">
-                            <button type="submit" class="btn btn-default">Etape Suivante <i class="fa fa-angle-right"></i></button>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="ville" id="ville" placeholder="Ville">
+                            </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" name="pays" id="pays" placeholder="Pays">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <textarea class="form-control" name="message" id="message" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="text-right" style="padding-right: 14px">
+                                <button type="submit" name="sendMail" id="sendMail" class="btn btn-default">Etape Suivante <i class="fa fa-angle-right"></i></button>
+                            </div>
+                        </div>
+                  
+                    <p>Nous sommes disponible de 12H a 22H pour la France du Lundi au Jeudi/ de 12h a 18h le Vendredi / Samedi a partir de 19h au 01.76.63.32.16</p>
                     </div>
                 </form>
-                <p>Nous sommes disponible de 12H a 22H pour la France du Lundi au Jeudi/ de 12h a 18h le Vendredi / Samedi a partir de 19h au 01.76.63.32.16</p>
-                </div>
-            </div><!--  col-md-4 -->    
+            </div><!--  col-md-4 -->
         </div>
   </div>
 </section>
@@ -580,6 +604,58 @@
         //over 30 year
         priceTTC = parseFloat(initPrice) + parseFloat(carprice) + parseFloat(transport) + parseFloat(prestation) + parseFloat(transportUSA) + parseFloat(bank) + parseFloat(frais) + parseFloat(homologation);
         $('#priceTTC').val('€'+parseFloat(priceTTC).toFixed(2));
+    }
+    function testInfo(){
+        $('.validateError').remove();
+        $('.validateSuccess').remove();
+        var fname = $('#fname').val();
+        var lname = $('#lname').val();
+        var address = $('#address').val();
+        var phone = $('#phone').val();
+        var ville = $('#ville').val();
+        var pays = $('#pays').val();
+        var code_postal = $('#code_postal').val();
+        var email = $('#email').val();
+        if(fname.trim() == ""){
+            $('#fname').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrez le nom</div>");
+            return false;
+        }
+        if(lname.trim() == ""){
+            $('#lname').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Nom de famille</div>");
+            return false;
+        }
+        if(phone.trim() == ""){
+            $('#phone').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Numero de telephone</div>");
+            return false;
+        }
+        if(email.trim() == ""){
+            $('#email').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Email</div>");
+            return false;
+        }
+        if(address.trim() == ""){
+            $('#address').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Address</div>");
+            return false;
+        }
+        if(code_postal.trim() == ""){
+            $('#code_postal').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Code Postal</div>");
+            return false;
+        }
+        if(ville.trim() == ""){
+            $('#ville').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Ville</div>");
+            return false;
+        }
+        if(pays.trim() == ""){
+            $('#pays').focus();
+            $('.product-right-bottom h1').after("<div class=\"validateError\">S'il vous plaît entrer Pays</div>");
+            return false;
+        }
     }
 </script>
 

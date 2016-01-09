@@ -567,7 +567,7 @@ class iContactApi {
 			break;
 		}
 		// Store the URL into the instance
-		echo $this->sRequestUri = (string) $sApiUrl;echo "<br/>";
+		$this->sRequestUri = (string) $sApiUrl;
 		// Give our handle a URL
 		curl_setopt($rHandle, CURLOPT_URL, $sApiUrl);
 		// Try to execute the handle
