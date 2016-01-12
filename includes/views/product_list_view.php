@@ -3,6 +3,8 @@
 <script type="text/javascript">
 	window.onload = function(){
 		jQuery(".example5").colorbox();
+
+
 	};
     function wishlistcar(carid,cartype,carname,carimg,carprice){
         if(!confirm("Are you sure to add this car to Favorite")){
@@ -32,6 +34,10 @@
         $newurl1 =  DEFAULT_URL."/notre_inventaire".$addtopaging;
     }
 ?>
+
+<div style="display:none">
+	 <img id="popup" src="<?php echo DEFAULT_URL; ?>/images/product_tooltip.jpg"/>
+</div>
 <section class="list-car-details">
   <div class="container">
     <div class="col-md-12 no-padding">
@@ -117,7 +123,7 @@
 									<li class="list-border-right">
 										<a href="javascript:void(0);">
 											<i class="fa fa-star-o"></i> 
-											<span class="read_btn">													
+											<span class="read_btn">	
 												Ajouter à ma selection 
 											</span>
 										</a>
@@ -205,7 +211,7 @@
 							<div class="col-md-12 col-sm-12 col-xs-12 no-padding list-first-section wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
 							<div class="col-md-4 col-sm-4 col-xs-12 no-right-padding">
 								<a href="<?php echo DEFAULT_URL;?>/inventaire/<?php echo $car['car_id'];?>">
-									<img alt="<?php echo $title[0];?>"
+									<img alt="<?php echo $car['title'];?>"
 									src="<?php echo DEFAULT_URL;?>/image_resizer.php?img=<?php echo $primaryImage; ?>&newWidth=291&newHeight=227"
 									width="291" height="227" class="img-responsive">
 								</a>

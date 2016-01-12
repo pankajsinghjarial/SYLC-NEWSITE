@@ -9,8 +9,13 @@
         <div class="col-md-8 tab-content">
           <ul class="nav nav-tabs hidden-md hidden-lg">            
 			<?php 	
-				if ($total_rows > 0) {					
-					while ($tab = mysql_fetch_object($allTabs)) { 
+				if ($total_rows > 0) {
+					$i = 0 ;				
+					while ($tab = mysql_fetch_object($allTabs)) {
+						$i++;
+						if($slug == '' && $i == 1) {
+							$slug = $tab->slug;
+						}
 			?>
 					<li <?php if($slug == $tab->slug) {echo 'class="active"';}?>><a href="/presentation/<?php echo $tab->slug;?>"><?php echo $tab->tab_title;?></a></li>
 			<?php
@@ -28,7 +33,8 @@
             
 			<?php mysql_data_seek($allTabs, 0);
 					if ($total_rows > 0) {					
-						while ($tab = mysql_fetch_object($allTabs)) { 
+						while ($tab = mysql_fetch_object($allTabs)) {
+							
 				?>
 						<li <?php if($slug == $tab->slug) {echo 'class="active"';}?>><a href="/presentation/<?php echo $tab->slug;?>"><?php echo stripslashes($tab->tab_title);?></a></li>
 				<?php

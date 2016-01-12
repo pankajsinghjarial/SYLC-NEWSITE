@@ -39,7 +39,7 @@
 				<div class="all-slect-form">
 				
                     <div class=" form-group for-sm">
-                        <div class="">                  
+                        <div class="selt-box">                  
                             <select class="form-control prothom"  id="manufacturer_select" multiple="multiple" name="manufacturer[]" >
                                 <?php
                                 foreach($brands as $brand) { ?>
@@ -50,7 +50,7 @@
                     </div>
 
 				   <div class="form-group for-sm">
-					<div class="selt-box-model">
+					<div class="selt-box selt-box-model">
 					  <select class="form-control prothom" name="model[]" multiple="multiple" id="model_select">
 					  </select>					  
 					</div>
@@ -127,3 +127,4 @@
     </div>
   </div>
 </section>
+

@@ -15,6 +15,7 @@
         $Year = trim($_POST["Year"]);
         $currenturl = trim($_POST["currentUrl"]);
         $title = $make_name.' '.$model_name.' '.$Year;
+        $listName = 'Revue_automobile( '.$make_name.'-'.$model_name.'-'.$Year.' )';
         $title_url = $title.'( <a href="'.$currenturl.'">'.$currenturl.'</a> )';        
         if(isset($_POST["InputCheckbox"])){
 			$checked = "Yes";
@@ -42,9 +43,32 @@
 	$oiContact = iContactApi::getInstance();
 	try {
 			//Create a contact
+            $getLists = $oiContact->getLists();
+            $found= 0;
+           
+            foreach($getLists as $aList){
+				$nameExisting = $aList->name;
+				if($nameExisting == $listName){
+						$id =  $aList->listId;
+						$found =1;
+						break;
+				}
+				
+			}
+			$cid = $oiContact->CustomaddContactForm($email, 'normal', '', null, $phone, $message, $name, null, $make_name, $model_name, $Year);
+			
+			if($found){
+				
+				$res = $oiContact->subscribeContactToList($cid->contactId, $id, 'normal');
+				
+			}else{
+				
+				$createdList = $oiContact->addList($listName, 411803, true, false, false, $listName, $listName);
+				$res = $oiContact->subscribeContactToList($cid->contactId, $createdList[0]->listId, 'normal');
+			}
+            
             //$cid = $oiContact->CustomaddContactForm($email, 'normal', '', null, $phone, $comment, $fname);
 			//$res = $oiContact->subscribeContactToList($cid->contactId, 80005, 'normal');
-			
 			/* Send Notification to Admin about this Lead */				
             $message = "<p>New Revue Automobile Enquiry received:</p>
 						<table>

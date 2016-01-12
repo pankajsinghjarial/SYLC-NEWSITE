@@ -60,7 +60,7 @@
             </div>
           </div>
         </section>
-
+        <?php $searchUrl = DEFAULT_URL."/products.php?products=products&";?>
         <section class="footer-bottom">
           <div class="container">
             <div class="row">
@@ -73,21 +73,20 @@
                     <div class="col-md-9 col-sm-6 col-xs-6 no-padding li-bottom-right">
                       <div class="col-md-6 no-padding">
                         <ul class="list-unstyled">
-                          <li><a href=""><i class="fa fa-angle-right"></i>Automobile Sportive</a></li>
-                          <li><a href=""><i class="fa fa-angle-right"></i>Corvette C1:   1953-62</a></li>
-                          <li><a href=""><i class="fa fa-angle-right"></i>Corvette C2:   1963-67</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Chevrolet&model[]=Corvette&madeYear[]=1953&madeYear[]=1962"><i class="fa fa-angle-right"></i>Corvette C1: 1953-1962</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Chevrolet&model[]=Corvette&madeYear[]=1963&madeYear[]=1967"><i class="fa fa-angle-right"></i>Corvette C2: 1963-1967</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Chevrolet&model[]=Corvette&madeYear[]=1968&madeYear[]=1982"><i class="fa fa-angle-right"></i>Corvette C3: 1968-1982</a></li>
                         </ul>
                       </div>
                       <div class="col-md-6 no-padding second-ul">
                         <ul class="list-unstyled">
-                          <li><a href=""><i class="fa fa-angle-right"></i>Automobile Sportive</a></li>
-                          <li><a href=""><i class="fa fa-angle-right"></i>Corvette C1:   1953-62</a></li>
-                          <li><a href=""><i class="fa fa-angle-right"></i>Corvette C2:   1963-67</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Chevrolet&model[]=Corvette&madeYear[]=1984&madeYear[]=1996"><i class="fa fa-angle-right"></i>Corvette C4: 1984-1996</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Chevrolet&model[]=Corvette&madeYear[]=1997&madeYear[]=2004"><i class="fa fa-angle-right"></i>Corvette C5: 1997-2004</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Chevrolet&model[]=Corvette&madeYear[]=2005&madeYear[]=2013"><i class="fa fa-angle-right"></i>Corvette C6: 2005-2013</a></li>
                         </ul>
                       </div>
                     </div>
                   </div>
-
                   <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="col-md-3 col-sm-3 col-xs-6 no-padding">
                       <h1 class="footer-heading-text-bottom">Ford</h1>
@@ -96,16 +95,16 @@
                     <div class="col-md-9 col-sm-6 col-xs-6 no-padding li-bottom-right">
                       <div class="col-md-6 no-padding">
                         <ul class="list-unstyled">
-                          <li><a href=""><i class="fa fa-angle-right"></i>Pony Car / Muscle Car</a></li>
-                          <li><a href=""><i class="fa fa-angle-right"></i>Mustang I: 1964-73</a></li>
-                          <li><a href=""><i class="fa fa-angle-right"></i>Mustang II: 1944-78</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Ford&model[]=Mustang&madeYear[]=1964&madeYear[]=1973"><i class="fa fa-angle-right"></i>Mustang I: 1964-73</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Ford&model[]=Mustang&madeYear[]=1974&madeYear[]=1978"><i class="fa fa-angle-right"></i>Mustang II: 1974-78</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Ford&model[]=Mustang&madeYear[]=1979&madeYear[]=1993"><i class="fa fa-angle-right"></i>Mustang III: 1979-93</a></li>
                         </ul>
                       </div>
                        <div class="col-md-6 no-padding second-ul">
                         <ul class="list-unstyled">
-                          <li><a href=""><i class="fa fa-angle-right"></i>Mustang III: 1979-86</a></li>
-                          <li><a href=""><i class="fa fa-angle-right"></i>Trouver une Mustang</a></li>
-                          <li><a href=""><i class="fa fa-angle-right"></i>Importer une Mustang</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Ford&model[]=Mustang&madeYear[]=1994&madeYear[]=2004"><i class="fa fa-angle-right"></i>Mustang IV 1994-2004</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Ford&model[]=Mustang&madeYear[]=2005&madeYear[]=2014"><i class="fa fa-angle-right"></i>Mustang V 2005-2014</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Ford&model[]=Mustang&madeYear[]=2015&madeYear[]=2015"><i class="fa fa-angle-right"></i>Mustang VI 2015</a></li>
                         </ul>
                       </div>
                     </div>
@@ -119,16 +118,16 @@
                     <div class="col-md-9 col-sm-6 col-xs-6 no-padding li-bottom-right">
                       <div class="col-md-6 no-padding">
                         <ul class="list-unstyled">
-                          <li><a href=""><i class="fa fa-angle-right"></i>Automobile Sportive</a></li>
-                          <li><a href=""><i class="fa fa-angle-right"></i>Corvette C1:   1953-62</a></li>
-                          <li><a href=""><i class="fa fa-angle-right"></i>Corvette C2:   1963-67</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Dodge&model[]=Challenger&madeYear[]=1970&madeYear[]=1974"><i class="fa fa-angle-right"></i>Challenger: 1970-74</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Dodge&model[]=Challenger&madeYear[]=1978&madeYear[]=1983"><i class="fa fa-angle-right"></i>Challenger: 1978-83</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Dodge&model[]=Coronet&madeYear[]=1949&madeYear[]=1959"><i class="fa fa-angle-right"></i>Coronet: 1949-59</a></li>
                         </ul>
                       </div>
                       <div class="col-md-6 no-padding second-ul">
                         <ul class="list-unstyled">
-                          <li><a href=""><i class="fa fa-angle-right"></i>Corvette C3:   1968-82</a></li>
-                          <li><a href=""><i class="fa fa-angle-right"></i>Trouver une Corvette</a></li>
-                          <li><a href=""><i class="fa fa-angle-right"></i>Importer une Corvette</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Dodge&model[]=Charger&madeYear[]=1966&madeYear[]=1978"><i class="fa fa-angle-right"></i>Charger: 1966-78</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Dodge&model[]=Charger&madeYear[]=1983&madeYear[]=1987"><i class="fa fa-angle-right"></i>Charger: 1983-87</a></li>
+                          <li><a href="<?php echo $searchUrl; ?>manufacturer[]=Dodge&model[]=Dart&madeYear[]=1960&madeYear[]=1976"><i class="fa fa-angle-right"></i>Dart: 1960-76</a></li>
                         </ul>
                       </div>
                     </div>
@@ -141,29 +140,29 @@
 
                   <div class="col-md-6 col-sm-6 col-xs-6">
                     <ul class="list-unstyled">
-                      <li><a href=""><i class="fa fa-angle-right"></i>Buick Riviera</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Chevrolet EI Camino</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Chevrolet Bel Air</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Chevrolet Camaro</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Chrysler imperial</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Dodge Challenger</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Dodge Charger</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Ford F100</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Ford Thunderbird</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Buick&model[]=Riviera&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Buick Riviera</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Chevrolet&model[]=El Camino&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Chevrolet EI Camino</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Chevrolet&model[]=Bel Air/150/210&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Chevrolet Bel Air</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Chevrolet&model[]=Camaro&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Chevrolet Camaro</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Chrysler&model[]=Imperial&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Chrysler Imperial</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Dodge&model[]=Challenger&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Dodge Challenger</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Dodge&model[]=Charger&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Dodge Charger</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Ford&model[]=F-100&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Ford F-100</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Ford&model[]=Thunderbird&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Ford Thunderbird</a></li>
                     </ul>
                   </div>
 
                   <div class="col-md-6 col-sm-6 col-xs-6">
                     <ul class="list-unstyled">
-                      <li><a href=""><i class="fa fa-angle-right"></i>Cadillac Eldorado</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Jeep CJ</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Lincoln Continental</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Mercury Cougar</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Oldsmobile Cutlass</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Plymouth Barracuda</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Pontiac Firebird</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Pontiac GTO</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Cadillac Fleetwood</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Cadillac&model[]=Eldorado&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Cadillac Eldorado</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Jeep&model[]=CJ&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Jeep CJ</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Lincoln&model[]=Continental&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Lincoln Continental</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Mercury&model[]=Cougar&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Mercury Cougar</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Oldsmobile&model[]=Cutlass&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Oldsmobile Cutlass</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Plymouth&model[]=Barracuda&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Plymouth Barracuda</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Pontiac&model[]=Firebird&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Pontiac Firebird</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Pontiac&model[]=GTO&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Pontiac GTO</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Cadillac&model[]=Fleetwood&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Cadillac Fleetwood</a></li>
                     </ul>
                   </div>
                 </div>
@@ -175,29 +174,29 @@
                 <div class="col-md-12 col-sm-6 ">
                   <div class="col-md-6 col-sm-6 col-xs-6">
                     <ul class="list-unstyled">
-                      <li><a href=""><i class="fa fa-angle-right"></i>AMC</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Buick</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Cadillac</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Chevrolet</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Chrysler</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>DeLorean</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Dodge</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>Ford</a></li>
-                      <li><a href=""><i class="fa fa-angle-right"></i>GMC</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=AMC&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>AMC</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Buick&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Buick</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Cadillac&madeYear[]=1920&madeYear[]=1986'; ?>"><i class="fa fa-angle-right"></i>Cadillac</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Chevrolet&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Chevrolet</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Chrysler&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Chrysler</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=DeLorean&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>DeLorean</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Dodge&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Dodge</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=Ford&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Ford</a></li>
+                      <li><a href="<?php echo $searchUrl.'manufacturer[]=GMC&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>GMC</a></li>
 
                     </ul>
                   </div>
                   <div class="col-md-6 col-sm-6 col-xs-6">
                       <ul class="list-unstyled">
-                        <li><a href=""><i class="fa fa-angle-right"></i>Jeep</a></li>
-                        <li><a href=""><i class="fa fa-angle-right"></i>Lincoln</a></li>
-                        <li><a href=""><i class="fa fa-angle-right"></i>Mercury</a></li>
-                        <li><a href=""><i class="fa fa-angle-right"></i>Oldsmobile</a></li>
-                        <li><a href=""><i class="fa fa-angle-right"></i>Packard</a></li>
-                        <li><a href=""><i class="fa fa-angle-right"></i>Plymouth</a></li>
-                        <li><a href=""><i class="fa fa-angle-right"></i>Pontiac</a></li>
-                        <li><a href=""><i class="fa fa-angle-right"></i>Shelby</a></li>
-                        <li><a href=""><i class="fa fa-angle-right"></i>Studebaker</a></li>
+                        <li><a href="<?php echo $searchUrl.'manufacturer[]=Jeep&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Jeep</a></li>
+                        <li><a href="<?php echo $searchUrl.'manufacturer[]=Lincoln&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Lincoln</a></li>
+                        <li><a href="<?php echo $searchUrl.'manufacturer[]=Mercury&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Mercury</a></li>
+                        <li><a href="<?php echo $searchUrl.'manufacturer[]=Oldsmobile&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Oldsmobile</a></li>
+                        <li><a href="<?php echo $searchUrl.'manufacturer[]=Packard&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Packard</a></li>
+                        <li><a href="<?php echo $searchUrl.'manufacturer[]=Plymouth&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Plymouth</a></li>
+                        <li><a href="<?php echo $searchUrl.'manufacturer[]=Pontiac&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Pontiac</a></li>
+                        <li><a href="<?php echo $searchUrl.'manufacturer[]=Shelby&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Shelby</a></li>
+                        <li><a href="<?php echo $searchUrl.'manufacturer[]=Studebaker&madeYear[]=1920&madeYear[]=1986' ?>"><i class="fa fa-angle-right"></i>Studebaker</a></li>
                       </ul>
                   </div>
                 </div>

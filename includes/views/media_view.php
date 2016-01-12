@@ -46,11 +46,15 @@
 											echo '<div class="col-md-12 col-sm-12 col-xs-12 no-padding video-img-row wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">';
 										}
 							?>
-								<div class="col-md-3 col-sm-4 col-xs-12 no-padding fst-img">
+								<div class="col-md-3 col-sm-3 col-xs-12 no-padding fst-img">
 									<a class="fancybox-media" rel="group" href="<?php echo $getPageData->youtubeurl;?>">
 										<img alt="<?php echo $getPageData->title;?>"
 									src="<?php echo DEFAULT_URL; ?>/image_resizer.php?img=<?php echo DEFAULT_URL.'/images/pages/media/'.$getPageData->image;?>&newWidth=291&newHeight=227"
-									width="291" height="227" class="img-responsive listing-car-img"></a>
+									width="291" height="227" class="img-responsive listing-car-img">
+                                    <img class="img-responsive play-btn" src="<?php echo DEFAULT_URL; ?>/images/play-icn.png">
+                                    </a>
+                                    
+                                    
 								  <h2><?php echo $getPageData->title;?></h2>
 								  <div id="triangle-up"></div>
 								</div><!-- col-md-3 -->
@@ -87,7 +91,7 @@
 											echo '<div class="col-md-12 col-sm-12 col-xs-12 no-padding video-img-row">';
 										}
 							?>
-								<div class="col-md-3 col-sm-4 col-xs-12 no-padding fst-img">
+								<div class="col-md-3 col-sm-3 col-xs-12 no-padding fst-img">
 								    <img alt="<?php echo $getPageData->title;?>"
 									src="<?php echo DEFAULT_URL; ?>/image_resizer.php?img=<?php echo DEFAULT_URL.'/images/pages/media/'.$getPageData->image;?>&newWidth=291&newHeight=227"
 									width="291" height="227" class="img-responsive listing-car-img">

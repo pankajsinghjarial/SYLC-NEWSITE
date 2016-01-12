@@ -190,6 +190,10 @@ $(document).ready(function() {
 				              
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'tabs')!== false && basename($_SERVER['REQUEST_URI'])=='actionpresentation.php'){?>class="sub_show"<?php } ?>>
 					<a href="<?=DEFAULT_ADMIN_URL?>/presentation/actionpresentation.php">Add Presentation Tab</a>
+				</li>
+				            
+                <li <?php  if (strpos($_SERVER['REQUEST_URI'],'tabs')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>>
+					<a href="<?=DEFAULT_ADMIN_URL?>/personalized_search/index.php">Personalized Search</a>
 				</li>               
               </ul>
             </div>

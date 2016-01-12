@@ -50,8 +50,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      
+    <div class="hidden-lg hidden-md hidden-sm top-logo">
+        <a href="index.html" class=""><img class="img-responsive" src="<?php echo DEFAULT_URL; ?>/images/logo.png"></a>
+      </div>  
     </div>
+    
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

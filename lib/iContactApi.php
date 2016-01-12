@@ -217,7 +217,7 @@ class iContactApi {
 	
 /***********************Custom function to add custom attributes along with contact Form***********************/
 
-	public function CustomaddContactForm($sEmail, $sStatus = 'normal', $sPrefix = null, $sContact = null, $sTelephone =  null, $sNotes = null, $sName = null, $sTransport = null) {
+	public function CustomaddContactForm($sEmail, $sStatus = 'normal', $sPrefix = null, $sContact = null, $sTelephone =  null, $sNotes = null, $sName = null, $sTransport = null, $sMake = null, $sModel = null, $sYear = null) {
 		// Valid statuses
 		$aValidStatuses = array('normal', 'bounced', 'donotcontact', 'pending', 'invitable', 'deleted');
 		// Contact placeholder
@@ -251,6 +251,21 @@ class iContactApi {
 		if (!empty($sNotes)) {
 			// Add the new product
 			$aContact['notes'] = (string) $sNotes;
+		}
+		// Check for a Notes name
+		if (!empty($sMake)) {
+			// Add the new product
+			$aContact['carbrand'] = (string) $sMake;
+		}
+		// Check for a Notes name
+		if (!empty($sModel)) {
+			// Add the new product
+			$aContact['model'] = (string) $sModel;
+		}
+		// Check for a Notes name
+		if (!empty($sYear)) {
+			// Add the new product
+			$aContact['year'] = (string) $sYear;
 		}
 		
 		
@@ -392,10 +407,10 @@ class iContactApi {
 		// Setup the list
 		$aList = array(
 			'name'               => $sName, 
-			'welcomeMessageId'   => 136928, 
-			'emailOwnerOnChange' => 1, 
-			'welcomeOnManualAdd' => 0, 
-			'welcomeOnSignupAdd' => 0, 
+			'welcomeMessageId'   => $iWelcomeMessageId, 
+			'emailOwnerOnChange' => intval($bEmailOwnerOnChange), 
+			'welcomeOnManualAdd' => intval($bWelcomeOnManualAdd), 
+			'welcomeOnSignupAdd' => intval($bWelcomeOnSignupAdd), 
 			'description'        => $sDescription, 
 			'publicname'         => $sPublicName
 		);

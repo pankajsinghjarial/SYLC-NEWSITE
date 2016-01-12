@@ -2,7 +2,17 @@
 //Make QueryString Parameters as Variables
 extract($_POST);
 extract($_GET);
+if (!isset($_COOKIE['visited'])) { // no cookie, so probably the first time here
+	setcookie('visited', 'bar', time()+3600);
 
+?>
+<script>
+$(document).ready(function() {
+	$.colorbox({width:"30%", inline:true, href:"#popup"});	
+});
+</script>
+<?php
+}
 //Init neccessary classes
 $common = new common();
 

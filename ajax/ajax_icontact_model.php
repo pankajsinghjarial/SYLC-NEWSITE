@@ -2,7 +2,7 @@
 
 //
 
-include("lib/iContactApi.php");
+include("../lib/iContactApi.php");
 
 if(isset($_POST['email'])){
 	
@@ -14,7 +14,7 @@ if(isset($_POST['email'])){
 		'apiUsername' => 'Sylccorp'
 	));
 
-	//$oiContact = iContactApi::getInstance();
+	$oiContact = iContactApi::getInstance();
 	$fName = NULL;
 	$lName = NULL;
 	$phone= NULL;
@@ -22,10 +22,18 @@ if(isset($_POST['email'])){
 	$comments=NULL;
 	$productName=NULL;
 	$cid = $oiContact->CustomaddContact($email,'normal' , NULL ,$fName,$lName, NULL ,NULL , NULL, NULL , NULL , NULL ,$phone,NULL,$company,$comments,$productName);
-	$res = $oiContact->subscribeContactToList($cid->contactId, 80005, 'normal');
-
-	//print_r($res);
-	echo $email; die;
+	$res = $oiContact->subscribeContactToList($cid->contactId, 80444, 'normal');
+	
+	if(isset($res[0]->subscriptionId)){
+		
+		echo "<div class='contactFailure'>Thank you for subscription.</div>";
+		
+	}else{
+		echo "<div class='contactFailure'>There was an error adding this email.</div>";
+		
+	}
+	
+	die;
 
 }else{
 	
