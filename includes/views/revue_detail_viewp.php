@@ -341,10 +341,6 @@
                                     </div>
                                     <div class="main-btn">
                                       <button type="submit" class="btn btn-primary">Soumettre  <i class="fa fa-angle-double-right"></i></button>
-										
-										<div class="loader-contain" style="display:none;">
-										  <img height="50px" style="display: inline;" id="FootSpinnerImg" src="/superadmin/images/shared/spinner-small.gif">
-										</div>
                                     </div>
                                   </form>
                                 </div>
@@ -352,11 +348,6 @@
     </div><!-- tab2default -->
     </div><!-- container --> 
   </section>
-						<style>
-                        /*160112*/
-                        .loader-contain{float:none; width:100%; text-align:center;}
-                         .loader-contain img#FootSpinnerImg { position:static;}
-                        </style>
 <script type="text/javascript">
   $(document).ready(function(){
 <?php 

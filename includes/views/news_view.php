@@ -7,9 +7,12 @@
 				
 				if ($total_rows > 0) {
 					$ii = 1;
-					
+					$getArticle = mysql_fetch_object($allArticles);
 					while($getPageData = mysql_fetch_object($allCategories)) {
-						$class = '';						
+						$class = '';
+						if ($category_name == '') {
+							$category_name = $getArticle->cateslug;
+						}					
 						if($category_name != '') {
 							if($category_name == $getPageData->slug) {
 								$class = "active";
@@ -126,10 +129,10 @@
 				mysql_data_seek($allCategories, 0);
 				if ($total_rows > 0) {
 					$ii = 1;
-					$getArticle = mysql_fetch_object($allArticles);
+					
 					while ($getPageData = mysql_fetch_object($allCategories)) {
 						$class = '';
-						$category_name = $getArticle->cateslug;
+						
 						if($category_name != '') {
 							if($category_name == $getPageData->slug) {
 								$class = "active";

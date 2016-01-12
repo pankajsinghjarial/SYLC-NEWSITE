@@ -217,7 +217,7 @@ class iContactApi {
 	
 /***********************Custom function to add custom attributes along with contact Form***********************/
 
-	public function CustomaddContactForm($sEmail, $sStatus = 'normal', $sPrefix = null, $sContact = null, $sTelephone =  null, $sNotes = null, $sName = null, $sTransport = null, $sMake = null, $sModel = null, $sYear = null) {
+	public function CustomaddContactForm($sEmail, $sStatus = 'normal', $sPrefix = null, $sContact = null, $sTelephone =  null, $sNotes = null, $sName = null, $sTransport = null, $sMake = null, $sModel = null, $sYear = null,$sYearto = null,$societe = null) {
 		// Valid statuses
 		$aValidStatuses = array('normal', 'bounced', 'donotcontact', 'pending', 'invitable', 'deleted');
 		// Contact placeholder
@@ -266,6 +266,17 @@ class iContactApi {
 		if (!empty($sYear)) {
 			// Add the new product
 			$aContact['year'] = (string) $sYear;
+		}
+		
+		// Check for Year To
+		if (!empty($sYearto)) {
+			// Add the new product
+			$aContact['a'] = (string) $sYearto;
+		}
+		// Check for Year To
+		if (!empty($societe )) {
+			// Add the new product
+			$aContact['societe'] = (string) $societe ;
 		}
 		
 		

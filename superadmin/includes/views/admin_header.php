@@ -210,6 +210,7 @@ $(document).ready(function() {
               <ul class="sub">
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) =='index.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/index.php">View All Cars</a></li>
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) =='add.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/add.php">Add New Car</a></li>
+                <!--
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) =='from_ebay.php'){?>class="sub_show"<?php } ?>> <a href="<?=DEFAULT_ADMIN_URL?>/car/from_ebay.php">From Ebay.com</a></li>
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) =='import.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/import.php">Import Car</a></li>
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) =='from.php' && $_REQUEST['car'] == 72){?>class="sub_show"<?php } ?>> <a href="<?=DEFAULT_ADMIN_URL?>/car/from.php?car=72">From Cars.com</a></li>
@@ -217,12 +218,13 @@ $(document).ready(function() {
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) == 'feature.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/feature.php">Featured Cars</a> </li>
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) == 'popular.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/popular.php">Popular Cars</a> </li>
 		<li <?php  if (strpos($_SERVER['REQUEST_URI'],'car')!== false && array_shift(explode('?', basename($_SERVER['REQUEST_URI']))) == 'productcars.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/car/productcars.php">Product Cars</a> </li>
+		-->
               </ul>
             </div>
             <!--[if lte IE 6]></td></tr></table></a><![endif]-->
           </li>
         </ul>
-         <div class="nav-divider">&nbsp;</div>
+        <!-- <div class="nav-divider">&nbsp;</div>
         <ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'contact')!== false || strpos($_SERVER['REQUEST_URI'],'users')!== false){?> current<?php } ?>">
           <li><a href="#nogo" ><b>Lead Manager</b></a>
           <div class="select_sub show">
@@ -239,13 +241,13 @@ $(document).ready(function() {
 		 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'contact')!== false && strpos($_SERVER['REQUEST_URI'],'phone') !== false){?>class="sub_show"<?php } ?>><a href="<?php echo DEFAULT_ADMIN_URL?>/contact/phone/index.php">Calls Requested</a></li>
               </ul>
             </div>
-            <!--[if IE 7]><!--></a><!--<![endif]-->
-            <!--[if lte IE 6]><table><tr><td><![endif]-->
+            <!--[if IE 7]><!--></a><!--<![endif]-- >
+            <!--[if lte IE 6]><table><tr><td><![endif]-- >
             
-            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+            <!--[if lte IE 6]></td></tr></table></a><![endif]-- >
           </li>
          
-        </ul>
+        </ul>-->
         <?php /*
         <div class="nav-divider">&nbsp;</div>
         <ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'banner')!== false){?> current<?php } ?>">
@@ -263,11 +265,11 @@ $(document).ready(function() {
           </li>
         </ul>
         */ ?>
-         <div class="nav-divider">&nbsp;</div>
+        <!-- <div class="nav-divider">&nbsp;</div>
          <ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'faq')!== false){?> current<?php } ?>">
           <li><a href="#nogo" ><b>FAQ Manager</b></a>
             <!--[if IE 7]><!--></a><!--<![endif]-->
-            <!--[if lte IE 6]><table><tr><td><![endif]-->
+            <!--[if lte IE 6]><table><tr><td><![endif]-- >
             <div class="select_sub show">
               <ul class="sub">
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'faq')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/faq/index.php">View All FAQ</a></li>
@@ -275,7 +277,7 @@ $(document).ready(function() {
                 
               </ul>
             </div>
-            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+            <!--[if lte IE 6]></td></tr></table></a><![endif]-- >
           </li>
         </ul>
         
@@ -284,7 +286,7 @@ $(document).ready(function() {
          <ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'new_stock')!== false){?> current<?php } ?>">
           <li><a href="#nogo" ><b>Stock Manger</b></a>
             <!--[if IE 7]><!--></a><!--<![endif]-->
-            <!--[if lte IE 6]><table><tr><td><![endif]-->
+            <!--[if lte IE 6]><table><tr><td><![endif]-- >
             <div class="select_sub show">
               <ul class="sub">
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'new_stock')!== false && strpos($_SERVER['REQUEST_URI'],'brands') !== false  && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/new_stock/brands/index.php">Brand Manger</a></li>
@@ -292,10 +294,10 @@ $(document).ready(function() {
                 
               </ul>
             </div>
-            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+            <!--[if lte IE 6]></td></tr></table></a><![endif]-- >
           </li>
         </ul>
-        
+        -->
         
 <div class="nav-divider">&nbsp;</div>
          <ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'template')!== false){?> current<?php } ?>">
@@ -315,23 +317,23 @@ $(document).ready(function() {
             <!--[if lte IE 6]></td></tr></table></a><![endif]-->
           </li>
         </ul>
-        
+        <!--
       <div class="nav-divider">&nbsp;</div>
           <ul class="select<?php  if (strpos(array_shift(explode('?', $_SERVER['REQUEST_URI'])),'scrolling_manager')!== false){?> current<?php } ?>" >
           <li><a href="#nogo"><b>Scrolling Manager</b></a>
             <!--[if IE 7]><!--></a><!--<![endif]-->
 		
-           <!--[if lte IE 6]><table><tr><td><![endif]-->
+           <!--[if lte IE 6]><table><tr><td><![endif]-- >
             <div class="select_sub show">
               <ul class="sub">
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'scrolling_manager')!== false && basename($_SERVER['REQUEST_URI'])=='index.php'){?>class="sub_show"<?php } ?>><a href="<?=DEFAULT_ADMIN_URL?>/scrolling_manager/index.php" >View all Scroller</a></li>
                 <li <?php  if (strpos($_SERVER['REQUEST_URI'],'scrolling_manager')!== false && basename($_SERVER['REQUEST_URI'])=='add.php'){?>class="sub_show"<?php } ?> ><a href="<?=DEFAULT_ADMIN_URL?>/scrolling_manager/add.php">Add New Scroller</a></li>
               </ul>
             </div>
-            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+            <!--[if lte IE 6]></td></tr></table></a><![endif]-- >
           </li>
         </ul>
-        
+        -->
 		<div class="nav-divider">&nbsp;</div>
 		 <ul class="select<?php  if (strpos($_SERVER['REQUEST_URI'],'home')!== false){?> current<?php } ?>">
           <li><a href="#nogo" ><b>Home</b></a>

@@ -8,17 +8,28 @@
               </div>
               <div class="col-md-5 wow fadeInRight" data-wow-duration="2s" data-wow-delay=".5s">
                 <form class="icontact-email-form" id="icontactNewsletter">
-                  <div class="form-group col-md-8 footer-email">
+                  <div class="form-group col-md-8 footer-email" id="ToplaceMsg">
                     <input type="email" class="form-control" required id="exampleInputEmail3" name="newsletter-email" placeholder="Adress E-mail">
                   </div>
                   <div class="col-md-4 no-padding">
                     <button type="submit" name="submit"  class="btn btn-default">Soumettre <i class="fa fa-angle-right"></i> </button>
                   </div>
+                  <img height="30px" style="display: none;" id="FootSpinnerImg" src="/superadmin/images/shared/spinner-small.gif">
                 </form>
               </div>
             </div>
           </div>
         </section>
+        <style>/*160112*/
+#icontactNewsletter{ position:relative; float:left; width:100%;}
+#FootSpinnerImg{position:absolute; right:-50px; top:0;}
+#icontactNewsletter .contactFailure,#icontactNewsletter .contactSuccess{  color:#000; padding:0 2px; margin-top:7px; font-weight:bold;}
+#icontactNewsletter .contactSuccess{color:#67c402;}
+
+ @media (min-width:768px) and (max-width:1024px){ #FootSpinnerImg{position:static;}}
+  @media (min-width:1px) and (max-width:767px){ #FootSpinnerImg{position:static;}}
+
+</style>
 
         <section class="footer-top-2">
           <div class="container">
@@ -26,7 +37,7 @@
               <div class="col-md-2 col-sm-3 col-xs-6 no-padding text-footer contact-footer-left wow fadeInLeft" data-wow-duration="2s" data-wow-delay=".5s">
                 <h1>A Propos de Nous</h1>
                 <ul class="list-unstyled">
-                  <li><a href="<?php echo DEFAULT_URL; ?>/logistique"><i class="fa fa-angle-right"></i> Logistique</a></li>
+                  <li><a href="<?php echo DEFAULT_URL; ?>/logistique/"><i class="fa fa-angle-right"></i> Logistique</a></li>
                   <li><a href="<?php echo DEFAULT_URL; ?>/news"><i class="fa fa-angle-right"></i> News</a></li>
                   <li><a href="<?php echo DEFAULT_URL; ?>/conditions-de-vente"><i class="fa fa-angle-right"></i> Conditions de vente</a></li>
                   <li><a href="<?php echo DEFAULT_URL; ?>/contacts"><i class="fa fa-angle-right"></i> Contactz - Nous</a></li>

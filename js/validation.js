@@ -55,10 +55,32 @@ $.validator.addMethod('isValidPhone', function(value, element,e) {
 					required : true,
 					isValidPhone : true
 				},
+				'contact' : {
+					required : true,
+					isValidPhone : true
+				},
 				'comment' : {
 					required : true
 				},
 				'accept' : {
+					required : true				
+				},
+				'modele' : {
+					required : true				
+				},
+				'societe' : {
+					required : true				
+				},
+				'commentaires' : {
+					required : true				
+				},
+				'atext' : {
+					required : true				
+				},
+				'annee' : {
+					required : true				
+				},				
+				'achat' : {
 					required : true				
 				}
 				

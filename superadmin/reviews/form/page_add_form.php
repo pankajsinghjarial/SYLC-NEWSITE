@@ -277,11 +277,11 @@
 							<li><span>Related to Chrysler Town &amp; Country</span></li>
 							</ul>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-8">
 							<h2>Available Engines:</h2>
 							<p>283-hp, 3.6-liter V-6 (regular gas)</p>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-8">
 							<h2>Transmissions:</h2>
 							<p>6-speed multi-speed automatic w/OD and auto-manual</p>
 							<p>&nbsp;</p>
@@ -324,20 +324,20 @@
                         <div class="col-md-12 forth-tab no-padding">
 							<div class="col-md-12">
 							<h1 class="feature-tab-heading">Warranty</h1>
-							<div class="col-md-3 no-padding">
+							<div class="col-md-6 no-padding">
 							<p class="basic-table">Basic</p>
 							<p class="basic-table">Powertrain</p>
 							<p class="basic-table">Corrosion Perforation</p>
 							<p class="basic-table">Roadside Assistance Coverage</p>
 							</div>
-							<div class="col-md-3 text-right no-padding">
+							<div class="col-md-6 text-right no-padding">
 							<p class="basic-table">36 months/36,000 miles</p>
 							<p class="basic-table">60 months/100,000 miles</p>
 							<p class="basic-table">60 months/100,000 miles</p>
 							<p class="basic-table">60 months/100,000 miles</p>
 							</div>
 							</div>
-							<div class="col-md-10">
+							<div class="col-md-12">
 							<h1 class="feature-tab-heading">Standard Features &amp; Options</h1>
 							<table class="table table-striped table-condensed">
 							<tbody>

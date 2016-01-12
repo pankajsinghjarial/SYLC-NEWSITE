@@ -26,10 +26,10 @@ if(isset($_POST['email'])){
 	
 	if(isset($res[0]->subscriptionId)){
 		
-		echo "<div class='contactFailure'>Thank you for subscription.</div>";
+		echo "<div class='contactSuccess'>Thank you for subscription.</div>";
 		
 	}else{
-		echo "<div class='contactFailure'>There was an error adding this email.</div>";
+		echo "<div class='contactFailure'>Email Already added.</div>";
 		
 	}
 	

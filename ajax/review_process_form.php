@@ -124,8 +124,9 @@
 			exit;
 		
 		} catch (Exception $oException) { // Catch any exceptions
-             http_response_code(500);
-             echo "Oops! Something went wrong and we couldn't send your message.";      
+             //http_response_code(500);
+             
+             echo "Oops! Something went wrong and we couldn't send your message.";  
         }
                
 

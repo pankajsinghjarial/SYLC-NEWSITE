@@ -87,10 +87,12 @@
       <ul class="nav navbar-nav menu-right">
         <div id='cssmenu'>
           <ul class="list-unstyled list-inline">
-            <li><a href="<?php echo DEFAULT_URL;?>/revue_automobiles" title="Revues Automobiles">Revues Automobiles  </a></li>
-            <li><a href="<?php echo DEFAULT_URL;?>/logistic" title="Logistique">Logistique </a></li>
-            <li><a href="<?php echo DEFAULT_URL;?>/news" title="News">News </a></li>
-            <li class='last'><a href="<?php echo DEFAULT_URL;?>/contact" title="Contact"> Contact </a></li>
+
+            <li><a href="<?php echo DEFAULT_URL;?>/revue_automobiles">Revues Automobiles  </a></li>
+            <li><a href="<?php echo DEFAULT_URL;?>/logistique/">Logistique </a></li>
+            <li><a href="<?php echo DEFAULT_URL;?>/news">News </a></li>
+            <li class='last'><a href="<?php echo DEFAULT_URL;?>/contact"> Contact </a></li>
+
           </ul>
         </div>
       </ul>

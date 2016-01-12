@@ -82,7 +82,8 @@
 				arrows : false,
 				helpers : {
 					media : {},
-					buttons : {}
+					buttons : {},
+					
 				}
 			});
 		
@@ -96,7 +97,9 @@
 				arrows : false,
 				helpers : {
 					media : {},
-					buttons : {}
+					buttons : {
+					tpl:'',	
+					}
 				}
 			});
 			/*

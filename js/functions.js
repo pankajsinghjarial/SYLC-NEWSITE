@@ -26,13 +26,19 @@ $(document).ready(function() {
             url         : '/ajax/ajax_icontact_model.php', // the url where we want to POST
             data        : formData, // our data object
             dataType    : 'html', // what type of data do we expect back from the server
+            beforeSend:function(){
+				$('#FootSpinnerImg').show();
+				$('.contactFailure').remove();
+				$('.contactSuccess').remove();
+				}
            
         }).done(function(data) {
 		
 			
 			// log data to the console so we can see
-            console.log(data); 
-
+             
+            $("#ToplaceMsg").append(data);
+			$('#FootSpinnerImg').hide();
                 // here we will handle errors and validation messages
         });
 

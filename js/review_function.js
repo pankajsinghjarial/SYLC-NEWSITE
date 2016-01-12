@@ -77,13 +77,17 @@ $("#modelID").change(function(){
 		$.ajax({
 			type: 'POST',
 			url: $(form).attr('action'),
-			data: formData
+			data: formData,
+			beforeSend:function(){
+					$(".loader-contain").show();
+			}
 		})
 		
 		.done(function(response) {
-			
+			$(".loader-contain").hide();
 			if(response == 1){ 
 				$("#carDetailsForm").hide();
+				$(".after-hide").hide();
 				$("#PlaceButtonAfterSubmission").show();
 			
 			}else{

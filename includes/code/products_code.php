@@ -1,10 +1,10 @@
 <?php 
 //Make QueryString Parameters as Variables
-extract($_POST);
-extract($_GET);
-session_start();
-if (!isset($_COOKIE['visited'])) { // no cookie, so probably the first time here
-	setcookie('visited', 'visited', time()+3600 * 24 * 365);
+
+
+if (!isset($_COOKIE['visitonce'])) { // no cookie, so probably the first time here
+	setcookie('visitonce',date('Y-m-d H:i:s'));	
+	//setcookie('visited', 'visited', time()+3600 * 24 * 365);
 ?>
 <script>
 $(document).ready(function() {
@@ -13,6 +13,8 @@ $(document).ready(function() {
 </script>
 <?php
 }
+extract($_POST);
+extract($_GET);
 //Init neccessary classes
 $common = new common();
 
