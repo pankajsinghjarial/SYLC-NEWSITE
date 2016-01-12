@@ -44,7 +44,8 @@
           <div class="panel with-nav-tabs wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
             <ul class="nav nav-tabs">
                 <li class="<?php echo ($auctionClass)?'active':'marque';?>"><a href="#tab1default" data-toggle="tab" id="hover-tab-1">
-					<img src="images/listing/1st-icon.png" class="fst-icon"> <img src="images/listing/hover-icon.png" class="hover-icon"> Achat Immédiat</a>
+					<img <?php echo (!$auctionClass)?'style="display:inline"':'';?> src="images/listing/1st-icon.png" class="fst-icon">
+					 <img src="images/listing/hover-icon.png" <?php echo (!$auctionClass)?'style="display:none"':'';?> class="hover-icon"> Achat Immédiat</a>
 				</li>
                 <li class="<?php echo (!$auctionClass)?'active':'marque';?>" id="hover-tab-2">
 					<a href="#tab2default" data-toggle="tab"><i class="fa fa-car"></i>Notre Inventaire</a>

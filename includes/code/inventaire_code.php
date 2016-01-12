@@ -90,7 +90,7 @@ if(isset($_POST['sendMail'])){
     $mail->FromName = "americancarcentrale";
     
     //$to = array("jelmaleh@seobrand.net");
-    $to = array("pankaj.jarial@netsolutionsindia.com");
+    $to = array(SITE_ADMIN_EMAIL);
     foreach($to as $sendsto){
         $mail->AddAddress($sendsto);
     }

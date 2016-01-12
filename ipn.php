@@ -185,9 +185,9 @@ if (strcmp ($res, "VERIFIED") == 0) {
             $leadId = mysql_fetch_object($getLeadId);
             
             try {
-                //$to_email = $adminemail;
-                $to_email = 'pankaj.jarial@netsolutionsindia.com';
-                $message = "
+                $to_email = $adminemail;
+                //$to_email = 'pankaj.jarial@netsolutionsindia.com';
+                $message = "<meta charset=\"utf-8\">
                             <p>Voici les détails:</p>
                             <table>
                             <tr>
@@ -220,7 +220,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
                     
                 $body             = $message;
                 $body             = preg_replace('/\\\\/','', $body); //Strip backslashes
-                    
+                $mail->CharSet    = 'UTF-8';
                 $mail->IsSMTP();                           // tell the class to use SMTP
                 $mail->SMTPAuth   = true;                  // enable SMTP authentication
                 $mail->Port       = 25;                    // set the SMTP server port
@@ -255,9 +255,9 @@ if (strcmp ($res, "VERIFIED") == 0) {
                 error_log("Error : ".$e->errorMessage(), 3, LOG_FILE);
             }
             try {
-                //$to_email = $email;
-                $to_email = 'pankaj.jarial@netsolutionsindia.com';
-                $message = "<p>Merci pour vos Détails:</p>
+                $to_email = $email;
+                //$to_email = 'pankaj.jarial@netsolutionsindia.com';
+                $message = "<meta charset=\"utf-8\"><p>Merci pour vos Détails:</p>
                 <table>
                 <tr>
                 <td><strong>Nom</strong>:</td>
@@ -287,7 +287,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
                 </table>";
 
                 $mail = new PHPMailer(true); //New instance, with exceptions enabled
-                    
+                $mail->CharSet = 'UTF-8';
                 $body             = $message;
                 $body             = preg_replace('/\\\\/','', $body); //Strip backslashes
                     
@@ -325,8 +325,8 @@ if (strcmp ($res, "VERIFIED") == 0) {
             }
             try {
                 
-                //$to_email = $email;
-                $to_email = 'pankaj.jarial@netsolutionsindia.com';
+                $to_email = $email;
+                //$to_email = 'pankaj.jarial@netsolutionsindia.com';
                 $message = "
                 <table>
                 <tr>
@@ -336,7 +336,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
                 <table>
                 </tr>
                 <tr>
-                <td>Ouvrez votre facture pdf en <a href='".DEFAULT_URL."/pop_form_details.php?id=".$lastfetch->id."&lead_id=".$leadId->id."&from=user'>Cliquant Ici</a><br/><br/>
+                <td>Ouvrez votre facture pdf en <a href='".DEFAULT_URL."/voitures-americaines/pop_form_details.php?id=".$lastfetch->id."&lead_id=".$leadId->id."&from=user'>Cliquant Ici</a><br/><br/>
                 La signature électronique est simple, rapide et économise le papier. Il suffit juste de signer avec votre souris.</td>
                 </tr>
                           <tr>
@@ -345,7 +345,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
                          </table>";
 
                 $mail = new PHPMailer(true); //New instance, with exceptions enabled
-                    
+                $mail->CharSet = 'UTF-8';
                 $body             = $message;
                 $body             = preg_replace('/\\\\/','', $body); //Strip backslashes
                     

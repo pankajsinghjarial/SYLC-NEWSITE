@@ -107,20 +107,21 @@ $(document).ready(function() {
       <?php }?>
       <div class="clear">&nbsp;</div>
       <!--  start account-content -->
-      <div class="account-content">
-        <div class="account-drop-inner"> 
-        	<a href="<?php echo DEFAULT_ADMIN_URL; ?>/settings/preferences.php" id="acc-settings">Settings</a>
-          <div class="clear">&nbsp;</div>
-          <div class="acc-line">&nbsp;</div>
-          <a href="<?php echo DEFAULT_ADMIN_URL; ?>/settings/index.php" id="acc-details">Personal details </a>
-          <div class="clear">&nbsp;</div>
-          <div class="acc-line">&nbsp;</div>
-          <a href="<?php echo DEFAULT_ADMIN_URL; ?>/currency/index.php" id="acc-details">Currency Exchange</a>
-          <div class="acc-line">&nbsp;</div>
-	  <a href="<?php echo DEFAULT_ADMIN_URL; ?>/email_noti/view.php" id="acc-details">Email Notification Manager</a>
-	  <div class="clear">&nbsp;</div>
-          </div>
-      </div>
+        <div class="account-content">
+            <div class="account-drop-inner"> 
+                <a href="<?php echo DEFAULT_ADMIN_URL; ?>/settings/preferences.php" id="acc-settings">Settings</a>
+                <div class="clear">&nbsp;</div>
+                <div class="acc-line">&nbsp;</div>
+                <a href="<?php echo DEFAULT_ADMIN_URL; ?>/settings/index.php" id="acc-details">Personal details </a>
+                <div class="clear">&nbsp;</div>
+                <div class="acc-line">&nbsp;</div>
+                <a href="<?php echo DEFAULT_ADMIN_URL; ?>/currency/index.php" id="acc-details">Currency Exchange</a>
+                <div class="clear">&nbsp;</div>
+                <div class="acc-line">&nbsp;</div>
+                <a href="<?php echo DEFAULT_ADMIN_URL; ?>/email_noti/view.php" id="acc-details">Email Notification Manager</a>
+                <div class="clear">&nbsp;</div>
+            </div>
+        </div>
       <!--  end account-content -->
     </div>
     <!-- end nav-right -->

@@ -126,11 +126,16 @@ $(document).ready(function() {
 		if(length){
 			
 			filesrc = $("#"+i).attr('src');
+			//var rest = filesrc.substring(0, filesrc.lastIndexOf("-") + 1);
+			var rest = filesrc.split('-');
+			var ImgNameUrl =rest[0]+'.jpg';
+			//alert(rest[0]+'.jpg');
 			var baseurl = PathUrl(); 
 			jwplayer("video"+i).setup({
 							file: baseurl+filesrc,
 							width: '200px',
-							height:'100px'			
+							height:'100px',
+							image:ImgNameUrl			
 						});
 		}
 	
@@ -376,6 +381,7 @@ $(document).ready(function() {
 						var ImagePath = data.files.path;
 						var FileType = data.files.type;
 						var Filename = data.files.imagename;
+						var ImgNname = data.files.timest;
 						
 						var thumbImage = '<div class=\"AdditionalMedia\" id=\"'+mediaPosition+'\" src=\"'+ImagePath+'\"><div id=\"video'+mediaPosition+'\" ></div></div><input type=\"hidden\" value=\"'+Filename+'\" name=\"video-'+mediaPosition+'\"/>';
 						jQueryF("#"+mediaPosition).attr('id','abc');
@@ -389,7 +395,8 @@ $(document).ready(function() {
 						jwplayer("video"+mediaPosition).setup({
 							file: ImagePath,
 							width: '200px',
-							height:'100px'			
+							height:'100px',
+							image:ImgNname			
 						});
 						$("#"+mediaPosition+"SpinnerImg").hide();
 						/*

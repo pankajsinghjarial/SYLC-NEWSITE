@@ -39,7 +39,7 @@
 
 <section class="list-car-details">
   <div class="container">
-    <div class="col-md-12 no-padding">
+    <div class="col-md-8 no-padding">
           <div class="panel with-nav-tabs wow fadeInDown" data-wow-duration="2s" data-wow-delay=".5s">
             <ul class="nav nav-tabs">
                 <li class="first-tab"><a href="#tab1default" data-toggle="tab"> Vue d'ensemble</a></li>
@@ -61,11 +61,11 @@
                                 <li><span>Related to Chrysler Town & Country</span></li>
                               </ul>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-8">
                               <h2>Available Engines:</h2>
                               <p>283-hp, 3.6-liter V-6 (regular gas)</p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-8">
                               <h2>Transmissions:</h2>
                               <p>6-speed multi-speed automatic w/OD and auto-manual<p>
                             </div>
@@ -105,7 +105,7 @@
 								foreach($all_media as $media)
 								{ 
                             ?>
-                            <div class="col-xs-6 col-md-3 car-details-thumbnail-img">
+                            <div class="col-xs-6 col-md-4 car-details-thumbnail-img">
 							<?php if($media['media_type'] =='youtube_link') { ?>
                               <a href="<?php echo $media['media_name']; ?>" class="fancybox-media-youtube" id="<?php echo $media['id']; ?>" class="thumbnail">
                               <?php }else if($media['media_type'] =='image'){?>
@@ -172,82 +172,26 @@
 
                         <div class="tab-pane fade in active" id="tab3default">
                           <div class="col-md-12 no-padding details-car-content">
-                            <div class="col-md-8 col-sm-6 col-xs-12 no-padding">
+                            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                            <?php echo $expert;?>
 							</div>
-                            <div class="col-md-4 col-sm-6 col-xs-12 right-content no-right-padding">
-                              <div id="flag-lg">
-                                <h3 class="merci">Merci pour votre demande</h3>
-                                <div class="text-center" id="fst-hide-btn">
-                                  <a href="car-details-1.html"><button type="button" class="btn btn-primary">Télécharger la brochure <i class="fa fa-angle-double-right"></i></button></a>
-                                </div>
-                                <div class="after-hide" >
-                                  <h4>Telechargez gratutement la brochure. Rentrez simplement vos informations pour avoir acces a votre brochure.</h4>
-                                  <h5>Le lien de telechargeement apparaitra sous la forme une fois celle-ci completee, enjoy!!!</h5>
-                                </div>
-                                <div class="after-hide" id="PlaceButtonAfterSubmission" style='display:none;'>
-                                  <div class='upperTextForm'>
-									  <h4>Merci pour votre demande</h4>
-								  </div>
-								  <div class='brochure-button'>
-									  <a href="<?php echo DEFAULT_ADMIN_URL_REVIEW_DOCUMENT_PATH; ?>" download><button class='btn btn-primary' type='submit'>Télécharger la brochure<i class='fa fa-angle-double-right'></i></button></a>
-								  </div>
-                                </div>
-                              </div>
-                              <div id="flag"></div>
-                                <div class="car-details-form" id="carDetailsForm">
-                                  <form class="form-horizontal" id="ReviewForm" action="ajax/review_process_form.php"  method="POST">
-                                    <input type="hidden" value="<?php echo $make_name;?>"  name="makeName">
-                                    <input type="hidden" value="<?php echo $model_name;?>"  name="modelName">
-                                    <input type="hidden" value="<?php echo $year;?>"  name="Year">
-                                    <input type="hidden" value="<?php echo $currentUrl;?>"  name="currentUrl">
-                                    <div class="form-group">
-                                      <div class="col-sm-12">
-                                        <input type="text" required class="form-control" name="inputName" id="inputName" placeholder="Name">
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <div class="col-sm-12">
-                                        <input type="email" required class="form-control" name="inputEmail" id="inputEmail" placeholder="Email">
-                                      </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                      <div class="col-sm-12">
-                                        <input type="tel" pattern='\d{10}' title='Phone Number (Format: 10 digit number)' required class="form-control" name="inputPhone" id="inputPhone" placeholder="Phone">
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <div class="col-sm-12">
-                                        <textarea class="form-control" required placeholder="Message" name="inputMessage" id="inputMessage" rows="2"></textarea>
-                                      </div>
-                                    </div>
-                                    <div class="checkbox">
-                                      <label>
-                                        <input type="checkbox"  name="InputCheckbox">Recherchez vous ce type de vehicule?
-                                      </label>
-                                    </div>
-                                    <div class="main-btn">
-                                      <button type="submit" class="btn btn-primary">Soumettre  <i class="fa fa-angle-double-right"></i></button>
-                                    </div>
-                                  </form>
-                                </div>
-                            </div>
+                            
                           </div>
 				
                         </div> <!-- tab3default -->
 
                         <div class="tab-pane fade" id="tab4default">
+                        
                           <!--div class="col-md-12 forth-tab no-padding">
                             <div class="col-md-12">
                               <h1 class="feature-tab-heading">Warranty</h1>
-                                <div class="col-md-3 no-padding">
+                                <div class="col-md-6 no-padding">
                                   <p class="basic-table">Basic</p>
                                   <p class="basic-table">Powertrain</p>
                                   <p class="basic-table">Corrosion Perforation</p>
                                   <p class="basic-table">Roadside Assistance Coverage</p>
                                 </div>
-                                <div class="col-md-3 text-right no-padding">
+                                <div class="col-md-6 text-right no-padding">
                                   <p class="basic-table">36 months/36,000 miles</p>
                                   <p class="basic-table">60 months/100,000 miles</p>
                                   <p class="basic-table">60 months/100,000 miles</p>
@@ -255,7 +199,7 @@
                                 </div>
                             </div>
                             
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                               <h1 class="feature-tab-heading">Standard Features & Options</h1>
                               <table class="table table-striped table-condensed">
                                     <tr>
@@ -342,6 +286,65 @@
                 </div><!-- panel body -->
               </div><!-- panel -->
           </div><!-- col-md-12 -->
+    
+    <div class="col-md-4 col-sm-6 col-xs-12 right-content no-right-padding">
+                              <div id="flag-lg">
+                                <h3 class="merci">Merci pour votre demande</h3>
+                                <div class="text-center" id="fst-hide-btn">
+                                  <a href="car-details-1.html"><button type="button" class="btn btn-primary">Télécharger la brochure <i class="fa fa-angle-double-right"></i></button></a>
+                                </div>
+                                <div class="after-hide" >
+                                  <h4>Telechargez gratutement la brochure. Rentrez simplement vos informations pour avoir acces a votre brochure.</h4>
+                                  <h5>Le lien de telechargeement apparaitra sous la forme une fois celle-ci completee, enjoy!!!</h5>
+                                </div>
+                                <div class="after-hide" id="PlaceButtonAfterSubmission" style='display:none;'>
+                                  <div class='upperTextForm'>
+									  <h4>Merci pour votre demande</h4>
+								  </div>
+								  <div class='brochure-button'>
+									  <a href="<?php echo DEFAULT_ADMIN_URL_REVIEW_DOCUMENT_PATH; ?>" download><button class='btn btn-primary' type='submit'>Télécharger la brochure<i class='fa fa-angle-double-right'></i></button></a>
+								  </div>
+                                </div>
+                              </div>
+                              <div id="flag"></div>
+                                <div class="car-details-form" id="carDetailsForm">
+                                  <form class="form-horizontal" id="ReviewForm" action="ajax/review_process_form.php"  method="POST">
+                                    <input type="hidden" value="<?php echo $make_name;?>"  name="makeName">
+                                    <input type="hidden" value="<?php echo $model_name;?>"  name="modelName">
+                                    <input type="hidden" value="<?php echo $year;?>"  name="Year">
+                                    <input type="hidden" value="<?php echo $currentUrl;?>"  name="currentUrl">
+                                    <div class="form-group">
+                                      <div class="col-sm-12">
+                                        <input type="text" required class="form-control" name="inputName" id="inputName" placeholder="Name">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <div class="col-sm-12">
+                                        <input type="email" required class="form-control" name="inputEmail" id="inputEmail" placeholder="Email">
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                      <div class="col-sm-12">
+                                        <input type="tel" pattern='\d{10}' title='Phone Number (Format: 10 digit number)' required class="form-control" name="inputPhone" id="inputPhone" placeholder="Phone">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <div class="col-sm-12">
+                                        <textarea class="form-control" required placeholder="Message" name="inputMessage" id="inputMessage" rows="2"></textarea>
+                                      </div>
+                                    </div>
+                                    <div class="checkbox">
+                                      <label>
+                                        <input type="checkbox"  name="InputCheckbox">Recherchez vous ce type de vehicule?
+                                      </label>
+                                    </div>
+                                    <div class="main-btn">
+                                      <button type="submit" class="btn btn-primary">Soumettre  <i class="fa fa-angle-double-right"></i></button>
+                                    </div>
+                                  </form>
+                                </div>
+                            </div>
     </div><!-- tab2default -->
     </div><!-- container --> 
   </section>

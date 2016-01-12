@@ -93,7 +93,7 @@ if(isset($_POST['payment']) && $_POST['payment'] == 'process'){
     }
     mysql_close($link);
 }
-
+$db = new DB(DB_NAME, DB_HOST, DB_USER, DB_PASS);
 $carid = $_REQUEST['car_id'];
 $ebayid = $common->CustomQuery("Select * from ebay_car where itemId = ".$carid);
 $item = '';

@@ -75,7 +75,7 @@
 		var inp = $("#slug").val();
 		if($.trim(inp).length == 0)
 		{
-				var value = $.trim($('#name').val()).replace(/ /g, "_");;
+				var value = $.trim($('#name').val()).replace(/ /g, "-");;
       			$("#slug").val(value);
 		 }
 		 

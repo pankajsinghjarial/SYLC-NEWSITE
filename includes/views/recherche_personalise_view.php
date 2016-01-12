@@ -15,10 +15,10 @@
             <div id="flag"></div>
            </div>
             <div class="recherche-right-form">
-              <form method="post">
+              <form method="post" id="addvalidation">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Marque:</label>
-                  <select class="form-control">                    
+                  <select class="form-control" name="marque">                    
                     <?php
 						foreach(unserialize(MAKE_LIST) as $brand) { ?>
 							<option value="<?php echo trim($brand) ?>" ><?php echo $brand; ?></option>
@@ -27,47 +27,47 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Modele:</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
+                  <input type="text" class="form-control" name="modele" id="exampleInputPassword1">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Achat:</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
+                  <input type="text" class="form-control" name="achat" id="exampleInputPassword1">
                 </div>
                 <label for="exampleInputPassword1">Annee de:</label>
                 <div class="col-md-12 form-group no-padding">
                   <div class="col-md-6 no-padding">
-                    <input type="text" class="form-control" id="exampleInputPassword1">
+                    <input type="text" class="form-control" name="annee" id="exampleInputPassword1">
                   </div>
                   <div class="col-md-1 no-padding text-center">
                     <p class="form-a">A:</p>
                   </div>
                   <div class="col-md-5 no-padding">
-                    <input type="text" class="form-control" id="exampleInputPassword1">
+                    <input type="text" class="form-control" name="atext" id="atext">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Commentaires:</label>
-                  <textarea class="form-control" rows="2"></textarea>
+                  <textarea class="form-control" name="commentaires" rows="2"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Societe:</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
+                  <input type="text" class="form-control" name="societe" id="societe">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Contact:</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
+                  <input type="text" class="form-control" name="contact" id="contact">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Telephone</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
+                  <input type="text" class="form-control" name="phone" id="phone">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Email:</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
+                  <input type="text" class="form-control" name="email" id="email">
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" id="checkcover">
                   <label>
-                    <input type="checkbox"> J’ai lu et j’accepte expressement la  <a href="">politique de  confidential</a>
+                    <input type="checkbox" name="accept"> J’ai lu et j’accepte expressement la  <a href="">politique de  confidential</a>
                   </label>
                 </div>
                 <a href=""><button class="btn btn-primary" type="submit">Soumettre <i class="fa fa-angle-double-right"></i></button></a>

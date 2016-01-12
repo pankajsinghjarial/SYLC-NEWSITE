@@ -28,6 +28,7 @@ if(isset($_GET['files']))
 			 
 			// where you'll save the image
 			$image  = $uploaddir.$timest. '.jpg';
+			$files['timest'] = $uploadUrl.$timest. '.jpg';
 			 
 			// default time to get the image
 			$second = 1;

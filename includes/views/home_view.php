@@ -275,7 +275,7 @@
         
 
         <div class="col-md-12 col-xs-12 form-group no-padding">
-          <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+          <div class="col-md-10 col-sm-12 col-xs-12 no-padding">
             <input type="text" class="form-control" id="inputPassword3" name="comment" placeholder="Comments">            
           </div>
           <div class="col-md-2 col-sm-12 col-xs-12 home-btn">
@@ -413,7 +413,7 @@ foreach($objVideos as $objVideo){
       ?>
      
        <div class="bottom-common-btn text-center wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
-        <a href=""><button type="button" class="btn btn-default"> Voir tous les avis <i class="fa fa-angle-right"></i></button></a>
+        <a href="/revue_automobiles"><button type="button" class="btn btn-default"> Voir tous les avis <i class="fa fa-angle-right"></i></button></a>
       </div>
     </div>
   </section>

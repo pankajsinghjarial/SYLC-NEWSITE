@@ -5,8 +5,10 @@
     <div class="add_area">
     <?php	$common = new common(); $slide = $common->CustomQuery("Select * from banner where publish = 1 and type = 5 order by rand()");
         while($image = mysql_fetch_object($slide))
-        {print_r($image);
+        {
+
         ?>
+
         <?php if($image->website != "") { ?>
             <a href="<?php echo $image->website; ?>" target="_blank"> 
         <?php } ?>

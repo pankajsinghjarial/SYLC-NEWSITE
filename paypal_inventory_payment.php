@@ -93,6 +93,7 @@ if(isset($_POST['payment']) && $_POST['payment'] == 'process'){
     }
     mysql_close($link);
 }
+$db = new DB(DB_NAME, DB_HOST, DB_USER, DB_PASS);
 $id = $_REQUEST['car_id'];
 $item = array_shift($common->CarAttributesFromID(array($id)));
 ?>

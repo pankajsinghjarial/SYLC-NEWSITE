@@ -274,16 +274,12 @@ and check javascript suport in browser
 		$subject = html_entity_decode(htmlentities($subject, ENT_NOQUOTES, "UTF-8"));
 		
 		$mail = new PHPMailer(true); //New instance, with exceptions enabled
-		
+		$mail->CharSet = 'UTF-8';
 		$mail->IsSMTP();                           // tell the class to use SMTP
 		$mail->SMTPAuth   = true;                  // enable SMTP authentication
-		/* $mail->SMTPDebug  = 2; */
-		//$mail->Port       = '25';   
-		/* $mail->SMTPSecure = 'ssl'; */                 // set the SMTP server port
-		//$mail->Host       = "mail.seobranddev.com"; // SMTP server
-		$mail->Host       = "americancarcentrale.com"; // SMTP server
-		$mail->Username   = "smtp@americancarcentrale.com";     // SMTP server username
-		$mail->Password   = "india123";            // SMTP server password
+        $mail->Host       = "mail.livemarketnews.com"; // SMTP server
+        $mail->Username   = "mails@livemarketnews.com";     // SMTP server username
+        $mail->Password   = "Stone!@#";            // SMTP server password
 		
 		$mail->IsSendmail();  // tell the class to use Sendmail
 	

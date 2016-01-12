@@ -124,6 +124,7 @@ RewriteRule ^((editaccount))$ edit_account.php
 RewriteRule ^((forgotpswd))$ forgot_password.php
 RewriteRule ^((logout))$ logout_account.php
 RewriteRule ^((sitemap))$ sitemap.php
+RewriteRule ^((detail-review))$ detail-review.php
 
 RewriteRule ^((edmunds))$ Edmunds/index.html
 ErrorDocument 404 /404.php

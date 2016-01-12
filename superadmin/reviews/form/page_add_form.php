@@ -74,7 +74,17 @@
     return false;
   }
   
+
+ function countChar(val) {
+        var len = val.value.length;
+        if (len >= 200) {
+          val.value = val.value.substring(0, 200);
+        } else {
+          $('#CharCount').text(200 - len);
+        }
+      };
   
+
 </script>
 <!-- /TinyMCE -->
 <?php //print_r($makes);?>
@@ -140,7 +150,9 @@
 						
 					  <tr>
                         <th valign="top">Short Description:</th>
-                        <td><textarea rows="4" type="text" class="inp-form-fullonetextarea" name="short_description" id="short_description" ><?php echo $short_description;?> </textarea></td>
+                        <td><textarea rows="4" maxlength="300" onkeyup='countChar(this)' type="text" class="inp-form-fullonetextarea" name="short_description" id="short_description" ><?php if(isset($short_description)){echo trim($short_description);}?> </textarea>
+							<p id="CharCount"><?php if(isset($short_description)){echo (200 - strlen($short_description) );}?></p><p> charecters remaining</p>
+                        </td>
                         <td><div class="error-left"></div>
                           <div class="error-inner">This field is required.</div></td>
                       </tr>

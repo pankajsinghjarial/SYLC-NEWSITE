@@ -135,7 +135,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['realfactform']) ) {
 			$mail->MsgHTML($body);				
 			$mail->IsHTML(true); // send as HTML				
 			$mail->Send();
-			echo '<script>location.href = "/thank_you.php";</script>';
+			echo '<script>location.href = "'.DEFAULT_URL.'/thank_you.php";</script>';
 			exit;
 		
 		} catch (Exception $oException) { // Catch any exceptions

@@ -1,5 +1,6 @@
 <?php 
 require_once('lib/iContactApi.php'); 
+include("functions/ebay_functions.php");
 $obj_setting 		= new common();
 $fetchContactPage = $obj_setting->customQuery("SELECT * FROM pages where id=123");
 $ContactPageContent = mysql_fetch_array($fetchContactPage);
@@ -34,7 +35,7 @@ extract($_POST);
 		
 		$message = html_entity_decode(htmlentities($message, ENT_QUOTES, "UTF-8"));
 		$sentmail = sendSmtpMail( SITE_ADMIN_EMAIL, $subject, $message );
-		echo '<script>location.href = "/thank_you.php";</script>';
+		echo '<script>location.href = '.DEFAULT_URL.'"/thank_you.php";</script>';
 		exit;
 		
 		} catch (Exception $oException) { // Catch any exceptions
